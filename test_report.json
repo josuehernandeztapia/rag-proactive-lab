@@ -1,0 +1,58 @@
+{
+  "generated_at": "2025-09-22T09:30:21.866418Z",
+  "total_cases": 2,
+  "open_cases": 2,
+  "severity_breakdown": {
+    "normal": 2
+  },
+  "missing_counts": {
+    "6": 1,
+    "4": 1
+  },
+  "cases": [
+    {
+      "contact": "whatsapp:+5214422022540",
+      "id": "AGS-20250913-3AF3",
+      "severity": "normal",
+      "categories": [
+        "brakes",
+        "oil",
+        "general",
+        "tires",
+        "engine",
+        "battery",
+        "electrical",
+        "exhaust",
+        "transmission"
+      ],
+      "status": "open",
+      "opened_at": "2025-09-13T03:12:22.401627+00:00",
+      "last_updated": "2025-09-18T05:59:47.599963+00:00",
+      "missing": [
+        "foto_tarjeta_circulacion",
+        "foto_tablero",
+        "foto_fusibles",
+        "foto_testigo_aceite",
+        "foto_varilla_aceite",
+        "fotos_fugas_frenos"
+      ],
+      "missing_count": 6
+    },
+    {
+      "contact": "+5215550000000",
+      "id": "AGS-20250917-3B92",
+      "severity": "normal",
+      "categories": [],
+      "status": "open",
+      "opened_at": "2025-09-17T08:25:51.992593+00:00",
+      "last_updated": "2025-09-17T08:47:28.578192+00:00",
+      "missing": [
+        "foto_vin",
+        "foto_odometro",
+        "foto_tarjeta_circulacion",
+        "foto_placa_unidad"
+      ],
+      "missing_count": 4
+    }
+  ]
+}

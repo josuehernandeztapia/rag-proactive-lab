@@ -1,0 +1,41 @@
+# Python bytecode and build
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual envs
+.venv/
+venv/
+
+# OS/user
+.DS_Store
+
+# Secrets and local env
+.env
+secrets.local.txt
+secrets.loca.txt
+
+# Logs and runtime PIDs
+logs/
+*.log
+.ngrok*
+.uvicorn*
+*.pid
+
+# Local data dumps / datasets (mantén data/ principal, ignora subcarpetas pesadas)
+datasets/
+reports/
+data/raw/
+data/hase/
+data/pia/
+data/staging/
+
+# Large/generated indices (kept via LFS for real artifacts)
+bm25_index*.pkl
+.env.bak-*
+secrets.local.txt

@@ -1,0 +1,27 @@
+Genera una nota ejecutiva para el expediente del caso.
+
+Datos del caso:
+- Timestamp UTC: {timestamp}
+- Placa: {placa}
+- Mercado: {market}
+- Acción registrada: {action}
+- Resultado: {outcome}
+- Banda de riesgo: {risk_band}
+- Motivo: {reason}
+- Canal origen: {channel}
+- Plantilla: {template}
+- Escenario evaluado: {scenario_type} ({scenario_summary})
+- Estado del plan: {plan_status} (vigencia {plan_valid_until}, reinicio cada {plan_reset_cycle_days} días)
+- Protecciones usadas: {protections_used}
+- Protecciones permitidas: {protections_allowed}
+- Señales críticas: {critical_signals}
+- Notas previas: {notes}
+
+Detalles financieros relevantes:
+{financial_snapshot}
+
+Instrucciones:
+1. Redacta 4 a 6 frases cortas en español.
+2. Explica por qué el escenario fue propuesto o ejecutado y los riesgos asociados.
+3. Indica si requiere revisión manual o escalamiento.
+4. Cierra con la acción recomendada para el equipo de riesgo o cobranza.

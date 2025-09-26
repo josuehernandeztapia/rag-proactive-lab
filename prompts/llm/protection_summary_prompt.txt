@@ -1,0 +1,16 @@
+Con los datos siguientes explica al operador las opciones de protección.
+
+- Placa: {placa}
+- Mercado: {market}
+- Saldo: {balance}
+- Pago actual: {payment}
+- TIR objetivo: {irr_target}
+- Escenarios viables:
+{scenarios_list}
+- Flags relevantes: {critical_signals}
+
+Instrucciones:
+1. Produce una explicación en tono cercano, 3 a 5 viñetas.
+2. Para cada escenario indica qué cambia (pago, plazo) y si cumple TIR.
+3. Destaca cuál requiere revisión manual.
+4. Cierra con una pregunta o sugerencia de siguiente paso para confirmar con el operador.

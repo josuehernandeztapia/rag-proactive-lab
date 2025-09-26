@@ -1,0 +1,16 @@
+Genera una alerta proactiva para el equipo de cobranza basada en la siguiente información.
+
+- Fecha de referencia: {reference_ts}
+- Placa: {placa}
+- Mercado: {market}
+- Plan: {plan_type} (estado {plan_status}, vigencia {plan_valid_until})
+- Protecciones restantes: {protections_remaining}
+- Banderas activas: {flag_summary}
+- Último outcome registrado: {last_outcome_desc}
+- Métricas adicionales: {metric_snapshot}
+
+Instrucciones:
+1. Produce un resumen de máximo 5 frases.
+2. Explica qué riesgo se detectó, la causa probable y urgencia.
+3. Incluye una acción recomendada concreta.
+4. Señala el impacto estimado en TIR o cobranza si no se actúa.
