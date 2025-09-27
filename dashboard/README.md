@@ -35,7 +35,11 @@ Los artefactos se publican en `dist/`.
    ```bash
    make demo-proteccion ARGS="--llm --llm-limit 3"
    ```
-2. Copia (o sincroniza) los archivos generados hacia `dashboard/public/data/` (puedes usar `npm run sync-data` si creas un script, o bien un symlink). Los nombres esperados son:
+2. Copia (o sincroniza) los archivos generados hacia `dashboard/public/data/`. Puedes usar:
+   ```bash
+   npm run sync-data
+   ```
+   Los nombres esperados son:
    - `data/pia/synthetic_driver_states.csv`
    - `data/pia/pia_outcomes_log.csv`
    - `data/hase/pia_outcomes_features.csv`
