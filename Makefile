@@ -1,4 +1,4 @@
-.PHONY: help start stop status restart build-parts build-equivalences ingest query health version search parts-search smoke smoke-postdeploy media-worker install-agent uninstall-agent logs-tail logs-init logs-test-db export-csv export-xlsx test daily-report pia-report pia-augment pia-baselines hase-ingest hase-synth hase-build hase-train hase-train-baseline
+.PHONY: help start stop status restart build-parts build-equivalences ingest query health version search parts-search smoke smoke-postdeploy media-worker install-agent uninstall-agent logs-tail logs-init logs-test-db export-csv export-xlsx test daily-report pia-report pia-augment pia-baselines hase-ingest hase-synth hase-build hase-train hase-train-baseline demo-proteccion
 
 ORIG_PYTHONPATH := $(value PYTHONPATH)
 export PYTHONPATH := $(CURDIR)/agents:$(CURDIR)/app$(if $(strip $(ORIG_PYTHONPATH)),:$(strip $(ORIG_PYTHONPATH)))
@@ -33,6 +33,7 @@ help:
 	@echo "  pia-report [ARGS=...]        - Emite resumen por escenario y plaza"
 	@echo "  pia-equilibrium [ARGS=...]   - Evalúa escenarios de protección contra la TIR mínima"
 	@echo "  pia-aggregate               - Agrega outcomes PIA y emite resumen por plan"
+	@echo "  demo-proteccion [ARGS=...]  - Genera datos sintéticos y corre el smoke de protección"
 	@echo "  hase-ingest [ARGS=...]   - Consolida consumos AGS/EdomeX"
 	@echo "  hase-synth [ARGS=...]    - Crea dataset de entrenamiento con sintéticos"
 	@echo "  hase-build [ARGS=...]    - Fusiona features + labels para entrenamiento"
@@ -202,6 +203,9 @@ hase-train:
 
 hase-train-baseline:
 	python3 agents/hase/scripts/train_baseline.py $(ARGS)
+
+demo-proteccion:
+	python3 scripts/demo_proteccion.py $(ARGS)
 
 # ============ Neon exports ============
 # Requiere: export DATABASE_URL='postgresql://...'
