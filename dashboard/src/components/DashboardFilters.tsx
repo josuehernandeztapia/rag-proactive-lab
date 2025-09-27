@@ -21,7 +21,8 @@ const Group = styled.div`
     color: ${({ theme }) => theme.colors.textSecondary};
   }
 
-  select {
+  select,
+  input {
     min-width: 200px;
     border-radius: ${({ theme }) => theme.radii.sm};
     border: 1px solid ${({ theme }) => theme.colors.border};
@@ -61,20 +62,32 @@ interface Option {
 interface DashboardFiltersProps {
   scenarioOptions: Option[];
   plateOptions: Option[];
+  plazaOptions: Option[];
   scenarioValue: string;
   plateValue: string;
+  plazaValue: string;
+  startDate: string;
+  endDate: string;
   onScenarioChange: (value: string) => void;
   onPlateChange: (value: string) => void;
+  onPlazaChange: (value: string) => void;
+  onDateRangeChange: (field: 'start' | 'end', value: string) => void;
   onClear: () => void;
 }
 
 export function DashboardFilters({
   scenarioOptions,
   plateOptions,
+  plazaOptions,
   scenarioValue,
   plateValue,
+  plazaValue,
+  startDate,
+  endDate,
   onScenarioChange,
   onPlateChange,
+  onPlazaChange,
+  onDateRangeChange,
   onClear,
 }: DashboardFiltersProps) {
   const handleScenario = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -84,6 +97,17 @@ export function DashboardFilters({
   const handlePlate = (event: ChangeEvent<HTMLSelectElement>) => {
     onPlateChange(event.target.value);
   };
+
+  const handlePlaza = (event: ChangeEvent<HTMLSelectElement>) => {
+    onPlazaChange(event.target.value);
+  };
+
+  const isDisabled =
+    scenarioValue === 'all' &&
+    plateValue === 'all' &&
+    plazaValue === 'all' &&
+    !startDate &&
+    !endDate;
 
   return (
     <FiltersWrapper>
@@ -107,7 +131,37 @@ export function DashboardFilters({
           ))}
         </select>
       </Group>
-      <ClearButton type="button" onClick={onClear} disabled={scenarioValue === 'all' && plateValue === 'all'}>
+      <Group>
+        <label htmlFor="plaza-filter">Plaza</label>
+        <select id="plaza-filter" value={plazaValue} onChange={handlePlaza}>
+          {plazaOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </Group>
+      <Group>
+        <label htmlFor="start-date">Desde</label>
+        <input
+          id="start-date"
+          type="date"
+          value={startDate}
+          max={endDate || undefined}
+          onChange={(event) => onDateRangeChange('start', event.target.value)}
+        />
+      </Group>
+      <Group>
+        <label htmlFor="end-date">Hasta</label>
+        <input
+          id="end-date"
+          type="date"
+          value={endDate}
+          min={startDate || undefined}
+          onChange={(event) => onDateRangeChange('end', event.target.value)}
+        />
+      </Group>
+      <ClearButton type="button" onClick={onClear} disabled={isDisabled}>
         Limpiar filtros
       </ClearButton>
     </FiltersWrapper>
