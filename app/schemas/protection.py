@@ -38,7 +38,7 @@ class ProtectionEvaluateRequest(BaseModel):
     has_recent_promise_break: bool = False
     telematics_ok: bool = True
 
-    log_outcome: bool = False
+    log_outcome: bool = True
     decision_action: Optional[str] = Field(None, description="Original PIA decision action")
     decision_reason: Optional[str] = None
     decision_placa: Optional[str] = Field(None, description="Placa asociada para logging opcional")
