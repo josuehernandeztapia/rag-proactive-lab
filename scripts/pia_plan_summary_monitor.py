@@ -36,8 +36,7 @@ def main(summary: Path = DEFAULT_SUMMARY, features: Path = DEFAULT_FEATURES) -> 
             print(f'Contratos {label}: {len(df)}')
             print(df[['placa', 'last_plan_type', 'last_plan_status', 'protections_remaining']].to_string(index=False))
 
-    print('
-=== Alertas ===')
+    print('\n=== Alertas ===')
     _report(negatives, 'con protecciones negativas')
     _report(expirados, 'con plan expirado')
     _report(manual, 'marcados para revisión manual')
