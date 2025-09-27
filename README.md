@@ -21,6 +21,42 @@ reports/                 # Notas, alertas, outbox y logs de LLM
 docs/                    # Guías (smoke, orquestación)
 ```
 
+## Demo Sintético Rápido
+
+1. **Ejecutar demo completo**
+   ```bash
+   make demo-proteccion
+   # opcional: make demo-proteccion ARGS="--llm --llm-limit 3"
+   ```
+   Genera la cartera sintética (`data/pia/synthetic_driver_states.csv`), outcomes (`data/pia/pia_outcomes_log.csv`), feature store (`data/hase/pia_outcomes_features.csv`) y resumen por plan (`reports/pia_plan_summary.csv`).
+
+2. **Inspeccionar resultados**
+   ```bash
+   python3 scripts/pia_plan_summary_monitor.py
+   ```
+   Muestra alertas (planes expirados, revisión manual, protecciones negativas) directamente en consola.
+
+3. **Alertas LLM (modo plantilla)**
+   ```bash
+   PIA_LLM_MODE=template PIA_LLM_ALERTS=1 \
+   python3 scripts/pia_llm_notifier.py --limit 3 --skip-email \
+     --pia-outbox reports/pia_llm_outbox.jsonl
+   ```
+   Esto deja narrativas proactivas listas para Make/n8n o dashboards.
+
+### Documentación relacionada
+- [Runbook HASE/PIA/TIR/Protección](docs/demo_runbook_hase_pia_tir_proteccion.md)
+- [HUs quirúrgicas para dashboards](docs/hus_dashboard_proteccion.md)
+
+### Datasets de laboratorio
+| Archivo | Propósito |
+| --- | --- |
+| `data/pia/synthetic_driver_states.csv` | Snapshot de consumo, pagos, telemetría y banderas PIA/HASE por placa. |
+| `data/pia/pia_outcomes_log.csv` | Log detallado de decisiones PIA y escenarios TIR evaluados. |
+| `data/hase/pia_outcomes_features.csv` | Feature store para dashboards (protecciones restantes, outcomes por ventana, tags). |
+| `reports/pia_plan_summary.csv` | Resumen por plan (conteos, protecciones disponibles, alertas). |
+| `reports/pia_llm_outbox.jsonl` | Narrativas proactivas (si se habilita el LLM notifier). |
+
 ## Flujos principales
 
 1. **Modo laboratorio**
