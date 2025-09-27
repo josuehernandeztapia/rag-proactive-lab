@@ -11,6 +11,26 @@ def test_build_pia_agent_exposes_tools():
     assert {"consult_hase", "simulate_pia", "trigger_make_webhook"}.issubset(tool_names)
 
 
+def test_consult_hase_tool_uses_stub_scoring():
+    agent = build_pia_agent()
+    payload = {
+        "placa": "LAB-002",
+        "coverage_ratio_14d": 0.52,
+        "coverage_ratio_30d": 0.58,
+        "downtime_hours_30d": 80,
+        "expected_payment": 11000,
+        "bank_transfer": 3000,
+        "gnv_credit_30d": 4200,
+        "arrears_amount": 2800,
+    }
+    consult = next(tool for tool in agent.tools if tool.name == "consult_hase")
+    result = consult.func(payload)
+
+    assert result["placa"] == "LAB-002"
+    assert 0.0 <= result["risk_score"] <= 1.0
+    assert 0.0 <= result["probability_default"] <= 1.0
+
+
 def test_pia_agent_simulate_decision_dict():
     agent: PIAgent = build_pia_agent()
     result = agent.simulate(
