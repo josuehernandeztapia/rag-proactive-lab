@@ -57,6 +57,11 @@ docs/                    # Guías (smoke, orquestación)
 | `reports/pia_plan_summary.csv` | Resumen por plan (conteos, protecciones disponibles, alertas). |
 | `reports/pia_llm_outbox.jsonl` | Narrativas proactivas (si se habilita el LLM notifier). |
 
+### Dashboard React
+- UI demo en [`dashboard/`](dashboard/README.md).
+- Sincroniza datasets con `npm run sync-data` (ver README del dashboard).
+- Ejecuta `npm run dev` para levantar la experiencia en http://localhost:5173.
+
 ## Flujos principales
 
 1. **Modo laboratorio**

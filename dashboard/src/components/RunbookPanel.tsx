@@ -104,6 +104,8 @@ export function RunbookPanel({ data }: RunbookPanelProps) {
             <li>Elige tres placas (baseline, consumption_gap, delinquency) y prepara narrativa.</li>
             <li>Resalta cobertura vs protecciones en la vista de riesgo.</li>
             <li>Termina mostrando la alerta LLM tal como llegaría al asesor.</li>
+            <li>Para Make/WhatsApp usa <code>reports/pia_llm_outbox.jsonl</code> o conecta el notifier al webhook.</li>
+            <li>Sincroniza datasets en React con <code>npm run sync-data</code>.</li>
           </ul>
         </Section>
       </Grid>
