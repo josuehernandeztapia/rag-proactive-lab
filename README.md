@@ -21,6 +21,19 @@ reports/                 # Notas, alertas, outbox y logs de LLM
 docs/                    # Guías (smoke, orquestación)
 ```
 
+## Alcance del repositorio
+
+Este repositorio reúne **todos los agentes y demos del laboratorio**:
+
+- `agents/` – implementación de HASE y PIA (motor TIR/Protección) + reglas y servicios LLM.
+- `scripts/` – orquestadores de demo (`make demo-proteccion`), notifier LLM y smoketests.
+- `data/`, `reports/` – artefactos sintéticos que alimentan el demo (re-gen con `make demo-proteccion`).
+- `dashboard/` – dashboard React (Vite) para narrar el demo; sincroniza datasets con `npm run sync-data`.
+- `docs/` – runbooks, HUs y documentación funcional.
+- `pwa_angular/` – submódulo del bot de postventa (UI Angular) apuntando a `josuehernandeztapia/pwa_angular`.
+
+> 🧹 Para mantener el repo ligero y listo para due diligence se ignoran carpetas locales como `conductores/`, `config/`, `migrations/`, `models/`, `notebooks/`, `pwa_angular-restored/` y archivos duplicados tipo `archivo 2.py`. Si necesitas esos insumos, consérvalos fuera del árbol de Git o en repos dedicados.
+
 ## Demo Sintético Rápido
 
 1. **Ejecutar demo completo**
