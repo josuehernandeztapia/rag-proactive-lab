@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import dayjs from 'dayjs';
 import styled from 'styled-components';
 import { AlertsList } from './components/AlertsList';
 import { DashboardFilters } from './components/DashboardFilters';
@@ -10,32 +11,59 @@ import { RiskCoverageChart } from './components/RiskCoverageChart';
 import { RunbookPanel } from './components/RunbookPanel';
 import { OutcomeTable } from './components/OutcomeTable';
 import { useDemoData } from './hooks/useDemoData';
+import type { OutcomeScenarioSummary } from './types';
+
+dayjs.locale('es');
+
+type DateRange = { start: string; end: string };
 
 function App() {
   const { data, isLoading, error, refetch, isFetching } = useDemoData();
   const [scenarioFilter, setScenarioFilter] = useState('all');
   const [plateFilter, setPlateFilter] = useState('all');
+  const [plazaFilter, setPlazaFilter] = useState('all');
+  const [dateRange, setDateRange] = useState<DateRange>({ start: '', end: '' });
+
+  const driverStates = data?.driverStates ?? [];
+  const outcomeScenarios = data?.outcomeScenarios ?? [];
+
+  const allowedPlacasByDate = useMemo(
+    () => buildDateFilterSet(outcomeScenarios, dateRange.start, dateRange.end),
+    [outcomeScenarios, dateRange.start, dateRange.end],
+  );
+  const hasDateFilter = Boolean(dateRange.start || dateRange.end);
 
   const scenarioOptions = useMemo(() => {
-    if (!data) return [{ value: 'all', label: 'Todos los escenarios' }];
     const unique = new Map<string, string>();
-    data.driverStates.forEach((item) => {
-      const value = (item.scenario || 'sin-escenario').toString();
-      if (!unique.has(value)) {
-        unique.set(value, formatScenario(value));
-      }
+    driverStates.forEach((item) => {
+      const key = item.scenario || 'sin-escenario';
+      if (!unique.has(key)) unique.set(key, formatScenario(key));
     });
     return [
       { value: 'all', label: 'Todos los escenarios' },
       ...Array.from(unique.entries()).map(([value, label]) => ({ value, label })),
     ];
-  }, [data]);
+  }, [driverStates]);
+
+  const plazaOptions = useMemo(() => {
+    const unique = new Map<string, string>();
+    driverStates.forEach((item) => {
+      unique.set(item.market || 'sin-plaza', item.market || 'Sin plaza');
+    });
+    return [
+      { value: 'all', label: 'Todas las plazas' },
+      ...Array.from(unique.entries()).map(([value, label]) => ({ value, label })),
+    ];
+  }, [driverStates]);
 
   const plateOptions = useMemo(() => {
-    if (!data) return [{ value: 'all', label: 'Todas las placas' }];
-    const scopedDriverStates = data.driverStates.filter((item) =>
-      scenarioFilter === 'all' ? true : (item.scenario || 'sin-escenario') === scenarioFilter,
-    );
+    const scopedDriverStates = driverStates.filter((item) => {
+      const matchesScenario =
+        scenarioFilter === 'all' || (item.scenario || 'sin-escenario') === scenarioFilter;
+      const matchesPlaza = plazaFilter === 'all' || item.market === plazaFilter;
+      const matchesDate = !hasDateFilter || allowedPlacasByDate.has(item.placa);
+      return matchesScenario && matchesPlaza && matchesDate;
+    });
     const unique = new Map<string, string>();
     scopedDriverStates.forEach((item) => {
       unique.set(item.placa, item.placa);
@@ -44,33 +72,42 @@ function App() {
       { value: 'all', label: 'Todas las placas' },
       ...Array.from(unique.entries()).map(([value, label]) => ({ value, label })),
     ];
-  }, [data, scenarioFilter]);
+  }, [driverStates, scenarioFilter, plazaFilter, allowedPlacasByDate, hasDateFilter]);
 
   useEffect(() => {
     if (!plateOptions.some((option) => option.value === plateFilter)) {
       setPlateFilter('all');
     }
-  }, [plateOptions, plateFilter]);
+    if (!plazaOptions.some((option) => option.value === plazaFilter)) {
+      setPlazaFilter('all');
+    }
+  }, [plateOptions, plazaOptions, plateFilter, plazaFilter]);
 
-  const filteredDriverStates = useMemo(() => {
-    if (!data) return [];
-    return data.driverStates.filter((item) => {
-      const matchesScenario =
-        scenarioFilter === 'all' || (item.scenario || 'sin-escenario') === scenarioFilter;
-      const matchesPlate = plateFilter === 'all' || item.placa === plateFilter;
-      return matchesScenario && matchesPlate;
-    });
-  }, [data, scenarioFilter, plateFilter]);
+  const driverMap = useMemo(() => {
+    return new Map(driverStates.map((item) => [item.placa, item]));
+  }, [driverStates]);
 
   const filteredOutcomeScenarios = useMemo(() => {
-    if (!data) return [];
-    return data.outcomeScenarios.filter((item) => {
+    return outcomeScenarios.filter((item) => {
       const matchesScenario =
         scenarioFilter === 'all' || (item.scenario || 'sin-escenario') === scenarioFilter;
       const matchesPlate = plateFilter === 'all' || item.placa === plateFilter;
-      return matchesScenario && matchesPlate;
+      const matchesPlaza = plazaFilter === 'all' || driverMap.get(item.placa)?.market === plazaFilter;
+      const matchesDate = isWithinRange(item.timestamp, dateRange.start, dateRange.end);
+      return matchesScenario && matchesPlate && matchesPlaza && matchesDate;
     });
-  }, [data, scenarioFilter, plateFilter]);
+  }, [outcomeScenarios, scenarioFilter, plateFilter, plazaFilter, driverMap, dateRange.start, dateRange.end]);
+
+  const filteredDriverStates = useMemo(() => {
+    return driverStates.filter((item) => {
+      const matchesScenario =
+        scenarioFilter === 'all' || (item.scenario || 'sin-escenario') === scenarioFilter;
+      const matchesPlate = plateFilter === 'all' || item.placa === plateFilter;
+      const matchesPlaza = plazaFilter === 'all' || item.market === plazaFilter;
+      const matchesDate = !hasDateFilter || allowedPlacasByDate.has(item.placa);
+      return matchesScenario && matchesPlate && matchesPlaza && matchesDate;
+    });
+  }, [driverStates, scenarioFilter, plateFilter, plazaFilter, allowedPlacasByDate, hasDateFilter]);
 
   const handleSelectPlate = (placa: string) => {
     setPlateFilter((prev) => (prev === placa ? 'all' : placa));
@@ -79,10 +116,13 @@ function App() {
   const handleClearFilters = () => {
     setScenarioFilter('all');
     setPlateFilter('all');
+    setPlazaFilter('all');
+    setDateRange({ start: '', end: '' });
   };
 
+  const filtersActive =
+    scenarioFilter !== 'all' || plateFilter !== 'all' || plazaFilter !== 'all' || hasDateFilter;
   const selectedPlate = plateFilter === 'all' ? undefined : plateFilter;
-  const filtersActive = scenarioFilter !== 'all' || plateFilter !== 'all';
 
   const sidebarLinks = [
     { href: '#portfolio-overview', label: 'Overview' },
@@ -119,10 +159,18 @@ function App() {
             <DashboardFilters
               scenarioOptions={scenarioOptions}
               plateOptions={plateOptions}
+              plazaOptions={plazaOptions}
               scenarioValue={scenarioFilter}
               plateValue={plateFilter}
+              plazaValue={plazaFilter}
+              startDate={dateRange.start}
+              endDate={dateRange.end}
               onScenarioChange={setScenarioFilter}
               onPlateChange={setPlateFilter}
+              onPlazaChange={setPlazaFilter}
+              onDateRangeChange={(field, value) =>
+                setDateRange((prev) => ({ ...prev, [field]: value }))
+              }
               onClear={handleClearFilters}
             />
             <FilterSummary>
@@ -133,6 +181,17 @@ function App() {
               <SummaryItem>
                 <label>Placa</label>
                 <span>{plateFilter === 'all' ? 'Todas' : plateFilter}</span>
+              </SummaryItem>
+              <SummaryItem>
+                <label>Plaza</label>
+                <span>{plazaFilter === 'all' ? 'Todas' : plazaFilter}</span>
+              </SummaryItem>
+              <SummaryItem>
+                <label>Rango</label>
+                <span>
+                  {dateRange.start ? dayjs(dateRange.start).format('YYYY-MM-DD') : '—'} →{' '}
+                  {dateRange.end ? dayjs(dateRange.end).format('YYYY-MM-DD') : '—'}
+                </span>
               </SummaryItem>
               {filtersActive ? (
                 <ClearFiltersButton type="button" onClick={handleClearFilters}>
@@ -197,6 +256,30 @@ function App() {
       </FooterNote>
     </DashboardLayout>
   );
+}
+
+function buildDateFilterSet(outcomes: OutcomeScenarioSummary[], start: string, end: string): Set<string> {
+  if (!outcomes.length) return new Set();
+  const set = new Set<string>();
+  outcomes.forEach((item) => {
+    if (isWithinRange(item.timestamp, start, end)) {
+      set.add(item.placa);
+    }
+  });
+  if (!start && !end) {
+    // si no hay filtro, agregar todas las placas conocidas
+    outcomes.forEach((item) => set.add(item.placa));
+  }
+  return set;
+}
+
+function isWithinRange(timestamp: string, start: string, end: string): boolean {
+  if (!start && !end) return true;
+  const ts = dayjs(timestamp);
+  if (!ts.isValid()) return false;
+  if (start && ts.isBefore(dayjs(start), 'day')) return false;
+  if (end && ts.isAfter(dayjs(end), 'day')) return false;
+  return true;
 }
 
 function formatScenario(raw: string): string {

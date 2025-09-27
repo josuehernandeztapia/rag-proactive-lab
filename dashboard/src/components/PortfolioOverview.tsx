@@ -73,6 +73,16 @@ export function PortfolioOverview({ data, filteredDriverStates, filteredOutcomeS
           helper={filtersActive ? `Total: ${totalMetrics.manualReview.toLocaleString('es-MX')}` : undefined}
         />
         <StatCard
+          label="Cobertura 14d promedio"
+          value={`${(display.coverageAvg14d * 100).toFixed(1)} %`}
+          helper={filtersActive ? `Total: ${(totalMetrics.coverageAvg14d * 100).toFixed(1)} %` : undefined}
+        />
+        <StatCard
+          label="Arrears totales"
+          value={`$${Math.round(display.arrearsTotal).toLocaleString('es-MX')}`}
+          helper={filtersActive ? `$${Math.round(totalMetrics.arrearsTotal).toLocaleString('es-MX')}` : undefined}
+        />
+        <StatCard
           label="Planes expirados"
           value={display.expiredContracts.toLocaleString('es-MX')}
           trend={display.expiredContracts > 0 ? 'down' : 'flat'}
@@ -99,6 +109,10 @@ function calculateMetrics(driverStates: DriverState[], outcomeScenarios: Outcome
   const irrValues = outcomeScenarios
     .map((item) => item.annualIrr)
     .filter((value): value is number => value !== null && value !== undefined);
+  const coverageAvg14d = driverStates.length
+    ? driverStates.reduce((acc, item) => acc + (item.coverage_ratio_14d || 0), 0) / driverStates.length
+    : 0;
+  const arrearsTotal = driverStates.reduce((acc, item) => acc + Math.max(item.arrears_amount || 0, 0), 0);
   const avgIrr = irrValues.length ? irrValues.reduce((acc, value) => acc + value, 0) / irrValues.length : 0;
 
   return {
@@ -106,6 +120,8 @@ function calculateMetrics(driverStates: DriverState[], outcomeScenarios: Outcome
     protectionsAvg,
     manualReview,
     expiredContracts,
+    coverageAvg14d,
+    arrearsTotal,
     avgIrr,
   };
 }
