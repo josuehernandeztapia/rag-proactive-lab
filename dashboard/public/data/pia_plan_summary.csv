@@ -1,0 +1,6 @@
+plan_type,contratos,protecciones_restantes_promedio,protecciones_restantes_mediana,contratos_manual,contratos_expirados,contratos_negative
+proteccion_basica,34,1.588235294117647,2.0,3,2,0
+proteccion_caduca,23,1.3478260869565217,1.0,1,1,0
+proteccion_ilimitada,17,2.4705882352941178,3.0,2,1,0
+proteccion_light,18,1.0,1.0,1,1,0
+proteccion_total,46,1.9130434782608696,2.0,6,2,0
