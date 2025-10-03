@@ -42,15 +42,17 @@ secrets.local.txt
 
 # Lab scratch/legacy dirs (mantén este repo enfocado en agentes/demo)
 /conductores/
-config/
-migrations/
-models/
 notebooks/
 pwa_angular-restored/
+
+# Allow critical files for lab functionality
+!config/financial.yml
+!migrations/*.sql
+!models/hase/
+!src/components/PaymentsTelemetry.tsx
+!tests/
 
 # Evita subir duplicados "archivo 2.*"
 **/* 2.py
 **/* 2.md
 pwa_angular-restored/
-src/
-tests/
