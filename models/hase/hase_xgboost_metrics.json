@@ -1,0 +1,45 @@
+{
+  "accuracy": 1.0,
+  "roc_auc": 1.0,
+  "confusion_matrix": [
+    [
+      231,
+      0
+    ],
+    [
+      0,
+      299
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 231.0
+    },
+    "1": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 299.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 530.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 530.0
+    }
+  },
+  "n_estimators": 300,
+  "learning_rate": 0.1,
+  "max_depth": 4,
+  "subsample": 0.8
+}

@@ -1,0 +1,15 @@
+markets:
+  aguascalientes:
+    tir_min: 0.255
+  edomex:
+    tir_min: 0.299
+  default:
+    tir_min: 0.255
+policy:
+  tir_tolerance_bps: 25
+  max_restructures: 2
+  max_deferral_months: 6
+  max_stepdown_months: 6
+  max_stepdown_reduction: 0.5
+  soft_deferral_cap_with_gap: 3
+  soft_stepdown_cap_with_gap: 0.25
