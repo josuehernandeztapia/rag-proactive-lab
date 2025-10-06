@@ -1,0 +1,19787 @@
+HARNESSES
+For 24FCV0026-0027
+
+on
+M6
+0.85
+To: ACU ground point
+B
+@
+
+ON
+1
+power
+AQ01
+0.85
+R
+QL05
+0.5
+Y
+17 Instrument
+indicator
+
+QL01 QL02
+twisted-pair
+Driver's
+Driver's
+seatseat+
+QL02
+QL01
+0.85
+0.85
+B
+R
+
+230 180
+
+QL03 QL04
+twisted-pair
+passenger seat
+passenger
+seat +
+
+16
+
+QL03
+0.5
+B
+
+on
+0.85
+B
+
+QL04
+0.5
+R
+QL06
+0.85
+Y
+diagnostic
+
+32
+
+1719057-1
+The wiring harness is
+based
+number on
+To: air on
+bagthe
+ACU
+the sheath
+
+800
+
+1
+QL03 QL04
+twisted-pair
+
+All terminals in this drawing are tinned
+Soft yellow bellows for the beam, yellow
+tape for the bellows.
+
+2
+
+QL03
+QL04
+0.5
+0.5
+B
+R
+passenger seatpassenger
++
+seat -
+
+1100
+
+500
+
+700
+ON power diagnostic Instrument indication
+AQ01
+0.85
+R
+
+sheath：SQMR-02H-1A-K
+To: passenger seat air
+bag
+The wiring harness is
+based on the number on
+the sheath
+
+0nA
+0.75
+B
+
+900
+
+QL06
+0.85
+Y
+
+QL05
+0.5
+Y
+
+DM01 191#
+0.75 0.5
+R
+G
+
+0LB
+0.5
+B
+
+GND
+Multimedia - Multimedia + contour lamp power
+
+AMP：172508-1（male）
+
+Driver's
+seat-
+
+QL01 QL02
+twisted-pair
+
+To： instrument harness
+
+QL02
+0.75
+B
+QL01
+0.75
+R
+
+0nA
+0.75
+B
+
+Driver's
+seat+
+
+Multimedia -
+
+DM01
+0.75
+R
+Multimedia +
+
+TO：SRS CS
+
+191#
+0.5
+G
+contour lamp power
+
+0LB
+0.5
+B
+
+15#
+0.5
+GR
+horn
+
+GND
+
+50
+
+15#
+0.5 GR
+DJ7012Y-2.2-11
+horn
+
+37FC8-24001-AG1
+Harness(air bag transition
+wire)
+
+A view
+clamping piece
+view
+
+B view
+
+view of harness branch
+Ⅰview
+
+Ⅱview
+
+C view
+
+D view
+
+E view
+
+F view
+
+G view
+
+Allowable tolerance(mm)
+
+H view
+
+Length
+distinguishing
+
+Ⅱview
+
+0～200
+
++10,-5
+
+branch line,
+single line
++10,-5
+
+＞200～500
+
++20,-10
+
++20,-10
+
+＞500～1000
+
++30,-15
+
++30,-15
+
+＞1000～3000
+
++40,-20
+
++40,-20
+
+＞3000～5000
+
++50,-25
+
++50,-25
+
++1.5%,-0.5%
+
++2.0%,-0.5%
+
+Clamping piece
+
++5,-5
+
++5,-5
+
+grommet
+
++5,-5
+
++5,-5
+
+more than 5000
+
+Refer To the diagram if there is special guidance tolerance
+
+SDJ621-G2.2*0.6T(0.3-0.5)(2)
+0cA
+SDJ621-G2.2*0.6A(0.85-1.25)(1)
+0.5
+W/B
+
+3
+
+main line
+
+22cA
+0.85
+L/Y
+
+24a
+0.5
+O
+
+DJ7034-2.2-21(W)
+To front inner light
+
+170
+
+82711-1E320(W)
+230A#
+1.25
+R
+231A#
+1.25
+W
+
+combination
+
+D direction
+D direction
+
+C1047
+
+600
+
+22cC
+0.85
+L/Y
+
+ZDT120*7(B)
+
+4 TO middle indoor lamp
+
+400B
+
+1
+
+OmA
+
+0
+
+25a
+0.5
+L
+
+DJ7032Y-2-21
+2
+
+3
+
+220
+
+16
+
+0cE
+1.25
+W/B
+
+C1050
+
+0.85
+
+DS-1
+0.85
+
+W/B
+
+L/Y
+
+C1050
+
+82711-1E320(W)
+
+VTØ10*730
+70
+
+To instrument harness B
+
+250
+
+220
+
+230# 231#
+1.25 1.25
+R
+W
+
+C1050
+DJ70210-2.8-21
+
+12 To right front roof louloudspeaker
+280B
+
+sheath：282087-1
+
+70
+*
+
+10
+0
+
+24a
+0.5
+O
+
+212
+1.25
+L/Y
+
+213
+1.25
+L/B
+
+C1050
+110B
+
+190B
+
+120B
+
+130
+
+170
+
+240B
+
+80B
+
+140B
+
+280B
+
+100B
+
+300B
+
+A direction
+
+250B
+
+300B
+
+80B
+
+350B
+
+C1050
+
+Ⅱ direction
+
+PVC 100*90
+B direction
+
+Ⅰ direction
+
+C direction
+
+C1050
+
+C1050
+
+B direction
+
+E direction
+
+B direction
+
+C1050
+
+C1050
+
+C1050
+
+C1050
+
+30
+
+C1050
+
+C1050
+120
+700
+
+700
+
+30B
+
+B direction
+
+(220)
+
+C1050
+
+20
+
+C1050
+
+SDJ611-F2.2U(0.3-0.5)(6)
+
+SDJ611-F2.2C(2.0-3.0)(2)
+
+1
+
+DS-1 AQ01
+0.85 0.5
+L/Y R/W
+
+DJ7201Y-2.2-11(W)
+To instrument harness A
+
+0m
+2.5
+W/B
+
+K-15
+0.5
+R/L
+
+2
+
+HD-4
+2.0
+L/B
+
+14
+
+AMP：282104-1（M）
+label：safety belt alarm
+
+228#
+1.25
+B
+
+DS-1
+1.25L/Y
+
+229#
+1.25
+Y
+
+0c
+
+HD-3
+2.0
+L/B
+
+1.25W/B
+
+11
+DJ70210-2.8-21
+
+C1050
+
+To left front roof louloudspeaker
+
+DJ7028-6.3-11
+Docking USB interface
+
+Sheath：DJ7042-6.3-21
+B column harness
+
+300B
+
+SDJ611-F2.2B(0.85-1.25)(11)
+
+1
+
+A direction
+
+180B
+
+48
+0.85
+G/B
+
+HB-40-1
+HB-40-2
+
+150
+
+C1050
+
+230B
+
+49
+0.85
+G/Y
+
+25a
+0.5
+L
+
+21
+134
+1.25 0.85
+G/W L/W
+22c 36aB
+1.25 1.25
+L/Y
+L/R
+216
+2.0
+B
+RW-1 RW-2
+1.25
+1.25
+L/R
+L/W
+
+280B
+750B
+
+VTØ8*1200
+
+combination
+
+0c
+19d
+2.0
+0.85
+W/B
+G
+24e
+44
+0.5
+0.5
+R/W R/Y
+
+13 To TV
+
+270
+
+C1047
+
+C
+
+D direction
+
+PV
+
+G direction
+
+SDJ611-F2.2B(0.85-1.25)(4)
+DJ7122Y-2.2-11(Gr)
+
+210B
+
+VTØ10*790
+
+DS-1 AQ01
+1.25 0.5
+L/Y
+R/W
+228# 229#
+1.25 1.25
+B
+Y
+
+C1047
+
+F direction
+
+2
+
+450B
+
+C1050
+
+7
+
+To instrument harness A(1)
+
+1
+
+J0cA 、0cB 、0cC 、0cD 、0cE
+
+Con
+
+FUNCTION
+
+NO.
+
+2
+
+0cA
+
+0.5
+
+AVSS
+
+W/B
+
+To front inner light(3)
+
+3
+
+J0c
+
+3
+
+0cB
+
+2.0
+
+AVSS
+
+W/B
+
+To ceiling transit harness A(1)
+
+6
+
+J0c
+
+4
+
+0cC
+
+1.25
+
+AVSS
+
+W/B
+
+To left rear door harness(1)
+
+7
+
+J0c
+
+1
+
+0m
+0.85
+W/B
+
+9
+
+0cD
+2.0
+W/B
+
+213
+1.25
+L/B
+
+DJ471A-ZR6A(0.5-1.5)Sn(1)
+
+1
+
+J0c
+
+1
+
+9
+
+To left rear combination light(6)
+
+8
+
+To instrument harness A(2)
+
+1
+
+J19dA、J19dB
+
+2
+
+19dA
+
+0.85
+
+AVSS
+
+G
+
+J19d
+
+2
+
+To ceiling transit harness A(6)
+
+6
+
+19dB
+
+0.85
+
+AVSS
+
+G
+
+J19d
+
+2
+
+To left rear combination light(5)
+
+8
+
+134
+
+0.85
+
+AVSS
+
+L/W
+
+To instrument harness A(4)
+
+1
+
+J134A、134B
+
+8
+
+0.85
+
+AVSS
+
+8
+
+To left rear combination light(4)
+
+134B
+
+12
+
+HD-3
+
+13
+
+21
+
+HD-3
+
+L/W
+
+J134
+
+2.0
+
+AVSS
+
+L/B
+
+To B-pillar harness (2)
+
+14 To rear evaporator(3)
+
+0.85
+
+AVSS
+
+G/W
+
+To instrument harness A(2)
+
+1
+
+J21A、21B、21C
+
+3
+
+0.85
+
+AVSS
+
+G/W
+
+J19d
+
+3
+
+To ceiling transit harness A(7)
+
+6
+
+21B
+
+0.85
+
+AVSS
+
+G/W
+
+J19d
+
+3
+
+To left rear door harness(1)
+
+7
+
+16
+
+21C
+
+0.85
+
+AVSS
+
+G/W
+
+J19d
+
+3
+
+To left rear combination light(3)
+
+8
+
+0.5
+
+AVSS
+
+R/W
+
+To instrument harness A(4)
+
+1
+
+J24eA、24eB
+
+5
+
+24eA
+
+0.85
+
+AVSS
+
+R/W
+
+5
+
+To middle inner light(1)
+
+4
+
+24eB
+
+0.85
+
+AVSS
+
+R/W
+
+5
+
+To rear inner light(1)
+
+5
+
+0.5
+
+AVSS
+
+R/Y
+
+To instrument harness A(6)
+
+1
+
+J44A、44B
+
+7
+
+0.5
+
+AVSS
+
+R/Y
+
+J44
+
+7
+
+To ceiling transit harness A(8)
+
+6
+
+19
+20
+
+44
+
+21
+
+44A
+
+22
+
+HD-4
+
+HD-4
+
+2.0
+
+AVSS
+
+L/B
+
+23
+
+49
+
+49
+
+0.85
+
+AVSS
+
+G/Y
+
+24
+
+48
+
+25
+
+22c
+
+C1050
+
+he
+
+C1050
+
+DJ70210-2.8-21
+
+10To left rear loudloudspeaker
+
+re
+
+134B
+0.85
+L/W
+
+G/B
+
+To instrument harness A(8)
+
+1
+
+To left rear combination light(1)
+
+L/Y
+
+To instrument harness A(9)
+
+1
+
+J22cA、 J22cB、J22cC
+
+4
+
+L/Y
+
+J22c
+
+4
+
+To front inner light(1)
+
+3
+
+27
+
+22cB
+
+0.85
+
+AVSS
+
+L/Y
+
+J22c
+
+28
+
+22cC
+
+0.85
+
+AVSS
+
+L/Y
+
+J22c
+
+4
+
+To rear inner light(2)
+
+5
+
+36aB
+
+1.25
+
+AVSS
+
+L/Y
+
+To instrument harness A(10)
+
+1
+
+To left rear door harness (8)
+
+7
+
+To middle inner light(2)
+
+0.5
+
+AVSS
+
+O
+
+To instrument harness A(11)
+
+1
+
+To ceiling transit harness A(11)
+
+6
+
+24c
+
+24c
+
+0.5
+
+AVSS
+
+O
+
+To instrument harness A(12)
+
+1
+
+To ceiling transit harness A(12)
+
+6
+
+216
+
+216
+
+2.0
+
+AVSS
+
+B
+
+To instrument harness A(13)
+
+1
+
+To left rear door harness (4)
+
+7
+
+33
+
+25b
+
+25b
+
+0.5
+
+AVSS
+
+W
+
+To instrument harness A(15)
+
+1
+
+To front inner light(2)
+
+3
+
+34
+
+25e
+
+0.5
+
+AVSS
+
+R/B
+
+To instrument harness A(16)
+
+1
+
+J25eA、25eB
+
+1
+
+35
+
+25eA
+
+0.5
+
+AVSS
+
+R/B
+
+J25e
+
+1
+
+To middle inner light(3)
+
+4
+
+36
+
+25eB
+
+0.5
+
+AVSS
+
+R/B
+
+J25e
+
+1
+
+To rear inner light(3)
+
+5
+
+37
+
+212
+
+212
+
+1.25
+
+AVSS
+
+L/Y
+
+To instrument harness A(17)
+
+1
+
+To ceiling transit harness A(4)
+
+6
+
+38
+
+213
+
+213
+
+1.25
+
+AVSS
+
+L/B
+
+To instrument harness A(18)
+
+1
+
+To ceiling transit harness A(5)
+
+6
+
+39
+
+RW-1
+
+RW-1 1.25
+
+AVSS
+
+L/W
+
+To instrument harness A(19)
+
+1
+
+To left rear door harness (7)
+
+7
+
+40
+
+RW-2
+
+RW-2 1.25
+
+AVSS
+
+L/R
+
+To instrument harness A(20)
+
+1
+
+To left rear door harness (6)
+
+7
+
+41
+
+230#
+
+230#
+
+1.25
+
+R
+
+To instrument harness B(6)
+
+2
+
+To ceiling transit harness A(2)
+
+6
+
+42
+
+231#
+
+231#
+
+1.25
+
+W
+
+To instrument harness B(7)
+
+2
+
+To ceiling transit harness A(3)
+
+6
+
+43
+
+228#
+
+228#
+
+1.25
+
+B
+
+To instrument harness B(11)
+
+2
+
+To left rear loudloudspeaker(1)
+
+10
+
+44
+
+229#
+
+229#
+
+1.25
+
+Y
+
+To instrument harness B(12)
+
+2
+
+To left rear loudloudspeaker(2)
+
+10
+
+45
+
+230A#
+
+230A#
+
+1.25
+
+AVSST
+
+R
+
+J230#
+
+To right front roof loudloudspeaker(1) 12
+
+46
+
+231A#
+
+231A#
+
+1.25
+
+AVSST
+
+W
+
+J231#
+
+To right front roof loudloudspeaker(2) 12
+
+47
+
+228A#
+
+228A#
+
+1.25
+
+AVSST
+
+B
+
+J228#
+
+To left front roof loudloudspeaker(1)
+
+11
+
+48
+
+229A#
+
+229A#
+
+1.25
+
+AVSST
+
+Y
+
+J229#
+
+To left front roof loudloudspeaker(2)
+
+11
+
+49
+
+DS-1
+
+DS-1
+
+0.85
+
+AVSS
+
+L/Y
+
+To instrument harness B(5)
+
+To TV(3)
+
+13
+
+0mA 0.85
+
+AVSS
+
+W/B
+
+TO Om
+
+To TV(2)
+
+13
+
+W/B
+
+s
+wa
+
+HD-3
+2.0
+L/B
+
+22cC
+0.85
+L/Y
+
+DJ7032Y-2-21
+
+5 TO rear indoor lamp
+
+430A
+A direction
+
+300A
+
+0.85
+
+0m
+2.5
+W/B
+
+0mA
+1.5
+W/B
+
+0m
+0.85
+W/B
+
+G/W
+
+0cE
+1.25
+W/B
+
+25a
+0.5
+L
+
+22cC
+0.85
+L/Y
+
+K-15
+0.5
+R/L
+
+HD-4
+2.0
+L/B
+0mB
+
+16 To rear inner light 1
+
+0.5
+W/B
+
+AMP：171898-1（F）
+
+绒布胶带
+
+15 Rear evaporator
+
+DJ7061-2-21
+
+8
+
+4
+
+32
+
+G/B
+
+21C
+
+8
+
+31
+
+25a
+0.5
+L
+
+DJ7032Y-2-21
+
+48
+
+AVSS
+
+ar
+
+0cE
+1.25
+W/B
+
+C1050
+
+200A
+
+0.85
+
+AVSS
+
+ipe
+
+rp
+
+229#
+1.25
+Y
+
+0.85
+G
+
+AVSS
+
+VTØ12*380
+700A
+
+73
+
+-3
+
+)
+(1
+
+ZDT120*7(B)
+
+4t*100*160
+
+22
+
+19dB
+
+0.5
+
+150A
+
+250A
+
+11
+
+0
+
+20
+
+6
+
+0.85
+
+160A
+VTØ10*1130
+
+VTØ8*320
+
+C1050
+
+15
+
+To ceiling transit harness A(9)
+
+0.85
+
+24cA
+
+VTØ8*380
+
+228#
+1.25
+B
+
+14 To rear evaporator(1)
+
+48
+
+30
+
+C1050
+
+1130A
+
+1
+
+4
+
+C1050
+
+130
+
+To instrument harness A(7)
+
+22cA
+
+36aB
+
+120
+
+200
+
+To B cloumn harness (3)
+
+26
+
+29
+
+To ceiling transit harness A
+
+C1050
+250A
+
+21A
+
+24e
+
+DJ7124Y-2.2-21(Gr)
+
+4t*100*160
+
+15
+
+18
+
+SDJ621-F2.2A(0.85-1.25)(9)
+
+8
+
+14
+
+17
+
+6
+SDJ621-F2.2U(0.3-0.5)(3)
+
+15
+
+150
+
+11
+
+VTØ10*350
+
+9
+
+220
+
+8
+
+10
+
+231# 230# 0cB
+1.25 1.25 1.25
+R
+W/B
+W
+44A
+21A 19dA
+0.5
+0.85 0.85
+R/Y
+G
+G/W
+
+170A
+
+9
+
+To body ground
+
+G
+
+180
+
+To body ground
+
+W/B
+
+AVSS
+
+49
+0.85
+G/Y
+
+VTØ12*160
+
+W/B
+
+AVSS
+
+0.85
+
+212
+1.25
+L/Y
+
+25a
+0.5
+L
+
+150B
+
+AVSS
+
+0.85
+
+150B
+
+2.0
+
+0m
+
+0m
+19d
+
+To ground
+
+combination
+
+0cD
+
+6
+7
+
+420B
+
+1
+
+DJ471A-ZL6B(2.0-3.0)Sn
+
+5
+
+170
+
+C1050
+
+NO.
+
+240
+
+Con
+
+80
+
+W/B
+
+250
+
+COL.
+
+AVSS
+
+230
+
+WIRE
+
+TYPE
+
+FUNCTION
+
+NOTE
+
+CONNECTED TO.
+
+WIRE
+
+2.0
+
+A direction
+
+CONNECTED FROM.
+
+WIRE
+DIA.
+
+230B
+
+0c
+
+A direction
+
+WIRE NO.
+
+1
+
+C1050
+
+21B
+0.85
+G/W
+RW-2 RW-1 36aB
+1.25
+1.25 1.25
+L/R L/W L/R
+
+VTØ12*160
+
+NO.
+
+0cC
+SDJ611-F2.2B(0.85-1.25)(5)2.0
+W/B
+SDJ611-F2.2C(2.0)(1)
+216
+4t*35*55
+2.0
+DJ7082Y-2.2-11(W)
+B
+To left rear door harness
+
+To left rear combination light
+
+V1
+
+V2
+
+V3
+
+VT
+
+CVT
+
+C1
+
+C2
+
+C3
+
+COT
+
+C.COT
+
+F1
+
+F2
+
+F3
+
+GT
+
+PVT
+
+View direction
+
+AVSST
+
+50
+
+AVSST
+
+2
+
+0m
+
+0m
+
+2.5
+
+AVSS
+
+14To rear evaporator(2)
+
+15
+
+52
+
+0mA
+
+0mA
+
+1.5
+
+AVSS
+
+TO J0m
+
+To rear evaporator(6)
+
+15
+
+0mB
+
+0mB
+
+0.5
+
+AVSS
+
+TO J0m
+
+To rear evaporator(4)
+
+15
+
+54
+
+25eC
+
+0.5
+
+AVSS
+
+R/B
+
+J25e
+
+1
+
+To rear inner light 1(3)
+
+16
+
+55
+
+24eC
+
+0.85
+
+AVSS
+
+R/W
+
+J24e
+
+5
+
+To rear inner light 1(2)
+
+16
+
+J22c
+
+4
+
+To rear inner light 1(1)
+
+16
+
+56
+
+22cD
+
+0.85
+
+AVSS
+
+B
+
+S
+14. To color marks in To figure correspond to To following:
+
+51
+
+53
+
+wire
+
+L/Y
+
+To B-pillar harness (1)
+
+To wire color B
+
+W
+
+R
+
+G
+
+Y
+
+brown L
+
+grey
+
+V
+
+O
+
+Code Name B
+
+W
+
+R
+
+G
+
+Y
+
+Br
+
+Gr
+
+V
+
+O
+
+L
+
+Sky blue
+Light green
+Natural color
+Pink
+N
+
+SB
+
+Lg
+
+P
+
+37FCC-24051-B01
+Ceiling harness（long axle ceiling lamp）
+
+K-15 0.5 R/LK-15
+
+HD-2
+
+0cA K-9
+
+0cB
+
+TO：Rear
+Evaporator
+
+C向
+
+50
+
+250
+CVT
+
+260
+CVT
+
+20
+CVT
+
+B向
+
+C1050
+
+DWJ-B70*2
+
+DWJ-B70*2
+
+C1047
+
+100
+CVT
+
+OcA 1.5 W/B
+K-9 0.5 R/L
+OcB 0.5 W/B
+HD-1 2.0 L/B
+Oc 2.5 W/B
+HD-2 2.0 L/B
+
+250
+CVT
+
+B向
+
+170
+CVT
+
+100C2
+
+C1050
+135
+CVT
+
+280
+CVT
+
+100C2
+
+0cC K-15
+
+HD-3 2.0 L/B
+HD-4 2.0 L/B
+OcC 2.5 W/B
+K-15 0.5 R/L
+
+0c
+
+HD-1
+
+TO Nacelle Wiring Harness
+
+HD-3 HD-4
+
+TO：Ceiling Harness
+
+HD-4 2.0 L/B
+Oc 2.5 W/B
+HD-3 2.0 L/B
+K-9 0.5 R/L
+HD-1 2.0 L/B
+HD-2 2.0 L/B
+
+HD-1HD-2
+HD-3 K-9
+HD-4 0c
+
+TO Engine compartment wiring harness
+
+37FCT-24150
+B-Pillar Wiring Harness (Long
+Axle)
+
+main line
++10,-5
+
++10,-5
+
++20,-10
+
++20,-10
+
+＞500～1000
+
++30,-15
+
++30,-15
+
+＞1000 ～3000
+
++40,-20
+
++40,-20
+
+＞3000 ～5000
+
++50,-25
+
++50,-25
+
+125
+
+H view
+
+45
+
+branch line, single line
+
+0～200
+
+＞200～500
+
+I view
+
+J view
+
+K view
+
+L view
+
+O view
+Size picking point
+
+4502083 HB-43-2(W)
+
+N view
+
+Allowable tolerance(mm)
+Length distinguishing
+
+4501135
+DGT-150IC(W)
+4*150(W)
+
+4501110 651452(B)
+
+M view
+
+4502080 JDQZ21-1(DGr)
+
+B view
+
+C view
+
+D view
+
+E view
+
+F view
+
+G view
+
+4501135
+DGT-150IC(W)
+4*150(W)
+
+100
+
+A view
+
+more than 5000
+
++1.5%,-0.5%
+
++2.0%,-0.5%
+
+Clamping piece
+
++5,-5
+
++5,-5
+
+grommet
+
++5,-5
+
++5,-5
+
+N view
+
+Refer To the diagram if there is special guidance tolerance
+
+1318389-1
+
+integrated instrument
+
+7116-4020(0.3-0.5)(19)
+7116-4021(0.85-1.25)(1)
+7116-4032(2.0-3.0)(4)
+7283-1248(W)
+To engine compartment harness B
+
+20
+
+16
+
+QL05
+0.5
+Y
+
+13
+133
+
+74
+
+58
+
+24a
+
+8
+
+5
+SN01B
+
+25a
+
+16
+
+1
+36C
+
+43dB
+
+22cD
+
+0.85
+
+0.85
+
+B04
+
+56
+
+19cE
+
+311
+
+0hB
+
+0hA
+
+43dA
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+Y/B
+
+Y/G
+
+R/B
+
+B
+
+Y/R
+
+R/W
+
+G
+
+VV
+
+W/B
+
+W/B
+
+R/L
+
+L/Y
+
+L
+
+K-15
+
+0dA
+
+0dB
+
+51a
+
+0.5
+
+134A
+
+310
+
+0.5
+
+0.5
+
+10B
+
+509
+0.5
+
+509
+
+48C
+
+13B
+
+0hC
+
+57
+
+L
+
+3.0
+
+3.0
+
+0.5
+
+Br/W
+
+R/L
+
+0.5
+
+49C
+
+R/Y
+
+24aA
+0.5
+
+24a
+
+W/B
+
+W/B
+
+Y/R
+60B
+
+Y/B
+74
+
+Br/W
+
+0.5
+
+0.5
+
+R/Y
+
+R/W
+
+310
+0.5
+
+ML01
+0.5
+G/L
+
+60C
+
+60
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+
+B
+
+L/W
+
+Y/W
+
+Gr
+
+G/B
+
+L/W
+
+W/B
+
+Y/B
+
+25a
+
+B
+
+G/Y
+
+0.5
+
+Air bage
+
+L
+64
+
+21
+
+40
+
+1.25
+
+Gr
+
+30
+
+R/L
+
+L
+JR02
+
+72
+
+Y
+
+57
+0.5
+
+B
+
+3.0
+
+0z
+0.75
+W/B
+
+0.5
+
+L/Y
+
+58
+
+0.5
+
+B
+
+56
+0.5
+Y/G
+133
+0.5
+R/B
+
+39
+
+311
+
+1.25
+
+0.5
+
+L/O
+
+V
+
+B/W
+
+a
+
+instructions
+7116-4020(0.3-0.5)(11)
+7116-4021(0.85-1.25)(5)
+
+260A
+
+VTØ16*150
+
+7116-4032(2.0-3.0)(2)
+
+hazard lamp switch
+
+7283-1208-30(B)
+To engine compartment harness A
+
+170
+
+12
+
+1
+
+cancel
+44A
+
+21
+
+20
+
+0.5
+
+1.25
+
+1.25
+
+R/Y
+
+G/W
+
+W-1
+0.5
+R/L
+81a
+
+150
+
+ML01
+0.5
+
+1.25
+
+G/L
+
+Gr
+
+73
+
+1.25
+
+19cK
+
+R/L
+96
+
+0.5
+
+212B
+1.25
+
+143
+
+L/Y
+
+0.5
+
+0.5
+
+213B
+
+B/R
+
+B/W
+
+K-9
+
+0pB
+
+D-2
+
+0.5
+
+0.5
+
+0.5
+
+0.5
+35A
+
+1.25
+
+2.0
+
+L/B
+
+R
+
+R/L
+
+B/Y
+
+6
+
+7
+
+W/B
+
+0cC
+W/B
+22cL
+
+0eC
+0.5
+W/B
+
+Y/L
+
+28
+
+0.85
+
+G
+
+2
+
+0.5
+
+0.85
+
+L/Y
+
+G/W
+
+4
+
+3
+
+1
+
+5
+
+6
+
+7
+
+19cH
+
+0eE
+
+0.5
+
+0.5
+
+Spray red paint
+
+W/B
+
+G
+22cK
+0eD
+
+Wiper intermittent relay
+
+NB01
+0.85
+L
+
+Djj7092-2.8/6.3-20
+Match hg4412wiper intermittent relay
+
+9
+
+DJ7051-3-21
+
+7
+
+4310099 DJ7132D-2.2-10(O)
+
+0b
+
+0b
+
+RJ04
+0.5
+Y
+
+Y/R
+
+0.5
+W/B
+
+SDJ621-F2.2C(2.0)(1)
+
+0d
+1.25
+W/B
+
+DJ7132Y-2.2-21(O)
+210
+
+1059
+
+8
+
+To ground connector
+
+0n
+1.25
+W/B
+
+0h
+0.85
+W/B
+
+19cE
+0.5
+G
+
+19cF
+0.5
+G
+
+SDJ621-F2.2A(0.85-1.25)(5)
+19cG
+0.5
+G
+
+19cH
+0.5
+G
+
+19cJ
+0.5
+G
+
+19cK
+0.5
+G
+
+19cL
+0.5
+G
+
+DJ7111Y-2.2-21(W)
+
+105
+
+R/B
+
+Y/R
+
+Y/L
+
+R/L
+
+Y/B
+
+K-8
+
+K-6
+0.5
+W
+
+0.5
+
+G
+
+0eD
+
+0rC
+
+0.5
+
+0.5
+
+W/B
+
+W/B
+
+L
+
+5
+
+G/W
+
+190
+
+4
+
+0.5
+G
+
+W/B
+
+HV16FW
+
+0bH
+
+R/L
+
+54
+
+1.25
+W/B
+
+9
+to rear temp. sensor
+
+36
+
+To reverse radar controller
+
+WIFI
+
+G
+K-9
+0.5
+
+0.85
+
+530
+0.5
+L
+535
+0.5
+R/Y
+
+532
+0.5
+G/B
+
+WI01 WI02
+1.25
+1.25
+W/R
+G/R
+
+200
+
+SP01
+1.25
+
+180
+
+53
+
+135
+250
+
+C1050
+
+0
+
+0.5
+
+JR02
+0.5
+
+C1050
+
+160
+10
+
+C1050
+
+K-7
+W
+
+AMP：172132-1 （F）
+
+K-7
+
+0dC
+JR01
+0.5
+R/W
+
+0.5
+
+To contour lamp connector
+
+K-6
+0.5
+
+0.5
+G/W
+
+0m
+0.85
+W/B
+
+133A
+0.5
+R/B
+
+534
+0.5
+G/W
+
+XQ02
+
+0.5
+R
+XQ03
+0.5
+W/B
+
+35G
+0.85
+
+533
+0.5
+
+B/Y
+G/Y
+XQ01 531
+
+0.5
+G/Y
+
+44B
+0.5
+R/Y
+
+0.5
+G/W
+
+C1050
+
+W/L
+26C
+
+0dJ
+
+1.25
+
+1.25
+
+L/R
+
+W/B
+
+VTØ10*260
+
+60
+
+0e
+0.85
+W/B
+
+SDJ621-F2.2U(0.3-0.5)(3)
+
+K-8
+
+81aD
+1.0
+Gr
+
+R/L
+
+*260
+
+1
+
+19cB
+0.5
+G
+
+K-15
+0.5
+
+NA
+
+W/B
+
+1
+
+2
+19cH
+
+19c
+0.5
+G
+
+0p
+0.85
+W/B
+
+to front temp. sensor
+
+81aD
+1.0
+Gr
+
+0.5
+
+0X
+
+0.5
+
+Y
+
+0.5
+
+R/B
+
+VTØ6
+
+0.85
+
+0LB
+0.85
+W/B
+
+FA01
+0.5
+
+VTØ12*220
+
+RJ01
+
+R
+
+0c
+2.0
+W/B
+
+0.85
+
+50
+
+0b
+2.0
+W/B
+
+SDJ621-F2.2A(0.85-1.25)(6)
+
+VTØ10*200
+
+9
+0.5
+
+14
+
+combination
+
+SDJ621-F2.2U(0.3-0.5)(6)
+
+0.5
+
+4
+
+K-15
+K-5
+
+combination
+1
+
+to rear temp. sensor
+K-11
+
+0
+
+0.85
+L/B
+
+RJ02
+0.85
+Y
+
+To the fuse box on the left side of instrument
+
+FA01
+
+0.85
+
+48
+
+A/C blower AMPlifier
+
+D-2
+0.5
+
+350
+
+11
+
+W-9
+
+0.85
+L/Y
+
+3
+
+Y
+
+K-5
+
+0.5
+
+transposition
+
+172500-1
+
+Fuel heating switch
+
+Ø1
+
+RJ01
+0.85
+
+R
+
+K-11
+D-2
+
+W/B
+
+35
+0
+
+DRL relay
+
+RJ03
+0.85
+
+to rear temp. sensor
+0dC
+0.85
+
+VT
+
+Daytime running light control relay
+
+Electrical box bottom BX2382-3(B)
+
+to rear defrost switch
+
+Y/L
+
+0*
+34
+
+W-6
+
+Fuse terminal SDJ611-A6C(2.0-3.0)(1)
+
+Electrical box II BX2382-2(B)
+
+50
+
+40
+
+Fuse terminal SDJB621A-5*0.6D(2.0-3.0)(12)
+
+Electrical box I BX2382-1(B)
+
+2
+9
+
+10,11,12,14 Empty
+
+5
+
+10*2
+
+0.85
+W/B
+
+280
+
+0pA
+
+0.85
+L/W
+
+140
+
+40
+
+0.85
+G/Y
+
+Electrical box cover BX2382-4(B)
+
+to rear defrost relay
+
+0.5
+
+4
+
+3
+
+DJ7111D-2.2-10(W)
+
+4715044PVC 150*130
+
+L
+W-11A
+
+Fuse terminal SDJB621A-5*0.6B(0.85-1.25)(18)
+
+1
+
+Fuel heating
+DJ7064Y-2.2-21/26
+
+VTØ
+
+1.25
+
+Relay terminal SDJ621-W6.3U(0.3-0.5)(6)
+
+2
+
+To engine compartment
+harness
+
+36E
+
+Fuse terminal SDJB621A-5*0.6U(0.3-0.5)(6)
+
+0.5
+R/W
+
+L/Y
+
+W/B
+
+26
+
+24e
+
+0.5
+
+0.5
+
+temp. sensor output(low volt), to ECU
+
+5
+
+Power input(12V)
+to rear temp. sensor
+
+Y/B
+
+HG4412
+
+relay terminal 7116-2642-02(3.0)(5)
+Relay terminal SDJ623-W4.8T(0.3-0.85)(8)
+
+4715037 PVC 150*260
+
+relay terminal 7116-2641-02(0.85-2.0)(5)
+
+Gnd
+
+7
+4
+
+rear ceiling lamp
+front switch
+
+47a
+
+temp. sensor output(high volt), to rear temp. sensor
+
+13,15
+
+DJ7077-3-21
+
+414
+
+0.85
+
+G/R
+440
+V/Gr
+
+to front AC switch
+to front temp. sensor
+
+3
+16,17
+
+Spray white paint
+
+15
+
+140
+
+VTØ16*130
+
+to rear AC switch
+
+8
+6
+
+DJ7077-3-21
+
+7116-4022(2.0)(1)
+
+C1050
+
+10
+
+50XMB
+
+0
+To video monitoring controller
+
+300XMB
+
+DJ7031-6.3-21
+
+800XMB
+
+C1050
+
+3
+
+70XMB
+
+135XMB
+
+180XMB
+
+200
+
+VTA-B
+
+2
+
+4
+
+100XMB
+
+95XMB
+
+170XMB
+
+50XMB
+
+300XMB
+
+130
+
+C1050
+
+*16
+
+AM1
+
+0.5
+
+0.5
+
+SDJ621-F2.2A(0.85-1.25)(12)
+
+G/Y
+
+R/Y
+25a
+
+R/W
+
+DJ7201Y-2.2-21(W)
+
+L
+24a
+
+To ceiling harness A
+
+1.25
+
+1.25
+
+1.25
+
+1.25
+
+0.5
+
+L/R
+
+L/W
+
+L/B
+
+L/Y
+
+O
+
+YG01
+
+SDJ621-F2.2A(0.85-1.25)(4)
+
+0.5
+
+0.5
+
+W/B
+
+L/Y
+
+27b
+
+1.25
+
+1.25
+
+W/B
+
+Gr
+
+Ø
+
+231#
+
+230#
+
+229#
+
+228#
+
+1.25
+
+1.25
+
+1.25
+
+1.25
+
+W
+
+R
+
+Y
+
+B
+
+19cB
+
+0eA
+
+0.5
+
+0.5
+
+G
+
+W/B
+
+20
+
+20
+
+11a
+0.5
+16
+
+49a
+1.25
+0bA
+1.25
+W/B
+
+R/G
+
+52
+V
+
+6A
+0.5
+
+134B
+
+WD-1
+
+19cJ
+
+0.5
+
+0.5
+
+0.5
+
+G/L
+
+R/W
+
+L/W
+
+L/B
+
+G
+
+41
+
+48a
+1.25
+G
+
+0.85
+
+G/R
+17
+0.5
+
+1
+
+4715035 PVC 150*180
+
+W
+
+26
+
+3.0
+
+3.0
+
+W
+
+L/R
+
+5
+
+71
+
+73
+
+1.25
+
+0.85
+
+3.0
+
+B/R
+
+R
+
+B/W
+
+3.0
+W/R
+
+K-8
+0.5
+
+0dK
+
+G/W
+
+W/B
+
+35
+
+0.5
+
+To evaporator temperature sensor
+
+45
+
+G/W
+
+0
+
+0.85
+
+G
+
+800
+
+4P
+
+Airbag Diagnosis
+
+52
+
+C1050
+
+51
+
+To engine fault diagnostic
+
+191-906-231220
+
+210
+
+7116-4020(0.3-0.5)(8)
+
+19cF
+
+70A
+
+7116-4021(0.85-1.25)(5)
+
+27a
+
+435a
+
+DY01
+
+43d
+
+DS-1
+
+37a
+
+36a
+
+36
+
+52
+
+0.5
+
+2.0
+
+0.85
+
+1.25
+
+0.85
+
+1.25/0.85
+
+2.0
+
+0.85
+
+W/L
+
+G/R
+
+L/Y
+
+G/R
+
+R
+
+R
+
+R/L
+
+L/Y
+
+L/Y
+
+L/R
+
+L
+
+15A
+
+15A
+
+10A
+
+15A
+
+7.5A
+
+15A
+
+10A
+
+10A
+
+10A
+
+10A
+
+20A
+
+200
+
+2cG
+1.25
+W/L
+
+3
+
+indoor lampRADIO
+
+diagnostic TCM
+
+instrument TV
+
+front washer rear wiper
+
+35H
+
+35F
+
+35G
+
+35E/35F
+
+35D/35E
+
+1.25
+
+2.0
+
+0.85
+
+1.25
+
+0.85/0.85
+
+W/L
+
+B/Y
+
+B/Y
+
+B/Y
+
+B/Y
+
+2cF
+
+2cB
+
+2cA
+
+2cE
+
+1.25
+
+1.25
+
+1.25
+
+W/L
+
+W/L
+
+W/L
+
+RJ04
+0.5
+Y
+
+JR01
+0.5
+R/W
+
+WI01
+
+WI02
+
+1.25
+
+1.25
+
+W/R
+
+Spare
+
+7.5A
+
+7.5A
+
+7.5A
+
+10A
+
+DRL
+
+heater
+
+Electric door
+
+15A
+WIFI
+
+AQ01
+1.0
+B/Y
+
+15A
+
+1.25
+
+0.85
+
+0.85
+
+V
+31#
+
+P
+30#
+
+L/Y
+40
+
+L/Y
+39
+
+38
+
+B
+
+1.25
+
+0.85
+
+1.25
+
+1.25
+
+Lg
+60A
+
+13
+
+0cE
+2.0
+
+L/W
+49
+
+L/O
+48
+
+L/B
+
+0.85
+
+V
+
+0.5
+
+0.5
+
+L/W
+
+W/B
+
+0.85
+
+0.85
+
+10A
+
+W/B
+
+B
+
+10A
+
+96
+
+G/Y
+
+G/B
+19aA
+
+414
+1.25
+
+51a
+0.5
+
+2.0
+
+0.85/1.25
+
+B/Y
+
+B/Y
+
+B/Y
+
+NB01
+0.85
+
+Y/W
+
+L
+
+10A
+
+7.5A
+
+10A
+
+charge lampinverter power
+
+R/L
+
+steering
+
+1.25
+R/G
+
+1.25
+
+0.5
+
+0.5
+
+R/Y
+
+B/W
+
+G
+
+0.5
+VTØ16*200
+
+48D
+
+211A
+
+10C
+
+OnB
+
+0.5
+
+0.85
+
+0.5
+
+0.85
+
+27aA
+1.25
+
+LT-BL
+
+P
+
+O
+
+Gr
+
+B
+
+49D
+
+210A
+
+21A
+
+133A
+
+OnB
+
+27bA
+
+0.5
+
+0.85
+
+16A
+0.5
+
+1.25
+
+0.5
+
+1.25
+
+LT-G
+
+PP
+
+G
+
+Y
+
+BL
+
+B
+
+1.25
+Gr
+
+R
+
+7283-1208(W)
+
+L
+
+1.25/0.85
+
+ECU IG
+
+1.25
+
+7116-4022(2.0)(4)
+
+1.25
+
+35B/35D
+
+Air bage
+
+37a
+
+YG01
+
+35C
+
+7.5A
+
+G/R
+
+WIFI
+
+front wiper
+
+W-11
+
+16
+0.5
+
+11
+Video monitoring Brake light
+
+28#
+
+To front panel lamp harness B
+
+VTØ10*230
+
+5557
+TO vehicle data recorder
+
+TSH24FW
+27b
+
+27
+
+1.25
+
+0.85
+
+To front panel lamp harness A
+Gr
+15A
+
+Gr
+10A
+Radio
+Radio
+
+Cigarette lighter
+
+Rear view mirror
+
+35Ga
+
+35I
+
+2cH
+
+35H
+
+35
+
+71
+
+64
+
+26C
+
+26B
+
+26A
+
+0.5
+
+0.85
+
+1.25
+
+1.25
+
+1.0
+
+1.25
+
+0.5
+
+0.85
+
+2.0
+
+0.85
+
+27A
+
+R/G
+
+W/L
+
+W/L
+
+B/Y
+
+B/Y
+
+R/B
+
+Y
+
+L
+
+L/R
+
+L/R
+
+0.85
+
+0.5
+
+0.5
+
+Gr
+
+W/B
+
+L/R
+
+0LD
+
+H-5
+
+H-6
+
+H-7
+
+0.5
+
+0.5
+
+W/L
+
+Gr
+
+H-8
+
+H-9
+
+0.5
+
+0.5
+
+R/G
+
+R/W
+
+7283-7602
+
+electrical rear view mirror switch
+
+42
+
+Opening method
+
+Wrapping method
+
+PVC tape
+
+V1
+
+V2
+
+V3
+
+绒布胶带
+
+C1
+
+C2
+
+C3
+
+F1
+
+F2
+
+F3
+
+PVC pipe
+
+Closed
+
+Opening
+
+Zipper
+
+VT
+
+CVT
+
+PVT
+
+C.COT
+
+COT
+
+View direction
+GT
+
+wire
+
+B
+
+S
+14. To color marks in To figure correspond to To following:
+
+To wire color
+
+Black
+
+Wihte
+
+R
+
+G
+
+Y
+
+brown
+
+L
+
+grey
+
+V
+
+O
+
+Code Name
+
+B
+
+W
+
+R
+
+G
+
+Y
+
+Br
+
+L
+
+Gr
+
+V
+
+O
+
+Natural colorAzure Light greenPink
+
+N
+
+SB
+
+Lg
+
+P
+
+XQ02
+
+0.5
+R
+
+L
+24aB
+
+211
+
+36aC
+
+0.85
+
+0.5
+
+0.85
+
+1.25
+
+G/W
+
+R/W
+
+G
+
+L/R
+
+10*
+240
+VTØ
+
+60A
+
+To central controller
+
+19aC
+0.5
+
+K-2
+2.0
+
+K-3
+2.0
+
+K-4
+2.0
+
+G
+
+L/Y
+
+L/O
+
+L/W
+
+0dF
+3.0
+
+K-1A
+3.0
+
+W/B
+
+L/R
+
+DJ7081Y-2.2/6.3-21
+
+A/C air volume switch
+4
+
+reverse distance
+display
+
+02
+
+L
+
+16
+
+210
+
+0.85
+
+L/Y
+
+To ignition switch
+
+Add 143 circuit
+
+29#
+
+XQ03
+0.5
+W/B
+
+5557
+
+DJ7101Y-4.8-21(B)
+
+0
+
+211
+
+2.0
+
+QL06
+0.85
+Y
+
+11
+
+212
+
+0.85
+Y
+
+V/Gr
+
+0.5
+W/B
+
+6
+
+DJ621-F4.8C(2.0-3.0)(6)
+
+R
+440
+0.5
+
+W/B
+
+0*
+
+RJ02
+
+W/R
+
+L/B
+
+0.5
+0bF
+0.85
+
+W/B
+
+10
+
+213
+
+435a
+
+0bE
+0.85
+
+0zA
+0.85
+W/B
+
+VTØ8*790
+
+18
+increase
+Circuit
+
+VC
+
+533
+0.5
+G/Y
+
+2.0
+
+143
+0.5
+
+2.0
+
+15
+
+80
+
+270
+
+L
+
+531
+0.5
+G/W
+
+201
+
+K-11
+
+B/R
+
+36A
+1.25
+
+L/B
+
+0L
+2.0
+W/B
+
+2.0
+
+Y/B
+
+W-10
+0.85
+
+0.5
+
+209a
+
+0.5
+
+0eG
+
+XQ01
+
+0.5
+
+210
+
+0.5
+G/B
+
+0.5
+
+19aE
+0.5
+
+W/B
+
+G
+
+K-6
+
+K-7
+
+0.5
+
+0.5
+W
+
+G
+
+0eI
+0.5
+W/B
+
+transposition
+
+DJ7026Y-2.2-21
+
+72
+
+W/B
+
+48D
+
+174923-2(B)
+
+3.0
+B/Y
+
+G/Y
+
+DJ7122Y-2.8-21/2
+
+32
+0LC
+0.5
+W/B
+
+1
+
+0.5
+G/Y
+
+4A~
+
+47
+
+Gr
+
+H-7
+
+H-9
+
+R/W
+
+0.5
+
+1.25
+
+9
+ZK01
+0.85
+
+25a
+
+0.5
+
+49D
+
+1
+
+47
+
+290
+
+2
+
+8.0
+
+5
+
+W/R
+
+3.0
+
+W/L
+
+W/L
+
+1
+
+0.5
+
+R/G
+
+9
+
+H-6
+
+0.5
+
+8
+
+H-5
+0.5
+L/R
+H-8
+
+4
+
+To engine compartment harness (E)
+
+1.25/0.5
+
+front speed resistor
+
+AC/rear defrost intergrated switch（B ）
+
+16
+
+2c
+
+5
+
+130
+
+4715044 PVC 150*130
+
+100
+
+110
+
+8.0
+
+110
+
+VTØ10*250
+
+170
+
+DJ7035Y-7.8-11(W)
+
+SN01/SN01A
+
+Terminal：DJ623-E6.3B/C
+
+K-1
+3.0
+
+B04
+
+7114-6041(2.0-3.0)(1)
+
+20
+
+86
+3.0
+L/O
+
+0
+
+0eJ
+
+3
+
+19
+
+7114-6042(5.0-8.0)(2)
+
+1.25
+
+33
+
+DJ7171Y-1.2/2.2-21 （white）
+
+7116-4031(0.85-1.25)(1)
+
+SP01
+
+0*
+24
+
+9
+
+C1050
+
+L/O
+
+12
+
+cigarette lightercontour lamp
+
+DJ70115-6.3-21
+
+10a
+0.5
+R/Y
+
+6B
+0.5
+R/W
+
+8
+
+VTØ12*100
+
+Yellow marks two circles
+
+80
+
+1.25
+
+009
+
+Zhuyou60990504
+
+0
+
+*2
+
+L/W
+
+Sheath： DJ7042-6.3-21
+
+blower
+
+*4
+15
+
+VT
+
+22
+
+Ø8
+
+K-3
+2.0
+
+L/R
+
+23
+VT
+
+L/R
+
+K-4
+2.0
+
+DJ7022-6.3-21
+
+To lighting shift switch
+
+C
+
+0
+40
+
+60
+
+Horn switch
+
+L/Y
+
+2
+
+PVC
+
+70*1
+
+40
+
+0dD
+
+K-1
+3.0
+
+L/Y
+
+5
+
+YYDJ7102Y-2.2-21
+
+Ø1
+
+60
+
+DJ70115-6.3-21
+DJ7012Y-2.2-21
+
+C
+
+1.25
+
+130
+
+VTØ10*130
+
+4715044 PVC 150*130
+
+L
+
+To radio B
+
+44
+
+180
+
+22cH
+
+30
+
+W/B
+
+V
+
+30
+
+VT
+
+110
+DS-1
+
+0.5
+
+L/R
+
+W/B
+
+K-2
+2.0
+
+6
+
+0*240
+
+8
+
+30
+
+6*1
+
+0pD
+
+1.25
+
+G
+
+rear wiper relay
+
+G
+10
+
+0m
+0.85
+W/B
+
+Radar controller rail
+Y8
+
+Lg
+31#
+1.25
+
+15
+
+Ø1
+
+RW-2
+
+0.5
+
+L/Y
+
+30#
+1.25
+
+P
+29#
+1.25
+
+0.5GR
+
+VT
+150
+
+W-12
+
+0.5
+
+29
+
+28#
+1.25
+
+0n
+1.25
+
+To radio A
+
+To ceiling harness B
+
+indoor lamp
+
+W
+
+Gr
+
+0.5
+
+0
+
+To ignition key lighting
+
+DJ7124Y-2.2-21(Gr)
+
+SN01A
+
+W/B
+
+horn
+
+1.25
+
+27
+0.85
+
+G/R
+19cL
+
+35
+
+OdD-、 27b+
+
+DJ7022Y-2.2-21(W)
+
+SDJ621-F2.2C(2.0)(2)
+
+Spray red paint
+
+150
+
+231#
+
+R/Y
+
+C1050
+
+W/B
+
+0.5
+212C
+
+DJ7061-2.3-21(W)
+To engine compartment harness (C)
+
+44C
+0.5
+
+27a
+1.25
+
+DJ70617Y-2.2-21
+
+VTØ1
+
+L/R
+
+1.25
+
+L/Y
+
+0.5
+
+36aA
+
+L/Y
+SN01
+0.85
+ZK01
+
+14c
+0.5
+G/O
+
+L/W
+
+L-B
+
+RW-1
+
+15
+0.5
+G/R
+
+0.5
+
+Front fog light
+
+1.25
+
+1.25
+
+16
+
+B
+
+0.5
+
+13A
+
+150
+WD-1
+
+W/B
+
+22c
+14b
+
+G/O
+
+0bB
+0.5
+
+0.5
+W/L
+Clearance lamp
+
+SDJ621-F2.2U(0.3-0.5)(6)
+
+0.85
+
+G/B
+
+213C
+
+2.0
+
+229#
+1.25
+Y
+
+0
+
+Spare
+
+4
+5.0
+
+1.25
+
+L/W
+
+2F
+
+1.25
+
+W/L
+
+2E/2F
+
+0.85/0.5
+
+17
+0.5
+
+24e
+
+0.85
+
+21
+
+L/Y
+
+RW-1
+
+216
+
+R
+
+3
+
+40
+
+0cF
+
+49B
+
+0.85
+G
+44
+
+2.0
+
+48B
+
+1.25
+
+1.25
+
+L/R
+
+RW-2
+
+W
+
+G/L
+
+7
+
+19aB
+
+G/W
+22cB
+
+134
+0.85
+
+2
+230#
+1.25
+
+increase
+
+300
+
+L/W
+1.25
+
+W/B
+
+Rear switch
+
+250
+
+G/B
+
+W/B
+
+DJ7064Y-2.2-21
+
+0
+
+35
+
+0
+
+228#
+1.25
+B
+
+0.5
+
+40
+
+48A
+0.85
+
+W/B
+
+JT-60A
+
+W/L
+
+W/L
+
+Front fog light
+
+0cB
+1.25
+
+G/W
+
+To flasher
+with HG4416006flash relay
+
+0.5
+
+1
+
+G
+0dL
+
+0.5
+
+25
+
+G
+
+Brighten
+
+130
+
+2D
+
+10
+
+1.25
+
+6520-2134(W)/7183-4987(W)
+
+SDJ621-F2.2U(0.3-0.5)(4)
+
+1.25
+
+15A
+
+0.5
+
+47a
+
+12
+
+D-2
+Y/L
+
+1
+
+4
+0.5
+
+0eK
+
+0.5
+Y/R
+
+To ground
+
+5.0
+W/L
+
+2A
+3.0
+
+W/L
+
+G
+
+40
+
+36aB
+535
+0.5
+R/Y
+532
+0.5
+G/B
+
+534
+0.5
+G/W
+
+2cC
+
+R/W
+
+1.25
+
+DRL
+
+L/Y
+
+0.5
+
+19aF
+
+RE01
+
+VTØ10*240
+
+1
+
+0.5
+
+0.85
+
+L/B
+
+DJ471A-ZL6B(2.0-3.0)Sn(1)
+
+SDJ621-F2.2A(0.85-1.25)(7)
+
+G
+
+530
+0.5
+L
+
+High beam
+
+Y/L
+
+81aE
+1.0
+Gr
+
+0
+
+7.5A
+
+48a
+1.25
+
+15A
+
+B/Y
+
+19c
+
+7.5A
+
+35H
+
+0.5
+
+L/B
+
+D-2A
+0.5
+
+53
+130
+
+W/B
+
+FA01
+Y/R
+
+*17
+
+R
+
+6
+
+2C
+
+L/R
+
+0.5
+
+1.25
+
+B
+
+W/L
+
+L
+
+W-12
+
+34
+
+DJ7022-6.3-11
+DJ7022-6.3-21
+Diode
+
+Ø8
+
+0.85
+
+G
+
+G/O
+
+55
+
+0nA
+0.75
+B
+
+VT
+
+0.5
+
+Clearance lamp
+
+14aB
+
+G/Y
+
+Diode
+
+0
+
+0*9
+10
+
+W/B
+
+3.0
+
+W-11
+
+0.85
+
+280XMB
+
+multimedia+
+
+0
+
+0
+30
+
+10A
+
+horn
+
+RJ03
+
+L/B
+
+0.5
+
+160
+
+G/0
+19a
+
+R/Y
+
+49A
+0.85
+
+G/R
+
+220
+
+R
+
+49a
+1.25
+
+4715035 PVC 150*180
+
+7
+3.0
+
+L
+
+W-10
+
+W-9
+
+VTØ12*130
+
+2C
+1.25
+
+1.25
+
+1.25
+
+120XMB
+25
+
+0
+
+1.25
+head lamp
+
+Low beam
+
+15A
+
+36a
+
+15
+47
+
+0eF
+0.85
+
+0cA
+
+L/Y
+36B
+
+C
+3 PV
+02
+
+mb
+
+37a
+0.85
+
+W-6
+0.5
+
+200
+
+24
+0
+
+24
+
+10
+15A
+
+R/G
+
+L/B
+
+0.5
+
+0*
+
+R
+
+11
+1.25
+
+14a/14b/14c
+
+1.25/1.25/0.5
+
+160
+
+4715034 PVC150*150
+
+3.0
+
+Spare
+
+1.25
+
+36
+2.0
+
+DJ471A-ZR6A(0.5-1.5)Sn(1)
+
+R
+R/Y
+
+7
+
+38
+
+0.5
+
+RE01
+Y/R
+
+0
+20
+
+0.5
+
+0.5
+
+head lamp
+
+17
+
+n
+
+tio
+
+co
+W-1
+
+R/L
+
+DJ7022-6.3-21
+
+Ø1
+
+F-30A
+Spare
+
+To wiper switch
+
+AMP ：172498-1（F）
+
+to airbag harness
+
+combination switch
+
+9B/9C
+
+10a
+
+80
+
+R
+R/G
+
+DJ7022-6.3-11
+
+0
+
+10
+
+170XMB
+
+Ø1
+0*
+
+multimedia-
+
+0B
+
+VT
+
+coil assembly
+
+AMP ：172129-1 （M）
+
+VT
+
+C1
+
+47
+
+20
+
+250XMB
+
+8
+
+150B
+
+R
+
+DJ7181Y-1.2/2.2-21（black）
+
+02
+
+15
+
+21
+
+AQ01
+0.85
+B/Y
+
+0nA
+0.75
+B
+
+multimedia+
+multimediapower
+
+4715
+
+QL06
+0.85
+Y
+
+0B
+20
+
+0.5
+
+9A/9B
+1.5/0.5
+
+1.5/1.5
+
+0
+
+0.5
+
+9A/9D
+
+60
+
+11a
+
+9C
+
+0-4
+
+4*4
+
+combination switch
+
+51
+
+Ø1
+
+coil assembly
+
+R
+
+0.5
+G
+
+ina
+
+High beam
+
+9D
+2.0
+
+19cJ
+
+GNDcontour lamp
+
+0
+
+VT
+
+Low beam
+
+0LB
+0.5
+W/B
+
+7
+
+50XMB
+
+C1050
+
+250
+
+00
+
+0
+
+50XMB
+
+90XMB
+
+to radio player
+
+300
+
+VTØ12*240
+
+0
+
+0*
+13
+
+5 PV
+
+30
+
+diagnosticON power
+QL05
+0.5
+Y
+
+25
+
+Ø1
+
+95XMB
+
+C2
+
+250
+
+C2
+
+VT
+
+C1050
+
+6
+
+5
+
+200XMB
+
+VTA-B
+
+1
+
+0eH
+
+43
+
+Spray red paint
+
+0.5
+
+19aD
+0.5
+
+K-5
+0.85
+
+W/B
+
+G
+
+R/B
+
+81aC
+1.0
+Gr
+
+K-4A
+2.0
+L/W
+
+Painted blue
+
+0.5
+Y/B
+209a
+
+209
+
+2.0
+
+2.0
+
+W/R
+
+W/R
+
+86
+3.0
+L/O
+
+174923-1(W)
+
+mode/ACintergrated switch （W）
+Add a label on the wiring harness
+
+46
+
+DJ621-F4.8C(2.0-3.0)(1)
+SDJ621-F2.2U(0.3-0.5)(6)
+SDJ621-F2.2C(2.0)(4)
+DJ7141Y-2.2/4.8-21(Gr)
+To engine compartment harness (D)
+
+K-7A
+0.5
+G
+
+201
+2.0
+L
+
+216
+2.0
+B
+
+212A
+
+213A
+
+1.25
+
+1.25
+
+L/Y
+
+L/B
+
+209
+
+0LA
+
+2.0
+
+2.0
+
+W/R
+
+W/B
+
+5
+6
+
+main line
++10,-5
+
++10,-5
+
++20,-10
+
++20,-10
+
+＞500～1000
+
++30,-15
+
++30,-15
+
+＞1000～3000
+
++40,-20
+
++40,-20
+
+＞3000～5000
+
++50,-25
+
++50,-25
+
+125
+
+H view 45
+
+branch line, single line
+
+0～200
+
+＞200～500
+
+I view
+
+J view
+
+K view
+
+L view
+
+O view
+Size picking point
+
+4502083 HB-43-2(W)
+
+N view
+
+Allowable tolerance(mm)
+Length distinguishing
+
+4501135
+DGT-150IC(W)
+4*150(W)
+
+4501110 651452(B)
+
+M view
+
+4502080 JDQZ21-1(DGr)
+
+B view
+
+C view
+
+D view
+
+E view
+
+F view
+
+G view
+
+4501135
+DGT-150IC(W)
+4*150(W)
+
+100
+
+A view
+
+more than 5000
+
++1.5%,-0.5%
+
++2.0%,-0.5%
+
+Clamping piece
+
++5,-5
+
++5,-5
+
+grommet
+
++5,-5
+
++5,-5
+
+N view
+
+Refer To the diagram if there is special guidance tolerance
+
+SDJ611-F2.2U(0.3-0.5(1)
+
+K-15
+0.5
+R/L
+
+C
+
+DJY7011-2-11
+
+14
+
+To B-pillar harness
+
+HD-2
+2.0
+L/B
+
+HD-1
+2.0
+L/B
+HD-3
+2.0
+L/B
+0dB HD-4
+2.5
+2.0
+W/B L/B
+
+SDJ611-F2.2U(0.3-0.5)(5)
+
+K-9
+0.5
+R/L
+
+SDJ611-F2.2C(2.0-3.0)(2)
+DJ7062Y-2.2-11(W)
+
+80
+
+80
+
+To B-pillar harness
+
+7116-4025(0.3-0.5)(6)
+0dA
+B04
+0.5
+0.5
+W/B Y
+
+090G(0.3-0.5)(6)
+
+11
+
+7283-1968-30(B)
+
+13
+
+3
+
+To electrical throttle
+SDJ611-F2.2U(0.3-0.5)(2)
+
+1
+
+DJ7026A-2.2-11(W)
+
+80
+
+To driver side safety belt early warning harness
+0dC
+2.0
+W/B
+
+GJ7021Y-4.8-21
+
+110
+N-1
+1.5
+L/B
+
+5
+
+4
+
+3
+
+2
+
+1
+
+561
+0.75
+Y/G
+
+562
+0.75
+V/Gr
+
+563
+0.75
+R/G
+
+564
+0.75
+V/G
+
+565
+0.75
+R/Y
+
+To front panel lamp harness
+
+N-3
+2.5
+L/W
+
+N-2
+2.5
+L/R
+
+6
+
+560
+0.75
+Y/W
+
+467
+
+OrC
+
+3.0
+R/B
+
+3.0
+W/B
+
+52
+DJ611-F3*0.6A(0.3-0.85)(1)
+
+DJ7062-6.3-21
+
+DJ7014Y-3-11(W)
+
+rear heater switch
+
+HB-49(W)
+
+To handbrake switch
+
+201
+2.0
+L
+
+SDJ611-F2.2U(0.3-0.5)(1)
+relayterminal SDJ621-W6.3U(0.3-0.5)(4)
+
+SDJ611-F2.2B(0.85-1.25)(4)
+
+8
+
+DJ7061-2.3-11(W)
+
+200
+
+15
+
+PVC 190*190
+
+20
+*1
+VT
+Ø6
+
+200A
+
+250A
+
+15
+0
+
+COTØ9*310
+
+C
+direction
+
+（ 320 ）
+
+0A
+
+0n
+0.5
+W/B
+
+10
+
+58
+0.5
+Y/R
+
+Blind
+plug
+
+90A
+
+Blind
+plug
+
+W/B
+
+90A
+
+144
+2.0
+R
+0nA
+2.0
+
+Fascia mounted backwards
+
+140
+
+406(8.0)(4)
+
+C1050
+
+2bA
+
+BX2031J(B)
+
+Pay attention to control size
+
+PVC 100*160
+
+Add bracket here, cancel cable card
+
+Binding with cable ties
+
+36D 310
+1.25 0.5
+L
+Gr
+
+22c 43dA
+0.5
+0.5
+R/L
+L/Y
+57
+58
+0.5
+0.5
+Y/B
+Y/R
+74
+60
+0.5
+0.5
+B
+B
+
+0a
+3.0
+W/B
+
+0b
+3.0
+W/B
+72
+3.0
+B/W
+
+39
+1.25
+L/O
+
+7282-1248(W)
+To front panel instrument harness A
+
+24a
+0.5
+R/W
+
+86
+3.0
+L/O
+
+K-7A
+0.5
+G
+
+73
+0.85
+R
+D-2
+0.5
+L/R
+K-9
+0.5
+R/L
+
+212
+1.25
+L/Y
+213
+1.25
+L/B
+
+20
+21B
+44
+1.25 1.25
+0.5
+G/R G/W
+R/Y
+440 K-10
+W-1
+0.5
+0.5
+0.5
+L/W
+V/Gr
+R/L
+35A ML01 81aE
+2.0 0.5
+1.25
+B/Y G/L
+Gr
+
+SDJ611-F2.2U(0.3-0.5)(5)
+SDJ611-F2.2B(0.85-1.25)(7)
+
+F-30A
+
+F-30A
+
+F-30A
+
+F-30A
+
+electrical
+window
+
+condenser fan
+
+central
+control
+
+rear defrost
+
+2.0/2.0
+W/R
+
+1.25
+Gr
+
+142
+0.5
+B/W
+
+411cB
+0.5
+W/G
+
+30A
+
+465
+0.5
+R/B
+
+auxiliary water tank fan
+
+209
+2.0
+W/R
+
+209a/209aA
+
+A/C
+
+15A
+107aA
+HD-4
+2.0 rear evaporator 4 2.0
+L/B
+L/B
+increase
+0dE
+0.5
+W/B
+
+81aG
+
+0.5
+Gr
+81aC
+
+0aA
+
+0.5
+
+411cC
+0.5
+W/G
+
+0.5
+
+Gr
+
+OLA
+
+142A
+0.5
+B/W
+
+W/B
+86
+
+Spare
+
+3.0
+L/O
+
+467A
+3.0
+R/B
+
+K-7A
+0.5
+G
+
+0.5
+W/B
+rear defrost
+
+auxiliary condenser fan
+relay
+
+After defrosting
+must use this relay
+@
+
+216
+2.0
+B
+
+rear heater relay
+
+0L
+0.5
+W/B
+
+209
+2.0
+W/R
+
+201
+2.0
+L
+
+B04
+0.5
+Y
+209a
+2.0
+W/R
+
+Add 2 10A's and 2 20A's to cover the box
+
+SDJ611-F2.2U(0.3-0.5)(3)
+
+35B
+
+JR02
+
+0.5
+
+0.85
+
+B/Y
+
+L
+
+SDJ611-F2.2B(0.85-1.25)(1)
+SDJ611-F2.2C(2.0)(4)
+7114-4032(2.0-3.0)(1)
+
+SDJ611-F2.2C(2.0-3.0)(2)
+
+heater
+
+7282-1208-30(B)
+To front panel instrument harness B
+
+JR03
+0.85
+Y
+
+DJ7141Y-2.2/4.8-11(Gr)
+To front panel instrument harness C
+
+DJJ7051-6.3-21
+heat relay
+
+F
+
+AB(560)
+
+216
+2.0
+B
+
+JR04
+0.85
+R
+
+70
+
+80
+
+AE(390)
+
+R
+
+6
+
+cancel
+414
+2.0
+R/L
+143
+465
+0.5
+0.5
+B/R
+R/B
+D-2 0pC
+0.5 0.5
+Y/L W/B
+
+509
+0.5
+Br/W
+24aA 25a
+0.5
+0.5
+R/Y
+L
+64
+0z
+0.5
+0.85
+W/B
+Y
+
+JR02 K-15
+0.5
+0.5
+L
+R/L
+
+Pay attention to control size
+
+A
+
+8.0/8.0
+
+BT-100A
+
+SDJ611-F2.2C(2.0-3.0)(2)
+7114-4032(2.0-3.0)(4)
+
+HB-44-1(B)
+HB-44-2(B)
+HB-44-3(B)
+
+2cA/2cB
+
+10.0
+
+To main fuse
+
+56
+0.5
+Y/G
+133
+0.5
+R/B
+
+SDJ611-F2.2B(0.85-1.25)(1)
+
+Binding with cable ties
+
+4501110 651452(B)
+
+SDJ611-F2.2U(0.3-0.5)(19)
+
+50±1
+
+W-1
+0.5
+R/L
+L/O
+1.25
+
+36D L
+1.25
+
+cancel
+
+Take relay and tie tightly in harness
+
+651452(B)
+
+81a
+15A
+
+auxiliary water tank
+fan relay
+
+2
+
+100
+
+PVC
+
+Painted
+blue
+
+front blower
+
+130
+
+brake lamp
+switch
+
+7
+
+F-30A
+
+heater
+
+front blower
+
+30
+
+JDQZ21-1(Gr)
+
+F-30A
+
+Binding with cable ties
+
+120
+
+HB-43-1(W)
+HB-43-2(W)
+
+HB-48(W)
+
+Ø6*25mm(B)*2
+
+（800 ）
+
+This plug-in faces up
+
+4501135 DGT-150IC(W)/4*150(W)
+
+BF(160)
+Binding with cable ties
+70
+
+190A
+
+label
+
+16
+
+SDJ612-F2.2C(2.0)/617306(2)
+
+B
+AC(350)
+
+2bB
+
+C
+direction
+
+combination
+
+DJ7002Y-2.2-2(B)(2)
+
+E
+direction
+
+2dA/2dB
+
+10.0
+
+BT-100A
+
+G
+direction
+
+200A
+
+D
+
+G
+direction
+
+190A
+
+160A
+
+240A
+
+13
+
+215
+
+COTØ20*140
+
+DJ70613Y-2.2-11(B)
+
+150
+
+To ABS ground
+
+H
+direction
+
+75
+3.0
+B
+
+B
+direction
+
+4715025
+
+090G(0.3-0.5)(2)
+RS090R(2.0)(2)
+
+DJ471A-ZR6C(4.0-6.0)Sn(1)
+
+B
+
+DJ471A-ZL6B(2.0-3.0)Sn(1)
+
+17
+
+B/Y
+
+compressor
+
+411cB
+0.5
+W/G
+
+Z-2
+2.5
+W/R
+
+4.0
+
+B
+
+To battery harness
+
+label
+
+70
+
+50
+
+60
+
+0X
+
+0Y
+
+2.5
+
+DJ7011-6.3-11(W)
+
+39
+
+COTØ13*260
+
+(220)
+
+5
+
+Spare
+
+VTØ10*100
+
+SDJ612-F2.2U(0.3-0.5)(2)
+
+combination
+
+DJ611-6.3C(2.0-3.0)(1)
+
+15A
+gasoline pump
+
+G/B
+
+174202-1
+
+Spare
+
+457
+0.5
+B/G
+
+21C
+1.25
+G/W
+
+15A
+106a
+HD-2
+2.0 rear evaporator 1 2.0
+L/B
+L/B
+increase
+15A
+107a
+HD-3
+2.0 rear evaporator 3 2.0
+L/B
+L/B
+increase
+
+2.5
+
+18
+
+fuel filter heat /
+fuel pump relay
+
+0.5
+
+0pC
+
+0.5
+W/B
+Marking
+
+C
+K58
+0.5
+
+20
+1.25
+G/R
+
+Gr
+
+1.25
+
+JR04
+2.5
+R
+
+260B
+B
+
+COTØ11*280
+411c
+0.5
+W/G
+
+0.5
+
+106a /106aA
+2.0 /2.0
+L/B /L/B
+
+wiper high speed relay
+
+size
+
+50
+
+DWJ-B71
+
+rear A/C
+
+B/Y
+
+75
+411D
+
+W/L
+
+50
+
+180B
+
+COTØ13*200
+
+300A
+
+50
+
+50
+4715034 PVC 150*150
+
+Pay attention to control size
+
+7.5A
+
+160
+
+Z-2
+2.5
+W/R
+
+Wrap tape around the connector
+
+instrument right side fuse box
+size
+120B
+
+A direction
+
+HB-54-1(W)
+HB-54-2(W)
+
+alternator battery
+power
+
+81aB
+
+D-2
+0.5
+Y/L
+
+0.5
+Gr
+107a /107aA
+2.0
+/2.0
+L/B /L/B
+
+HN01
+
+W/R
+
+2.5
+W
+
+DWJ-B71
+
+30A
+ABS valve
+
+470
+1.25
+
+2dD
+
+Add fuse box cover, send drawings to manufacturer, follow the stickers
+Have communicated with the manufacturer
+COTØ13*680
+
+A direction
+
+81aF
+
+rear A/C
+
+35B
+
+fuse terminal SDJ611-A6C(2.0-3.0)(1)
+fuse box BX2132-1(B)
+fuse box lower cover BX2132-3(B)
+
+Binding with cable ties
+
+Position shift
+310B
+
+270B
+
+150A
+
+To LF door lamp switch
+2.5
+
+I direction
+
+rear heater
+
+JR03
+0.85
+Y
+
+Binding with cable ties
+JDQZ20(W)
+
+220
+
+2.5
+R
+
+DJY7011-2-11
+
+I direction
+
+JR04
+
+534
+0.5
+G/W
+
+50
+
+513
+
+B/R
+
+2.5
+W
+144
+2.0
+R
+
+532
+0.5
+G/B
+
+C1052
+
+W
+
+W
+D-2A
+0.5
+Y/L
+
+209aA
+2.0
+W/R
+
+15A
+106aA
+HD-1
+2.0 rear evaporator 2 2.0
+L/B
+L/B
+increase
+
+2dD
+4.0
+
+2dC
+4.0
+
+electrical window
+
+0L
+0.5
+W/B
+
+43dB
+0.5
+R/L
+
+relayterminal DJ621-W6.3C(2.0-3.0)(6)
+fuse terminal SDJB621A-5*0.6B(0.85-1.25)(1)
+
+150
+
+100
+
+0.5
+
+2dC
+
+To heater transition wire
+
+lack clamps
+SDJ611-F2.2U(0.3-0.5)
+
+75
+3.0
+B
+
+511
+0.5
+B/R
+
+15A
+
+8.0
+W
+
+relayterminal DJ621-W6.3B(0.85-1.25)(2)
+
+0
+
+8.0
+W
+
+W/B
+
+7.5A
+ABS ECU
+
+24a
+0.5
+R/W
+
+12
+
+2dA
+
+Spare
+
+0cB
+
+2dB
+
+relayterminal SDJ623-W4.8T(0.3-0.85)(4)
+relayterminal SDJ621-W6.3U(0.3-0.5)(8)
+
+4501177 ZDG189*8.5(W)
+
+COTØ13*280
+
+Spare
+
+7.5A
+
+starter
+
+530
+0.5
+L
+
+VTØ10*650
+
+15
+
+DJ7021Y-4.8-21
+
+size
+
+25A
+
+72
+3.0
+B/W
+35
+0.85
+B/Y
+
+fuse terminal SDJ611-A6C(2.0-3.0)(1)
+fuse terminal 1410-0156(5.0)/7114-2727-02)(1)
+
+B
+
+467
+3.0
+
+110
+
+starter
+
+535
+0.5
+R/Y
+
+9
+
+K
+direction
+
+7.5A
+
+130
+ABS pump
+
+4
+
+0.5
+
+size
+
+R/B
+
+73
+0.85
+R
+
+size
+
+To front panel instrument harness E
+
+80
+
+R
+
+DJ7035Y-7.8-21(W)
+
+A
+
+F-40A
+VT
+Ø6
+*8
+0
+
+AM2
+
+7116-6042(5.0-8.0)(2)
+
+8.0
+W
+
+Gr
+
+4.0
+
+W/R
+
+2cA
+
+3.0
+W/R
+
+1.25
+
+F-30A
+
+100
+
+To battery compartment fuse
+box
+add fuse box cover of battery
+compartment
+
+3.0
+
+5
+
+8.0
+W
+
+81aD
+
+512
+
+5
+
+fuse box lower cover BX2105-3/80(B)
+
+2cB
+
+141
+
+To front panel instrument harness D
+
+fuse box BX2105-1(B)
+
+60
+7116-6041(2.0-3.0)(1)
+
+AB(160)
+
+fuse terminal SDJB621A-5*0.6D(2.0-3.0)(1)
+fuse terminal SDJ611-A6C(2.0-3.0)(2)
+
+1.25
+B/Y
+
+fuse terminal SDJB621A-5*0.6B(0.85-1.25)(3)
+
+VTØ10*260
+
+AC(230)
+
+relayterminal DJ621-W6.3C(2.0-3.0)(4)
+fuse terminal SDJB621A-5*0.6U(0.3-0.5)(1)
+
+C CF(580)
+
+E
+
+R
+
+L
+direction
+
+W
+
+J
+direction
+
+CD(150)
+JZ-XK-29
+
+DWJ-H11
+
+C1050
+
+80A
+
+120A
+
+C1050
+
+HB-46-1(B)
+HB-46-2(B)
+
+651452(B)
+
+COTØ13*260
+
+*22
+
+0
+
+AB(140）
+
+B
+
+(300)
+
+C1050
+60A
+
+(300)
+
+30A
+
+Blind
+plug
+
+511
+0.5
+B/R
+
+25
+
+21A
+
+508#
+0.5
+W
+
+Blind
+plug
+
+0.5
+G/W
+
+Blind
+plug
+
+Blind
+plug
+
+513
+
+Blind
+plug
+
+19284986506000(0.5-1.0)(13)
+
+2.5
+R/B
+
+4402030 YD318-406(Gr)(13)
+
+14
+
+Blind
+plug
+
+Blind
+plug
+
+502#
+0.5
+Y
+
+Blind
+plug
+
+506#
+0.5
+G
+
+507#
+0.5
+B
+
+503#
+0.5
+L
+
+440A
+0.5
+V/Gr
+
+Blind
+plug
+
+Blind
+plug
+
+Blind
+plug
+
+Blind
+plug
+
+Blind
+plug
+
+Blind
+plug
+
+504#
+0.5
+P
+
+Blind
+plug
+
+509
+0.5
+Br/W
+
+19284986514000(1.5-2.5)(2)
+
+Blind
+plug
+
+Blind
+plug
+
+Blind
+plug
+
+Blind
+plug
+
+512
+4.0
+R
+
+2
+
+1
+
+12
+
+13
+
+COTØ13*140
+
+Binding with cable ties
+
+Blind
+plug
+
+505#
+0.5
+R
+
+24
+
+0X
+4.0
+B
+
+0A
+
+24
+
+C1050
+
+Blind
+plug
+
+B
+
+17
+
+CO
+TØ
+
+CE(120)
+
+lack
+
+A
+C1048
+
+0Y
+2.5
+
+240A
+
+26
+501#
+0.5
+Br
+
+4402003 090R(2.0)
+19284986521700(2.5-4.0)(2)
+1928301086(2.5-4.0)(L)(2)
+YD318-409(W)(21)
+1928405169340(B)
+1928405167170(B)
+
+M
+direction
+
+COTØ13*1060
+
+To fuel tank harness
+
+37
+
+38
+
+* This section does not wrap tape, wrap PVC cloth flat bag
+
+BE(620)
+
+8.0/8.0
+
+10
+
+4715058 PVC *250*200
+
+BC(590)
+
+Binding with cable ties
+
+TO BOSCH-ABS ECU
+
+Size picking point
+
+COTØ9*200
+
+80A
+
+100
+
+W/B
+
+190A
+
+A
+direction
+
+30A
+
+200A
+
+Marking
+
+Binding with cable ties
+
+28
+
+To ground
+combination
+
+C1052
+
+150
+
+COTØ20*150
+
+100A
+
+340A
+
+G
+direction
+
+100A
+
+110A
+
+130A
+
+C1052
+
+C1048
+
+COTØ19*370(split)
+
+G
+direction
+
+110A
+
+60A
+
+120A
+
+100A
+
+COTØ24*130(split)
+
+Roll the bag, there is no flower inside the bag
+COTØ24*570(split)
+
+（ 220）
+
+110A
+
+250A
+
+W/B
+5.0
+0r
+
+DJ471A-ZR6C(4.0-6.0)Sn
+
+150
+
+C1048
+
+4715051 PVC 150*330
+
+502#
+501#
+0.5
+0.5
+AMP-174352
+Br
+Y
+To LF wheel speed sensor
+
+DJ431-6CSn
+
+DJ471A-ZL6C(3.0-4.0)Sn
+
+Length changes, buckle changes
+
+10A
+
+27
+
+150
+
+100A
+
+C1048
+
+HB-47-1(B)
+HB-47-2(B)
+
+C1048
+90A
+
+C1048
+
+80A
+
+A
+direction
+
+COTØ13*930
+
+Binding with cable ties
+
+A direction
+
+A
+170A
+direction
+
+COTØ24*230
+
+A
+direction
+
+20A
+
+W/B
+3.0
+0a
+
+3.0/0.5
+0b/0n
+
+HB-50-1(B)
+HB-50-2(B)
+
+C1048
+
+C
+
+The cable ties are wide
+
+160A
+
+50A
+
+B
+
+HB-45(W)
+
+150A
+
+A
+AB(180)
+C1048
+
+C1050
+
+200A
+
+C1050
+
+BC(140）
+
+AC(190）
+
+C1050*5
+
+160
+
+R
+
+2b
+A/
+10 2bB
+/10
+
+label
+
+F-40A
+
+5.0
+
+fan low
+
+L
+
+JT-50A
+
+5.0
+
+fan high
+
+R
+
+360A
+
+464B
+4.0
+R/W
+
+VTØ14*150
+
+463B
+4.0
+R/B
+
+0d
+3.0
+/B
+
+090G(0.3-0.5)(3)
+
+26
+
+DJ7002Y-2.2-2(B)
+DJ70613Y-2.2-11(Gr)
+TO step lamp harness
+
+DJ471A-ZL6B(2.0-3.0)Sn
+
+0rB
+4.0
+W/B
+Put a rubber sheath here,
+Put the rubber over with black tape
+Bind to the corrugated pipe
+And carry a pipe.
+
+To ground
+
+COTØ5*240
+
+250
+
+435B
+3.0
+R
+
+W/L
+
+To engine compartment fuse
+box
+
+464A
+4.0
+R/W
+
+463A
+4.0
+R/B
+
+0rA
+4.0
+W/B
+
+25
+
+969044-1(3.0)(3)
+
+458
+0.5
+G/W
+
+YD318-407(Y)(3.0)(3)
+
+Twenty square line
+
+Here we use a line of
+20 squares
+
+L
+
+470
+1.25
+W/R
+
+414A
+0.75
+R/L
+
+64
+0.5
+Y
+
+Blind
+plug
+
+213
+1.25
+L/B
+25a
+0.5
+L
+
+31
+
+body aperture R29
+
+To genarater
+
+IJO 906 233(B)
+
+42
+
+0
+
+Y6-20 tin
+Internal bore diameter Ø6.5 Thickness 1.8MM
+
+Spare
+
+20
+
+W/G
+
+0.85
+
+411cC
+
+To electrical fan A
+
+411
+3.0
+W/L
+
+combination
+
+The rubber sleeve is the wrong size
+DJ7031-2.2-21
+
+VT
+0(
+t)
+
+cu
+
+un
+
+D direction
+
+VTØ6*700
+
+41
+
+Twenty square line
+
+23
+
+5*
+
+Ø1
+
+C703
+
+To alternator B+
+
+150
+
+61
+
+Blind
+plug
+
+22c
+0.5
+L/Y
+
+add clamps
+
+150
+
+Spare
+
+7.5A
+
+fan high
+
+add fuse box cover
+
+411C
+
+EFI
+
+0.85
+
+fuse box lower cover BX2106-5(B)
+
+IG
+
+O direction
+
+fuse box BX2106-1成 (B)
+
+S
+
+200
+
+461
+
+fuse terminal SDJB621A-5*0.6D(2.0-3.0)(1)
+
+HB-51-1(B)
+HB-51-2(B)
+
+212
+1.25
+L/Y
+
+VTØ10*230
+
+130
+
+fuse terminal SDJB621A-5*0.6B(0.85-1.25)(6)
+
+COTØ9*130
+
+R
+
+462
+
+fuse terminal SDJ611-A6C(2.0-3.0)(1)
+
+200A
+
+W
+
+AC(170)
+
+250A
+300A
+
+200A
+
+COTØ9*230
+
+relayterminal DJ621-F9.5D （5.0 ）(4)
+
+SDJ612-F2.2U(0.3-0.5)(3)
+
+DJ471A-ZR6C(4.0-6.0)Sn
+
+180
+
+3.0
+
+30A
+
+190A
+
+0c
+0.5
+W/B
+DJ431-6CSn
+
+EFI
+
+411cB
+0.5
+W/G
+
+relayterminal SDJ621-W6.3U(0.3-0.5)(5)
+
+3724843
+
+2.0
+A direction
+
+fuse terminal SDJ611-A6C(2.0-3.0)(1)
+
+0nA
+W/B
+C1048
+
+To RF wheel speed sensor
+
+To electrical fan B
+
+435A
+
+25A
+461
+5.0
+R
+
+fuse terminal 1410-0156(5.0)/7114-2727-02)(2)
+
+180A
+
+B
+direction
+
+0
+n
+
+tio
+ina
+
+mb
+
+co
+
+250
+
+13
+
+16
+
+30
+
+signal COTØ13*340(split)
+
+100
+
+COTØ9*1600
+
+0
+
+503#
+0.5
+L
+
+AMP-174352
+
+IJO 906 233(B)
+
+main fuse
+
+465
+0.5
+R/B
+
+463
+5.0
+R/B
+
+180
+
+A
+direction
+
+130A
+
+16
+
+504#
+0.5
+P
+
+COTØ13*190(split)
+
+electrical fan high speed
+
+22
+circle terminal 406(8.0)(1)
+
+VTØ14*150
+
+68
+
+411cA
+0.5
+W/G
+
+C
+
+YD318-407(Y)(3.0)(3)
+
+100
+
+W/B
+
+0A
+27
+
+C1050
+0z
+0.85
+
+Y8 ring
+
+969044-1(3.0)(3)
+
+BT-120A
+
+Binding with cable ties
+
+0
+
+150
+
+0
+
+CO
+TØ
+
+Ø20
+Power
+
+462
+5.0
+L
+
+ZDT120*7
+
+Ø17
+
+*26
+
+466
+0.5
+R/W
+
+464
+5.0
+R/W
+
+9*16
+
+JZ-XK-29
+
+add clamps
+
+100A
+
+13
+
+electrical fan low speed
+
+C1050
+
+29
+TØ
+
+250A
+
+grommet BX2106-6(B)
+
+Length variation
+
+CO
+
+C1048
+
+200A
+
+Ø10
+
+C1050
+
+190
+
+C1050
+
+N-2
+2.5
+L/R
+
+N-3
+2.5
+L/W
+
+HN01
+2.5
+B/Y
+
+20038/20
+
+G direction
+
+N-1
+1.5
+L/B
+
+Tighten with bolts
+
+bracket lower cover 1 BX2106-4-1/80(B)
+
+C1050
+
+200
+
+160
+
+The wire diameter is
+20 square
+
+AMP：282088-1（F）
+
+bracket lower cover 2 BX2106-4-2/80(B)
+
+add clamps
+SDJ611-F2.2U(0.3-0.5(1)
+
+rear heater
+(370)
+
+220
+
+B
+direction
+
+HB-52-1(B)
+HB-52-2(B)
+
+210
+
+bracket cover 3 BX2106-2/20(B)
+
+32
+
+Marking
+
+DJY7011-2-11
+To RF door door lamp switch
+
+150
+
+ction120
+
+00
+
+A
+dire
+
+C1050
+
+24aA
+0.5
+R/Y
+
+C1050*5
+
+COTØ9*500
+
+(480)
+
+30
+
+A
+direction
+
+220
+
+260
+
+A
+direction
+260
+
+260
+
+250
+96 Standby
+
+508#
+0.5
+W
+
+COTØ7*520
+
+50
+A
+
+507#
+0.5
+B
+
+AMP-174352
+To RR speed sensor of wheel
+
+Add left and right marks
+
+50
+
+COTØ5
+
+50
+
+50A
+
+0z4
+0.5
+W/B
+
+65
+CONNECTED FROM.
+
+WIRE NO.
+
+WIRE
+DIA.
+
+WIRE
+TYPE.
+
+WIRE
+COL.
+
+1
+
+0a
+
+0a
+
+3.0
+
+AVS
+
+W/B
+
+To front panel instrument harness A(14)
+
+2
+
+0aA
+
+0aA
+
+0.5
+
+AVS
+
+W/B
+
+TO J0a
+
+3
+
+0b
+
+0b
+
+3.0
+
+AVS
+
+W/B
+
+To front panel instrument harness A(15)
+
+NO.
+
+CONNECTED TO.
+NOTE
+
+FUNCTION
+
+NO.
+
+7
+
+To ground
+
+28
+
+To engine compartment fuse box front
+blower relay
+
+1
+
+To ground
+
+28
+
+106
+
+CONNECTED FROM.
+
+CONNECTED TO.
+
+WIRE
+DIA.
+
+WIRE
+TYPE.
+
+WIRE
+COL.
+
+503#
+
+503#
+
+0.5
+
+AVSST
+
+L
+
+TO ABS ECU(18)
+
+10
+
+To RF wheel speed sensor (2)
+
+29
+
+504#
+
+504#
+
+0.5
+
+AVSST
+
+P
+
+TO ABS ECU(6)
+
+10
+
+To RF wheel speed sensor (1)
+
+29
+
+505#
+
+505#
+
+0.5
+
+AVSST
+
+R
+
+TO ABS ECU(33)
+
+10
+
+To LR wheel speed sensor (2)
+
+63
+
+10
+
+WIRE NO.
+
+FUNCTION
+7
+
+NOTE
+FUNCTION
+
+108
+
+4
+
+0n
+
+0n
+
+0.5
+
+AVSS
+
+W/B
+
+To fuel tank harness (3)
+
+60
+
+To ground
+
+28
+
+506#
+
+506#
+
+0.5
+
+AVSST
+
+G
+
+TO ABS ECU(20)
+
+5
+
+0nA
+
+0nA
+
+2.0
+
+AVSS
+
+W/B
+
+To fuel tank harness (4)
+
+60
+
+To ground
+
+30
+
+110
+
+507#
+
+507#
+
+0.5
+
+AVSST
+
+B
+
+TO ABS ECU(19)
+
+10
+
+0.5
+
+AVSS
+
+W/B
+
+To ground
+
+30
+
+J0cA、0cB、0cC
+
+1
+
+111
+
+508#
+
+508#
+
+0.5
+
+AVSST
+
+TO ABS ECU(31)
+
+10
+
+0cA
+
+3.0
+
+AVS
+
+W/B
+
+J0c
+
+1
+
+To engine harness A(17)
+
+23
+
+112
+
+509
+
+509
+
+0cB
+
+0.5
+
+AVSS
+
+W/B
+
+J0c
+
+1
+
+To battery compartment fuse box
+
+15
+
+113
+
+509a
+
+509a
+
+0.5
+
+AVSS
+
+J0dＡ、0d Ｂ、0dC
+
+２
+
+114
+
+511
+
+511
+
+0.5
+
+AVSS
+
+To driver safety belt early warning harness
+(１)
+
+11
+
+512
+
+512
+
+6
+
+0c
+
+7
+8
+
+3.0
+
+AVS
+
+W/B
+
+To ground
+
+10
+
+0dA
+
+0.5
+
+AVS
+
+W/B
+
+J 0dE
+
+２
+
+11
+
+0dB
+
+2.5
+
+AVSS
+
+W/B
+
+J 0dE
+
+２
+
+To B-pillar harness (6)
+
+14
+
+２
+
+To rear heater switch (3)
+
+13
+
+To ground
+
+68
+
+To instrument right side fuse box electrical
+window relay
+
+1
+
+9
+
+0d
+
+0dC
+
+2.0
+
+AVSS
+
+W/B
+
+J 0dE
+
+13
+
+0z
+
+0z
+
+0.85
+
+AVSS
+
+W/B
+
+To front panel instrument harness A(16)
+
+14
+
+0L
+
+0L
+
+0.5
+
+AVSS
+
+W/B
+
+12
+
+15
+
+AVS
+
+W/B
+
+FLR2X-B
+
+W/B
+
+0rB
+
+4.0
+
+FLR2X-B
+
+W/B
+
+0X
+
+0X
+
+4.0
+
+FLRYW-B
+
+B
+
+0Y
+
+0r
+
+0Y
+
+2.5
+
+FLRYW-B
+
+B
+
+16
+
+18
+19
+20
+21
+22
+
+5.0
+0rA
+
+17
+
+4.0
+
+30
+
+To front panel instrument harness C(3)
+
+2
+
+To ground
+
+28
+
+J0r
+
+J0rA、0rB
+
+3
+8
+
+J0r
+
+3
+
+To electrical fan B(4)
+
+8
+
+TO ABS ECU(13)
+
+10
+
+To ABS ground (1)
+
+18
+
+TO ABS ECU(38)
+
+10
+
+To ABS ground (1)
+
+18
+
+3
+
+To electrical fan A(3)
+
+109
+
+115
+116
+117
+
+W
+
+AVSS
+
+0.5
+
+TO ABS ECU(4)
+
+Br/W
+
+To LR wheel speed sensor (1)
+
+To RR wheel speed sensor (1)
+
+22
+
+To front panel instrument harness A(9)
+
+22
+
+To battery compartment fuse box
+
+15
+
+R
+
+TO ABS ECU(1)
+
+22
+
+To battery compartment fuse box ABS
+pump fuse
+
+15
+
+2.5
+
+FLRYW-B
+
+R/B
+
+TO ABS ECU(25)
+
+22
+
+To battery compartment fuse box ABS
+valvefuse
+
+15
+
+0.5
+
+AVSS
+
+L
+
+To front panel instrument harness D(1)
+
+25
+
+To left induction camera (1)
+
+62
+
+532
+
+532
+
+0.5
+
+AVSS
+
+G/B
+
+To front panel instrument harness D(2)
+
+25
+
+To LM induction camera (1)
+
+65
+
+Z-2
+
+Z-2
+
+2.5
+
+AVSS
+
+W/R
+
+To instrument right side fuse box rear
+heater fuse
+
+1
+
+120
+
+K-7A
+
+K-7A
+
+0.5
+
+AVSS
+
+G
+
+To front panel instrument harness C(5)
+
+2
+
+To rear defrost relay
+
+1
+
+121
+
+534
+
+534
+
+0.5
+
+AVSS
+
+G/W
+
+To front panel instrument harness D(3)
+
+25
+
+To RM induction camera (1)
+
+66
+
+122
+
+535
+
+535
+
+0.5
+
+AVSS
+
+R/Y
+
+To front panel instrument harness D(4)
+
+25
+
+To right induction camera (1)
+
+67
+
+123
+
+560
+
+560
+
+0.75
+
+AVSS
+
+Y/W
+
+To electrical throttle (6)
+
+3
+
+TO Engine harness B(6)
+
+23
+
+124
+
+561
+
+561
+
+0.75
+
+AVSS
+
+Y/G
+
+To electrical throttle (5)
+
+3
+
+To engine harness B(13)
+
+125
+
+562
+
+562
+
+0.75
+
+AVSS
+
+V/Gr
+
+To electrical throttle (4)
+
+3
+
+To engine harness B(11)
+
+126
+
+563
+
+563
+
+0.75
+
+AVSS
+
+R/G
+
+To electrical throttle (3)
+
+3
+
+To engine harness B(12)
+
+AVSS
+
+W/B
+
+0.5
+
+AVSS
+
+W/B
+
+To instrument right side fuse box ignition
+lock lighting relay
+
+0.5
+
+AVSS
+
+Y/L
+
+To instrument right side fuse box rear A/C
+relay
+
+564
+
+564
+
+0.75
+
+AVSS
+
+V/G
+
+4
+
+3
+
+To engine harness B(4)
+
+J103A
+
+127
+
+To electrical throttle (2)
+
+14
+
+103A
+
+0.5
+
+AVSS
+
+Y/L
+
+J103
+
+To front panel instrument harness B(14)
+
+6
+
+128
+
+565
+
+565
+
+0.75
+
+AVSS
+
+R/Y
+
+To electrical throttle (1)
+
+3
+
+To engine harness B(5)
+
+4
+
+23
+
+R/L
+
+To B-pillar harness (4)
+
+14
+
+To front panel instrument harness B(18)
+
+6
+
+129
+
+5
+
+5
+
+3.0
+
+AVS
+
+W/R
+
+To battery compartment fuse box AM2 fuse
+
+23
+
+To front panel instrument harness E(2)
+
+8
+
+1
+
+130
+
+56
+
+56
+
+0.5
+
+AVSS
+
+Y/G
+
+TO Engine harness 1(12)
+
+24
+
+To front panel instrument harness A(5)
+
+7
+
+131
+
+57
+
+57
+
+0.5
+
+AVSS
+
+Y/B
+
+TO engine haenessesA(11)
+
+24
+
+To front panel instrument harness A(6)
+
+7
+
+0.5
+
+AVSS
+
+Y/R
+
+To fuel tank harness (1)
+
+60
+
+To front panel instrument harness A(7)
+
+AVSS
+
+B
+
+To handbrake switch (1)
+
+4
+
+To front panel instrument harness A(13)
+
+103
+
+23
+24
+
+K-9
+
+K-9
+
+0.5
+
+AVSS
+
+25
+
+Z-1
+
+Z-1
+
+1.0
+
+AVSS
+
+26
+
+K-10
+
+K-10
+
+0.5
+
+AVSS
+
+27
+
+N-3
+
+N-3
+
+2.5
+
+AVSS
+
+28
+
+N-2
+
+N-2
+
+2.5
+
+AVSS
+
+29
+
+N-1
+
+N-1
+
+1.5
+
+AVSS
+
+2
+
+L/B
+
+To rear evaporator solenoid valve (2)
+
+40
+
+To instrument right side fuse box rear
+evaporator solenoid valve fuse
+
+L/W
+
+To rear evaporator solenoid valve (1)
+
+40
+
+To front panel instrument harness B （12）
+
+L/W
+L/R
+
+6
+13
+
+To rear heater (1)
+
+61
+
+To rear heater switch (4)
+
+132
+
+58
+
+58
+
+To rear heater (4)
+
+61
+
+To rear heater switch (5)
+
+13
+
+133
+
+60
+
+60
+
+To rear heater (3)
+
+61
+
+To rear heater switch (6)
+
+13
+
+0.5
+
+64
+
+0.5
+
+AVSS
+
+Y
+
+TO Generators (1)
+
+42
+
+To front panel instrument harness A(24)
+
+1.0
+
+AVSS
+
+L/B
+
+TO J106
+
+To instrument right side fuse box rear
+heater motor fuse
+
+1
+
+135
+
+72
+
+72
+
+3.0
+
+AVS
+
+B/W
+
+To battery compartment fuse box starter
+relay
+
+15
+
+To front panel instrument harness A(22)
+
+2.5
+
+AVSS
+
+L/B
+
+TO J106
+
+To instrument right side fuse box rear A/C
+relay
+
+1
+
+136
+
+73
+
+73
+
+0.85
+
+AVSS
+
+R
+
+To battery compartment fuse box starter
+fuse
+
+15
+
+To front panel instrument harness B(3)
+
+6
+
+106
+
+2.5
+
+AVSS
+
+L/B
+
+To B-pillar harness (1)
+
+To instrument right side fuse box rear A/C
+fuse
+
+1
+
+137
+
+74
+
+74
+
+0.5
+
+AVSS
+
+B
+
+TO engine haenessesA(20)
+
+24
+
+To front panel instrument harness A(12)
+
+7
+
+133
+
+133
+
+0.5
+
+AVSS
+
+R/B
+
+To front panel instrument harness A(11)
+
+7
+
+TO engine haenessesA(5)
+
+24
+
+138
+
+75
+
+75
+
+3.0
+
+AVS
+
+B
+
+To battery compartment fuse box starter
+relay
+
+15
+
+To battery harness
+
+17
+
+34
+
+141
+
+141
+
+1.25
+
+AVSS
+
+B/Y
+
+To instrument right side fuse box
+compressor relay
+
+1
+
+TO engine haenessesA(20)
+
+24
+
+139
+
+81a
+
+1.25
+
+AVSS
+
+Gr
+
+To instrument right side fuse box A/C fuse
+
+1
+
+J 81aE
+
+12
+
+35
+
+142
+
+142
+
+0.5
+
+AVSS
+
+B/W
+
+To instrument right side fuse box
+compressor relay
+
+1
+
+To engine harness A(7)
+
+24
+
+140
+
+81aA
+
+0.5
+
+AVSS
+
+Gr
+
+To instrument right side fuse box front
+blower relay
+
+1
+
+J 81aE
+
+12
+
+36
+
+143
+
+143
+
+0.5
+
+AVSS
+
+B/R
+
+To front panel instrument harness A(16)
+
+24
+
+To engine harness B(4)
+
+24
+
+141
+
+81aB
+
+0.5
+
+AVSS
+
+Gr
+
+To instrument right side fuse box rear A/C
+relay
+
+1
+
+J 81aE
+
+12
+
+37
+
+144
+
+144
+
+AVSS
+
+R
+
+To battery compartment fuse box oil pump
+relay
+
+0.5
+
+60
+
+142
+
+81aC
+
+20
+
+20
+
+1.25
+
+AVSS
+
+G/R
+
+To brake lamp switch (4)
+
+5
+
+To front panel instrument harness B(4)
+
+6
+
+143
+
+81aD
+
+201
+
+201
+
+2.0
+
+AVSS
+
+L
+
+To front panel instrument harness C(13)
+
+2
+
+To instrument right side fuse box electrical
+window relay
+
+1
+
+144
+
+212
+
+212
+
+1.25
+
+AVSS
+
+L/Y
+
+To step lamp harness (1)
+
+31
+
+6
+
+145
+
+213
+
+213
+
+1.25
+
+AVSS
+
+L/B
+
+To step lamp harness (3)
+
+31
+
+209
+
+209
+
+2.0
+
+2.0
+
+AVSS
+
+W/R
+
+To front panel instrument harness C(13)
+
+2
+
+15
+
+TO fuel box harness (2)
+
+To front panel instrument harness B(10)
+To front panel instrument harness B(17)
+To instrument right side fuse box central
+control fuse
+To instrument right side fuse box rear
+defrost relay
+
+To instrument right side fuse box
+compressor relay
+
+AVSS
+
+Gr
+
+1
+
+J 81aE
+
+12
+
+1.25
+
+AVSS
+
+Gr
+
+To instrument right side fuse box
+compressor relay
+
+1
+
+J 81aE
+
+12
+
+81aE
+
+1.25
+
+AVSS
+
+Gr
+
+J81aA、81aB 、81aC、81aD、81a
+
+12
+
+To front panel instrument harness B(20)
+
+6
+
+146
+
+86
+
+86
+
+3.0
+
+AVS
+
+L/O
+
+To instrument right side fuse box front
+blower relay
+
+1
+
+To front panel instrument harness C(7)
+
+1
+
+147
+
+96
+
+96
+
+0.5
+
+AVSS
+
+B/W
+
+To front panel instrument harness B(7)
+
+24
+
+TO J465
+
+216
+
+2.0
+
+AVSS
+
+B
+
+To front panel instrument harness C(10)
+
+2
+
+1
+
+148
+
+132
+
+132
+
+0.5
+
+AVSS
+
+R
+
+To engine harness b(20)
+
+13
+
+To front panel instrument harness B(19)
+
+209a
+
+209a
+
+2.0
+
+AVSS
+
+W/R
+
+To front panel instrument harness C(14)
+
+2
+
+To instrument right side fuse box electrical
+window fuse
+
+1
+
+149
+
+414
+
+414
+
+2.0
+
+AVSS
+
+R/L
+
+To front panel instrument harness B(1)
+
+6
+
+To engine harness A(17)
+
+45 209aA
+
+209aA
+
+2.0
+
+AVSS
+
+W/R
+
+To instrument right side fuse box electrical
+window relay
+
+1
+
+To instrument right side fuse box electrical
+window fuse
+
+1
+
+150
+
+200
+
+200
+
+0.5
+
+AVSS
+
+R/L
+
+To instrument right side fuse box ignition
+lock lighting relay
+
+1
+
+To front panel instrument harness B(2)
+
+6
+
+21A
+
+0.5
+
+AVSS
+
+G/W
+
+J21C
+
+5
+
+TO ABS ECU(30)
+
+10
+
+151
+
+414A
+
+414A
+
+0.75
+
+AVSS
+
+R/L
+
+TO J414
+
+TO alternator (2)
+
+42
+
+21B
+
+1.25
+
+AVSS
+
+G/W
+
+5
+
+To front panel instrument harness B(5)
+
+6
+
+152
+
+B04
+
+B04
+
+0.5
+
+AVSS
+
+Y
+
+To front panel instrument harness C(9)
+
+2
+
+21C
+
+1.25
+
+AVSS
+
+G/W
+
+J21A、21B
+
+5
+
+To brake lamp switch (3)
+
+5
+
+0z4
+
+0.5
+
+AVSS
+
+W/B
+
+To right induction camera （3 ）
+
+67
+
+TO J0z
+
+0.5
+
+AVSS
+
+G/W
+
+To engine harness B(8)
+
+23
+
+J21A、21B、21C
+
+5
+
+0z3
+
+0.5
+
+AVSS
+
+W/B
+
+To RM induction camera (3)
+
+66
+
+TO J0z
+
+0.5
+
+AVSS
+
+L/Y
+
+To step lamp harness (4)
+
+31
+
+To front panel instrument harness A(1)
+
+7
+
+0z2
+
+0.5
+
+AVSS
+
+W/B
+
+To LM induction camera (3)
+
+65
+
+TO J0z
+
+To left induction camera （3 ）
+
+62
+
+TO J0z
+
+48
+49
+
+21
+
+50
+
+22c
+
+51
+52
+53
+54
+
+24a
+24aA
+25a
+2dA
+
+24a
+24aA
+25a
+2dA
+2dB
+
+0.5
+
+AVSS
+
+R/W
+
+To LF door door lamp switch (1)
+
+To front panel instrument harness A(16)
+
+7
+
+0z1
+
+AVSS
+
+32
+
+To front panel instrument harness A(17)
+
+AVSS
+
+L
+
+AVX
+
+W
+
+To main fuse
+
+16
+
+To battery compartment fuse box
+
+15
+
+AVX
+
+W
+
+To main fuse
+
+16
+
+To instrument right side fuse box
+
+1
+
+AVX
+
+W
+
+To main fuse
+
+16
+
+To front panel instrument harness E(1)
+
+8
+
+106aB
+
+W
+
+To main fuse
+
+16
+
+To front panel instrument harness E(3)
+
+8
+
+106aA
+
+R
+
+106a
+
+106a
+
+8.0
+8.0
+
+2cA
+
+2cA
+
+8.0
+
+57
+
+2cB
+
+2cB
+
+8.0
+
+AVX
+
+R/Y
+
+To RF door door lamp switch (1)
+
+12
+
+0.5
+0.5
+
+56
+
+55
+
+2dB
+
+22c
+
+J21C
+
+To step lamp harness (6)
+
+7
+
+To front panel instrument harness A(18)
+
+0LA
+
+TO JOL
+
+2.0
+
+AVSS
+
+L/B
+
+To instrument right side fuse box rear
+evaporator 1fuse
+
+2.0
+
+AVSS
+
+L/B
+
+106aC
+
+2.0
+
+AVSS
+
+L/B
+
+106aB
+
+1.0
+
+AVSS
+
+L/B
+
+To instrument right side fuse box rear
+evaporator solenoid valve fuse
+
+1
+
+TO J106a
+
+106aA
+
+2.0
+
+AVSS
+
+L/B
+
+To instrument right side fuse box rear
+evaporator 2fuse
+
+1
+
+TO J106a
+
+2.0
+
+AVSS
+
+To instrument right side fuse box rear
+evaporator 1fuse
+
+1
+
+2bA
+
+2bA
+
+10.0
+
+FLRYW-B
+
+To main fuse
+
+16
+
+To engine compartment fuse box
+
+22
+
+2bB
+
+2bB
+
+10.0
+
+FLRYW-B
+
+R
+
+To main fuse
+
+16
+
+To engine compartment fuse box
+
+22
+
+ML01
+
+310
+
+310
+
+0.5
+
+AVSS
+
+Gr
+
+To engine harness A(18)
+
+24
+
+To front panel instrument harness A(24)
+
+7
+
+D-3
+
+61
+
+311
+
+311
+
+0.5
+
+AVSS
+
+V/Gr
+
+To engine harness B(18)
+
+24
+
+To front panel instrument harness A(19)
+
+7
+
+D-2
+
+62
+
+35C
+
+0.5
+
+AVSS
+
+B/Y
+
+To instrument right side fuse box ignition
+lock lighting relay
+
+1
+
+J35
+
+6
+
+36D
+
+63
+
+35B
+
+1.25
+
+AVSS
+
+B/Y
+
+To instrument right side fuse box A/C fuse
+
+1
+
+J35
+
+6
+
+0pC
+
+1.25
+
+AVSS
+
+0.85
+
+ML01
+D-3
+D-2
+36D
+0pC
+
+B/Y
+
+To front panel instrument harness B(18)
+
+6
+
+J35
+
+6
+
+W-1
+
+W-1
+
+AVSS
+
+B/Y
+
+J35A、35B、35C
+
+6
+
+To engine compartment fuse box
+
+22
+
+39
+
+39
+
+66
+
+K58
+
+K58
+
+0.5
+
+AVSS
+
+G/B
+
+To brake lamp switch (5)
+
+5
+
+To engine haenesses B(3)
+
+67
+
+411a
+
+411a
+
+1.25
+
+AVSS
+
+W/G
+
+TO J411b
+
+23
+
+To engine compartment fuse box
+
+68
+
+411b
+
+411b
+
+1.25
+
+AVSS
+
+W/R
+
+To engine harness A(15)
+
+13
+
+To engine compartment fuse box
+
+22
+
+69
+
+411c
+
+0.5
+
+AVSS
+
+W/G
+
+To brake lamp switch (18)
+
+5
+
+J411cA、411cB、411cC
+
+6
+
+AVSS
+
+To engine compartment fuse box electrical
+fan low speed relay
+
+22
+
+To engine compartment fuse box electrical
+fan high speed relay
+
+22
+
+64
+
+35A
+35
+
+65
+
+23
+
+22
+
+411cA
+
+71
+72
+73
+
+W/G
+
+J411c
+
+411cB
+
+0.5
+
+AVSS
+
+W/G
+
+J411c
+
+411cC
+
+0.85
+
+AVSS
+
+W/G
+
+J411c
+
+2.0
+
+AVSS
+
+W/L
+
+To engine compartment fuse box EFIrelay
+
+22
+
+J411D
+
+1.25
+
+0.5
+
+AVSS
+
+W/L
+
+TO engine compartment fuse box front
+oxygen fuse
+
+22
+
+J411D
+
+AVSS
+
+W/L
+
+TO engine compartment fuse box rear
+oxygen fuse
+
+22
+
+J411D
+
+0.85
+
+AVSS
+
+W/L
+
+To engine compartment fuse box fan high
+fuse
+
+22
+
+J411D
+
+7
+
+0.5
+
+AVSS
+
+W/L
+
+J411/411A/411B/411C/411E
+
+7
+
+To battery compartment fuse box oil pump
+relay
+
+15
+
+74
+
+411
+
+75
+
+411A
+
+76
+
+411B
+
+1.25
+
+77
+
+411C
+411D
+
+78
+
+6
+
+6
+
+To engine compartment fuse box electrical
+fan high speed fuse
+
+6
+
+22
+7
+7
+7
+
+79
+
+411E
+
+1.5
+
+AVSS
+
+W/L
+
+To engine harness A(10)
+
+24
+
+J 411D
+
+80
+
+43dA
+
+0.5
+
+AVSS
+
+R/L
+
+To front panel instrument harness A(2)
+
+7
+
+J43dB、43dC
+
+8
+
+81
+
+43d
+
+0.85
+
+AVSS
+
+R/L
+
+To engine harness A(6)
+
+24
+
+J43dB、43dC
+
+8
+
+7
+
+82
+
+43dB
+
+0.5
+
+AVSS
+
+R/L
+
+J43d、43dA
+
+8
+
+To instrument right side fuse box electrical
+window relay
+
+83
+
+43dC
+
+0.85
+
+AVSS
+
+R/L
+
+J43d、43dA
+
+8
+
+TO engine haenessesA(3)
+
+44
+
+0.5
+
+AVSS
+
+R/Y
+
+To engine harness A(13)
+
+24
+
+To front panel instrument harness B(6)
+
+6
+
+AVSS
+
+V/Gr
+
+To front panel instrument harness B(11)
+
+6
+
+J440A、440B
+
+9
+
+AVSS
+
+V/Gr
+
+84
+85
+
+44
+440
+
+0.5
+440A
+
+24
+
+9
+
+0.5
+
+AVSS
+
+V/Gr
+
+J440
+
+9
+
+To engine harness A(4)
+
+24
+
+457
+
+457
+
+0.5
+
+AVSS
+
+B/G
+
+To battery compartment fuse box oil pump
+relay
+
+15
+
+To engine harness A(2)
+
+24
+
+89
+
+458
+
+458
+
+0.5
+
+AVSS
+
+G/W
+
+To engine compartment fuse box EFIrelay
+
+22
+
+To engine harness A(15)
+
+24
+
+90
+
+435A
+
+2.0
+
+AVSS
+
+R
+
+To engine compartment fuse box EFI fuse
+
+22
+
+J435
+
+10
+
+91
+
+435B
+
+2.0
+
+AVSS
+
+R
+
+To engine compartment fuse box EFIrelay
+
+22
+
+J435
+
+10
+
+J435A、435B
+
+10
+
+To engine harness A(1)
+
+24
+
+To electrical fan A(2)
+
+25
+
+J 463
+
+87
+
+435
+
+92
+93
+
+463A
+
+94
+
+463B
+
+95
+464A
+
+97
+
+464B
+
+98
+
+AVSS
+
+R
+
+4.0
+
+FLR2X-B
+
+R/B
+
+4.0
+
+11
+
+FLR2X-B
+
+R/B
+
+5.0
+
+AVS
+
+R/B
+
+FLR2X-B
+
+R/W
+
+FLR2X-B
+
+R/W
+
+5.0
+
+AVS
+
+R/W
+
+J464A、464B
+
+11
+
+To engine compartment fuse box electrical
+fan low speed relay
+
+22
+
+5.0
+
+AVS
+
+R
+
+To engine compartment fuse box electrical
+fan high speed fuse
+
+22
+
+To engine compartment fuse box electrical
+fan high speed relay
+
+22
+
+462
+
+5.0
+
+AVS
+
+L
+
+To engine compartment fuse box electrical
+fan low speed fuse
+
+22
+
+To engine compartment fuse box electrical
+fan low speed relay
+
+22
+
+465
+
+0.5
+
+AVSS
+
+R/B
+
+To engine compartment fuse box electrical
+fan high speed relay
+
+22
+
+To engine harness A(9)
+
+24
+
+466
+
+0.5
+
+AVSS
+
+R/W
+
+To engine compartment fuse box electrical
+fan low speed relay
+
+22
+
+To engine harness A(8)
+
+24
+
+461
+
+461
+
+100
+
+462
+
+101
+
+465
+466
+
+To electrical fan B(2)
+
+10
+
+4.0
+464
+
+99
+
+102
+
+1.25
+
+TO ABS ECU(17)
+
+4.0
+
+463
+
+96
+
+0.5
+
+1
+
+J440
+
+440B
+
+88
+
+86
+
+J 463A、463B
+To electrical fan A(3)
+To electrical fan B(3)
+
+26
+
+J 463
+To engine compartment fuse box electrical
+fan high speed relay
+
+11
+25
+26
+
+J464
+J464
+
+11
+22
+12
+23
+
+470
+
+470
+
+1.25
+
+AVSS
+
+W/R
+
+TO alternator (3)
+
+42
+
+To battery compartment fuse box alternator
+battery power fuse
+
+15
+
+104
+
+501#
+
+501#
+
+0.5
+
+AVSST
+
+Br
+
+TO ABS ECU(34)
+
+10
+
+To LF wheel speed sensor (2)
+
+27
+
+105
+
+502#
+
+502#
+
+0.5
+
+AVSST
+
+Y
+
+TO ABS ECU(22)
+
+10
+
+To LF wheel speed sensor (1)
+
+27
+
+103
+
+0.5
+
+AVSS
+
+0.5
+
+AVSS
+
+0.5
+1.25
+0.5
+
+AVSS
+AVSS
+AVSS
+
+L/B
+
+G/L
+L/R
+Y/L
+L
+W/B
+
+To instrument right side fuse box rear
+evaporator 2fuse
+To instrument right side fuse box rear
+heater fuse
+
+1
+
+1
+
+To B-pillar harness (2)
+
+14
+
+To B-pillar harness (1)
+
+14
+
+1
+
+TO J106a
+
+To instrument right side fuse box rear A/C
+relay
+
+TO Engine harness A (14)
+
+24
+
+TO D-2
+
+14
+
+To front panel instrument harness B(20)
+
+6
+
+1
+
+To instrument harness A(21)
+
+6
+
+To instrument right side fuse box rear A/C
+relay
+To wiper high speed relay
+
+6
+
+To wiper high speed relay
+
+AVSS
+
+R/L
+
+To wiper high speed relay
+
+1
+
+To front panel instrument harness B(7)
+
+0.5
+1.25
+
+AVSS
+
+L/O
+
+To wiper high speed relay
+
+1
+
+To front panel instrument harness A(25)
+
+37FCV-24034-Z02
+
+7
+
+To instrument harness B(11)
+
+7
+
+To front panel instrument harness B(19)
+
+23
+
+6
+
+1
+
+To front panel instrument harness A(2)
+
+(6241-0281)
+engine harness B
+
+23
+
+To instrument right side fuse box rear
+defrost relay
+
+W/B
+
+HD-2
+HD-1
+
+106aC
+
+60
+
+AVSS
+
+W/B
+
+HD-2
+
+59
+
+70
+
+AVSS
+
+0.5
+0.5
+
+11
+
+HD-1
+
+58
+
+0LA
+
+To driver safety belt early warning harness
+(2)
+
+24
+
+2
+
+216
+
+44
+
+47
+
+6245-0301
+engine harness A
+
+6
+
+43
+
+46
+
+67
+
+To right induction camera
+
+DJ7021-1.8-11
+To RM induction camera
+
+7
+
+106
+
+33
+
+42
+
+21
+0.5
+G/W
+
+7
+
+32
+
+41
+
+ML01
+0.5
+G/L
+
+7
+
+64
+
+106B
+106A
+
+40
+
+DJ7021-1.8-11
+
+142
+0.5
+B/W
+
+458
+0.75
+G/W
+
+K58
+0.5
+G/B
+
+7
+
+134
+
+106B
+106A
+
+39
+
+534
+0.5
+G/B
+
+466
+0.5
+R/W
+
+143
+0.5
+B/R
+
+561
+0.75
+Y/G
+
+23
+
+31
+
+38
+
+To LM induction camera
+
+66
+0z3
+0.5
+W/B
+
+465
+0.5
+R/B
+
+564
+0.75
+V/G
+
+562
+0.75
+V/Gr
+
+23
+
+30
+
+L/B
+
+532
+0.5
+G/B
+
+414
+2.0
+R/L
+
+565
+0.75
+R/Y
+
+560
+0.75
+Y/W
+
+23
+
+0.5
+
+0g
+
+2
+
+To left induction camera
+
+0z2
+0.5
+W/B
+
+DJ7021-1.8-11
+
+310
+0.5
+Gr
+
+563
+0.75
+R/G
+
+23
+
+0gA
+
+To front panel instrument harness C(1)
+
+62
+
+57
+0.5
+Y/B
+
+74
+0.75
+B
+
+435
+1.25
+R
+
+7
+
+119
+
+61
+
+530
+0.5
+L
+
+56
+0.5
+Y/G
+
+141
+1.0
+B/Y
+
+457
+0.5
+B/G
+
+7
+
+TO ABS ECU(16)
+TO ABS ECU(32)
+
+FLRYW-B
+
+513
+530
+
+To rear heater (2)
+
+0z1
+0.5
+W/B
+
+DJ7021-1.8-11
+
+44
+0.75
+R/Y
+
+411E
+1.5
+W/L
+
+64
+
+To front panel instrument harness A(10)
+
+22
+
+G/O
+B/R
+
+4.0
+
+513
+530
+
+0g
+
+To front panel instrument harness C(1)
+
+63
+
+43dC
+0.85
+R/L
+
+440B
+0.5
+V/Gr
+
+64
+
+To RR wheel speed sensor (2)
+
+0gA
+
+1
+
+505#
+0.5
+R
+
+AMP-174352
+To LR speed sensor of wheel
+
+535
+0.5
+R/Y
+
+133
+0.5
+R/B
+
+63
+
+To instrument right side fuse box ignition
+lock lighting relay
+
+1
+
+506#
+0.5
+G
+
+FUNCTION
+
+107
+
+43d
+0.85
+R/L
+
+COTØ5*170+50
+
+190A
+
+COTØ7*660
+
+64
+
+A
+direction
+
+230A
+
+COTØ5
+
+C1050*2
+
+A
+direction
+
+50
+
+140A
+
+COTØ5*170+50
+
+50A
+
+50
+
+COTØ9*200
+
+A
+direction
+
+COTØ5*220
+
+150A
+
+CO
+
+90
+
+TØ
+9*2
+
+C1050
+
+1
+1
+1
+6
+7
+
+Engine room harness (3TZ long
+axis)
+
+500
+
+DS02
+0dD
+
+500
+
+360
+
+0dD 1.0 W/B
+
+DS02 1.0 W/R
+
+0dD
+
+0dD 1.0 W/B
+
+DS02 1.0 W/R
+
+0dD 1.0 W/B
+
+DS02 1.0 W/R
+
+DS02
+
+DS02
+0dD
+
+500
+
+360
+
+360
+
+360
+
+400
+
+410
+
+200
+
+5540
+
+DS02 DS02 1.0 W/R
+300
+
+0dD 0dD 1.0 W/B
+
+C1050
+
+ZDT120x7A
+
+920
+
+to ceiling harness
+100
+
+270
+
+DS02
+0dD
+
+DS02
+0dD
+
+0dD 1.0 W/B
+
+500
+
+500
+
+DS02 1.0 W/R
+
+0dD
+
+190
+
+190
+
+0dD 1.0 W/B
+
+DS02
+
+DS02 1.0 W/R
+
+0dD
+
+DS02 1.0 W/R
+
+0dD 1.0 W/B
+
+DS02 1.0 W/R
+
+DS02
+
+380
+
+500
+
+500
+
+500
+
+370
+
+200
+
+DS02 1.0 W/R
+
+380
+
+0dD 1.0 W/B
+
+210
+
+0dD 1.0 W/B
+
+100
+
+DS02
+0dD
+
+View direction
+
+wire
+
+37FCW-24221-A09
+Harness(USB)
+
+A view
+
+B view
+
+D view
+
+C view
+
+E view
+
+F view
+
+Length
+distinguishing
+
+Allowable tolerance(mm)
+main line
+
+branch line, single
+line
+
+0～200
+
++10 -5
+
++10 -5
+
+＞200～500
+
++20 -10
+
++20 -10
+
+＞500～1000
+
++30 -15
+
++30 -15
+
+＞1000～3000
+
++40 -20
+
++40 -20
+
+＞3000～5000
+
++50 -25
+
++50 -25
+
+more than 5000
+
++1.5% -0.5%
+
++2.0% -0.5%
+
+Clamping piece
+
++5 -5
+
++5 -5
+
+grommet
+
++5 -5
+
++5 -5
+
+Refer To the diagram if there is special guidance tolerance
+
+2
+H-5
+0.5
+L/R
+YG01
+0.5
+W/B
+
+SDJ622-F2.2A(0.85-1.25)(3)
+DJ90112(B)(0.85-1.25)(3)
+DJ7002Y-2.2-2(B)(5)
+DJ7081Y-2.2-21(Gr)
+
+208
+1.25
+G/R
+
+207
+1.25
+R/L
+
+201
+1.25
+L
+
+48A
+0.85
+G/B
+
+H-7
+0.5
+Gr
+
+H-6
+0.5
+W/L
+
+To front panel lamp
+harness B
+
+Ø
+
+13
+
+VT
+
+6
+
+b
+
+0
+
+10
+
+B direction
+
+@
+0L
+1.25
+W/B
+
+90
+
+b VTØ12*190
+
+SDJ622-F2.2A(0.85-1.25)(8)
+
+1
+
+10
+
+40
+
+140
+
+(80)
+
+(120)
+
+PVC100*60
+
+4t×70×120*2
+
+C1050
+
+VTØ12*280
+
+250
+
+160A
+
+@
+
+DJ7085Y-2.2-21(B)
+
+3
+
+29#
+1.25
+V
+28#
+1.25
+P
+
+H-5
+0.5
+L/R
+OLC
+0.85
+W/B
+
+7
+
+316838-1(0.85-1.25)(3)
+
+1.25
+
+SDJ621-F2.2A(0.85-1.25)(2)
+
+L/Y
+
+211A
+
+210A
+
+YG01
+
+OLA
+
+7283-1556(W)
+
+0.85
+
+0.85
+
+0.5
+
+G
+
+G/W
+
+W/B
+
+0.85
+W/B
+
+To LF door lock
+
+100
+
+100
+
+DJ90112(B)(0.85-1.25)(8)
+
+To front panel lamp
+harness A
+
+212
+
+1.25
+
+VTØ10*450
+
+200
+
+29#
+1.25
+V
+
+220
+
+80
+
+H-6
+0.5
+W/L
+
+H-7
+0.5
+Gr
+48A
+0.85
+G/B
+
+DJ7061-2-21
+Electrical rear view mirror
+
+VTØ12*190
+
+28#
+1.25
+P
+
+VTØ12*280
+
+120
+
+213
+1.25
+L/B
+
+C1050 F direction
+
+200
+
+VTØ10*120
+
+209a
+1.25
+W/R
+
+30
+
+213
+
+L/B
+
+E direction
+
+210
+0.85
+G/W
+
+70A
+
+C direction
+
+Marking
+
+240B
+
+211
+0.85
+G
+
+300
+
+C direction
+
+VTØ10*240
+
+212
+1.25
+L/Y
+
+120A
+
+C1050
+
+E direction
+
+40A
+
+50A
+
+C1050
+
+C1050
+
+C1050D direction
+
+C1050
+
+20
+
+90
+
+*1
+
+Rubber parts e YQ3
+A direction
+
+206
+1.25
+L/R
+202
+1.25
+L/W
+
+DJ7022-6.3-21
+
+4 Left front door glass lift motor
+
+DJ70210-2.8-21
+TO left speaker
+
+209a 206
+1.25 1.25
+W/R L/R
+202 211B
+1.25
+0.85
+L/W
+G
+
+NO.
+1
+
+WIRE NO.
+28#
+
+28#
+
+WIRE
+DIA.
+
+WIRE
+TYPE
+
+1.25
+
+CONNECTED FROM.
+
+WIRE
+COL.
+
+210B
+0.85
+G/W
+
+208
+1.25
+G/R
+
+OLB
+1.25
+W/B
+201
+1.25
+L
+
+5
+SDJ621-F2.2A(0.85-1.25)(9)
+207
+1.25
+R/L
+
+DJ7124Y-2.2-21(Gr)
+to left door electric window switch/Door control switch
+
+CONNECTED TO.
+NOTE
+
+FUNCTION
+
+Con NO.
+
+FUNCTION
+
+P
+
+To front panel light harness A(8)
+
+1
+
+To left speaker
+
+Con NO.
+
+3
+
+AVSST
+2
+
+29#
+
+3
+
+0L
+
+29#
+
+V
+
+To front panel light harness A(7)
+
+1
+
+to left speaker(2)
+
+3
+
+1.25
+
+AVSS
+
+W/B
+
+To front panel lamp harness A(5)
+
+1
+
+J0LA、J0LB
+
+1
+
+1.25
+
+4
+
+0LA
+
+0.85
+
+AVSS
+
+W/B
+
+J0L
+
+1
+
+To LF door (7)
+
+6
+
+5
+
+0LB
+
+1.25
+
+AVSS
+
+W/B
+
+J0L
+
+1
+
+To left door electric window (3)
+
+5
+
+2
+
+To left clectic window (8）
+
+5
+
+6
+
+201
+
+201
+
+1.25
+
+AVSS
+
+L
+
+To front panel lamp harness B(1)
+
+7
+
+202
+
+202
+
+1.25
+
+AVSS
+
+L/W
+
+To LF door motor (2)
+
+4
+
+to electric window switch (12)
+
+5
+
+8
+
+206
+
+206
+
+1.25
+
+AVSS
+
+L/R
+
+To LF door motor(1)
+
+4
+
+To L door electic switch (4)
+
+5
+
+9
+
+207
+
+207
+
+1.25
+
+AVSS
+
+R/L
+
+To front panel lamp harness B(2)
+
+2
+
+to Left electic window switch （7）
+
+5
+
+10
+
+208
+
+208
+
+1.25
+
+AVSS
+
+G/R
+
+To front panel lamp harness B(3)
+
+2
+
+To left electric window switch (9)
+
+5
+
+11
+
+209
+
+209
+
+1.25
+
+AVSS
+
+W/R
+
+To front panel lamp harness A(1)
+
+1
+
+to left electric window switch （5）
+
+3
+
+12
+
+210
+
+210
+
+0.85
+
+AVSS
+
+G/W
+
+to front wall light harness(2)
+
+1
+
+J210A、 J210B
+
+2
+
+210A
+
+0.85
+
+AVSS
+
+G/W
+
+J210
+
+2
+
+to left front door lock (10)
+
+6
+
+Opening method
+
+Wrapping method
+
+Closed
+
+Opening
+
+Zipper
+
+VT
+
+CVT
+
+PVT
+
+C3
+
+COT
+
+C.COT
+
+F3
+
+GT
+
+PVC tape
+
+V1
+
+V2
+
+V3
+
+绒布胶带
+
+C1
+
+C2
+
+F1
+
+F2
+
+PVC pipe
+
+S
+B
+14. To color marks in To figure correspond to To following:
+
+13
+14
+15
+
+210B
+211
+
+16
+
+211A
+
+0.85
+
+AVSS
+
+G/W
+
+J210
+
+to left electic window switch (7)
+
+2
+
+Blue
+
+grey
+
+Violot
+
+Code Name B
+
+L
+
+Gr
+
+V
+
+Orange Natural Azure
+color
+
+Light
+green Pink
+
+5
+
+0.85
+
+AVSS
+
+G
+
+To front panel lamp harness A(3)
+
+1
+
+J211A、 J211B
+
+3
+
+0.85
+
+AVSS
+
+G
+
+J211
+
+3
+
+to LF door lock99）
+
+6
+
+211B
+
+0.85
+
+AVSS
+
+G
+
+J211
+
+3
+
+To left door electric window
+switch(10)
+
+5
+
+18
+
+212
+
+212
+
+1.25
+
+AVSS
+
+L/Y
+
+To front panel lamp harness A(4)
+
+1
+
+to LF door lock (1)
+
+6
+
+19
+
+213
+
+213
+
+1.25
+
+AVSS
+
+L/B
+
+To front panel light harness A(8)
+
+1
+
+To LF door lock (4)
+
+6
+
+20
+
+H-5
+
+H-5
+
+0.5
+
+AVSS
+
+L/R
+
+To front panel lamp harness B(4)
+
+2
+
+To electic rear view mirror
+
+7
+
+21
+
+H-6
+
+H-6
+
+0.5
+
+AVSS
+
+W/L
+
+To front panel lamp harness B(5)
+
+2
+
+To electic rear view mirror
+
+7
+
+22
+
+H-7
+
+H-7
+
+0.5
+
+AVSS
+
+Gr
+
+To front panel light harness B(6)
+
+2
+
+To electric rear view mirror (1)
+
+7
+
+YG01
+
+YG01
+
+0.5
+
+AVSS
+
+W/B
+
+To front panel light harness B(8)
+
+2
+
+To LF doot lock(8)
+
+6
+
+48A
+
+48A
+
+0.85
+
+AVSS
+
+L/Y
+
+To front panel lamp harness B（7 ）
+
+2
+
+To electric rear view mirror (4)
+
+7
+
+0LC
+
+0.85
+
+AVSS
+
+W/B
+
+J0L
+
+1
+
+To electric rear view mirror (6)
+
+7
+
+17
+
+To wire color Black Wihte Red Green Yellow brown
+W
+
+R
+
+G
+
+Y
+
+Br
+
+O
+
+N
+
+SB
+
+Lg
+
+P
+
+37Z15-24070
+LF door harness
+
+A view
+
+B view
+
+D view
+
+C view
+
+E view
+
+F view
+
+Length
+distinguishing
+
+Allowable tolerance(mm)
+main line
+
+branch line, single
+line
+
+0～200
+
++10 -5
+
++10 -5
+
+＞200～500
+
++20 -10
+
++20 -10
+
+＞500～1000
+
++30 -15
+
++30 -15
+
+＞1000～3000
+
++40 -20
+
++40 -20
+
+＞3000～5000
+
++50 -25
+
++50 -25
+
+more than 5000
+
++1.5% -0.5%
+
++2.0% -0.5%
+
+Clamping piece
+
++5 -5
+
++5 -5
+
+grommet
+
++5 -5
+
++5 -5
+
+Refer To the diagram if there is special guidance tolerance
+
+Rubber parts f YQ1-R
+
+Rubber parts e YQ3
+B direction
+
+A direction
+
+b
+C1050 F direction
+
+90
+
+30
+
+C1050
+
+C direction
+
+200
+
+E direction
+
+220
+
+80
+
+250
+
+VTØ12*280
+
+100A
+
+200
+
+120
+
+b
+
+6
+
+DJ7085Y-2.2-21(B)
+31#
+1.25
+L
+30#
+1.25
+Lg
+
+To front wall harness
+C
+H-5A
+0.5
+L/R
+
+H-9
+0.5
+R/W
+
+49A
+0.85
+G/Y
+
+OBD
+0.85
+W/B
+
+H-8
+0.5
+R/G
+
+2
+3
+
+DJ7066Y-2.2-21
+
+H-5A
+0.5
+L/R
+OBD
+0.85
+W/B
+
+DJ70210-2.8-21
+
+To RF door lock
+
+223
+1.25
+L/R
+
+H-8
+0.5
+R/G
+49A
+0.85
+G/Y
+
+DJ7061-2-21
+Electrical rear view mirror
+
+7
+
+TO right speaker
+
+H-9
+0.5
+R/W
+
+7283-1556(W)
+
+VTØ12*190
+
+DJ90112(B)(0.85-1.25)(7)
+DJ7002Y-2.2-2(B)(1)
+
+@
+
+100A
+
+120
+
+C1050
+
+SDJ622-F2.2A(0.85-1.25)(7)
+
+L/Y
+
+SDJ621-F2.2A(0.85-1.25)(9)
+
+VTØ10*120
+
+(120)
+
+212
+1.25
+
+VTØ10*450
+
+160A
+VTØ12*240
+
+213
+1.25
+L/B
+
+Marking
+VTØ12*280
+
+4t×70×120*2
+
+(80)
+
+150
+
+C1050
+
+C1050E direction
+70A
+
+E direction
+
+30#
+1.25
+Lg
+
+201
+1.25
+L
+
+C1050D direction
+
+300
+
+C direction
+
+C1050
+
+213
+1.25
+L/B
+
+207
+1.25
+R/L
+31#
+1.25
+L
+
+240B
+
+208
+1.25
+G/R
+
+C1050
+120A
+
+40A
+
+VTØ10*240
+
+1
+
+212
+1.25
+L/Y
+
+50A
+
+@
+
+222
+1.25
+L/W
+
+4
+
+DJ7022-6.3-21
+TO right front glass lift motor
+
+208
+1.25
+G/R
+201
+1.25
+L
+
+223
+1.25
+L/R
+
+222
+1.25
+L/W
+207
+1.25
+R/L
+
+5
+
+DJ7054-3-21
+RF door glass lifting switch
+
+Connect the front wall harness D
+
+NO.
+
+WIRE NO.
+
+WIRE
+DIA.
+
+1
+
+30#
+
+1.25
+
+30#
+
+WIRE
+TYPE
+
+WIRE
+COL.
+Lg
+
+CONNECTED FROM.
+
+CONNECTED TO.
+NOTE
+
+FUNCTION
+To front wall light harness (7)
+
+Con NO.
+
+1
+
+FUNCTION
+
+3
+
+AVSST
+2
+
+31#
+
+31#
+
+1.25
+
+L
+
+To fornt light harness(6)
+
+1
+
+Opening method
+
+Wrapping method
+
+Closed
+
+Opening
+
+Zipper
+
+VT
+
+CVT
+
+PVT
+
+C3
+
+COT
+
+C.COT
+
+F3
+
+GT
+
+Con NO.
+
+To right speaker (1)
+To right speaker (2)
+
+PVC tape
+
+V1
+
+V2
+
+V3
+
+绒布胶带
+
+C1
+
+C2
+
+F1
+
+F2
+
+PVC pipe
+
+3
+
+3
+
+201
+
+201
+
+1.25
+
+AVSS
+
+L
+
+TO front wall light harness C(1)
+
+2
+
+To right electic window switch(5)
+
+5
+
+4
+
+207
+
+207
+
+1.25
+
+AVSS
+
+R/L
+
+To front wall light harness C(1)
+
+2
+
+To right electric window switch (3)
+
+5
+
+5
+
+208
+
+208
+
+1.25
+
+AVSS
+
+G/R
+
+To front wall light harness C(3）
+
+2
+
+To right electic window switch (5)
+
+5
+
+6
+
+222
+
+202
+
+1.25
+
+AVSS
+
+L/W
+
+To RF door motor (2)
+
+4
+
+Right door electric window switch(1)
+
+5
+
+7
+
+223
+
+206
+
+1.25
+
+AVSS
+
+L/R
+
+To RF door motor(1)
+
+4
+
+Right electric window switch (4)
+
+5
+
+S
+B
+14. To color marks in To figure correspond to To following:
+To wire color
+
+8
+
+212
+
+212
+
+1.25
+
+AVSS
+
+L/Y
+
+To Front light harness C(4)
+
+1
+
+To RF door lock(1)
+
+Black Wihte
+
+213
+
+213
+
+1.25
+
+AVSS
+
+H-5A
+
+H-5A
+
+0.5
+
+AVSS
+
+H-8
+
+H-8
+
+0.5
+
+AVSS
+
+To font wall lilght harness C(8)
+
+1
+
+L/R
+
+To font wall light harness D (3)
+
+2
+
+To electic rear view mirror
+
+7
+
+R/G
+
+To font wall light harness D(3)
+
+2
+
+To electric rear view mirror (1)
+
+7
+
+L/B
+
+To right front door lock(4)
+
+Blue
+
+grey
+
+Violot
+
+R
+
+L
+
+Gr
+
+V
+
+Orange
+
+Light
+Natural
+Azure green
+color
+
+6
+Code Name B
+
+9
+
+Red Green Yellow brown
+
+W
+
+G
+
+Y
+
+Br
+
+O
+
+N
+
+SB
+
+Lg
+
+Pink
+P
+
+37Z15-24080
+
+6
+
+H-9
+
+H-9
+
+0.5
+
+AVSS
+
+R/W
+
+To front wall light haness D(2)
+
+2
+
+To electic rear view mirror
+
+7
+
+0bD
+
+0bD
+
+0.85
+
+AVSS
+
+W/B
+
+TO Electric Rear View Mirror (6)
+
+7
+
+TO front wall harness D (5)
+
+2
+
+49A
+
+49A
+
+0.85
+
+AVSS
+
+L/B
+
+TO Electric Rear View Mirror (4)
+
+7
+
+To front wall harness (6)
+
+2
+
+RF door harness
+
+80
+
+C1050*4
+
+260
+-
+
+HMGD2
+
+D direction
+
+B direction
+
+B direction
+
+340
+
+140
+
+210
+
+B direction
+
+250
+
+B direction
+
+220A
+
+160A
+C d
+ire
+
+cti
+
+C1050
+
+1
+
+0c
+2.0
+W/B
+216
+2.0
+B
+
+ire
+A d
+
+E direction
+
+di
+
+ct
+
+io
+
+n
+
+(100
+
+A
+
+175
+
+)
+85
+
+0A
+
+17
+
+3
+85
+
+SDJ621-F2.2A(0.85-1.25)(4)
+SDJ621-F2.2C(2.0)(2)
+DJ7082Y-2.2-21(W)
+
+0cC
+2.0
+W/B
+
+ZX005
+
+216
+2.0
+B
+
+2
+
+0cA 36aB
+1.25 1.25
+W/B L/R
+RW-2 RW-1
+1.25
+1.25
+L/R L/W
+THB0427201
+To rear wiper
+
+5
+
+DJ621-F6.3C(2.0-3.0)
+DJ70111Y-6.3-21(B)
+
+)
+
+(100
+
+180
+
+13
+0
+
+21
+0.85
+G/W
+36aB RW-1 RW-2
+1.25 1.25 1.25
+L/R L/W L/R
+
+on
+
+cti
+
+(160)
+
+re
+
+B
+
+on
+
+200
+
+100
+
+4t*40*60
+
+10*480
+
+150
+
+VT
+
+To RR defroster
+
+21 0cB
+0.85 0.85
+G/W W/B
+
+4
+
+SDJ621-G2.2*0.6A(0.85-1.25)(2)
+AMP
+
+282080-1
+
+To upper brake light
+
+To ceilling harness
+
+DJ621-F6.3C(2.0-3.0)
+DJ70111Y-6.3-21(B)
+To LR defroster
+
+NO.
+1
+
+WIRE NO.
+0c
+
+CONNECTED FROM.
+
+WIRE
+DIA.
+
+WIRE
+TYPE
+
+WIRE
+COL.
+
+2.0
+
+AVSS
+
+W/B TO ceiling harness (1)
+
+1
+
+FUNCTION
+
+CONNECTED TO.
+
+ConNO.
+
+FUNCTION
+
+Con NO.
+
+NOTE
+
+1
+
+2
+
+0cA
+
+1.25
+
+AVSS
+
+W/B J0c
+
+1
+
+To rear wiper (3)
+
+3
+
+3
+
+0cB
+
+0.85
+
+AVSS
+
+W/B J0c
+
+1
+
+To upper brake light(1)
+
+4
+
+4
+
+0cC
+
+2.0
+
+AVSS
+
+W/B J0c
+
+1
+
+To rear defroster (2)
+
+5
+
+5
+
+21
+
+21
+
+0.85
+
+AVSS
+
+G/W TO ceiling harness (3)
+
+1
+
+To upper brake light (2)
+
+4
+
+6
+
+216
+
+216
+
+2.0
+
+AVSS
+
+B
+
+To ceilling harness (4
+
+1
+
+To rear defroster (1)
+
+2
+
+7
+
+RW-2
+
+RW-2
+
+1.25
+
+AVSS
+
+L/R To ceilling harness (2)
+
+1
+
+To rear wiper (1)
+
+3
+
+8
+
+36aB
+
+36aB
+
+1.25
+
+AVSS
+
+L/R To ceilling harness (8)
+
+1
+
+To rear wiper (2)
+
+3
+
+9
+
+RW-1
+
+RW-1
+
+1.25
+
+AVSS
+
+L/W To ceilling harness (7)
+
+1
+
+To rear wiper (4)
+
+3
+
+37Z15-24090
+LR door harness
+
+CONNECTED FROM.
+NO.
+
+WIRE NO.
+
+WIRE
+
+WIRE
+
+CONNECTED TO.
+
+WIRE
+
+NOTE
+FUNCTION
+
+FUNCTION
+
+Con NO.
+
+1
+
+0c
+
+0c
+
+1.25
+
+AVSS
+
+W/B TO Ceiling Transition Harness (1)
+
+1
+
+To ground
+
+3
+
+2
+
+0cA
+
+0cA
+
+1.25
+
+AVSS
+
+W/B To rear door harness(1)
+
+1
+
+To ground
+
+3
+2
+
+3
+
+19d
+
+19d
+
+0.85
+
+AVSS
+
+G
+
+To ceilling transition harness(2)
+
+1
+
+To rear door harness(3)
+
+4
+
+212
+
+212
+
+1.25
+
+AVSS
+
+L/Y
+
+To ceilling transition harness(3)
+
+1
+
+To rear door harness(2)
+
+2
+
+5
+
+24cA
+
+24cA
+
+0.5
+
+AVSS
+
+O
+
+To ceilling transition harness(4)
+
+1
+
+To rear door harness(4)
+
+2
+
+6
+
+213
+
+213
+
+1.25
+
+AVSS
+
+L/B
+
+To ceilling transition harness(6)
+
+1
+
+To rear door harness(6)
+
+2
+
+44A
+
+44A
+
+0.5
+
+AVSS
+
+R/Y
+
+1
+
+To ceilling transition harness(5)
+
+D view
+
+Con NO.
+
+To rear door harness(5)
+
+E view
+
+2
+DJ471A-ZL6B(2.0-3.0)Sn
+
+To rear door ground wire
+
+3
+
+0c/0cA
+1.25/1.25
+
+W/B
+
+150
+
+30
+D direction
+
+1300
+
+50
+
+100
+
+212
+1.25
+L/Y
+213
+1.25
+L/B
+
+44A
+0.5
+R/Y
+
+25a
+0.5
+L
+
+0cA
+1.25
+W/B
+19d
+0.85
+G
+
+SDJ621-F2.2U(0.3-0.5)(2)
+SDJ621-F2.2A(0.85-1.25)(3)
+DJ7064Y-2.2-21(W)
+(160)
+
+1
+
+212
+1.25
+L/Y
+213
+1.25
+L/B
+
+19d
+0.85
+G
+44A
+0.5
+R/Y
+
+0c
+1.25
+W/B
+
+50
+
+To rear door harness
+
+E direction
+
+130
+
+symbol
+
+25a
+0.5
+L
+
+SDJ621-F2.2U(0.3-0.5)(2)
+SDJ621-F2.2A(0.85-1.25)(3)
+DJ7067Y-2.2-21(W)
+
+ZDT120*7B(W)
+
+To ceilling transition harness
+Length
+distinguishing
+
+Allowable tolerance(mm)
+main line
+
+branch line, single
+line
+
+0～200
+
++10 -5
+
++10 -5
+
+＞200～500
+
++20 -10
+
++20 -10
+
+＞500～1000
+
++30 -15
+
++30 -15
+
+＞1000～3000
+
++40 -20
+
++40 -20
+
+＞3000～5000
+
++50 -25
+
++50 -25
+
+more than 5000
+
++1.5% -0.5%
+
++2.0% -0.5%
+
+Clamping piece
+
++5 -5
+
++5 -5
+
+grommet
+
++5 -5
+
++5 -5
+
+Refer To the diagram if there is special guidance tolerance
+
+37Z15-24100
+RR Door harness
+
+2
+
+11
+DJ7055Y-2.2-21
+Front wiper motor
+3
+
+1
+39
+
+36A
+
+40
+
+0.85L/O
+
+0.85L/W 1.25L
+
+38
+0.85L/B
+
+0b
+1.25B
+
+5
+
+120
+
+4
+
+C1050
+
+DJ7025Y-2.2-2129
+To rear washer motor
+
+DJ7042Y-2.2-21
+15
+
+12
+
+C703
+
+110
+
+0bH
+0.85
+W/B
+
+C1050
+
+CO
+
+8
+
+2.0
+
+AVSS
+
+W/B
+
+J0aH
+
+1
+
+To front body cover dashboard harness A(14)
+
+1
+
+1.25
+
+AVSS
+
+W/B
+
+J0aH
+
+1
+
+To front fog lamp harness (1)
+
+10
+
+0aB
+
+1.25
+
+AVSS
+
+W/B
+
+J0aH
+
+1
+
+To front fog lamp harness (4)
+
+10
+
+0aC
+
+1.25
+
+AVSS
+
+W/B
+
+J0aH
+
+1
+
+To LF head lamp (1)
+
+3
+
+0aJ
+
+0.5
+
+AVSS
+
+W/B
+
+J0aH
+
+1
+
+To tristate pressure switch (1)
+
+15
+
+0aG
+
+2.0
+
+AVSS
+
+W/B
+
+J0aH
+
+1
+
+To body left side ground
+
+8
+
+10
+
+AVSS
+
+W/B
+
+To body right side ground
+
+18
+
+J0a、0aA、0aB、0aC、0aD、0aE、0aF、0aG、0aI、0aJ 1
+
+0.5
+
+AVSS
+
+W/B
+
+J0aH
+
+1
+
+To high pitch electrical horn (1)
+
+9
+
+0b
+
+0b
+
+1.25
+
+AVSS
+
+W/B
+
+J0bB、0bC、0bD、0bB、0bE、0bF
+
+2
+
+To wiper motor (4)
+
+11
+
+0bA
+
+0bA
+
+0.5
+
+AVSS
+
+W/B
+
+J0bB、0bC、0bD、0bB、0bE、0bF
+
+2
+
+To brake oil reservoir(1)
+
+14
+
+0bB
+
+2.0
+
+AVSS
+
+W/B
+
+To body right side ground
+
+18
+
+J0b、0bA
+
+2
+
+12
+
+0bC
+
+1.25
+
+AVSS
+
+W/B
+
+To RF head lamp (1)
+
+J0b、0bA
+
+16
+
+130
+
+12
+0B
+
+0
+
+9
+0*
+
+C
+
+PV
+
+160
+
+0
+3.aH
+W/B0
+
+0
+1. bB
+W/B25
+
+SDJ612-F2.2U(0.3-0.5)(4)
+090G(0.3-0.5)(4)
+DJ7002Y-2.2-2(B)(2)
+
+10B
+1.25
+R/Y
+11B
+1.25
+R/G
+
+150
+
+0bG
+
+0.85
+
+AVSS
+
+W/B
+
+To rear washer motor (2)
+
+2
+
+17
+
+130
+
+J0b、0bA
+
+2
+
+To front body cover dashboard harness B(10)
+
+2
+
+J0LA、0LB
+
+3
+
+J0L
+
+3
+
+To body left side ground
+
+8
+
+W/B
+
+J0L
+
+3
+
+To left front door harness A(5)
+
+7
+
+P
+
+To front body cover dashboard harness A(3)
+
+1
+
+To left front door harness A(7)
+
+7
+
+AVSS
+
+W/B
+
+To front washer motor (2)
+
+2.0
+
+AVSS
+
+W/B
+
+2.0
+
+AVSS
+
+W/B
+
+AVSS
+
+0aB
+0.85
+W/B
+
+13B
+0.85
+L/W
+
+533
+0.5
+G/Y
+
+201B
+盲栓 1.25
+
+17
+
+7
+0aC
+1.25
+W/B
+6
+
+VT∅10*160
+
+19cB
+0.5
+G
+
+48
+0.85
+G/B
+
+0
+
+220
+
+*1
+3
+
+∅8
+VT
+
+11A
+1.25
+R/G
+
+280
+
+19cA
+0.5
+G
+
+VT∅12*260
+
+0LB
+
+2.0
+
+28#
+
+28#
+
+1.25
+
+29#
+
+29#
+
+1.25
+
+30#
+
+30#
+
+1.25
+
+31#
+
+31#
+
+1.25
+
+W-11
+
+W-11
+
+0.85
+
+38
+
+38
+
+1.25
+
+39
+
+39
+
+1.25
+
+40
+
+40
+
+16
+48
+
+AVSST
+22
+23
+
+V
+
+To front body cover dashboard harness A(4)
+
+1
+
+To left front door harness A(6)
+
+7
+
+Lg
+
+To dashboard harness A(8)
+
+1
+
+To RF door harness C(7)
+
+21
+
+L
+
+To front body cover dashboard harness A(9)
+
+1
+
+To RF door harness C(6)
+
+21
+
+25
+26
+
+27
+
+AVSS
+
+L/B
+
+To front body cover dashboard harness A(2)
+
+1
+
+To front washer motor(1)
+
+13
+
+AVSS
+
+L/B
+
+To front body cover dashboard harness A(5)
+
+1
+
+To wiper motor (5)
+
+11
+
+AVSS
+
+L/O
+
+To front body cover dashboard harness A(6)
+
+1
+
+28
+
+0.85
+
+AVSS
+
+L/W
+
+To front body cover dashboard harness A(7)
+
+1
+
+To wiper motor (1)
+
+11
+
+29
+30
+
+16
+
+0.5
+
+AVSS
+
+B
+
+To front body cover dashboard harness A(10)
+
+1
+
+To high pitch electrical horn (1)
+
+9
+
+48
+
+0.85
+
+AVSS
+
+L/Y
+
+To front body cover dashboard harness A(12)
+
+1
+
+To LF head lamp (5)
+
+3
+
+31
+
+32
+
+49
+
+0.85
+
+AVSS
+
+L/B
+
+To front body cover dashboard harness A(13)
+
+1
+
+To RF head lamp (5)
+
+16
+
+0.85
+
+AVSS
+
+L/W
+
+To front body cover dashboard harness A(15)
+
+1
+
+J13A、13B
+
+4
+
+0.85
+
+AVSS
+
+L/W
+
+J13
+
+4
+
+To front fog lamp harness (2)
+
+10
+
+13
+13A
+
+34
+
+36
+
+37
+
+60
+
+41
+
+44
+
+47
+48
+
+49
+
+52
+53
+
+54
+55
+
+58
+
+61
+
+62
+63
+
+To front fog lamp harness (6)
+
+10
+
+1
+
+To brake oil reservoir(2)
+
+14
+
+To dashboard harness A(20)
+
+1
+
+J19cB
+
+8
+
+0.5
+
+AVSS
+
+G
+
+To LF head lamp (4)
+
+3
+
+J19cB
+
+8
+
+0.5
+
+AVSS
+
+G
+
+J19c、19cA
+
+8
+
+To RF head lamp (4)
+
+16
+
+0.5
+
+AVSS
+
+B/W
+
+To dashboard harness A(21)
+
+1
+
+To tristate pressure switch (2)
+
+15
+
+1.25
+
+AVSS
+
+R/Y
+
+To front body cover dashboard harness A(22)
+
+1
+
+J10B
+
+6
+
+1.25
+
+AVSS
+
+R/Y
+
+To LF head lamp (2)
+
+3
+
+J10B
+
+6
+
+96
+
+0a
+
+RJ02
+
+0.85
+
+0.85
+
+W/B
+
+R/W
+
+1
+
+1.25
+
+AVSS
+
+R/Y
+
+J10、10A
+
+6
+
+To RF head lamp (2)
+
+16
+
+1.25
+
+AVSS
+
+R/G
+
+To front body cover dashboard harness A(24)
+
+1
+
+J11B
+
+7
+
+11A
+
+1.25
+
+AVSS
+
+R/G
+
+To LF head lamp (3)
+
+3
+
+J11B
+
+7
+
+10B
+
+11B
+
+1.25
+
+AVSS
+
+R/G
+
+J11、11A
+
+7
+
+To RF head lamp (3)
+
+16
+
+36A
+
+36A
+
+1.25
+
+AVSS
+
+L
+
+To front body cover dashboard harness B(1)
+
+2
+
+To wiper motor (2)
+
+11
+
+W-10
+
+W-10
+
+0.85
+
+AVSS
+
+To front body cover dashboard harness B(2)
+
+1
+
+To rear washer motor(1)
+
+14
+
+201
+
+2.0
+
+AVSS
+
+L
+
+To dashboard harness B(9)
+
+1
+
+J201B
+
+10
+
+201A
+
+2.0
+
+AVSS
+
+L
+
+To LF door harness B(1)
+
+6
+
+J201B
+
+10
+
+L/B
+
+2.0
+
+AVSS
+
+L
+
+J201、201A
+
+To RF door harness C(1)
+
+21
+
+209a
+
+209a
+
+2.0
+
+AVSS
+
+W/R
+
+To front body cover dashboard harness B(11)
+
+To left front door harness A(1)
+
+7
+
+210
+
+210
+
+0.85
+
+AVSS
+
+G/W
+
+To front body cover dashboard harness B(14)
+
+To left front door harness A(2)
+
+7
+
+211
+
+211
+
+201B
+
+10
+
+To left front door harness A(3)
+
+0.85
+
+AVSS
+
+G
+
+To front body cover dashboard harness B(15)
+
+212
+
+2.0
+
+AVSS
+
+L/Y
+
+To front body cover dashboard harness B(16)
+
+1
+
+J212B
+
+11
+
+212A
+
+1.25
+
+AVSS
+
+L/Y
+
+To left front door harness A(4)
+
+6
+
+J212B
+
+11
+
+11
+
+1.25
+
+AVSS
+
+L/Y
+
+J212、212A
+
+To right front door harness C(4)
+
+21
+
+213
+
+2.0
+
+AVSS
+
+L/B
+
+To front body cover dashboard harness B(17)
+
+1
+
+J213B
+
+12
+
+1.25
+
+AVSS
+
+L/B
+
+To left front door harness B(4)
+
+6
+
+J213B
+
+12
+
+213B
+
+1.25
+
+AVSS
+
+L/B
+
+J213、213A
+
+12
+
+To right front door harness C(4)
+
+21
+
+207
+
+207
+
+1.25
+
+AVSS
+
+R/B
+
+To left front door harness B(2)
+
+6
+
+To right front door harness C(2)
+
+21
+
+208
+
+208
+
+1.25
+
+AVSS
+
+G/R
+
+To left front door harness B(3)
+
+6
+
+To right front door harness C(3)
+
+21
+
+143
+
+143
+
+0.5
+
+AVSS
+
+B/W
+
+To tristate pressure switch (4)
+
+15
+
+To dashboard harness B（19）
+
+K-11
+
+K-11
+
+0.5
+
+AVSS
+
+Y/B
+
+To tristate pressure switch (3)
+
+15
+
+64
+
+H-5A
+
+0.5
+
+AVSS
+
+L/R
+
+TO H-5
+
+H-5
+
+0.5
+
+AVSS
+
+L/R
+
+To front body cover dashboard harness B(6)
+
+2
+
+H-6
+
+0.5
+
+49A
+0.85
+G/Y
+
+70
+0aG
+3.0
+W/B
+
+60
+
+DJ471A-ZR6B(2.0-3.0)Sn(1)
+DJ471A-ZL6B(2.0-3.0)Sn(1)
+To body ground
+
+DRL
+
+0LA
+2.0
+W/B
+
+C
+PV
+
+HB-42-1(W)
+HB-42-2(W)
+
+10
+
+C
+
+10
+
+0
+
+0*
+
+90
+
+15
+
+0
+
+6
+130
+
+22
+
+DJ7066Y-2.2-11
+To right front door harness D
+
+0a
+
+RJ02
+
+0.85
+
+0.85
+
+1 W/B
+
+R/W
+
+DRL
+
+9
+2
+
+16
+0.5
+B
+
+0aI
+0.5
+W/B
+
+DJ70243Y-2.2-20
+High pitch electrical horn
+
+16A
+0.5
+B
+
+0aJ
+0.5
+W/B
+
+H-6
+0.5
+W/L
+H-7
+
+23
+
+DJ70243Y-2.2-20
+Low pitch electrical horn
+
+201A
+1.25
+L
+207
+0.5 1.25
+R/L
+Gr
+48A
+208
+0.85
+G/B 1.25
+G/R
+YG01 H-5
+0.5 0.5
+W/B L/R
+
+SDJ612-F2.2A(0.85-1.25)(3)
+DJ90112(B)(0.85-1.25)(3)
+DJ7002Y-2.2-2(B)(5)
+DJ7081Y-2.2-11(Gr)
+To left front door
+harness B
+
+JDQZ19A(B)
+0LB
+2.0
+W/B
+
+209a
+2.0
+W/R
+210
+0.85
+G/W
+211
+0.85
+G
+212A
+1.25
+L/Y
+
+29#
+1.25
+V
+28#
+1.25
+P
+213A
+1.25
+L/B
+
+SDJ612-F2.2A(0.85-1.25)(6)
+SDJ612-F2.2C(2.0)(2)
+DJ90112(B)(0.85-1.25)(6)
+090R(2.0)(2)
+DJ7085Y-2.2-11(B)
+To left front door
+harness A
+
+7
+
+2
+2
+
+To dashboard harness B（20）
+To right front door harness D(1)
+
+22
+
+65
+2
+
+OBD
+0.85
+W/B
+
+6
+
+To left front door harness B(4)
+
+66
+AVSS
+
+W/L
+
+To front body cover lamp harness B(5)
+
+2
+
+6
+
+To left front door harness B(5)
+
+67
+H-7
+
+0.5
+
+AVSS
+
+Gr
+
+To front body cover lamp harness B(4)
+
+2
+
+To left front door harness B(6)
+
+6
+
+68
+
+H-8
+
+0.5
+
+AVSS
+
+R/G
+
+To front body cover lamp harness B(13)
+
+2
+
+To right front door harness D(3)
+
+22
+
+69
+
+H-9
+
+0.5
+
+AVSS
+
+R/W
+
+To front body cover lamp harness B(12)
+
+2
+
+To right front door harness D(2)
+
+22
+
+531
+
+531
+
+0.5
+
+AVSS
+
+G/W
+
+To front fog lamp harness (1)
+
+10
+
+To dashboard harness B（12）
+
+533
+
+533
+
+0.5
+
+AVSS
+
+G/Y
+
+To front fog lamp harness (4)
+
+10
+
+To front body cover dashboard harness B(13)
+
+16A
+
+16A
+
+0.5
+
+AVSS
+
+B
+
+TO J16
+
+0aJ
+
+0.5
+
+AVSS
+
+W/B
+
+J0aH
+
+48A
+
+48A
+
+0.85
+
+AVSS
+
+L/Y
+
+TO J48
+
+To left front door harness B(7)
+
+6
+
+49A
+
+49A
+
+0.85
+
+AVSS
+
+L/B
+
+TO J49
+
+To right front door harness D(4)
+
+22
+
+37Z15-24120-C
+
+0bD
+
+0.85
+
+AVSS
+
+W/B
+
+To right front door harness D(5)
+
+J0b、0bA
+
+2
+
+front wall harness
+
+70
+71
+
+72
+73
+
+74
+75
+76
+
+77
+78
+
+79
+80
+
+YG01
+
+YG01
+
+0.5
+
+AVSS
+
+W/B
+
+To front body cover dashboard harness A(11)
+
+1
+
+1
+
+2
+
+2
+
+To low pitch electrical horn
+
+(1)
+
+23
+
+To low pitch electrical horn
+
+(2)
+
+23
+
+To left front door harness B(8)
+
+6
+
+2
+
+fan
+
+7
+
+213A
+
+212B
+
+H-5
+0.5
+L/R
+
+RJ02
+0.85
+R/W
+
+H-7 H-6 H-5
+0.5 0.5 0.5
+Gr W/L L/R
+209a H-9 H-8
+2.0 0.5 0.5
+W/R R/W R/G
+213 143 K-11
+2.0 0.5 0.5
+L/B B/R Y/B
+
+8
+
+AMP：282104-1（M）
+
+AMP：282104-1（M）
+
+11
+
+59
+60
+
+4
+
+To front body cover dashboard harness A(16)
+
+G
+
+10
+
+96
+
+56
+
+57
+
+J13
+
+B
+
+AVSS
+
+10A
+
+50
+51
+
+L/W
+
+AVSS
+
+0.5
+
+19cB
+
+45
+46
+
+AVSS
+
+0.5
+
+19cA
+
+42
+43
+
+0.85
+
+60
+
+H-9
+0.5
+R/W
+
+OrC 463C
+25
+3.0 3.0
+W/B R/B
+To auxiliary water tank
+GJ7021Y-4.8-21
+
+0
+16
+
+40
+
+SDJ612-F2.2A(0.85-1.25)(7)
+DJ90112(B)(0.85-1.25)(7)
+DJ7002Y-2.2-2(B)(1)
+DJ7085Y-2.2-11(B)
+To right front door
+harness C
+
+150
+
+H-8
+0.5
+R/G
+
+13B
+
+19c
+
+38
+
+39
+
+JDQZ19(B)
+
+11
+
+0
+
+21
+
+350
+49
+
+33
+
+35
+
+To wiper motor (3)
+
+0L
+2.0
+W/B
+
+7114-4021(0.85-1.25)(5)
+7114-4022(2.0)(4)
+7114-4032(2.0-3.0)(1)
+7282-1208(W)
+To front body cover dashboard harness B
+
+26
+
+350
+
+AVSST
+24
+
+36A W-10
+1.25 0.85
+L L/B
+533 531 201
+0.5 0.5 2.0
+G/Y G/W L
+210 211 212
+0.85 0.85 2.0
+G/W G L/Y
+
+(120)
+
+21
+
+0
+
+PVC 250*150
+
+VT∅8*340
+
+20
+
+31# 207
+1.25 1.25
+R/L
+30# 208
+1.25 1.25
+Lg
+G/R
+213B 212B
+1.25 1.25
+L/B L/Y
+
+200
+
+0LA
+
+100
+
+0L
+
+19
+
+13
+0.85
+L/W
+10
+1.25
+R/Y
+
+A
+C1050
+
+18
+
+15
+
+0a
+2.0
+W/B
+96
+0.5
+B/W
+
+28# 29#
+1.25 1.25
+P
+V
+30# 31# 16
+1.25 1.25 0.5
+Lg L
+B
+60
+YG01
+0.5
+0.5
+W/B
+B
+11
+1.25
+R/G
+
+C1048
+
+Increase
+loop
+
+AMP 968421-1
+To LF head lamp3
+
+190
+
+49
+0.85
+G/Y
+
+2
+
+J0b、0bA
+
+17
+
+0.85
+
+10
+
+0bC
+1.25
+W/B
+
+VT∅12*130
+0bH
+
+16
+
+16
+
+To RF head lamp
+
+DJ471A-ZR6B(2.0-3.0)Sn(1)
+DJ471A-ZL6B(2.0-3.0)Sn(1)
+To body right side ground
+
+10
+
+DJ70613Y-2.2-11(Gr)
+To front fog lamp harness
+Increase
+loop
+0aA 13A
+531
+0.85 0.85 0.5
+G/W
+W/B L/W
+
+AMP 968421-1
+
+14
+15
+
+T∅
+9×
+
+0B
+12
+
+10A
+1.25
+R/Y
+
+150
+
+PVC 50*150
+
+G
+direction
+
+13
+
+60
+
+50A
+
+140A
+
+10A
+
+70A
+
+11
+
+COT∅20×270
+
+COT∅13×90
+
+2.0
+
+0aI
+
+0aH
+
+9
+
+70A
+
+W-11
+0.85
+L/Y
+38 39 40
+0.85 0.85 0.85
+L/B L/O L/W
+48 49
+0.85 0.85
+G/B G/Y
+19c
+0.5
+G
+
+(90)
+
+60
+
+0a
+
+0aA
+
+18
+
+7
+
+170A
+
+300A
+
+7114-4032(2.0-3.0)(1)
+7282-1248(W)
+To front body cover dashboard harness A
+
+C1048*2
+
+NO.
+
+5
+6
+
+180A
+
+24
+
+C320
+
+0
+
+15
+
+PVC 150*180
+
+4
+
+130A
+
+120A
+
+COT∅16×840
+
+C1050
+
+3
+
+200A
+
+7114-4020(0.3-0.5)(7)
+7114-4021(0.85-1.25)(13)
+7114-4030(0.3-0.5)(1)
+7114-4031(0.85-1.25)(2)
+
+PVC 150*150
+
+NOTE
+
+Con
+
+FUNCTION
+
+NO.
+
+2
+
+165A
+
+COT∅13×200
+
+CONNECTED TO.
+Con
+
+VT∅10*150
+
+FUNCTION
+
+463C
+3.0
+R/B
+
+60
+
+CONNECTED FROM.
+
+OrC
+3.0
+W/B
+
+rubber QW8
+
+380
+
+0
+
+160
+
+COL.
+
+GJ7021Y-4.8-11
+To engine compartment harness
+13
+
+E
+
+32
+
+95
+
+WIRE
+
+TYPE
+
+VT∅10*150
+
+WIRE
+
+DIA.
+
+W-11
+0.85
+L/Y
+
+150
+
+WIRE
+WIRE NO.
+
+ion
+
+7×
+
+CO
+
+25A
+
+NO.
+1
+
+ect
+
+T∅
+
+0bG
+0.85
+W/B
+
+13
+0
+
+dir
+
+C1048*3
+COT∅16×440
+210A
+
+front washer motor
+
+15
+0
+
+C1047
+
+80
+
+fastener direction
+C1048*5
+
+DJ7025Y-2.2-2129
+
+90
+
+0bA
+0.5
+W/B
+
+180
+
+14
+
+COT∅9×620
+
+60
+0.5
+B
+
+120
+
+C1050
+
+To brake oil reservoir
+
+0aJ
+0.5
+W/B
+
+170
+
+143
+0.5
+B/R
+
+CT 0.5t*∅10*130
+
+96
+B/W
+
+K-11
+0.5
+Y/B
+
+W-10
+0.85
+L/B
+
+20
+
+4716008
+4t×35×100
+SDJ622-F2.2U(0.3-0.5)(2)
+090G(0.3-0.5)(2)
+DJ7021-2-21
+
+VT∅8*200
+
+tristate switch (A/C )
+
+1
+
+O
+0.5
+24c
+
+25a
+0.5
+L
+DJY7011-2-11
+To sliding door light
+switch
+
+250 VT
+
+G
+
+0.85 G/W
+
+500 VT
+
+21
+
+DJ7061-2-21
+To right rear combination light
+
+OcB 0.85 W/B
+
+44
+0cB
+
+19dB 0.85
+
+R/Y
+
+49
+
+21
+
+44 0.5
+
+19dB
+
+ZDT120*7B(W)
+
+49 0.85 G/Y
+
+ZDT120*7
+
+C1050
+
+400 VT
+220 VT
+
+213 1.25 L/B
+212 1.25 L/Y
+
+230
+
+180
+
+200
+
+VT
+
+VT
+
+VT
+
+180
+VT
+
+230
+
+230
+
+VT
+
+VT
+
+230
+VT
+
+49 0.85 G/Y
+44 0.5 R/Y
+21 0.85 G/W
+19d 0.85 G
+
+1130
+VT
+
+To right rear door harness
+
+View direction
+
+wire
+
+24cA
+
+SDJ611-F2.2U(0.3-0.5)(1)
+SDJ611-F2.2B(0.85-1.25)(4)
+DJ7067Y-2.2-11(W)
+
+R/Y
+44A 0.5
+
+213
+
+0.5 0
+
+0cA 19dA 212
+
+44A
+
+280
+4t*35*55
+
+120
+VT
+
+90
+VT
+
+140
+
+255
+
+155
+
+180
+
+VT
+
+VT
+
+VT
+
+VT
+
+240 VT
+
+180 VT
+
+25a
+0.5
+L
+
+50
+4t*35*55
+
+231# 1.25 W
+230# 1.25 R
+
+100
+4t*35*55
+
+213 1.25 L/B
+
+To ceiling harness A
+
+380 VT
+
+150 VT
+
+G
+
+SDJ611-F2.2U(0.3-0.5)(3)
+SDJ611-F2.2B(0.85-1.25)(9)
+DJ7122Y-2.2-11(Gr)
+
+25a
+0.5
+L
+
+OcA 1.25 W/B
+
+19d 21 44 49
+
+231# 1.25 W
+230# 1.25 R
+Oc 1.25 W/B
+24c 0.5 O
+24cA 0.5 0
+
+212 1.25 L/Y
+
+212 213
+
+19dA 0.85
+
+0c 230# 231#
+
+230#
+231#
+
+DJ70210-2.8-21
+To right rear loudloudspeaker
+
+CONNECTED FROM.
+
+WIRE
+COL.
+
+CONNECTED TO.
+NOTE
+FUNCTION
+
+Con NO.
+
+Con NO.
+
+1
+
+0c
+
+0c
+
+0.85
+
+W/B
+
+To right rear door harness(1)
+
+1
+
+TO license light(1)
+
+4
+
+2
+
+0cA
+
+0cA
+
+0.5
+
+W/B
+
+To right rear door harness(1)
+
+1
+
+TO rear light switch (2)
+
+3
+
+3
+
+212
+
+212
+
+1.25
+
+L/Y
+
+To right rear door harness(2)
+
+1
+
+To rear door lock motor(2)
+
+2
+2
+
+213
+
+213
+
+1.25
+
+L/b
+
+To right rear door harness(6)
+
+1
+
+3
+
+5
+
+24cA
+
+24cA
+
+0.5
+
+O
+
+To right rear combination light(4)
+
+1
+
+To rear door light switch(1)
+
+6
+
+19d
+
+19d
+
+0.85
+
+G
+
+To right rear door harness(3)
+
+1
+
+To lisence light (2)
+
+4
+
+44A
+
+44A
+
+0.5
+
+R/Y
+
+To RR door harness
+
+1
+
+To reverse camera(2)
+
+5
+
+0cB
+
+0cB
+
+0.5
+
+W/B
+
+TO JOc
+
+0c/0cA
+
+To reverse camera(1)
+
+3
+
+0.85/0.5
+
+1
+
+W/B
+19d
+0.85
+G
+
+25a
+0.5
+L
+
+44A
+0.5
+R/Y
+
+212
+1.25
+L/Y
+213
+1.25
+L/B
+
+SDJ611-F2.2U(0.3-0.5)(1)
+SDJ611-F2.2B(0.85-1.25)(4)
+DJ7064Y-2.2-11(W)
+
+SDJ621-G2.2*0.6A(0.85-1.25)(2)
+
+To right rear door harness
+
+DJ7022Y-2.2-21(W)
+TO license light(1)
+282080-1
+
+340
+
+2
+
+30
+140
+
+DJ90112(B)(0.85-1.25)(2)
+
+rear door lock motor
+
+213
+1.25
+L/B
+
+212
+1.25
+L/Y
+
+VTØ8×320
+
+1
+
+SDJ612-F2.2A(0.85-1.25)(2)
+
+DJ70218Y-2.2-11(Gr)
+
+To reverse camera
+
+5
+
+ZDT120*7(B)
+
+44A
+0.5
+R/Y
+
+19d
+0.85
+G
+
+2
+0cB
+0.5
+W/B
+
+4
+
+0c
+0.85
+W/B
+
+VTØ8×90
+
+VTØ8×120
+
+4
+
+To rear door lock motor(1)
+
+VTØ8×90
+
+FUNCTION
+
+100
+
+WIRE
+TYPE
+
+50
+
+WIRE
+DIA.
+
+A direction
+
+WIRE NO.
+
+100
+
+NO.
+
+HB-55(B)
+
+110
+
+270
+
+80
+
+0
+×7
+
+Ø8
+
+VT
+
+3
+
+0cA
+0.5
+W/B
+
+SDJ621-G2.2*0.6T(0.3-0.5)(2)
+25a
+0.5
+L
+
+DJ7022Y-2.2-21(W)
+To rear door light switch
+
+37Z15-24160
+rear door harness
+
+NO.
+
+WIRE NO.
+
+WIRE
+DIA.
+
+WIRE
+TYPE
+
+WIRE
+COL.
+
+CONNECTED FROM.
+
+CONNECTED TO.
+
+Length
+distinguishing
+
+NOTE
+FUNCTION
+
+Con NO.
+
+FUNCTION
+
+Con NO.
+
+1
+
+A
+
+A
+
+20
+
+HEB
+
+B/R
+
+Battery positive pole
+
+4
+
+engine
+
+1
+
+2
+
+B
+
+B
+
+20
+
+EB
+
+B/Gr
+
+Battery negative terminal
+
+5
+
+Engine ground
+
+2
+
+3
+
+75
+
+75
+
+3.0
+
+AVS
+
+B
+
+starter
+
+6
+
+engine compart ment harness
+
+3
+
+Allowable tolerance(mm)
+main line
+
+0～200
+
++10,-0
+
+＞200～1000
+
++20,-0
+
+＞1000～2000
+
++30,-0
+
+＞2000
+
++2%,-0%
+
+Refer To the diagram if there is special guidance tolerance
+90980-09506(20.0)
+7034-6311-10（Gr）
+
+4
+
+1
+
+TO engine
+
+90980-09438(20.0)
+
+0
+
+Ø16×45(B)6
+rk
+ma
+red
+
+CO
+
+TØ
+
+11
+
+120
+*75
+
+3
+
+0
+
+D
+
+To battery positive pole
+
+n
+
+tio
+
+ec
+
+dir
+
+With 90982-05035A pile head
+
+DWJ-B69(B)
+
+200
+
+50
+
+6
+
+210
+
+7116-4037(2.0-3.0)(1)
+
+SDJ621-F6.3C(2.0-3.0)(1)
+
+260
+
+DJ90114(2.0-3.0)(B)(1)
+75
+3.0
+B
+
+6189-0413(B)
+To starter
+
+50
+
+75
+3.0
+B
+
+VTØ6*610
+
+DJ7011-6.3-21(B)
+TO engine compartment harness
+
+A
+direction
+
+210
+
+40
+0
+
+C
+dire
+
+ctio
+
+C
+
+n
+
+tio
+irec
+
+n
+
+50
+
+d
+
+CO
+
+TØ
+
+1*7
+
+1
+
+150
+FD560-D10(20.0-25.0)
+To engine ground wire
+
+A view
+
+C view
+
+2
+
+5
+
+FD560-D10(20.0-25.0)
+To battery cathode
+
+D view
+
+37Z15-24180
+Battery harness Asy
+
+100
+C1050
+212
+1.25
+L/Y
+22c
+0.5
+L/Y
+
+70
+
+60
+
+60
+
+230
+
+100
+
+VT
+ZDT120*7
+
+80
+
+1
+
+213
+1.25
+L/B
+25a
+0.5
+L
+
+5
+15
+
+a
+
+SDJ622-F2.2U(0.3-0.5)(2)
+090G(0.3-0.5)(2)
+SDJ622-F2.2A(0.85-1.25)(2)
+DJ90112(B)(0.85-1.25)(2)
+
+ZDT120*7
+
+a
+25a
+0.5
+L
+
+180
+
+DJ70613Y-2.2-21(Gr)
+TO engine compartment harness
+
+22c
+0.5
+L/Y
+
+3
+SDJ621-F3*0.6A(0.5-0.85)(2)
+AMP
+
+2
+
+213
+1.25
+L/B
+
+282080-1
+
+212
+1.25
+L/Y
+
+SDJ611-F2.2B(0.85-1.25)(2)
+DJ70616Y-2.2-11(W)
+TO sliding door limiter
+
+37Z15-24210
+Step harness
+
+OcB 0.5
+19dB
+
+OcB 0.5
+
+W/B
+
+0cB
+
+300
+
+19dB 0.85 G
+
+100
+
+AMP-282080-1
+
+80
+
+W/B
+
+19dB 0.85 G
+
+0c 19d
+
+DJ7022Y-2.2-11(W)
+To rear dorr harness
+
+Right license light
+
+0cA
+
+Left License plate lamp
+
+View direction
+
+wire
+
+OcA 0.5
+
+19dA
+
+AMP-282080-1
+
+19dA 0.85 G
+
+W/B
+
+60
+
+70,48
+
+R5
+
+R3
+
+1
+
+1
+
+6
+
+135,36
+
+The thickness of the plate is 1
+Material Q235
+Technical requirement
+1. Remove lint and zinc plating.
+2. Detailed dimensions are based on 3D data
+
+37Z15-24290
+ABS sensor harness mounting bracket 1
+
+Technical requirement
+1. Remove lint and zinc plating.
+2. Detailed dimensions are based on 3D data
+
+122,89
+
+R5
+
+67,33
+
+Technical requirement
+1. Remove lint and zinc plating.
+2. Detailed dimensions are based on 3D data
+
+37Z15-24320
+ABS controller harness mounting bracket
+
+2
+13a
+0.85
+L/W
+
+AMP-282080-1
+To left fog lamp
+
+M6
+COTØ5*230
+
+250
+
+0bA
+0.85
+W/B
+
+1
+
+0b
+0.85
+W/B
+
+4
+
+300
+
+AMP-282080-1
+To right fog lamp
+
+3
+
+COTØ5*1650
+
+13a
+0.85
+L/W
+13b
+0.85
+L/W
+
+240
+COTØ7*160
+
+40
+
+120
+
+185
+
+C direction
+
+C direction
+
+250
+C direction
+
+330
+
+250
+
+C direction
+
+C direction
+
+175
+
+290
+C direction
+
+0b
+0.85
+W/B
+
+COTØ5*1650
+70
+
+SDJ622-F2.2B(2.0)(2)
+DJ90112(0.85-1.25)(B)(2)
+DJ7002Y-2.2-2(B)
+DJ70613Y-2.2-21(Gr)
+
+C1047
+
+C1047
+C1047
+
+To front body cover lamp harness
+
+37Z15-24130
+front fog lamp harness
+
+13b
+0.85
+L/W
+
+NO.
+
+WIRE NO.
+
+WIRE
+
+WIRE
+
+WIRE
+
+DIA.
+
+TYPE
+
+COL.
+
+CONNECTED FROM.
+FUNCTION
+
+CONNECTED TO.
+Con
+NO.
+
+FUNCTION
+
+Con
+
+NOTE
+
+NO.
+
+1
+
+0n
+
+0n
+
+0.5
+
+AVSS
+
+W/B
+
+TO Fuel Sensor Harness (3)
+
+1
+
+TO frame wiring harness (2)
+
+2
+
+2
+
+0na
+
+0na
+
+2.0
+
+AVSS
+
+W/B
+
+TO Fuel Sensor Harness (4)
+
+1
+
+TO frame wiring harness (3)
+
+2
+
+3
+
+144
+
+144
+
+2.0
+
+AVSS
+
+R
+
+TO Fuel Sensor Harness (1)
+
+1
+
+TO frame wiring harness (9)
+
+2
+
+4
+
+58
+
+58
+
+0.5
+
+AVSS
+
+Y/L
+
+TO Fuel Sensor Harness (2)
+
+1
+
+TO frame harness(7)
+
+2
+
+1
+282403-1(0.3-0.5)(2)
+282466-1(1.5-2.5)(2)
+86318-428(G)(2)
+282088-2(Gr)
+To fuel sensor
+
+2
+
+100
+58
+0.5
+Y/R
+0n
+0.5
+W/B
+
+670
+
+0na 0n 58 144
+2.0 0.5 0.5 2.0
+W/B W/B Y/R R
+
+70
+
+70
+
+144
+2.0
+R
+0na
+2.0
+W/B
+
+SDJ612-F2.2B(2.0)(2)
+SDJ612-F2.2U(0.3-0.5)(2)
+090R(2.0)(2)
+090G(0.3-0.5)(2)
+DJ7002Y-2.2-2(B)(2)
+DJ70613Y-2.2-21(B)
+To frame wire harness
+
+100
+
+37Z15-24170
+Fuel sensor harness
+
+NO.
+
+WIRE NO.
+
+CONNECTED FROM.
+
+CONNECTED TO.
+
+WIRE
+
+WIRE
+
+WIRE
+
+DIA.
+
+TYPE
+
+COL.
+
+FUNCTION
+
+Con NO.
+
+To engine compartment harness
+
+1
+
+TO driver safety mortise lock (2)
+
+2
+
+TO engine compartment harness (1)
+
+1
+
+TO driver lock harness(1)
+
+2
+
+1
+
+0d
+
+0d
+
+0.5
+
+AVSS
+
+W/B
+
+2
+
+B04
+
+B04
+
+0.5
+
+AVSS
+
+Y
+
+NOTE
+FUNCTION
+
+Con NO.
+
+SDJ621-F2.2U(0.3-0.5)/617203(2)
+
+DWJ-B72
+
+DJ70227Y-2.2-21(W)
+TO engine compartment harness
+
+1
+
+B04 0d
+0.5 0.5
+Y W/B
+
+110
+
+115BNB
+
+B direction
+180BNB
+
+B direction
+300BNB
+
+(115)
+
+A direction
+
+B direction
+250BNB
+
+240BNB
+C direction
+
+(50)
+
+C1048
+
+1200BNB
+
+DWJ-B73(W)
+
+2
+
+B04 0d
+0.5 0.5
+Y W/B
+
+DJ7021-2.3-21
+TO driver safety mortise lock
+
+37Z15-24220
+safty belt alarm harness on driver's side
+
+NO.
+
+WIRE NO.
+
+1
+
+C
+
+C
+
+WIRE WIRE
+DIA. TYPE
+
+WIRE
+COL.
+
+QVR
+
+B
+
+25
+
+CONNECTED FROM.
+FUNCTION
+TO battery negative pole(1)
+
+CONNECTED TO.
+Con
+NO.
+1
+
+FUNCTION
+TO ground(2)
+
+Con
+NO.
+2
+
+NOTE
+
+1
+
+2
+
+C
+25
+B
+
+C
+25
+B
+
+FD435-D8-(25.0)(1)
+RPTL0036S
+To battery cathode
+
+FD435-D8(25)(1)
+To body ground
+
+37Z15-24190
+Battery negative ground wire harness
+
+Functions and colors
+Groups
+
+0
+
+Meanings
+
+Ground Power
+And
+start
+B
+
+Wire
+color
+
+1
+
+2
+
+R
+
+3
+
+4
+
+5
+
+6
+
+7
+
+Lamp Accessory
+device
+and
+audio
+
+Spare
+
+A/C
+Heater
+Fuel
+heater
+
+Engine
+Electric
+control
+
+ABS Retarder
+ECAS AT
+
+G
+
+Gr
+
+L
+
+W
+
+Y
+
+V
+
+8
+
+P
+
+9
+
+H
+
+Instrument
+And
+signal
+
+Hybrid
+Power
+
+Br
+
+O
+
+Wire number and explanation
+Wire
+number
+
+Function
+
+Color
+
+Wire
+number
+
+Function
+
+Color
+
+0-Ground（B-black）
+0035
+
+Ground
+
+B
+
+* 0035A，0035B，0035C etc.
+
+1-Power and start（R-red）
+1011
+
+Switch power *
+
+R
+
+* 0011A，0011B，0011C etc.
+
+2005
+
+Left directional lamp
+
+G
+
+2105
+
+Left directional lamp switch
+
+G
+
+2006
+
+Alarm lamp ON power
+
+G
+
+2116
+
+Aisle lamp switch
+
+G
+
+2007
+
+Flasher output
+
+G
+
+2117
+
+Aisle lamp
+
+G
+
+2008
+
+Brake lamp power
+
+G
+
+2118
+
+Fluorescent lamp switch 2 power
+
+G
+
+2012
+
+Dimmer switch
+
+G
+
+2122
+
+Luggage chamber lamp
+
+G
+
+2014
+
+Low beam control
+
+G
+
+2123
+
+Fluorescent lamp switch 3 power
+
+G
+
+2015
+
+Right high beam lamp
+
+G
+
+2123
+
+Luggage chamber lamp control
+
+G
+
+2016
+
+Lamp switch power
+
+G
+
+2136
+
+Left reading lamp
+
+G
+
+2017
+
+Contour lamp
+
+G
+
+2137
+
+Right reading lamp
+
+G
+
+2018
+
+Reverse lamp switch power
+
+G
+
+2138
+
+Reading lamp relay control
+
+G
+
+2024
+
+Fluorescent lampswitch power1
+
+G
+
+2139
+
+Reading lamp switch power
+
+G
+
+2025
+
+Front fog lamp
+
+G
+
+2144
+
+Brake lamp
+
+G
+
+2026
+
+High beam control
+
+G
+
+2171
+
+Contour lamp control
+
+G
+
+2027
+
+Front fog lamp control
+
+G
+
+2182
+
+Rear fog lamp control
+
+G
+
+2028
+
+Left high beam
+
+G
+
+2413
+
+Switch illumination lamp
+
+G
+
+2066
+
+Fluorescent lamp 2
+
+G
+
+2240
+
+Engine chamber lamp
+
+G
+
+1134
+
+CAN module 3 switch power 2
+
+R
+
+2067
+
+Left low beam
+
+G
+
+2315
+
+Fog lamp switch power
+
+G
+
+1201
+
+Front electric box ACC power
+
+R
+
+2069
+
+Reverse lamp
+
+G
+
+2321
+
+Brake lamp failure alarm
+
+G
+
+1023
+
+Ignition lock start position
+
+R
+
+1202
+
+Front electric box ON power
+
+R
+
+2075
+
+Fluorescent lamp 3
+
+G
+
+2322
+
+Left brake lamp
+
+G
+
+1031
+
+ON control
+
+R
+
+1203
+
+Front electric box permanent power
+
+R
+
+2076
+
+Right low beam
+
+G
+
+2323
+
+Right brake lamp
+
+G
+
+1032
+
+Battery permanent power *
+
+R
+
+1241
+
+Neutral relay input
+
+R
+
+2078
+
+Fluorescent lamp 1
+
+G
+
+2413
+
+Switch illumination lamp
+
+G
+
+1242
+
+Rear flap opening indication
+
+R
+
+2080
+
+Fluorescent lamp 4
+
+G
+
+2600
+
+Driver lamp
+
+G
+
+2082
+
+Rear fog lamp
+
+G
+
+2601
+
+Driver lamp switch
+
+G
+
+2083
+
+Rear fog lamp forgetting
+shut-off relay input
+
+G
+
+2800
+
+Right reading lamp relay input
+
+G
+
+2084
+
+Rear fog lamp
+shut-off buzzer
+
+G
+
+* 0032A，0032B，0032C etc.
+1037
+
+ACC control
+
+R
+
+1243
+
+Shift relay control
+
+R
+
+1038
+
+Ignition lock start position
+
+R
+
+1301
+
+Rear start button output
+
+R
+
+1047
+
+Start relay input
+
+R
+
+1302
+
+Rear start power
+
+R
+
+1050
+
+Engine stop power
+
+R
+
+1341
+
+Water fountain power
+
+R
+
+1059
+
+Chief power switch control
+
+R
+
+1342
+
+Refrigerator power
+
+R
+
+1159
+
+Emergency switch
+
+R
+
+1343
+
+Preheating power
+
+R
+
+1060
+
+Start relay output
+
+R
+
+1421
+
+ACC fuse box power 1
+
+R
+
+3001
+
+Door power
+
+V
+
+3149
+
+Left powered sunshade lifting
+
+V
+
+1184
+
+Alternator N or W signal
+
+R
+
+1422
+
+ACC fuse box power 2
+
+R
+
+3019
+
+Audio switch power
+
+V
+
+3150
+
+Left powered sunshade lowering
+
+V
+
+1111
+
+CAN module1 permanent power1
+
+R
+
+1423
+
+ACC fuse box power 3
+
+R
+
+3013
+
+Electric horn
+
+V
+
+3151
+
+Right powered sunshade lifting
+
+V
+
+1112
+
+CAN module1 permanent power2
+
+R
+
+1424
+
+ACC fuse box power 4
+
+R
+
+3020
+
+Wiper washer power
+
+V
+
+3152
+
+Right powered sunshade lowering
+
+V
+
+1113
+
+CAN module1 switch power1
+
+R
+
+1431
+
+ON relay power input
+
+R
+
+3021
+
+Coin box machine power
+
+V
+
+3160
+
+Toilet occupation
+
+V
+
+1114
+
+CAN module1 switch power2
+
+R
+
+1432
+
+ON relay power output
+
+R
+
+3030
+
+Guideboard switch power
+
+V
+
+3161
+
+Toilet help
+
+V
+
+1121
+
+CAN module2permanent power1
+
+R
+
+1433
+
+Rear electric box ON relay control
+
+R
+
+3033
+
+Front door control
+
+V
+
+3162
+
+Toilet dirty water level alarm
+
+V
+
+1122
+
+CAN module2 permanent power2
+
+R
+
+1434
+
+Front electric box ON relay control
+
+R
+
+3036
+
+Middle door control
+
+V
+
+3172
+
+Signal arm control signal
+
+V
+
+1123
+
+CAN module2 switch power1
+
+R
+
+1501
+
+Wakeup power 1
+
+R
+
+3039
+
+Wiper reposition
+
+V
+
+3174
+
+Guideboard control
+
+V
+
+1124
+
+CAN module2 switch power2
+
+R
+
+1502
+
+Wakeup power 2
+
+R
+
+1131
+
+CAN module3 permanent power1
+
+R
+
+1510
+
+CAN switch group power 1
+
+R
+
+3040
+
+Wiper switch reposition
+
+3175
+
+Rear view
+power
+
+1132
+
+CAN module3 permanent power2
+
+R
+
+1511
+
+CAN switch group power 2
+
+R
+
+3041
+
+Wiper switch intermittent
+
+V
+
+3179
+
+Signal arm power
+
+V
+
+1133
+
+CAN module3 switch power1
+
+R
+
+1512
+
+Diagnostic switch and OBD power
+
+R
+
+3042
+
+Windscreen washer
+
+V
+
+3178
+
+School bus lamp power
+
+V
+
+3044
+
+Rear passenger door opening
+indication
+
+V
+
+3188
+
+Inside display device switch power
+
+2-lamp（G-green）
+
+forgetting
+
+3-Accessory and audio（V-violet）
+
+V
+
+mirrorswitch
+
+control
+
+V
+
+V
+
+2002
+
+Flasher input
+
+G
+
+2100
+
+Daylight driving lamp
+
+G
+
+2003
+
+Alarm switch permanent power
+
+G
+
+2101
+
+Daylight driving lamp control
+
+G
+
+3045
+
+Low wiper speed
+
+V
+
+3189
+
+Driver fan switch power
+
+V
+
+2004
+
+Right directional lamp
+
+G
+
+2104
+
+Right directional lamp switch
+
+G
+
+3046
+
+Low wiper speed
+
+V
+
+3191
+
+Yellow ready parking lamp
+
+V
+1
+
+3049A
+
+Checking
+Left
+controller/closing
+output
+
+child
+door
+
+V
+
+V
+3192
+
+Red ready parking lamp
+
+3143
+
+Powered sunshade/
+cigar lighter
+
+V
+
+3147
+
+Toilet clean water level alarm
+
+V
+
+3701
+
+high temp.alarmoutput
+
+V
+
+3049
+
+Front door closing control
+
+V
+
+3193
+
+Parking ring power-fuse to switch
+
+V
+
+4-spare（Gr）
+
+3051
+
+LF speaker +
+
+V
+
+3194
+
+Parking ring power-switch to ring
+
+V
+
+5-A/Cheater/fuel pipe heating（L）
+
+3052
+
+LF speaker -
+
+V
+
+3196
+
+School bus lamp
+
+V
+
+5010
+
+A/Ccontrolpower
+
+L
+
+5181
+
+Defroster low speed
+
+L
+
+3053
+
+LR speaker +
+
+V
+
+3197
+
+Window Glass breaker +
+
+V
+
+5011
+
+A/Ccapacitorpower
+
+L
+
+5182
+
+Defroster high speed
+
+L
+
+3054
+
+LR speaker -
+
+V
+
+3198
+
+Window glass braker -
+
+V
+
+5091
+
+Preheating power
+
+L
+
+5281
+
+Defrosterlow speed switch
+
+L
+
+3055
+
+RF speaker +
+
+V
+
+3216
+
+Air cleaner
+
+V
+
+5092
+
+Floor heater power
+
+L
+
+5282
+
+Defrosterhigh speed switch
+
+L
+
+3052
+
+RF speaker -
+
+V
+
+3233
+
+Front door opening switch
+
+V
+
+3053
+
+RR speaker+
+
+V
+
+3236
+
+Middle door opening switch
+
+V
+
+5093
+
+Middle door closing Control
+A/Cpower control
+
+L
+
+5312
+
+3054
+
+RRspeaker-
+
+V
+
+3242
+
+Windshield washer switch
+
+V
+
+5094
+
+A/C alternator exciting
+
+L
+
+5313
+
+No-batterycapacitor output
+
+L
+
+3068
+
+Horn button
+
+V
+
+3249
+
+Front door closing switch
+
+V
+
+5097
+
+Preheating control
+
+L
+
+5509
+
+No-batterycapacitor ground
+
+L
+
+3072
+
+Brake condensing separator
+
+V
+
+3255
+
+Signalarm opening output
+
+V
+
+5098
+
+Preheating plug
+
+L
+
+5552
+
+Driver A/C power1
+
+L
+
+3074
+
+Exhaust brake switch
+
+V
+
+3293
+
+Middle door closing switch
+
+V
+
+5119
+
+Defroster power
+
+L
+
+5553
+
+Driver A/C power2
+
+L
+
+3077
+
+exhaust brake solenoid valve
+
+V
+
+3300
+
+Safety window switch output
+
+V
+
+5167
+
+Engine idle-up solenoid valve
+
+L
+
+3079
+
+Accelerator pedal switch
+
+V
+
+3301
+
+Safety door switch output
+
+V
+
+3080
+
+Guideboard
+
+V
+
+3302
+
+Looking-around button switchoutput
+
+V
+
+3081
+
+Front door opening indication
+signal
+
+V
+
+3303
+
+Air releasing valve alarm
+
+3085
+
+Station broadcasting inside
+speaker
+
+V
+
+3311
+
+Centralized
+power
+
+3086
+
+Speaker connecting wire 1
+
+V
+
+3317
+
+TV switch power
+
+3087
+
+Station broadcasting outside
+speaker
+
+V
+
+3318
+
+Getting-off monitor power
+
+3088
+
+Speaker connection wire 2
+
+V
+
+3324
+
+Audio permanent power
+
+3089
+
+Driver fan
+
+V
+
+3330
+
+3093
+
+Middle door closing control
+
+V
+
+3094
+
+Passenger service button
+
+3095
+
+Asking getting-off button
+
+3096
+
+lubrication
+
+V
+control
+
+V
+V
+
+No-battery capacitor sample
+
+L
+
+6-engineelectrical control（W）
+6129
+
+Exhaust brake valve
+
+W
+
+6232
+
+Engine electrical control ON
+power
+
+W
+
+6233
+
+engineelectrical control
+permanent power
+
+W
+
+6303
+
+Rear stop button output
+
+W
+
+V
+
+6240
+6640
+6641
+
+Engine chamber lamp
+
+W
+W
+
+NG content sensor ground
+W
+NG content sensor power（12V）
+
+7-ABS、ECAS（Y）
+7128
+
+ABS working state control
+
+Y
+
+7146
+
+ABS indication
+
+Y
+
+V
+
+7140
+
+ECAS ON power
+
+Y
+
+7314
+
+ABS control power
+
+Y
+
+Front TV display
+
+V
+
+7141
+
+ECAS permanent power
+
+Y
+
+7316
+
+ABS power
+
+Y
+
+3331
+
+Middle display device
+
+V
+
+3380
+
+Preparing
+output
+
+V
+
+3389
+
+Safety belt switch
+
+V
+
+Coin machine lamp
+
+V
+
+3501
+
+TV switch power
+
+V
+
+3097
+
+Coin machine switch output
+
+V
+
+3504
+
+audio12Vswitchpowerinput+
+
+V
+
+3115
+
+Display device switch power
+
+V
+
+3505
+
+Audio 12V power input-
+
+V
+
+3116
+
+Electronic clock
+
+V
+
+3506
+
+Audio 12V permanent power input+
+
+3121
+
+Luggage chamber hatch opening
+indication
+
+V
+
+3510
+
+Ventilation fan +
+
+3124
+
+Front door step lamp
+
+V
+
+3513
+
+Ventilation fan -
+
+3125
+
+Middle door step lamp
+
+V
+
+3520
+
+3130
+
+Electric horn
+
+V
+
+3131
+
+Pneumatic horn
+
+3132
+
+V
+
+parking
+
+lamp
+
+switch
+
+V
+
+8-retarder、AT（P）
+8008
+
+Retarder ON power
+
+P
+
+8127
+
+Retarder control power
+
+P
+
+8010
+
+Retarder SHUTOFF switch
+
+P
+
+8205
+
+Retarder indication
+
+P
+
+9-instrument cluster/signal（Br）
+9009
+
+Instrument cluster ON power
+
+Br
+
+9108
+
+RM brake pad wearing alarm
+
+9029
+
+coolant temp.too high alarm
+switch
+
+Br
+
+V
+
+9034
+
+Charging indicator1
+
+V
+
+9043
+
+Br
+
+9109
+
+LR brake pad wearing alarm
+
+Br
+
+9110
+
+RR brake pad wearing alarm
+
+Br
+
+Parking braking indicator
+
+Br
+
+9145
+
+Centralized lubrication indicator
+
+Br
+
+9048
+
+Brake lamp switch output
+
+Br
+
+9148
+
+Fuel leveltoo low indicator
+
+Br
+
+V
+
+9061
+
+air pressureⅠtoo low alarm
+
+Br
+
+9156
+
+air pressureⅡ too low alarm
+
+Br
+
+Middle door emergency valve alarm
+
+V
+
+9062
+
+Engine coolant temp.
+
+Br
+
+9200
+
+Brake pad alarm output
+
+Br
+
+3521
+
+Front dooremergency valve alarm
+
+V
+
+9063
+
+Fuel gauge
+
+Br
+
+9218
+
+Neutral position signal
+
+Br
+
+V
+
+3602
+
+Engine extinguisher power -
+
+V
+
+9064
+
+Odometer sensor power
+
+Br
+
+9324
+
+Instrument permanent power
+
+Br
+
+Toilet vent fan power
+
+V
+
+3603
+
+Engine extinguisher power +
+
+V
+
+9065
+
+odometersensoroutputsignal
+
+Br
+
+9401
+
+air pressureⅡsensor(spare)
+
+Br
+
+3133
+
+Wiper low speed control
+
+V
+
+3604
+
+Engine extinguisher feedback -
+
+V
+
+9070
+
+Engine rev signal+
+
+Br
+
+9400
+
+air pressureⅠsensor（spare）
+
+Br
+
+3134
+
+Wiper high speed control
+
+V
+
+3605
+
+Engine extinguisher feedback +
+
+V
+
+9071
+
+Engine rev signal-
+
+Br
+
+9507
+
+air pressure Ⅲ too low alarm
+
+Br
+
+3142
+
+Wiper relay connection
+
+V
+
+3631
+
+Side mirror defrosting
+
+V
+
+9073
+
+Oil pressure alarm
+
+Br
+
+9503
+
+air pressure Ⅲ sensor
+
+Br
+
+Br
+
+2
+
+9083
+
+Air filter blocked alarm
+
+Br
+
+9511
+
+coolant temp./level alarm buzzer
+
+Br
+
+9089
+
+Too low coolant level alarm
+
+Br
+
+9651
+
+vehicle speed signal1
+
+Br
+
+9090
+
+Oil pressure indication
+
+Br
+
+9652
+
+vehicle speed signal2
+
+Br
+
+9101
+
+Engine chamber
+high temp.alarm1
+
+Br
+
+9102
+
+Engine chamber high
+temp.alarm2
+
+Br
+
+9103
+
+Retarder high temp.alarm
+
+Br
+
+9104
+
+Luggage
+temp.alarm
+
+9105
+
+LF brake pad wearing alarm
+
+Br
+
+9657
+
+vehicle speedsignal7
+
+Br
+
+9106
+
+RF brake pad wearing alarm
+
+Br
+
+9658
+
+vehicle speedsignal8
+
+Br
+
+9107
+
+LM brakepad wearing alarm
+
+Br
+
+9834
+
+Charging indicator2
+
+Br
+
+chamber
+
+high
+
+Br
+
+9653
+9654
+9655
+9656
+
+Br
+vehicle speedsignal3
+Br
+vehicle speedsignal4
+vehicle speed signal5
+
+Br
+Br
+
+vehicle speed signal6
+
+H-hybrid
+
+3.3 wire code meanings
+0035A------ 1.0
+
+B
+Wire color
+Wire sectional area
+Wire code
+
+3
+
+

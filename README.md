@@ -1,11 +1,10 @@
-# RAG Proactive Lab
+# 🚀 RAG Proactive Lab
 
-Laboratorio integrado que reúne:
+**Ecosistema completo de inteligencia artificial para análisis de riesgo crediticio** que combina 6 agentes especializados para decisiones financieras más justas y precisas.
 
-- **PIA** – agente conversacional/postventa con memoria de casos, prompts híbridos y gestión de evidencias.
-- **Motor TIR / Protección** – cálculo determinístico de escenarios (defer, stepdown, balloon) que preservan la TIR mínima.
-- **HASE** – motor de scoring que consume outcomes + señales de comportamiento.
-- **Capa LLM** – notas de expediente, alertas proactivas, storytelling y extracción de señales en texto/audio.
+## 🎯 Resumen Ejecutivo
+
+Este laboratorio integra **análisis de voz + comportamiento digital + decisión inteligente** para revolucionar la evaluación crediticia tradicional.
 
 ## Estructura
 

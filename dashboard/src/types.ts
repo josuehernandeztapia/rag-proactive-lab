@@ -101,6 +101,23 @@ export interface LlmAlert {
   };
 }
 
+export interface GuardianAlert {
+  id: string;
+  generatedAt: string;
+  eventTs: string | null;
+  placa: string;
+  alertType: string;
+  severity: string;
+  message: string;
+  summary: string;
+  recommendation: string;
+  contact: string | null;
+  source?: string;
+  insight?: Record<string, unknown> | null;
+  scenario?: string;
+  market?: string;
+}
+
 export interface FeatureRow {
   placa: string;
   outcomes_total: number;
@@ -126,4 +143,5 @@ export interface DemoDataset {
   outcomeScenarios: OutcomeScenarioSummary[];
   features: FeatureRow[];
   alerts: LlmAlert[];
+  guardianAlerts: GuardianAlert[];
 }

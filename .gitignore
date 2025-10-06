@@ -44,6 +44,11 @@ secrets.local.txt
 /conductores/
 notebooks/
 pwa_angular-restored/
+rag-pinecone/
+
+# Prevent backup and duplicate files
+*backup*
+*restored*
 
 # Allow critical files for lab functionality
 !config/financial.yml

@@ -1,0 +1,70 @@
+timezone: America/Mexico_City
+paths:
+  devices: conductores/docs/geotab_api/Device.csv
+  faults: conductores/docs/geotab_api/FaultData.csv
+  telemetry_summary: data/telemetry_summary_from_geotab.csv
+  pia_features: data/pia/pia_features_augmented.csv
+  output: data/guardian/guardian_insights.csv
+  outbox: reports/guardian_outbox.jsonl
+alerts:
+  downtime:
+    min_hours_30d: 120
+    min_activity_drop_pct: 0.35
+    lookback_days: 30
+    severity: high
+  consumption:
+    drop_pct_threshold: 0.25
+    min_litros_30d: 200
+    lookback_days: 30
+    severity: medium
+  inactivity:
+    min_activity_drop_pct: 0.45
+    lookback_days: 14
+    severity: medium
+  driving:
+    harsh_event_ids:
+    - DiagnosticAccidentLevelAccelerationEventId
+    - aUwYkR8e7SUcv81plk3q2Bg
+    - a1Tk3wGv3V4SW1t3sDbpsjw
+    min_events: 3
+    lookback_days: 7
+    severity: medium
+  dtc:
+    include_pending: true
+    max_age_days: 14
+    min_repeat: 1
+    severity_map:
+      MaintenanceOnly: medium
+      CriticalOnly: high
+      Safety: high
+      default: medium
+    fallback_severity: medium
+  autohandoff:
+    telemetry_health: postventa_soporte
+    downtime: postventa_soporte
+    off_hours_usage: postventa_soporte
+    geofence: postventa_soporte
+    energy: postventa_soporte
+    dtc: postventa_tecnico
+    driving: postventa_tecnico
+    consumption: pia
+  autohandoff_rules:
+    postventa_soporte:
+      auto_escalate: true
+      channels:
+      - slack
+      - ticket
+    postventa_tecnico:
+      auto_escalate: true
+      channels:
+      - ticket
+    pia:
+      auto_escalate: true
+      channels:
+      - alert_hub
+geofence:
+  enabled: false
+  safe_zones:
+  - id: patio_principal
+    geotab_zone_id: b201
+  - id

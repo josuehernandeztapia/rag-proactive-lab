@@ -1,0 +1,10 @@
+placa,alert_type,severity,details,triggered_at,code,diagnostic_id
+A-05502-A,telemetry_health,high,Sin señal telemática > 120 min | Revisar alimentación GO,2025-09-20T14:45:00+00:00,,
+A-05507-A,geofence,medium,Unidad salió del patio_principal y lleva 62 min fuera de zona autorizada,2025-09-21T18:30:00+00:00,,
+060381K,off_hours_usage,medium,2 viajes 38 km fuera de horario laboral (22:00-06:00),2025-09-22T05:40:00+00:00,,
+EV-001,energy,warning,SOC cayó a 18% y consumo 32% bajo promedio 14d,2025-09-23T11:15:00+00:00,,
+A-05507-A,dtc,medium,Código P0420 | Catalizador por debajo del umbral | Estado: Active,2025-09-18T19:57:00+00:00,P0420,aRayqcO358UOecqMvt8JlHw
+A-05502-A,dtc,high,Código DEVICE-UNPLUGGED | Dispositivo GO desconectado | Estado: Pending,2025-09-05T18:19:23+00:00,DEVICE-UNPLUGGED,DiagnosticDeviceHasBeenUnpluggedId
+0116YXA,downtime,high,154.7 h sin movimiento en 30d | Cobertura 14d: 0.69,2025-09-17T08:05:00+00:00,,
+060381K,consumption,medium,Consumo cayó 28% y sólo registra 210 L en 30d,2025-09-16T12:00:00+00:00,,
+A-05355-A,driving,medium,5 eventos de frenado brusco en 7 días,2025-09-15T09:30:00+00:00,,
