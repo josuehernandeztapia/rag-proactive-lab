@@ -21,18 +21,111 @@ reports/                 # Notas, alertas, outbox y logs de LLM
 docs/                    # Guías (smoke, orquestación)
 ```
 
-## Alcance del repositorio
+## 🎯 ¿Qué es este laboratorio?
 
-Este repositorio reúne **todos los agentes y demos del laboratorio**:
+Este es un **ecosistema completo de inteligencia artificial** para análisis de riesgo crediticio que combina múltiples agentes especializados. Piensa en él como un "cerebro digital" que puede:
 
-- `agents/` – implementación de HASE y PIA (motor TIR/Protección) + reglas y servicios LLM.
-- `scripts/` – orquestadores de demo (`make demo-proteccion`), notifier LLM y smoketests.
-- `data/`, `reports/` – artefactos sintéticos que alimentan el demo (re-gen con `make demo-proteccion`).
-- `dashboard/` – dashboard React (Vite) para narrar el demo; sincroniza datasets con `npm run sync-data`.
-- `docs/` – runbooks, HUs y documentación funcional.
-- `pwa_angular/` – submódulo del bot de postventa (UI Angular) apuntando a `josuehernandeztapia/pwa_angular`.
+- 🎤 **Analizar tu voz** durante una entrevista (AVI)
+- 📊 **Evaluar tu comportamiento** financiero (HASE)
+- 💰 **Calcular escenarios** de protección financiera (TIR)
+- 🤖 **Tomar decisiones** inteligentes sobre crédito (PIA)
+- 📱 **Gestionar casos** de postventa
+- 📈 **Visualizar resultados** en tiempo real (Dashboard)
 
-> 🧹 Para mantener el repo ligero y listo para due diligence se ignoran carpetas locales como `conductores/`, `config/`, `migrations/`, `models/`, `notebooks/`, `pwa_angular-restored/` y archivos duplicados tipo `archivo 2.py`. Si necesitas esos insumos, consérvalos fuera del árbol de Git o en repos dedicados.
+## 🧠 Los 5 Agentes del Ecosistema
+
+### 1. **AVI** - Tu Entrevistador Virtual 🎤
+- **¿Qué hace?** Analiza tu voz durante una entrevista de 55 preguntas
+- **¿Cómo funciona?** Detecta estrés, verifica consistencia, mide confianza
+- **¿Por qué importa?** Tu voz revela patrones que los datos no muestran
+
+### 2. **HASE** - El Motor de Scoring Hiperadaptativo 🔍
+- **¿Qué hace?** Motor de scoring que se adapta en tiempo real a nuevos patrones
+- **¿Cómo funciona?** Machine learning hiperadaptativo que evoluciona con cada decisión
+- **¿Por qué importa?** Scoring que mejora continuamente y se adapta a cambios del mercado
+
+### 3. **PIA** - El Tomador de Decisiones 🎯
+- **¿Qué hace?** Combina AVI + HASE para decidir aprobaciones
+- **¿Cómo funciona?** Motor de reglas + IA para decisiones finales
+- **¿Por qué importa?** Decisiones más justas y explicables
+
+### 4. **TIR/Protección** - El Calculador Financiero 💰
+- **¿Qué hace?** Calcula escenarios de protección y reestructuras
+- **¿Cómo funciona?** Algoritmos determinísticos de TIR mínima
+- **¿Por qué importa?** Protege tanto al cliente como a la institución
+
+### 5. **Agente de Postventa** - El Asistente Personal 📞
+- **¿Qué hace?** Responde preguntas técnicas y gestiona casos
+- **¿Cómo funciona?** RAG (retrieval) + LLM para respuestas contextúales
+- **¿Por qué importa?** Soporte inteligente 24/7
+
+## 🏗️ Arquitectura del Laboratorio
+
+```
+rag-proactive-lab/
+├── avi_lab/            # 🎤 Análisis de voz inteligente
+├── agents/
+│   ├── hase/           # 🔍 Motor de scoring comportamental
+│   └── pia/            # 🎯 Motor de decisión TIR/Protección
+├── app/                # 🌐 API FastAPI (webhooks, endpoints)
+├── dashboard/          # 📊 Dashboard React para visualización
+├── scripts/            # ⚙️ Orquestadores de demo y herramientas
+├── data/               # 📈 Datasets sintéticos del demo
+├── docs/               # 📚 Documentación técnica y runbooks
+└── pwa_angular/        # 📱 Interfaz de usuario Angular
+```
+
+## 🎬 El Flujo Completo (Para No Técnicos)
+
+1. **Cliente entra al sistema** → Interfaz Angular PWA
+2. **Se inicia entrevista AVI** → 55 preguntas de análisis vocal
+3. **AVI analiza respuestas** → Detecta estrés, confianza, consistencia
+4. **HASE evalúa comportamiento** → Analiza historial y patrones
+5. **PIA toma decisión** → Combina AVI + HASE + reglas de negocio
+6. **TIR calcula protección** → Escenarios financieros si es aprobado
+7. **Dashboard muestra resultados** → Visualización en tiempo real
+8. **Postventa gestiona seguimiento** → Asistencia continua
+
+## 🔬 El Flujo Técnico (Para Desarrolladores)
+
+```mermaid
+graph TD
+    A[PWA Angular] --> B[AVI Voice Analysis]
+    B --> C[Real-time Voice Scoring]
+    C --> D[HASE Behavioral Engine]
+    D --> E[PIA Decision Engine]
+    E --> F[TIR Protection Calculator]
+    F --> G[Dashboard Visualization]
+    G --> H[Postventa Case Management]
+```
+
+## 📂 Alcance del repositorio
+
+**🎯 Componentes Principales:**
+- `avi_lab/` – PWA Angular para análisis de voz inteligente (55 preguntas estructuradas)
+- `agents/hase/` – Motor de scoring con modelos ML entrenados (.joblib)
+- `agents/pia/` – Motor de decisión TIR/Protección + reglas de negocio
+- `app/` – API FastAPI con webhooks y endpoints de protección
+- `dashboard/` – Dashboard React con visualizaciones en tiempo real
+- `scripts/` – Orquestadores de demo (`make demo-proteccion`) y herramientas
+- `docs/` – Documentación técnica, runbooks y HUs quirúrgicas
+- `pwa_angular/` – Submódulo del bot de postventa (UI Angular)
+
+**🔧 Archivos Críticos Incluidos:**
+- `config/financial.yml` – Configuración de políticas TIR
+- `migrations/*.sql` – Scripts de schema de base de datos
+- `models/hase/*.joblib` – Modelos ML entrenados para scoring
+- `tests/` – Suite completa de tests de regresión
+- `src/components/` – Componentes React adicionales
+
+**🚫 Excluidos (innecesarios para el laboratorio):**
+- `.env`, `secrets.local.txt` – Credenciales y API keys (mantener en `sensibles.zip`)
+- `logs/`, `__pycache__/` – Archivos temporales y cache
+- `conductores/`, `pwa_angular-restored/`, `rag-pinecone/` – Carpetas de referencia/backup locales
+- `notebooks/` – Directorios de desarrollo experimental
+- `*2.py`, `*backup*` – Archivos duplicados y backups
+
+> ✅ **El laboratorio está 100% funcional**: Cualquiera puede clonar, configurar variables de entorno, y ejecutar el demo completo.
 
 ## Demo Sintético Rápido
 

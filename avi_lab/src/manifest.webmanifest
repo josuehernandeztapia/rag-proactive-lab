@@ -1,0 +1,11 @@
+{
+  "name": "AVI Lab",
+  "short_name": "AVI Lab",
+  "theme_color": "#0f172a",
+  "background_color": "#0f172a",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "icons": []
+}
+
