@@ -53,7 +53,39 @@ node --version
 npm --version
 ```
 
-### 2. **Verificación de Estructura**
+### 2. **🔑 CRÍTICO: Configuración de Credenciales**
+
+⚠️ **El repositorio NO incluye credenciales por seguridad**. Necesitas:
+
+#### Opción A: Usar Template (Demo Sin APIs)
+```bash
+# Copiar template para demo básico
+cp .env.example .env
+```
+**✅ Permite**: Demo sintético, dashboard, tests
+**❌ NO permite**: LLM narrativas, integraciones externas
+
+#### Opción B: Credenciales Reales (Funcionalidad Completa)
+```bash
+# Necesitas en .env:
+OPENAI_API_KEY="sk-..."      # Para LLM narrativas
+PINECONE_API_KEY="..."       # Para vector search
+TWILIO_SID="..."             # Para WhatsApp (opcional)
+```
+
+#### Opción C: Restaurar desde Backup
+```bash
+# Si tienes sensibles.zip o secrets.local.txt
+unzip sensibles.zip          # Restaura .env completo
+# o
+# copia tu secrets.local.txt al directorio raíz
+```
+
+**🚨 Sin credenciales → Demo funciona, pero sin LLM ni búsqueda vectorial**
+
+👉 **[SETUP_CREDENCIALES.md](SETUP_CREDENCIALES.md) - Guía detallada de configuración**
+
+### 3. **Verificación de Estructura**
 
 ```bash
 # Verifica que tienes los componentes principales
@@ -67,7 +99,7 @@ ls -la | grep -E "(avi_lab|agents|dashboard|guardian|scripts)"
 - `guardian/` - Telemetría
 - `scripts/` - Orquestación
 
-### 3. **Test Básico**
+### 4. **Test Básico**
 
 ```bash
 # Validar prompts
