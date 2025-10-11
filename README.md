@@ -33,7 +33,7 @@ Este es un **ecosistema completo de inteligencia artificial** para análisis de 
 - 📱 **Gestionar casos** de postventa
 - 📈 **Visualizar resultados** en tiempo real (Dashboard)
 
-## 🧠 Los 5 Agentes del Ecosistema
+## 🧠 Los 6 Agentes del Ecosistema
 
 ### 1. **AVI** - Tu Entrevistador Virtual 🎤
 - **¿Qué hace?** Analiza tu voz durante una entrevista de 55 preguntas
@@ -60,6 +60,11 @@ Este es un **ecosistema completo de inteligencia artificial** para análisis de 
 - **¿Cómo funciona?** RAG (retrieval) + LLM para respuestas contextúales
 - **¿Por qué importa?** Soporte inteligente 24/7
 
+### 6. **Guardian** - El Monitor de Telemetría 📈
+- **¿Qué hace?** Monitorea la salud de toda la flota de agentes
+- **¿Cómo funciona?** Telemetría en tiempo real y alertas inteligentes
+- **¿Por qué importa?** Asegura que todo el ecosistema funcione óptimamente
+
 ## 🏗️ Arquitectura del Laboratorio
 
 ```
@@ -70,6 +75,7 @@ rag-proactive-lab/
 │   └── pia/            # 🎯 Motor de decisión TIR/Protección
 ├── app/                # 🌐 API FastAPI (webhooks, endpoints)
 ├── dashboard/          # 📊 Dashboard React para visualización
+├── guardian/           # 📈 Monitor de telemetría y alertas
 ├── scripts/            # ⚙️ Orquestadores de demo y herramientas
 ├── data/               # 📈 Datasets sintéticos del demo
 ├── docs/               # 📚 Documentación técnica y runbooks
@@ -128,28 +134,55 @@ graph TD
 
 > ✅ **El laboratorio está 100% funcional**: Cualquiera puede clonar, configurar variables de entorno, y ejecutar el demo completo.
 
-## Demo Sintético Rápido
+## 🚀 Quick Start - ¿Primera Vez?
+
+**👉 [QUICK_START.md](QUICK_START.md) - Guía de 5 minutos con troubleshooting**
+
+### Demo Sintético Rápido
 
 1. **Ejecutar demo completo**
    ```bash
    make demo-proteccion
    # opcional: make demo-proteccion ARGS="--llm --llm-limit 3"
    ```
-   Genera la cartera sintética (`data/pia/synthetic_driver_states.csv`), outcomes (`data/pia/pia_outcomes_log.csv`), feature store (`data/hase/pia_outcomes_features.csv`) y resumen por plan (`reports/pia_plan_summary.csv`).
+
+   **🎯 Qué esperar:**
+   - ⏱️ **Tiempo**: 30-60 segundos
+   - 📊 **Outputs**: ~200 financiamientos sintéticos procesados
+   - 🎯 **Decisiones**: Aprobaciones/rechazos con TIR calculado
+   - 📈 **Dashboard**: Datos listos para visualización
 
 2. **Inspeccionar resultados**
    ```bash
    python3 scripts/pia_plan_summary_monitor.py
    ```
-   Muestra alertas (planes expirados, revisión manual, protecciones negativas) directamente en consola.
 
-3. **Alertas LLM (modo plantilla)**
-   ```bash
-   PIA_LLM_MODE=template PIA_LLM_ALERTS=1 \
-   python3 scripts/pia_llm_notifier.py --limit 3 --skip-email \
-     --pia-outbox reports/pia_llm_outbox.jsonl
+   **✅ Deberías ver:**
    ```
-   Esto deja narrativas proactivas listas para Make/n8n o dashboards.
+   📊 RESUMEN POR PLAN DE PROTECCIÓN
+   ├── Plan proteccion_total: 145 activos, 2.1 protecciones promedio
+   ├── Plan proteccion_basica: 55 activos, 1.8 protecciones promedio
+   └── 🚨 3 alertas activas (planes expirados)
+   ```
+
+3. **Dashboard React**
+   ```bash
+   cd dashboard && npm run dev
+   ```
+
+   **🌐 Acceder**: http://localhost:5173
+
+   **✅ Verás**: Gráficas de protecciones, alertas Guardian, métricas HASE
+
+### 🆘 Si Algo Falla
+
+| Error | Solución Rápida |
+|-------|----------------|
+| `No module named 'yaml'` | `pip3 install --user -r requirements.txt` |
+| `ModuleNotFoundError` | `export PYTHONPATH="$PWD:$PYTHONPATH"` |
+| `Port 8000 in use` | `export PORT=8001` |
+| `make: command not found` | `python3 scripts/demo_proteccion.py` |
+| Dashboard vacío | `cd dashboard && npm run sync-data` |
 
 ### Utilidades rápidas
 - `scripts/ops/cleanup_repo.py` elimina artefactos temporales (`.ngrok*`, `.pid`, logs vacíos) entre corridas.

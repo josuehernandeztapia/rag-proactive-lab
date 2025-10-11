@@ -91,6 +91,9 @@
 
 ## 🚀 Quick Reference
 
+### **⚡ Primera Vez Aquí?**
+👉 **[QUICK_START.md](../QUICK_START.md)** - Guía de 5 minutos con troubleshooting
+
 ### **🎬 Demo Rápido**
 ```bash
 # Ejecutar demo completo
@@ -102,6 +105,20 @@ python3 scripts/pia_plan_summary_monitor.py
 # Dashboard
 cd dashboard && npm run dev
 ```
+
+### **🎯 Flujo de Lectura para Humanos**
+
+#### **🚀 Empezando (5 min)**
+1. **[QUICK_START.md](../QUICK_START.md)** - Setup sin fricción
+2. **[README.md](../README.md)** - Visión general de los 6 agentes
+
+#### **📖 Entendiendo (15 min)**
+3. **[Guía No Técnica](guia_no_tecnica.md)** - Qué hace cada agente
+4. **[Componentes Completos](componentes_completos.md)** - Deep dive
+
+#### **🔧 Implementando (30+ min)**
+5. **[Demo Runbook](demo_runbook_hase_pia_tir_proteccion.md)** - Paso a paso
+6. **[Arquitectura AVI + HASE](avi_hase_scoring_architecture.md)** - Técnico
 
 ### **🧪 Testing**
 ```bash
