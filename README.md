@@ -138,10 +138,9 @@ graph TD
 
 **👉 [QUICK_START.md](QUICK_START.md) - Guía de 5 minutos con troubleshooting**
 
-⚠️ **IMPORTANTE**: El repo NO incluye credenciales (`.env`, `secrets.local.txt`). Para funcionalidad completa necesitas:
-- **OpenAI API Key** (narrativas LLM)
-- **Pinecone API Key** (búsqueda vectorial)
-- **Twilio SID/Token** (WhatsApp, opcional)
+⚠️ **IMPORTANTE**: El repo GitHub NO incluye credenciales por seguridad.
+- **👑 Owner**: Ya tienes `.env` y `sensibles.zip` configurados localmente
+- **👥 Others**: Necesitas configurar OpenAI, Pinecone, Twilio APIs
 
 Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
 

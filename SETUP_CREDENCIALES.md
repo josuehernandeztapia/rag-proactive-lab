@@ -1,13 +1,18 @@
 # 🔑 Setup de Credenciales - RAG Proactive Lab
 
-## ⚠️ Problema: Repo Sin Credenciales
+## ⚠️ Situación: Credenciales Locales vs GitHub
 
-El repositorio **intencionalmente NO incluye**:
-- `.env` (variables de entorno)
-- `secrets.local.txt` (credenciales locales)
-- `sensibles.zip` (backup de credenciales)
+**✅ Local (Owner)**: Tienes todo configurado
+- `.env` ← Funcional con todas las APIs
+- `secrets.local.txt` ← OpenAI, Pinecone, Twilio keys
+- `sensibles.zip` ← Backup completo
 
-**¿Por qué?** Seguridad - nunca subir API keys a Git.
+**❌ GitHub (Otros)**: Repo público sin credenciales
+- ❌ Sin `.env` (gitignored por seguridad)
+- ❌ Sin `secrets.local.txt` (gitignored por seguridad)
+- ❌ Sin `sensibles.zip` (gitignored por seguridad)
+
+**¿Por qué?** Seguridad - nunca subir API keys a Git público.
 
 ---
 
@@ -67,12 +72,16 @@ tail -n +5 .env.example >> .env
 ### Opción 3: Restaurar Backup 🔵
 
 ```bash
-# Si tienes backup local
+# Si tienes backup local (solo owner/team core)
 unzip sensibles.zip
 
-# O copiar archivo existente
-cp /ruta/a/tu/secrets.local.txt .
+# O usar secrets existente
+cp secrets.local.txt .env
+# Nota: secrets.local.txt tiene formato comentado, necesita procesamiento
 ```
+
+**👑 Para el Owner (tú)**: Ya tienes todo configurado localmente.
+**👥 Para Team Members**: Solicitar `sensibles.zip` de forma segura (Slack, email encriptado).
 
 ---
 
