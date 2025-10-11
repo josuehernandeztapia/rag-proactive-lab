@@ -4507,6 +4507,94 @@ def hybrid_search(q: str, top_k: int = 10):
     # Ordenar por score descendente y truncar
     results.sort(key=lambda x: x.get('score', 0), reverse=True)
     return {"items": results[:max(1, min(top_k, 25))]}
+
+
+@app.get("/spareparts")
+def spareparts_integration(
+    query: str,
+    vin: Optional[str] = None,
+    top_k: int = 5,
+    include_warranty: bool = True,
+    include_suppliers: bool = True
+):
+    """Endpoint consolidado para refacciones con garantía, proveedores y stock.
+
+    Implementa los requisitos de integration-plan.md Fase 2:
+    - Búsqueda en catálogo de partes
+    - Información de garantía si está disponible
+    - Proveedores sugeridos
+    - Links de contacto
+    """
+    result = {
+        "query": query,
+        "vin": vin,
+        "parts": [],
+        "warranty_info": None,
+        "suppliers": [],
+        "meta": {
+            "timestamp": datetime.now().isoformat(),
+            "source": "spareparts_integration_v1"
+        }
+    }
+
+    # 1. Búsqueda básica de partes
+    try:
+        parts_results = _catalog_lookup(query, top_k=top_k)
+        for part in parts_results:
+            part_info = {
+                "oem": part.get("oem"),
+                "part_name": part.get("part_name"),
+                "score": part.get("score", 0),
+                "page_reference": part.get("page_label"),
+                "estimated_price": None,  # TODO: integrar con pricing
+                "stock_status": "unknown"  # TODO: integrar con inventory
+            }
+            result["parts"].append(part_info)
+    except Exception as e:
+        logger.warning(f"Parts lookup failed: {e}")
+
+    # 2. Información de garantía (si se proporciona VIN)
+    if include_warranty and vin:
+        try:
+            from .warranty import warranty_status_by_vin
+            warranty_info = warranty_status_by_vin(vin)
+            if warranty_info:
+                result["warranty_info"] = {
+                    "status": warranty_info.get("status"),
+                    "valid_until": warranty_info.get("valid_until"),
+                    "coverage_type": warranty_info.get("coverage_type"),
+                    "eligible_for_parts": warranty_info.get("eligible", False)
+                }
+        except Exception as e:
+            logger.warning(f"Warranty lookup failed: {e}")
+
+    # 3. Proveedores sugeridos (mock data - TODO: integrar con sistema real)
+    if include_suppliers and result["parts"]:
+        mock_suppliers = [
+            {
+                "name": "Refacciones Nacional",
+                "contact": "+52-55-1234-5678",
+                "email": "ventas@refaccionesnacional.mx",
+                "website": "https://refaccionesnacional.mx",
+                "location": "CDMX",
+                "rating": 4.2,
+                "estimated_delivery": "2-3 días"
+            },
+            {
+                "name": "Autopartes Toyota",
+                "contact": "+52-55-8765-4321",
+                "email": "cotizaciones@autopartestoyota.com",
+                "website": "https://autopartestoyota.com",
+                "location": "Guadalajara",
+                "rating": 4.5,
+                "estimated_delivery": "1-2 días"
+            }
+        ]
+        result["suppliers"] = mock_suppliers[:2]  # Limitar a 2 proveedores principales
+
+    return result
+
+
 # Registrar rutas de casos (Fase 1)
 try:
     from .cases_api import router as cases_router

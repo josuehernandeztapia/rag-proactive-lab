@@ -214,6 +214,11 @@ export function useDemoData() {
       const outcomeLogs = outcomeLogsRaw.map(normalizeOutcome);
       const outcomeScenarios = outcomeLogs.map(buildOutcomeScenario).filter((item) => item.annualIrr !== null);
 
+      // Pre-process Guardian alerts with driver context and sort once
+      const guardianAlerts = guardianOutboxRaw
+        .map((row, index) => normalizeGuardianAlert(row, index, driverMap))
+        .sort((a, b) => new Date(b.generatedAt).getTime() - new Date(a.generatedAt).getTime());
+
       const dataset: DemoDataset = {
         driverStates,
         planSummary: planSummaryRaw.map(normalizePlanSummary),
@@ -221,11 +226,12 @@ export function useDemoData() {
         outcomeScenarios,
         features: featuresRaw.map(normalizeFeatureRow),
         alerts: alertsRaw.map(normalizeAlert),
-        guardianAlerts: guardianOutboxRaw.map((row, index) => normalizeGuardianAlert(row, index, driverMap)),
+        guardianAlerts,
       };
 
       return dataset;
     },
     staleTime: 10 * 60 * 1000,
+    refetchOnWindowFocus: false, // Avoid unnecessary refetches
   });
 }

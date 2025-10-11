@@ -10,7 +10,7 @@ import { ProtectionHeatmap } from './components/ProtectionHeatmap';
 import { RiskCoverageChart } from './components/RiskCoverageChart';
 import { RunbookPanel } from './components/RunbookPanel';
 import { OutcomeTable } from './components/OutcomeTable';
-import { GuardianAlerts } from './components/GuardianAlerts';
+import { LazyGuardianAlerts } from './components/LazyGuardianAlerts';
 import { useDemoData } from './hooks/useDemoData';
 import type { OutcomeScenarioSummary } from './types';
 
@@ -121,7 +121,7 @@ function App() {
       const referenceTs = alert.eventTs || alert.generatedAt;
       const matchesDate = !hasDateFilter || isWithinRange(referenceTs, dateRange.start, dateRange.end);
       return matchesScenario && matchesPlate && matchesPlaza && matchesDate;
-    });
+    }).sort((a, b) => dayjs(b.generatedAt).valueOf() - dayjs(a.generatedAt).valueOf());
   }, [guardianAlerts, scenarioFilter, plateFilter, plazaFilter, hasDateFilter, dateRange.start, dateRange.end]);
 
   const handleSelectPlate = (placa: string) => {
@@ -258,7 +258,7 @@ function App() {
               />
             </section>
             <section id="alerts-guardian">
-              <GuardianAlerts alerts={filteredGuardianAlerts} />
+              <LazyGuardianAlerts alerts={filteredGuardianAlerts} />
             </section>
             <section id="alerts-llm">
               <AlertsList alerts={data.alerts} />

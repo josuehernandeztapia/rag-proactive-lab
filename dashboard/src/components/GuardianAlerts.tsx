@@ -91,7 +91,8 @@ export function GuardianAlerts({ alerts }: GuardianAlertsProps) {
     );
   }
 
-  const ordered = [...alerts].sort((a, b) => dayjs(b.generatedAt).valueOf() - dayjs(a.generatedAt).valueOf());
+  // Las alertas ya vienen ordenadas desde App.tsx para evitar re-sort innecesario
+  const ordered = alerts;
 
   return (
     <Card
