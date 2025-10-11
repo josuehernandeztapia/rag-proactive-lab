@@ -152,14 +152,14 @@ logs-tail: logs-init
 	@tail -f logs/events.jsonl
 
 logs-test-db:
-	@python3 -c "import storage; storage.log_event('test', {'endpoint':'/test','question':'ping','answer':'pong','classification':'test','signals':{'ok':True}}); print('OK: evento escrito (si POSTGRES_URL está configurado).')"
+	@python3 -c "from app import storage; storage.log_event('test', {'endpoint':'/test','question':'ping','answer':'pong','classification':'test','signals':{'ok':True}}); print('OK: evento escrito (si POSTGRES_URL está configurado).')"
 
 export-csv:
-	@python3 -c "import storage, json; r=storage.export_csv(); print(json.dumps(r, ensure_ascii=False))" && \
+	@python3 -c "from app import storage; import json; r=storage.export_csv(); print(json.dumps(r, ensure_ascii=False))" && \
 	echo "CSV exportado en logs/events.csv y logs/sources.csv"
 
 export-xlsx:
-	@python3 -c "import storage, json; r=storage.export_xlsx(); print(json.dumps(r, ensure_ascii=False))" && \
+	@python3 -c "from app import storage; import json; r=storage.export_xlsx(); print(json.dumps(r, ensure_ascii=False))" && \
 	echo "XLSX exportado en logs/events_and_sources.xlsx"
 
 test:

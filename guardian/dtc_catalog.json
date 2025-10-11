@@ -1,0 +1,88 @@
+{
+  "diagnostics": {
+    "DiagnosticGeneralVehicleWarningLightId": {
+      "code": "ENG-002",
+      "description": "Luz general de advertencia encendida en tablero",
+      "category": "tablero",
+      "severity": "medium",
+      "notes": "Mapea a alerta general de vehículo; revisar warning lights en cabina"
+    },
+    "DiagnosticDeviceRestartedBecauseAllPowerWasRemovedId": {
+      "code": "DEVICE-POWER-LOSS",
+      "description": "El dispositivo GO se reinició por pérdida completa de energía",
+      "category": "telematics",
+      "severity": "low",
+      "notes": "Verifica alimentación y cableado; si es recurrente revisar fusibles"
+    },
+    "DiagnosticDeviceRestartedBecauseOfFirmwareUpdateId": {
+      "code": "DEVICE-FW-RESTART",
+      "description": "El dispositivo GO se reinició por actualización de firmware",
+      "category": "telematics",
+      "severity": "info",
+      "notes": "Evento esperado después de actualizar firmware; no requiere acción"
+    },
+    "DiagnosticDeviceHasBeenUnpluggedId": {
+      "code": "DEVICE-UNPLUGGED",
+      "description": "Se detectó el dispositivo GO desconectado",
+      "category": "telematics",
+      "severity": "high",
+      "notes": "Contacta al operador para reconectar; sin telemetría en vivo"
+    },
+    "DiagnosticAccidentLevelAccelerationEventId": {
+      "code": "DRIVE-HARSH-ACCEL",
+      "description": "Evento de aceleración severa (nivel accidente)",
+      "category": "conduccion",
+      "severity": "medium",
+      "notes": "Úsalo como proxy de hábitos riesgosos; dispara coaching al operador"
+    },
+    "asmsNmIhBEkug4_fPPcxGjw": {
+      "code": null,
+      "description": "Diagnóstico OEM sin catalogar (id asmsNmIh…)",
+      "category": "motor",
+      "severity": "medium",
+      "notes": "Actualizar cuando se conecte el catálogo Get(Diagnostic); hoy se muestra tal cual"
+    },
+    "aRayqcO358UOecqMvt8JlHw": {
+      "code": "P0420",
+      "description": "Eficiencia del catalizador por debajo del umbral (Banco 1)",
+      "category": "emisiones",
+      "severity": "medium",
+      "notes": "Geotab AI recomendó revisar catalizador; alerta preventiva"
+    },
+    "acfsDwccGWkKoiDnaHQwOKg": {
+      "code": null,
+      "description": "Diagnóstico OEM sin catalogar (id acfsDwcc…)",
+      "category": "motor",
+      "severity": "medium",
+      "notes": "Pendiente mapear a P-code con catálogo oficial"
+    },
+    "awtSaua-9c06ewJ__HdXlBQ": {
+      "code": null,
+      "description": "Diagnóstico OEM sin catalogar (id awtSaua…)",
+      "category": "motor",
+      "severity": "medium",
+      "notes": "Pendiente mapear a P-code con catálogo oficial"
+    },
+    "aeAx1iIdw7U28BQED9dJ7Fg": {
+      "code": null,
+      "description": "Diagnóstico OEM sin catalogar (id aeAx1iI…)",
+      "category": "motor",
+      "severity": "medium",
+      "notes": "Pendiente mapear a P-code con catálogo oficial"
+    },
+    "ac6izgCDNSUmB1dGxAW47gQ": {
+      "code": null,
+      "description": "Diagnóstico OEM sin catalogar (id ac6izgC…)",
+      "category": "motor",
+      "severity": "medium",
+      "notes": "Pendiente mapear a P-code con catálogo oficial"
+    },
+    "aKQNNYTc_t0msRWM86aQIyg": {
+      "code": "P0138",
+      "description": "Circuito alto del sensor de O2 (Banco 1, Sensor 2)",
+      "category": "motor",
+      "severity": "medium",
+      "notes": "Geotab AI indica revisar sensor O2 B1S2; confirma con diagnóstico"
+    }
+  }
+}

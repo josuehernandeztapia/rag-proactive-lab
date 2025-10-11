@@ -19,7 +19,10 @@ except ModuleNotFoundError:  # pragma: no cover - langchain optional in some env
     ChatOpenAI = None  # type: ignore
 
 ROOT_DIR = Path(__file__).resolve().parents[3]
-PROMPTS_DIR = ROOT_DIR / "prompts" / "llm"
+PROMPTS_ROOT = ROOT_DIR / "prompts"
+PREF_PIA_PROMPTS_DIR = PROMPTS_ROOT / "pia"
+LEGACY_PROMPTS_DIR = PROMPTS_ROOT / "llm"
+MANIFEST_PATH = PREF_PIA_PROMPTS_DIR / "manifest.json"
 REPORTS_DIR = ROOT_DIR / "reports"
 CASE_NOTES_DIR = REPORTS_DIR / "pia_case_notes"
 CASE_NOTES_INDEX = REPORTS_DIR / "pia_llm_case_notes.jsonl"
@@ -27,6 +30,11 @@ ALERTS_INDEX = REPORTS_DIR / "pia_llm_alerts.jsonl"
 
 _TRUE_VALUES = {"1", "true", "yes", "y", "on"}
 _TEMPLATE_CACHE: Dict[str, str] = {}
+try:
+    with MANIFEST_PATH.open("r", encoding="utf-8") as _mf:
+        _PROMPT_MANIFEST: Dict[str, Dict[str, Any]] = json.load(_mf)
+except FileNotFoundError:
+    _PROMPT_MANIFEST = {}
 _LLM_SERVICE: Optional["LLMService"] = None
 
 _FEATURE_FLAGS = {
@@ -56,11 +64,21 @@ def feature_enabled(feature: str, default: bool = False) -> bool:
 
 def _load_template(filename: str) -> str:
     if filename not in _TEMPLATE_CACHE:
-        path = PROMPTS_DIR / filename
-        if not path.exists():
-            raise FileNotFoundError(f"Template not found: {path}")
+        candidate_paths = [PREF_PIA_PROMPTS_DIR / filename, LEGACY_PROMPTS_DIR / filename]
+        path = next((p for p in candidate_paths if p.exists()), None)
+        if path is None:
+            raise FileNotFoundError(
+                f"Template not found in {PREF_PIA_PROMPTS_DIR} or {LEGACY_PROMPTS_DIR}: {filename}"
+            )
         _TEMPLATE_CACHE[filename] = path.read_text(encoding="utf-8").strip()
     return _TEMPLATE_CACHE[filename]
+
+
+def _manifest_meta(filename: str) -> Dict[str, Any]:
+    entry = _PROMPT_MANIFEST.get(filename, {})
+    if isinstance(entry, dict):
+        return entry
+    return {}
 
 
 def _safe(value: Any, default: str = "-") -> str:
@@ -252,7 +270,7 @@ class LLMService:
         context = {
             "transcript": text,
             "max_tags": max(1, max_tags),
-            "prompt_version": "behaviour_v1",
+            "prompt_version": self._resolve_prompt_version("behaviour_extract_prompt.txt", "behaviour_v1"),
         }
         user_prompt = self._render_template("behaviour_extract_prompt.txt", context)
         response = self._call_openai(
@@ -291,6 +309,15 @@ class LLMService:
         template = _load_template(filename)
         safe_context = {key: _safe(value) for key, value in context.items()}
         return template.format_map(safe_context)
+
+    def _resolve_prompt_version(self, filename: str, fallback: str) -> str:
+        meta = _manifest_meta(filename)
+        version = meta.get("version") if isinstance(meta, dict) else None
+        if not version:
+            return fallback
+        stem = Path(filename).stem
+        normalized = f"{stem}_{version}" if not version.startswith(stem) else version
+        return normalized
 
     def _call_openai(self, system_prompt: str, user_prompt: str) -> Optional[str]:
         if not self.client or HumanMessage is None or SystemMessage is None:
@@ -336,7 +363,7 @@ class LLMService:
             "protections_used": plan.get("protections_used") if plan.get("protections_used") is not None else payload.get("protections_used"),
             "protections_allowed": plan.get("protections_allowed") if plan.get("protections_allowed") is not None else payload.get("protections_allowed"),
             "notes": payload.get("notes") or "-",
-            "prompt_version": "case_note_v1",
+            "prompt_version": self._resolve_prompt_version("case_note_template.md", "case_note_v1"),
         }
         context["critical_signals"], recommended = self._derive_case_flags(plan, scenario, payload)
         context["recommended_action"] = recommended
@@ -406,7 +433,7 @@ class LLMService:
                 flag_parts.append(name.replace("_", " "))
         flag_summary = ", ".join(flag_parts) if flag_parts else "sin banderas"
         context = {
-            "prompt_version": "alert_v1",
+            "prompt_version": self._resolve_prompt_version("alert_template.md", "alert_v1"),
             "reference_ts": payload.get("reference_ts") or datetime.now(timezone.utc).isoformat(),
             "placa": payload.get("placa") or "-",
             "market": payload.get("market") or "-",
@@ -431,7 +458,7 @@ class LLMService:
             primary_desc = "Sin escenarios viables"
         overview = "; ".join(self._summarize_scenario(item) for item in scenarios[1:]) if len(scenarios) > 1 else "-"
         context = {
-            "prompt_version": "summary_v1",
+            "prompt_version": self._resolve_prompt_version("protection_summary_template.md", "summary_v1"),
             "placa": payload.get("placa") or "-",
             "market": payload.get("market") or "-",
             "balance": _format_currency(payload.get("balance")),

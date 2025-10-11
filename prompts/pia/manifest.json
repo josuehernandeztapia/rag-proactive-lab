@@ -1,0 +1,42 @@
+{
+  "case_note_template.md": {
+    "version": "v1",
+    "description": "Formato Markdown para notas ejecutivas de casos PIA",
+    "updated": "2024-10-06"
+  },
+  "case_note_prompt.txt": {
+    "version": "v1",
+    "description": "Prompt LLM para generar notas de caso PIA",
+    "updated": "2024-10-06"
+  },
+  "alert_template.md": {
+    "version": "v1",
+    "description": "Plantilla Markdown para alertas proactivas de cobranza",
+    "updated": "2024-10-06"
+  },
+  "alert_prompt.txt": {
+    "version": "v1",
+    "description": "Prompt LLM para alertas proactivas",
+    "updated": "2024-10-06"
+  },
+  "protection_summary_template.md": {
+    "version": "v1",
+    "description": "Resumen breve de escenarios de protección",
+    "updated": "2024-10-06"
+  },
+  "protection_summary_prompt.txt": {
+    "version": "v1",
+    "description": "Prompt LLM para explicar escenarios de protección",
+    "updated": "2024-10-06"
+  },
+  "behaviour_extract_prompt.txt": {
+    "version": "v1",
+    "description": "Prompt JSON para extraer señales de comportamiento",
+    "updated": "2024-10-06"
+  },
+  "behaviour_extract_template.json": {
+    "version": "v1",
+    "description": "Respuesta por defecto cuando el LLM no está disponible",
+    "updated": "2024-10-06"
+  }
+}

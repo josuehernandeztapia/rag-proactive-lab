@@ -8,6 +8,7 @@ Este documento explica el flujo completo del asistente: prompting, recuperación
 - **`main.py:936` (`system_prompt_hybrid()`)** — Prompt para `/query_hybrid` y webhooks WhatsApp. Añade instrucciones conversacionales: tuteo, agradecimiento por evidencia, confirmaciones (“¿correcto?”), límite de preguntas, manejo de modos (`solo_imagenes`, `solo_audio`).
 - **Límites y resúmenes** — `_effective_limit` ( `main.py:212` ) ajusta longitud según canal y severidad. `_summarize_to_limit` ( `main.py:233` ) puede llamar al LLM para condensar la respuesta manteniendo estructura.
 - **Rewriting** — `rewrite_query` ( `main.py:972` ) refuerza la consulta con “Manual técnico Higer”, OEM y términos relevantes antes de embedir.
+- **PIA templates** — Las plantillas LLM del agente PIA viven en `prompts/pia/` con metadatos en `manifest.json`. El script `scripts/validate_pia_prompts.py` renderiza todos los templates con datos sintéticos para asegurar que los nuevos placeholders estén cubiertos antes de desplegar.
 
 ## 2. Recuperación híbrida
 

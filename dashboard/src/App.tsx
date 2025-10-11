@@ -10,6 +10,7 @@ import { ProtectionHeatmap } from './components/ProtectionHeatmap';
 import { RiskCoverageChart } from './components/RiskCoverageChart';
 import { RunbookPanel } from './components/RunbookPanel';
 import { OutcomeTable } from './components/OutcomeTable';
+import { GuardianAlerts } from './components/GuardianAlerts';
 import { useDemoData } from './hooks/useDemoData';
 import type { OutcomeScenarioSummary } from './types';
 
@@ -26,6 +27,7 @@ function App() {
 
   const driverStates = data?.driverStates ?? [];
   const outcomeScenarios = data?.outcomeScenarios ?? [];
+  const guardianAlerts = data?.guardianAlerts ?? [];
 
   const allowedPlacasByDate = useMemo(
     () => buildDateFilterSet(outcomeScenarios, dateRange.start, dateRange.end),
@@ -109,6 +111,19 @@ function App() {
     });
   }, [driverStates, scenarioFilter, plateFilter, plazaFilter, allowedPlacasByDate, hasDateFilter]);
 
+  const filteredGuardianAlerts = useMemo(() => {
+    if (!guardianAlerts.length) return [];
+    return guardianAlerts.filter((alert) => {
+      const matchesScenario =
+        scenarioFilter === 'all' || (alert.scenario || 'sin-escenario') === scenarioFilter;
+      const matchesPlate = plateFilter === 'all' || alert.placa === plateFilter;
+      const matchesPlaza = plazaFilter === 'all' || alert.market === plazaFilter;
+      const referenceTs = alert.eventTs || alert.generatedAt;
+      const matchesDate = !hasDateFilter || isWithinRange(referenceTs, dateRange.start, dateRange.end);
+      return matchesScenario && matchesPlate && matchesPlaza && matchesDate;
+    });
+  }, [guardianAlerts, scenarioFilter, plateFilter, plazaFilter, hasDateFilter, dateRange.start, dateRange.end]);
+
   const handleSelectPlate = (placa: string) => {
     setPlateFilter((prev) => (prev === placa ? 'all' : placa));
   };
@@ -130,6 +145,7 @@ function App() {
     { href: '#protection-heatmap', label: 'Protecciones' },
     { href: '#tir-drilldown', label: 'TIR' },
     { href: '#payments-telemetry', label: 'Pagos' },
+    { href: '#alerts-guardian', label: 'Guardian' },
     { href: '#alerts-llm', label: 'Alertas' },
     { href: '#runbook', label: 'Runbook' },
   ];
@@ -240,6 +256,9 @@ function App() {
                 filtersActive={filtersActive}
                 totalCount={data.driverStates.length}
               />
+            </section>
+            <section id="alerts-guardian">
+              <GuardianAlerts alerts={filteredGuardianAlerts} />
             </section>
             <section id="alerts-llm">
               <AlertsList alerts={data.alerts} />

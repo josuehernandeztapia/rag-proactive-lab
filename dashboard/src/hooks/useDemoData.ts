@@ -3,6 +3,7 @@ import type {
   DemoDataset,
   DriverState,
   FeatureRow,
+  GuardianAlert,
   LlmAlert,
   OutcomeLogRow,
   OutcomeScenarioSummary,
@@ -15,6 +16,7 @@ type RawDriverState = Record<string, unknown>;
 type RawPlanSummary = Record<string, unknown>;
 type RawOutcomeLog = Record<string, unknown>;
 type RawFeatureRow = Record<string, unknown>;
+type RawGuardianAlert = Record<string, unknown>;
 
 function normalizeDriverState(row: RawDriverState): DriverState {
   return {
@@ -148,6 +150,42 @@ function normalizeAlert(alert: LlmAlert): LlmAlert {
   };
 }
 
+function normalizeGuardianAlert(
+  row: RawGuardianAlert,
+  fallbackIndex: number,
+  driverMap: Map<string, DriverState>,
+): GuardianAlert {
+  const placa = String(row.placa ?? row.plate ?? '') || 'sin-placa';
+  const generatedAt = String(row.generated_at ?? row.generatedAt ?? '') || new Date().toISOString();
+  const eventTsRaw = row.event_ts ?? row.eventTs ?? null;
+  const eventTs = eventTsRaw ? String(eventTsRaw) : null;
+  const alertType = String(row.alert_type ?? row.alertType ?? '');
+  const severity = String(row.severity ?? 'info');
+  const message = String(row.message ?? '');
+  const summary = String(row.summary ?? '');
+  const recommendation = String(row.recommendation ?? '');
+  const contactValue = row.contact == null ? null : String(row.contact);
+  const insightValue = typeof row.insight === 'object' && row.insight !== null ? (row.insight as Record<string, unknown>) : null;
+  const scenarioDetails = driverMap.get(placa);
+
+  return {
+    id: String(row.id ?? `${placa}-${fallbackIndex}`),
+    generatedAt,
+    eventTs,
+    placa,
+    alertType,
+    severity,
+    message,
+    summary,
+    recommendation,
+    contact: contactValue,
+    source: row.source == null ? undefined : String(row.source),
+    insight: insightValue,
+    scenario: scenarioDetails?.scenario ?? undefined,
+    market: scenarioDetails?.market ?? undefined,
+  };
+}
+
 const DATA_BASE = (import.meta.env.VITE_DEMO_DATA_BASE ?? '/data').replace(/\/$/, '');
 const REPORTS_BASE = (import.meta.env.VITE_DEMO_REPORTS_BASE ?? DATA_BASE).replace(/\/$/, '');
 
@@ -155,24 +193,35 @@ export function useDemoData() {
   return useQuery<DemoDataset, Error>({
     queryKey: ['demo-dataset'],
     queryFn: async () => {
-      const [driverStatesRaw, planSummaryRaw, outcomeLogsRaw, featuresRaw, alertsRaw] = await Promise.all([
+      const [
+        driverStatesRaw,
+        planSummaryRaw,
+        outcomeLogsRaw,
+        featuresRaw,
+        alertsRaw,
+        guardianOutboxRaw,
+      ] = await Promise.all([
         fetchCsv<RawDriverState>(`${DATA_BASE}/synthetic_driver_states.csv`),
         fetchCsv<RawPlanSummary>(`${DATA_BASE}/pia_plan_summary.csv`),
         fetchCsv<RawOutcomeLog>(`${DATA_BASE}/pia_outcomes_log.csv`),
         fetchCsv<RawFeatureRow>(`${DATA_BASE}/pia_outcomes_features.csv`),
         fetchJsonl<LlmAlert>(`${REPORTS_BASE}/pia_llm_outbox.jsonl`, { optional: true }),
+        fetchJsonl<RawGuardianAlert>(`${REPORTS_BASE}/guardian_outbox.jsonl`, { optional: true }),
       ]);
 
+      const driverStates = driverStatesRaw.map(normalizeDriverState);
+      const driverMap = new Map(driverStates.map((item) => [item.placa, item]));
       const outcomeLogs = outcomeLogsRaw.map(normalizeOutcome);
       const outcomeScenarios = outcomeLogs.map(buildOutcomeScenario).filter((item) => item.annualIrr !== null);
 
       const dataset: DemoDataset = {
-        driverStates: driverStatesRaw.map(normalizeDriverState),
+        driverStates,
         planSummary: planSummaryRaw.map(normalizePlanSummary),
         outcomeLogs,
         outcomeScenarios,
         features: featuresRaw.map(normalizeFeatureRow),
         alerts: alertsRaw.map(normalizeAlert),
+        guardianAlerts: guardianOutboxRaw.map((row, index) => normalizeGuardianAlert(row, index, driverMap)),
       };
 
       return dataset;
