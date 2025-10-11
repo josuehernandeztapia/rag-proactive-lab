@@ -58,4 +58,12 @@ Instrucciones:
    - Placa y ubicación/resumen.
    - Indicador clave (horas inmóvil, % consumo, DTC).
 4. Redacta la sugerencia final en una oración.
-5. Cierra ofreciendo escalar con la palabra clave apropiada (`{cta_keyword}`) según el tip
+5. Cierra ofreciendo escalar con la palabra clave apropiada (`{cta_keyword}`) según el tipo de alerta.
+
+Responde en español neutro, sin tecnicismos excesivos.
+```
+
+## Escalamiento y handoff
+- Ajustar la palabra clave (`{cta_keyword}`) según el tipo de alerta.
+- Si el cliente responde con la palabra clave, Make enruta la conversación al bot o equipo correspondiente (SOPORTE, POSTVENTA, PIA).
+- Guardian solo inicia el proceso; no confirma citas ni hace diagnósticos profundos.

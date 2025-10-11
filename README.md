@@ -14,10 +14,12 @@ agents/
   pia/                   # Motor TIR, reglas, LLM service, contratos
   hase/                  # Scripts ingestión/agregación/entrenamiento score
 scripts/                 # Herramientas de laboratorio (ingest, notifier, worker, smoke)
-prompts/llm/             # Plantillas narrativas y de comportamiento
+  ops/                   # Scripts operativos (run.sh, smoke, cleanup)
+prompts/                 # Biblioteca de prompts (subcarpetas por agente, ej. `pia/`)
 data/                    # Datasets dummy (PIA/HASE)
 reports/                 # Notas, alertas, outbox y logs de LLM
 docs/                    # Guías (smoke, orquestación)
+  ssot/                  # Documentación de referencia (PDF/Texto)
 ```
 
 ## 🎯 ¿Qué es este laboratorio?
@@ -148,6 +150,10 @@ graph TD
      --pia-outbox reports/pia_llm_outbox.jsonl
    ```
    Esto deja narrativas proactivas listas para Make/n8n o dashboards.
+
+### Utilidades rápidas
+- `scripts/ops/cleanup_repo.py` elimina artefactos temporales (`.ngrok*`, `.pid`, logs vacíos) entre corridas.
+- `scripts/validate_pia_prompts.py --verbose` valida que los prompts del agente PIA tengan placeholders consistentes antes de desplegar.
 
 ### Documentación relacionada
 - [Runbook HASE/PIA/TIR/Protección](docs/demo_runbook_hase_pia_tir_proteccion.md)

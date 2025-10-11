@@ -15,4 +15,4 @@
 1. Guardian envía alerta → escenario Make registra `handoff_hint` según tabla.
 2. Make puede auto-escalar según `handoff_hint` y, si el cliente responde con la palabra clave (`SOPORTE`, `POSTVENTA`, `PIA`, etc.), enruta la conversación al bot del área correspondiente.
 3. El bot decide si la atiende o la cede al equipo humano (según reglas: falta de respuesta, casos críticos, etc.).
-4. Se actualiza `guardian_events` en Neon con `status` y `owner` (`gua
+4. Se actualiza `guardian_events` en Neon con `status` y `owner` (`guardian`, `bot_postventa`, `equipo_postventa`, `pia`).
