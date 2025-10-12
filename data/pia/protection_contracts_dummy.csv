@@ -1,0 +1,6 @@
+placa,plan_type,protections_allowed,protections_used,status,valid_until,reset_cycle_days,requires_manual_review
+DEMO-001,proteccion_total,3,1,active,2026-12-31,365,no
+DEMO-002,proteccion_basica,2,2,active,,180,no
+DEMO-003,proteccion_light,1,0,active,,90,no
+DEMO-004,proteccion_caduca,2,2,expired,2024-12-31,365,no
+DEMO-005,proteccion_ilimitada,999,0,active,,0,yes

@@ -31,9 +31,8 @@ logs/
 datasets/
 reports/
 data/raw/
-data/hase/
-data/pia/
 data/staging/
+# NOTE: data/hase/ and data/pia/ are now tracked with Git LFS for GitHub access
 
 # Large/generated indices (kept via LFS for real artifacts)
 bm25_index*.pkl
