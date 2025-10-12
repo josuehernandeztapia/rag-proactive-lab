@@ -1,0 +1,396 @@
+{
+  "nodes": {
+    "undefined": {
+      "name": "undefined",
+      "type": "lib",
+      "data": {
+        "root": "dashboard",
+        "targets": {
+          "lint": {
+            "cache": true,
+            "options": {
+              "cwd": "dashboard",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "{workspaceRoot}/.eslintrc.json",
+              "{workspaceRoot}/.eslintignore",
+              "{workspaceRoot}/eslint.config.js"
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "npx eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "implicitDependencies": [],
+        "tags": []
+      }
+    }
+  },
+  "externalNodes": {
+    "npm:autoprefixer": {
+      "type": "npm",
+      "name": "npm:autoprefixer",
+      "data": {
+        "version": "10.4.21",
+        "packageName": "autoprefixer",
+        "hash": "sha512-O+A6LWV5LDHSJD3LjHYoNi4VLsj/Whi7k6zG12xTYaU4cQ8oxQGckXNX8cRHK5yOZ/ppVHe0ZBXGzSV9jXdVbQ=="
+      }
+    },
+    "npm:baseline-browser-mapping": {
+      "type": "npm",
+      "name": "npm:baseline-browser-mapping",
+      "data": {
+        "version": "2.8.5",
+        "packageName": "baseline-browser-mapping",
+        "hash": "sha512-TiU4qUT9jdCuh4aVOG7H1QozyeI2sZRqoRPdqBIaslfNt4WUSanRBueAwl2x5jt4rXBMim3lIN2x6yT8PDi24Q=="
+      }
+    },
+    "npm:browserslist": {
+      "type": "npm",
+      "name": "npm:browserslist",
+      "data": {
+        "version": "4.26.2",
+        "packageName": "browserslist",
+        "hash": "sha512-ECFzp6uFOSB+dcZ5BK/IBaGWssbSYBHvuMeMt3MMFyhI0Z8SqGgEkBLARgpRH3hutIgPVsALcMwbDrJqPxQ65A=="
+      }
+    },
+    "npm:caniuse-lite": {
+      "type": "npm",
+      "name": "npm:caniuse-lite",
+      "data": {
+        "version": "1.0.30001743",
+        "packageName": "caniuse-lite",
+        "hash": "sha512-e6Ojr7RV14Un7dz6ASD0aZDmQPT/A+eZU+nuTNfjqmRrmkmQlnTNWH0SKmqagx9PeW87UVqapSurtAXifmtdmw=="
+      }
+    },
+    "npm:electron-to-chromium": {
+      "type": "npm",
+      "name": "npm:electron-to-chromium",
+      "data": {
+        "version": "1.5.221",
+        "packageName": "electron-to-chromium",
+        "hash": "sha512-/1hFJ39wkW01ogqSyYoA4goOXOtMRy6B+yvA1u42nnsEGtHzIzmk93aPISumVQeblj47JUHLC9coCjUxb1EvtQ=="
+      }
+    },
+    "npm:escalade": {
+      "type": "npm",
+      "name": "npm:escalade",
+      "data": {
+        "version": "3.2.0",
+        "packageName": "escalade",
+        "hash": "sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA=="
+      }
+    },
+    "npm:fraction.js": {
+      "type": "npm",
+      "name": "npm:fraction.js",
+      "data": {
+        "version": "4.3.7",
+        "packageName": "fraction.js",
+        "hash": "sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew=="
+      }
+    },
+    "npm:nanoid": {
+      "type": "npm",
+      "name": "npm:nanoid",
+      "data": {
+        "version": "3.3.11",
+        "packageName": "nanoid",
+        "hash": "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w=="
+      }
+    },
+    "npm:node-releases": {
+      "type": "npm",
+      "name": "npm:node-releases",
+      "data": {
+        "version": "2.0.21",
+        "packageName": "node-releases",
+        "hash": "sha512-5b0pgg78U3hwXkCM8Z9b2FJdPZlr9Psr9V2gQPESdGHqbntyFJKFW4r5TeWGFzafGY3hzs1JC62VEQMbl1JFkw=="
+      }
+    },
+    "npm:normalize-range": {
+      "type": "npm",
+      "name": "npm:normalize-range",
+      "data": {
+        "version": "0.1.2",
+        "packageName": "normalize-range",
+        "hash": "sha512-bdok/XvKII3nUpklnV6P2hxtMNrCboOjAcyBuQnWEhO665FwrSNRxU+AqpsyvO6LgGYPspN+lu5CLtw4jPRKNA=="
+      }
+    },
+    "npm:picocolors": {
+      "type": "npm",
+      "name": "npm:picocolors",
+      "data": {
+        "version": "1.1.1",
+        "packageName": "picocolors",
+        "hash": "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="
+      }
+    },
+    "npm:postcss": {
+      "type": "npm",
+      "name": "npm:postcss",
+      "data": {
+        "version": "8.5.6",
+        "packageName": "postcss",
+        "hash": "sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg=="
+      }
+    },
+    "npm:postcss-value-parser": {
+      "type": "npm",
+      "name": "npm:postcss-value-parser",
+      "data": {
+        "version": "4.2.0",
+        "packageName": "postcss-value-parser",
+        "hash": "sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ=="
+      }
+    },
+    "npm:source-map-js": {
+      "type": "npm",
+      "name": "npm:source-map-js",
+      "data": {
+        "version": "1.2.1",
+        "packageName": "source-map-js",
+        "hash": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA=="
+      }
+    },
+    "npm:tailwindcss": {
+      "type": "npm",
+      "name": "npm:tailwindcss",
+      "data": {
+        "version": "4.1.13",
+        "packageName": "tailwindcss",
+        "hash": "sha512-i+zidfmTqtwquj4hMEwdjshYYgMbOrPzb9a0M3ZgNa0JMoZeFC6bxZvO8yr8ozS6ix2SDz0+mvryPeBs2TFE+w=="
+      }
+    },
+    "npm:update-browserslist-db": {
+      "type": "npm",
+      "name": "npm:update-browserslist-db",
+      "data": {
+        "version": "1.1.3",
+        "packageName": "update-browserslist-db",
+        "hash": "sha512-UxhIZQ+QInVdunkDAaiazvvT/+fXL5Osr0JZlJulepYu6Jd7qJtDZjlur0emRlT71EN3ScPoE7gvsuIKKNavKw=="
+      }
+    }
+  },
+  "dependencies": {
+    "undefined": [],
+    "npm:autoprefixer": [
+      {
+        "source": "npm:autoprefixer",
+        "target": "npm:postcss",
+        "type": "static"
+      },
+      {
+        "source": "npm:autoprefixer",
+        "target": "npm:browserslist",
+        "type": "static"
+      },
+      {
+        "source": "npm:autoprefixer",
+        "target": "npm:caniuse-lite",
+        "type": "static"
+      },
+      {
+        "source": "npm:autoprefixer",
+        "target": "npm:fraction.js",
+        "type": "static"
+      },
+      {
+        "source": "npm:autoprefixer",
+        "target": "npm:normalize-range",
+        "type": "static"
+      },
+      {
+        "source": "npm:autoprefixer",
+        "target": "npm:picocolors",
+        "type": "static"
+      },
+      {
+        "source": "npm:autoprefixer",
+        "target": "npm:postcss-value-parser",
+        "type": "static"
+      }
+    ],
+    "npm:browserslist": [
+      {
+        "source": "npm:browserslist",
+        "target": "npm:baseline-browser-mapping",
+        "type": "static"
+      },
+      {
+        "source": "npm:browserslist",
+        "target": "npm:caniuse-lite",
+        "type": "static"
+      },
+      {
+        "source": "npm:browserslist",
+        "target": "npm:electron-to-chromium",
+        "type": "static"
+      },
+      {
+        "source": "npm:browserslist",
+        "target": "npm:node-releases",
+        "type": "static"
+      },
+      {
+        "source": "npm:browserslist",
+        "target": "npm:update-browserslist-db",
+        "type": "static"
+      }
+    ],
+    "npm:postcss": [
+      {
+        "source": "npm:postcss",
+        "target": "npm:nanoid",
+        "type": "static"
+      },
+      {
+        "source": "npm:postcss",
+        "target": "npm:picocolors",
+        "type": "static"
+      },
+      {
+        "source": "npm:postcss",
+        "target": "npm:source-map-js",
+        "type": "static"
+      }
+    ],
+    "npm:update-browserslist-db": [
+      {
+        "source": "npm:update-browserslist-db",
+        "target": "npm:browserslist",
+        "type": "static"
+      },
+      {
+        "source": "npm:update-browserslist-db",
+        "target": "npm:escalade",
+        "type": "static"
+      },
+      {
+        "source": "npm:update-browserslist-db",
+        "target": "npm:picocolors",
+        "type": "static"
+      }
+    ]
+  },
+  "version": "6.0",
+  "errors": [
+    {
+      "stack": " - pwa_angular/.eslintrc.json: Error: Failed to load plugin '@angular-eslint' declared in '.eslintrc.json#overrides[0]': Cannot find module '@angular-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/.eslintrc.json\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)\n    at require.resolve (node:internal/modules/helpers:163:19)\n    at Object.resolve (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2447:46)\n    at ConfigArrayFactory._loadPlugin (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3522:33)\n    at ConfigArrayFactory._loadExtendedPluginConfig (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3340:29)\n    at ConfigArrayFactory._loadExtends (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3259:29)\n    at ConfigArrayFactory._normalizeObjectConfigDataBody (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3199:25)\n    at _normalizeObjectConfigDataBody.next (<anonymous>)\n    at ConfigArrayFactory._normalizeObjectConfigData (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3144:20)\n    at _normalizeObjectConfigData.next (<anonymous>)\n - pwa_angular/bff/.eslintrc.json: Error: Failed to load plugin '@typescript-eslint' declared in '.eslintrc.json': Cannot find module '@typescript-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/.eslintrc.json\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)\n    at require.resolve (node:internal/modules/helpers:163:19)\n    at Object.resolve (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2447:46)\n    at ConfigArrayFactory._loadPlugin (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3522:33)\n    at ConfigArrayFactory._loadExtendedPluginConfig (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3340:29)\n    at ConfigArrayFactory._loadExtends (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3259:29)\n    at ConfigArrayFactory._normalizeObjectConfigDataBody (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3199:25)\n    at _normalizeObjectConfigDataBody.next (<anonymous>)\n    at ConfigArrayFactory._normalizeObjectConfigData (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3144:20)\n    at _normalizeObjectConfigData.next (<anonymous>)",
+      "message": "2 errors occurred while processing files for the @nx/eslint/plugin plugin\n.\n  - pwa_angular/.eslintrc.json: Failed to load plugin '@angular-eslint' declared in '.eslintrc.json#overrides[0]': Cannot find module '@angular-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/.eslintrc.json\n  - pwa_angular/bff/.eslintrc.json: Failed to load plugin '@typescript-eslint' declared in '.eslintrc.json': Cannot find module '@typescript-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/.eslintrc.json",
+      "errors": [
+        [
+          "pwa_angular/.eslintrc.json",
+          {
+            "stack": "Error: Failed to load plugin '@angular-eslint' declared in '.eslintrc.json#overrides[0]': Cannot find module '@angular-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/.eslintrc.json\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)\n    at require.resolve (node:internal/modules/helpers:163:19)\n    at Object.resolve (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2447:46)\n    at ConfigArrayFactory._loadPlugin (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3522:33)\n    at ConfigArrayFactory._loadExtendedPluginConfig (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3340:29)\n    at ConfigArrayFactory._loadExtends (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3259:29)\n    at ConfigArrayFactory._normalizeObjectConfigDataBody (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3199:25)\n    at _normalizeObjectConfigDataBody.next (<anonymous>)\n    at ConfigArrayFactory._normalizeObjectConfigData (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3144:20)\n    at _normalizeObjectConfigData.next (<anonymous>)",
+            "message": "Failed to load plugin '@angular-eslint' declared in '.eslintrc.json#overrides[0]': Cannot find module '@angular-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/.eslintrc.json",
+            "code": "MODULE_NOT_FOUND",
+            "requireStack": [
+              "/Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/__placeholder__.js"
+            ],
+            "messageTemplate": "plugin-missing",
+            "messageData": {
+              "pluginName": "@angular-eslint/eslint-plugin",
+              "resolvePluginsRelativeTo": "/Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular",
+              "importerName": ".eslintrc.json#overrides[0]"
+            }
+          }
+        ],
+        [
+          "pwa_angular/bff/.eslintrc.json",
+          {
+            "stack": "Error: Failed to load plugin '@typescript-eslint' declared in '.eslintrc.json': Cannot find module '@typescript-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/.eslintrc.json\n    at Module._resolveFilename (node:internal/modules/cjs/loader:1420:15)\n    at require.resolve (node:internal/modules/helpers:163:19)\n    at Object.resolve (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:2447:46)\n    at ConfigArrayFactory._loadPlugin (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3522:33)\n    at ConfigArrayFactory._loadExtendedPluginConfig (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3340:29)\n    at ConfigArrayFactory._loadExtends (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3259:29)\n    at ConfigArrayFactory._normalizeObjectConfigDataBody (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3199:25)\n    at _normalizeObjectConfigDataBody.next (<anonymous>)\n    at ConfigArrayFactory._normalizeObjectConfigData (/Users/juanjosuehernandeztapia/Documents/rag-pinecone/node_modules/@eslint/eslintrc/dist/eslintrc.cjs:3144:20)\n    at _normalizeObjectConfigData.next (<anonymous>)",
+            "message": "Failed to load plugin '@typescript-eslint' declared in '.eslintrc.json': Cannot find module '@typescript-eslint/eslint-plugin'\nRequire stack:\n- /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/__placeholder__.js\nReferenced from: /Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/.eslintrc.json",
+            "code": "MODULE_NOT_FOUND",
+            "requireStack": [
+              "/Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff/__placeholder__.js"
+            ],
+            "messageTemplate": "plugin-missing",
+            "messageData": {
+              "pluginName": "@typescript-eslint/eslint-plugin",
+              "resolvePluginsRelativeTo": "/Users/juanjosuehernandeztapia/Documents/rag-pinecone/pwa_angular/bff",
+              "importerName": ".eslintrc.json"
+            }
+          }
+        ]
+      ],
+      "partialResults": [
+        [
+          "dashboard/eslint.config.js",
+          {
+            "projects": {
+              "dashboard": {
+                "targets": {
+                  "lint": {
+                    "command": "eslint .",
+                    "cache": true,
+                    "options": {
+                      "cwd": "dashboard"
+                    },
+                    "inputs": [
+                      "default",
+                      "^default",
+                      "{projectRoot}/eslint.config.js",
+                      "{workspaceRoot}/tools/eslint-rules/**/*",
+                      {
+                        "externalDependencies": [
+                          "eslint"
+                        ]
+                      }
+                    ],
+                    "outputs": [
+                      "{options.outputFile}"
+                    ],
+                    "metadata": {
+                      "technologies": [
+                        "eslint"
+                      ],
+                      "description": "Runs ESLint on project",
+                      "help": {
+                        "command": "npx eslint --help",
+                        "example": {
+                          "options": {
+                            "max-warnings": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      ],
+      "name": "AggregateCreateNodesError",
+      "pluginIndex": 0
+    },
+    {
+      "projectRoots": [
+        "dashboard"
+      ],
+      "projects": {},
+      "name": "ProjectsWithNoNameError"
+    }
+  ],
+  "computedAt": 1760307843473
+}

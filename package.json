@@ -1,7 +1,48 @@
 {
+  "name": "rag-proactive-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ecosistema completo de inteligencia artificial para análisis de riesgo crediticio",
+  "scripts": {
+    "build": "nx run-many --target=build --all",
+    "test": "nx run-many --target=test --all",
+    "lint": "nx run-many --target=lint --all",
+    "start": "nx run-many --target=serve --all --parallel",
+    "dev": "nx run-many --target=serve --projects=api,dashboard --parallel",
+    "e2e": "nx run-many --target=e2e --all",
+    "format": "nx format:write",
+    "format:check": "nx format:check",
+    "clean": "nx reset"
+  },
+  "workspaces": [
+    "apps/*",
+    "libs/*",
+    "services/*",
+    "clients/*"
+  ],
   "devDependencies": {
+    "@nx/eslint": "^20.2.0",
+    "@nx/eslint-plugin": "^20.2.0",
+    "@nx/js": "^20.2.0",
+    "@nx/node": "^20.2.0",
+    "@nx/react": "^20.2.0",
+    "@nx/vite": "^20.2.0",
+    "@nx/workspace": "^20.2.0",
+    "nx": "^20.2.0",
+    "prettier": "^3.0.0",
+    "typescript": "~5.6.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.13"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josuehernandeztapia/rag-proactive-lab.git"
+  },
+  "author": "Juan Josue Hernandez Tapia",
+  "license": "MIT"
 }

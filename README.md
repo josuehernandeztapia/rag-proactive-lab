@@ -6,20 +6,28 @@
 
 Este laboratorio integra **análisis de voz + comportamiento digital + decisión inteligente** para revolucionar la evaluación crediticia tradicional.
 
-## Estructura
+## 🏗️ Arquitectura Monorepo
 
 ```
-app/                     # FastAPI (webhooks, endpoints, prompts híbridos)
+# Modern Nx-powered monorepo structure
+services/
+  api/                   # FastAPI (webhooks, endpoints, prompts híbridos)
+clients/
+  dashboard/             # React dashboard (real-time analytics)
+  pwa/                   # Angular PWA (full production app)
+libs/
+  shared/                # Shared types, utilities, constants
 agents/
   pia/                   # Motor TIR, reglas, LLM service, contratos
   hase/                  # Scripts ingestión/agregación/entrenamiento score
-scripts/                 # Herramientas de laboratorio (ingest, notifier, worker, smoke)
-  ops/                   # Scripts operativos (run.sh, smoke, cleanup)
-prompts/                 # Biblioteca de prompts (subcarpetas por agente, ej. `pia/`)
-data/                    # Datasets dummy (PIA/HASE)
+  guardian/              # Fleet monitoring and alerting
+tools/
+  batch/                 # Batch processing scripts
+  prep/                  # Data preparation utilities
+  data-ops/              # Data operations and ETL
+data/                    # Datasets (HASE/PIA) with Git LFS
 reports/                 # Notas, alertas, outbox y logs de LLM
-docs/                    # Guías (smoke, orquestación)
-  ssot/                  # Documentación de referencia (PDF/Texto)
+docs/                    # Guías y documentación técnica
 ```
 
 ## 🎯 ¿Qué es este laboratorio?
