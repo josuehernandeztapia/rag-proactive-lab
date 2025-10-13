@@ -2,14 +2,15 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$DIR/.." && pwd)"
 cd "$DIR"
 
-# Ensure app/ is available as top-level modules (storage, warranty, etc.)
-if [[ ":${PYTHONPATH:-}:" != *":$DIR/app:"* ]]; then
+# Ensure workspace root is on PYTHONPATH so `main` and `app` resolve
+if [[ ":${PYTHONPATH:-}:" != *":$ROOT_DIR:"* ]]; then
   if [[ -n "${PYTHONPATH:-}" ]]; then
-    export PYTHONPATH="$DIR/app:$PYTHONPATH"
+    export PYTHONPATH="$ROOT_DIR:$PYTHONPATH"
   else
-    export PYTHONPATH="$DIR/app"
+    export PYTHONPATH="$ROOT_DIR"
   fi
 fi
 

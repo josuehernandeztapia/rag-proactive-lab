@@ -10,7 +10,7 @@ from fastapi.responses import Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from trends import trend_boost
+# from trends import trend_boost
 from .parts_lookup import search_parts_catalog as _catalog_lookup
 from .pia_utils import (
     DEFAULT_TARGET_PAYMENT,

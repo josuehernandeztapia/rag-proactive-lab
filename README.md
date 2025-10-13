@@ -1,3 +1,10 @@
+## Documentación para desarrolladores
+
+- [Guía de desarrollo](docs/DEV_GUIDE.md) – setup detallado paso a paso.
+- [Visión arquitectónica](docs/architecture.md) – dependencias entre agentes, bot y TIR.
+- [Guía de contribución](docs/CONTRIBUTING.md) – checklist antes de abrir PR.
+- Script de bootstrap: `scripts/setup_dev.sh` (crea `.venv` y ejecuta `npm install`).
+
 # 🚀 RAG Proactive Lab
 
 **Ecosistema completo de inteligencia artificial para análisis de riesgo crediticio** que combina 6 agentes especializados para decisiones financieras más justas y precisas.
@@ -197,6 +204,12 @@ Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
 | `Port 8000 in use` | `export PORT=8001` |
 | `make: command not found` | `python3 scripts/demo_proteccion.py` |
 | Dashboard vacío | `cd dashboard && npm run sync-data` |
+
+### Build y pruebas (sin Nx)
+- `npm run build-custom` — Construye dashboard, valida FastAPI y ejecuta pytest con `.venv/bin/python`.
+- `npm run build-safe` — Solo build del dashboard desde `clients/dashboard/`.
+- `npm run test-safe` — Ejecuta `pytest` completo usando `.venv/bin/python`.
+- `npm run validate` — Verificación rápida de dependencias FastAPI.
 
 ### Utilidades rápidas
 - `scripts/ops/cleanup_repo.py` elimina artefactos temporales (`.ngrok*`, `.pid`, logs vacíos) entre corridas.

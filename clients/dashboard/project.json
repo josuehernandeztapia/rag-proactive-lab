@@ -1,0 +1,38 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "dashboard",
+  "root": "clients/dashboard",
+  "sourceRoot": "clients/dashboard/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run dev",
+        "cwd": "clients/dashboard"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run build",
+        "cwd": "clients/dashboard"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo \"Dashboard project has no automated tests configured\"",
+        "cwd": "clients/dashboard"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npm run lint",
+        "cwd": "clients/dashboard"
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,1 +1,1 @@
-/Users/josuehernandez/Documents/rag-pinecone/app/api.py
+/Users/juanjosuehernandeztapia/Documents/rag-pinecone/services/api/api.py

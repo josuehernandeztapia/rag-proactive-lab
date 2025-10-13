@@ -1,8 +1,0 @@
-{
-  "$schema": "../requirements.schema.json",
-  "requirements": {
-    "kyc": ["KYC_BIOMETRICO"],
-    "vehiculo": ["COPIA_CONCESION", "TARJETA_CIRCULACION"]
-  }
-}
-
