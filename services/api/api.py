@@ -1,8 +1,9 @@
 import os
 import unicodedata
 from collections import OrderedDict
+from functools import partial
 from pathlib import Path
-from typing import Any, Dict, Optional, Sequence
+from typing import Any, Dict, Optional, Sequence, Callable
 from dotenv import load_dotenv
 import pandas as pd
 from fastapi import FastAPI, HTTPException, Form, Request
@@ -32,6 +33,7 @@ from agents.pia.src import (
     evaluate_scenarios as evaluate_protection_equilibrium,
     get_default_policy,
 )
+from agents.pia.src import config as pia_config
 from agents.pia.src.contracts import get_contract_for_placa
 from agents.pia.src.llm_service import get_llm_service, feature_enabled
 from langchain_pinecone import Pinecone
@@ -82,6 +84,67 @@ try:
 except Exception:
     load_dotenv(override=True)
 app = FastAPI(title="Higer RAG API")
+
+
+KNOWN_AGENTS = {"postventa", "pia", "guardian", "hase", "tir"}
+
+
+def _parse_active_agents(raw: str | None) -> set[str]:
+    """Return the set of enabled agents from env (defaults to all known)."""
+    known = KNOWN_AGENTS
+    if not raw or not raw.strip():
+        return known
+    tokens = {token.strip().lower() for token in raw.split(",") if token.strip()}
+    if not tokens or "all" in tokens:
+        return known
+    unknown = sorted(token for token in tokens if token not in known)
+    if unknown:
+        logger.warning("Ignoring unknown agents from ACTIVE_AGENTS: %s", ", ".join(unknown))
+    return {token for token in tokens if token in known} or known
+
+
+ACTIVE_AGENTS = _parse_active_agents(os.getenv("ACTIVE_AGENTS"))
+if not ACTIVE_AGENTS:
+    logger.warning("No agent activated via ACTIVE_AGENTS; defaulting to empty set")
+else:
+    logger.info("Active agents loaded: %s", ", ".join(sorted(ACTIVE_AGENTS)))
+
+
+def _is_agent_enabled(agent: str | None) -> bool:
+    if agent is None:
+        return True
+    return agent in ACTIVE_AGENTS
+
+
+def _agent_route(agent: str | None, method: str, path: str, **kwargs: Any) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    """Conditionally register a FastAPI route based on the target agent."""
+
+    def decorator(func: Callable[..., Any]) -> Callable[..., Any]:
+        if _is_agent_enabled(agent):
+            getattr(app, method)(path, **kwargs)(func)
+        return func
+
+    return decorator
+
+
+def agent_get(agent: str, *args: Any, **kwargs: Any) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    return _agent_route(agent, "get", *args, **kwargs)
+
+
+def agent_post(agent: str, *args: Any, **kwargs: Any) -> Callable[[Callable[..., Any]], Callable[..., Any]]:
+    return _agent_route(agent, "post", *args, **kwargs)
+
+
+postventa_get = partial(_agent_route, "postventa", "get")
+postventa_post = partial(_agent_route, "postventa", "post")
+pia_get = partial(_agent_route, "pia", "get")
+pia_post = partial(_agent_route, "pia", "post")
+guardian_get = partial(_agent_route, "guardian", "get")
+guardian_post = partial(_agent_route, "guardian", "post")
+hase_get = partial(_agent_route, "hase", "get")
+hase_post = partial(_agent_route, "hase", "post")
+tir_get = partial(_agent_route, "tir", "get")
+tir_post = partial(_agent_route, "tir", "post")
 
 # CORS (configurable)
 _cors = (os.getenv('CORS_ORIGINS') or '').strip()
@@ -174,6 +237,17 @@ def _fallback_parse_secrets_env():
         pass
 
 _fallback_parse_secrets_env()
+
+OFFLINE_FLAG_VALUES = {"1", "true", "yes", "on"}
+
+
+def _env_truthy(key: str, default: str = "0") -> bool:
+    value = os.getenv(key, default)
+    return str(value).strip().lower() in OFFLINE_FLAG_VALUES
+
+
+def _offline_mode_enabled() -> bool:
+    return _env_truthy("OFFLINE_MODE", "0")
 
 # --- Utilidades de módulo ---
 _parts_equivalences_cache: dict | None = None
@@ -1344,6 +1418,10 @@ qa_chain = None
 @app.on_event("startup")
 def startup_event():
     global qa_chain
+    if _offline_mode_enabled():
+        logger.info('OFFLINE_MODE=1 — skipping RAG initialization.')
+        qa_chain = None
+        return
     INDEX_NAME = os.getenv("PINECONE_INDEX", "ssot-higer")
     BRAND_NAME = os.getenv("BRAND_NAME")
     MODEL_NAME = os.getenv("MODEL_NAME")
@@ -1401,12 +1479,18 @@ def startup_event():
 
 
 # CORRECCIÓN Problema 3: Usar 'def' (síncrono) en lugar de 'async def'
-@app.post("/query", response_model=QueryResponse)
+@postventa_post("/query", response_model=QueryResponse)
 def query_rag(request: QueryRequest):
     """
     Endpoint to query the RAG system.
     """
     _t0 = time.perf_counter()
+    if _offline_mode_enabled():
+        return QueryResponse(
+            question=request.question,
+            answer="RAG offline (OFFLINE_MODE=1). Usa datasets locales o vuelve a habilitar servicios para respuestas completas.",
+            sources=[],
+        )
     if qa_chain is None:
         raise HTTPException(status_code=503, detail="RAG system is not initialized.")
 
@@ -1897,8 +1981,14 @@ def system_prompt_hybrid(
     ]
     return " ".join([p for p in parts if p])
 
-@app.post("/query_hybrid", response_model=QueryResponse)
+@postventa_post("/query_hybrid", response_model=QueryResponse)
 def query_hybrid(request: QueryRequest):
+    if _offline_mode_enabled():
+        return QueryResponse(
+            question=request.question,
+            answer="RAG offline (OFFLINE_MODE=1). No se consultó Pinecone ni modelos externos.",
+            sources=[],
+        )
     try:
         _t0 = time.perf_counter()
         # 1) Preparar consulta
@@ -2240,13 +2330,13 @@ def _serialize_pia_row(row: pd.Series) -> dict:
 
 def _pia_output_path() -> Path:
     raw = os.getenv("PIA_DATASET_FILE")
-    path = Path(raw) if raw else Path("data/pia/pia_features.csv")
+    path = Path(raw) if raw else Path("data/processed/pia/pia_features.csv")
     if not path.is_absolute():
         path = Path.cwd() / path
     return path
 
 
-@app.get("/pia/drivers", response_model=list[PIADriverRecord])
+@pia_get("/pia/drivers", response_model=list[PIADriverRecord])
 def pia_list_drivers(
     limit: int = 100,
     scenario: str | None = None,
@@ -2265,7 +2355,7 @@ def pia_list_drivers(
     return records
 
 
-@app.get("/pia/drivers/{placa}", response_model=PIADriverRecord)
+@pia_get("/pia/drivers/{placa}", response_model=PIADriverRecord)
 def pia_driver_detail(placa: str):
     rec = get_driver_record(placa)
     if not rec:
@@ -2480,7 +2570,7 @@ def _ensure_behaviour_metadata(payload: ProtectionEvaluateRequest) -> None:
     payload.metadata = updated
 
 
-@app.post("/pia/simulate", response_model=PIASimulationResponse)
+@pia_post("/pia/simulate", response_model=PIASimulationResponse)
 def pia_simulate(payload: PIASimulationRequest):
     data = payload.dict()
     if data.get("exposure_after_transfer") is None:
@@ -2489,7 +2579,7 @@ def pia_simulate(payload: PIASimulationRequest):
     return PIASimulationResponse(**result.__dict__)
 
 
-@app.post("/pia/protection/evaluate", response_model=ProtectionEvaluateResponse)
+@pia_post("/pia/protection/evaluate", response_model=ProtectionEvaluateResponse)
 def pia_protection_evaluate(payload: ProtectionEvaluateRequest):
     context = _build_protection_context(payload)
     _ensure_behaviour_metadata(payload)
@@ -2506,7 +2596,7 @@ def pia_protection_evaluate(payload: ProtectionEvaluateRequest):
     return ProtectionEvaluateResponse(**result_dict)
 
 
-@app.post("/pia/protection/evaluate_with_summary", response_model=ProtectionEvaluateSummaryResponse)
+@pia_post("/pia/protection/evaluate_with_summary", response_model=ProtectionEvaluateSummaryResponse)
 def pia_protection_evaluate_with_summary(payload: ProtectionEvaluateRequest):
     context = _build_protection_context(payload)
     _ensure_behaviour_metadata(payload)
@@ -2533,7 +2623,7 @@ def pia_protection_evaluate_with_summary(payload: ProtectionEvaluateRequest):
     return ProtectionEvaluateSummaryResponse(**response_payload)
 
 
-@app.post("/pia/rebuild")
+@pia_post("/pia/rebuild")
 def pia_rebuild_dataset(target_payment: float | None = None, seed: int = 42):
     snapshot_df = load_snapshot_dataframe(None)
     df = build_pia_dataset(snapshot_df, target_payment or DEFAULT_TARGET_PAYMENT, seed=seed)
@@ -2544,6 +2634,15 @@ def pia_rebuild_dataset(target_payment: float | None = None, seed: int = 42):
     return {
         "rows": len(df),
         "path": str(out_path),
+    }
+
+
+@pia_post("/pia/config/reload")
+def pia_reload_config():
+    config = pia_config.reload_config()
+    return {
+        "status": "reloaded",
+        "config": pia_config.config_asdict(config),
     }
 
 
@@ -2576,9 +2675,11 @@ def health():
             diag_dim = _index_dimension(diag_idx)
         except Exception:
             pass
+    offline = _offline_mode_enabled()
     return {
         "status": "ok",
-        "initialized": qa_chain is not None,
+        "initialized": (qa_chain is not None) and not offline,
+        "offline_mode": offline,
         "llm_model": os.getenv("LLM_MODEL", "gpt-4o"),
         "ocr_model": os.getenv("OCR_MODEL", "gpt-4o-mini"),
         "asr_model": os.getenv("ASR_MODEL", "whisper-1"),
@@ -2922,7 +3023,7 @@ def metrics():
     return Response(content=body, media_type="text/plain; version=0.0.4")
 
 
-@app.post("/twilio/whatsapp")
+@postventa_post("/twilio/whatsapp")
 async def twilio_whatsapp(
     request: Request,
     Body: str = Form(...),
@@ -3556,7 +3657,7 @@ class WhatsAppProcessRequest(BaseModel):
     meta: dict | None = None
 
 
-@app.post("/twilio/whatsapp_json")
+@postventa_post("/twilio/whatsapp_json")
 def twilio_whatsapp_json(payload: WhatsAppProcessRequest):
     """JSON endpoint (espejo) para orquestar con Make.
     Procesa texto + medios y devuelve {answer, case_id, pending, warranty?}.
@@ -4367,13 +4468,13 @@ def twilio_whatsapp_json(payload: WhatsAppProcessRequest):
         raise HTTPException(status_code=500, detail="Processing error")
 
 
-@app.get("/parts/equivalences")
+@postventa_get("/parts/equivalences")
 def parts_equivalences(q: str, top_k: int = 5):
     """Devuelve equivalencias aftermarket/OEM a partir del catálogo consolidado."""
     return {"equivalences": _collect_equivalence_suggestions(q, limit=top_k, force=True)}
 
 
-@app.get("/parts/search")
+@postventa_get("/parts/search")
 def parts_search(name: str, top_k: int = 3, include_equivalences: bool = False):
     """Busca refacciones en el catálogo local extraído (parts_index.json)."""
     parts_index_file = os.getenv("PARTS_INDEX_FILE", "parts_index.json")
@@ -4456,7 +4557,7 @@ def parts_search(name: str, top_k: int = 3, include_equivalences: bool = False):
     return {"items": items, "equivalences": equivs}
 
 
-@app.get("/search")
+@postventa_get("/search")
 def hybrid_search(q: str, top_k: int = 10):
     """Búsqueda híbrida: catálogo de partes + Pinecone vectorial (filtrado por brand/model si aplica)."""
     results = []
@@ -4509,7 +4610,7 @@ def hybrid_search(q: str, top_k: int = 10):
     return {"items": results[:max(1, min(top_k, 25))]}
 
 
-@app.get("/spareparts")
+@postventa_get("/spareparts")
 def spareparts_integration(
     query: str,
     vin: Optional[str] = None,

@@ -2,10 +2,10 @@
 
 ## Contexto
 - El demo sintético ahora se genera con `make demo-proteccion`, que encadena:
-  1. `scripts/pia_seed_synthetic_portfolio.py` — 200 financiamientos con escenarios baseline, consumption_gap, fault_alert y delinquency.
-  2. `scripts/pia_generate_dummy_outcomes.py --reset-log` — corre HASE → PIA → TIR y actualiza `data/pia/pia_outcomes_log.csv`, `data/hase/pia_outcomes_features.csv`, `reports/pia_plan_summary.csv`.
-  3. `scripts/pia_plan_summary_monitor.py` — resumen rápido en CLI.
-  4. Opcional: `scripts/pia_llm_notifier.py` en modo template (`--llm`) para generar narrativas en `reports/pia_llm_outbox.jsonl`.
+  1. `agents/pia/scripts/pia_seed_synthetic_portfolio.py` — 200 financiamientos con escenarios baseline, consumption_gap, fault_alert y delinquency.
+  2. `agents/pia/scripts/pia_generate_dummy_outcomes.py --reset-log` — corre HASE → PIA → TIR y actualiza `data/pia/pia_outcomes_log.csv`, `data/hase/pia_outcomes_features.csv`, `reports/pia_plan_summary.csv`.
+  3. `agents/pia/scripts/pia_plan_summary_monitor.py` — resumen rápido en CLI.
+  4. Opcional: `agents/pia/scripts/pia_llm_notifier.py` en modo template (`--llm`) para generar narrativas en `reports/pia_llm_outbox.jsonl`.
 - El stub de HASE (`agents/hase/src/service.py`) consume automáticamente `data/pia/synthetic_driver_states.csv`, por lo que los scores reflejan cobertura, recaudo, fallas y protecciones reales.
 
 ## Fuentes de datos disponibles

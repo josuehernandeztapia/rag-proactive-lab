@@ -41,7 +41,7 @@ def run_demo(args: argparse.Namespace) -> None:
         _run(
             [
                 "python3",
-                "scripts/pia_seed_synthetic_portfolio.py",
+                "agents/pia/scripts/pia_seed_synthetic_portfolio.py",
                 "--size",
                 str(args.size),
                 "--seed",
@@ -51,10 +51,10 @@ def run_demo(args: argparse.Namespace) -> None:
     else:
         print("→ Omitiendo generación de cartera sintética (--skip-seed)")
 
-    _run(["python3", "scripts/pia_generate_dummy_outcomes.py", "--reset-log"])
+    _run(["python3", "agents/pia/scripts/pia_generate_dummy_outcomes.py", "--reset-log"])
 
     if not args.skip_monitor:
-        _run(["python3", "scripts/pia_plan_summary_monitor.py"])
+        _run(["python3", "agents/pia/scripts/pia_plan_summary_monitor.py"])
     else:
         print("→ Omitiendo monitor CLI (--skip-monitor)")
 
@@ -64,7 +64,7 @@ def run_demo(args: argparse.Namespace) -> None:
         env.setdefault("PIA_LLM_ALERTS", "1")
         cmd = [
             "python3",
-            "scripts/pia_llm_notifier.py",
+            "agents/pia/scripts/pia_llm_notifier.py",
             "--limit",
             str(args.llm_limit),
             "--pia-outbox",

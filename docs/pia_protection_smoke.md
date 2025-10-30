@@ -28,7 +28,7 @@ python3 agents/pia/scripts/evaluate_protection_scenarios.py \
 Ejecuta el script incluido para recorrer todos los contratos dummy, registrar el primer escenario viable y escribir los agregados. La bandera `--reset-log` reinicia `data/pia/pia_outcomes_log.csv` antes de generar datos nuevos.
 
 ```bash
-python3 scripts/pia_generate_dummy_outcomes.py --reset-log
+python3 agents/pia/scripts/pia_generate_dummy_outcomes.py --reset-log
 ```
 
 El flujo genera:
@@ -42,11 +42,11 @@ Si prefieres sólo registrar outcomes, ejecuta el script con `--skip-aggregate` 
 ## 4. Smoke de endpoint
 
 ```bash
-python3 scripts/pia_smoke_dummy_requests.py --fail-on-error
+python3 agents/pia/scripts/pia_smoke_dummy_requests.py --fail-on-error
 ```
 
 ```bash
-python3 scripts/pia_llm_notifier.py --limit 3 --email-to ejemplo@rag.mx,soporte@rag.mx --pia-outbox reports/pia_llm_outbox.jsonl
+python3 agents/pia/scripts/pia_llm_notifier.py --limit 3 --email-to ejemplo@rag.mx,soporte@rag.mx --pia-outbox reports/pia_llm_outbox.jsonl
 ```
 
 - `--email-to` envía la alerta por correo (usa `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_USE_TLS`); si no hay SMTP, guarda el mensaje en `reports/pia_llm_email_fallback.log` para reenvío manual.
@@ -54,7 +54,7 @@ python3 scripts/pia_llm_notifier.py --limit 3 --email-to ejemplo@rag.mx,soporte@
 
 Este script usa FastAPI TestClient para invocar `/pia/protection/evaluate` por cada contrato dummy y reporta cuántos escenarios viables se obtienen, marcando la ejecución como fallida si alguna llamada devuelve error cuando usas `--fail-on-error`.
 ```bash
-python3 scripts/pia_llm_worker.py --features data/hase/pia_outcomes_features.csv --interval 60 --notifier-args "--limit 3 --email-to laboratorio@rag.mx --pia-outbox reports/pia_llm_outbox.jsonl"
+python3 agents/pia/scripts/pia_llm_worker.py --features data/hase/pia_outcomes_features.csv --interval 60 --notifier-args "--limit 3 --email-to laboratorio@rag.mx --pia-outbox reports/pia_llm_outbox.jsonl"
 ```
 
 Este watcher revisa el CSV cada minuto y dispara `pia_llm_notifier` cuando detecta cambios; deténlo con Ctrl+C. En producción puedes convertirlo en servicio o reemplazarlo por cron.
@@ -79,7 +79,7 @@ python3 agents/pia/scripts/evaluate_protection_scenarios.py \
 ## 6. Monitoreo rápido
 
 ```bash
-python3 scripts/pia_plan_summary_monitor.py
+python3 agents/pia/scripts/pia_plan_summary_monitor.py
 ```
 
 Imprime el resumen de planes y detalla contratos con protecciones negativas, planes expirados o marcados para revisión manual.

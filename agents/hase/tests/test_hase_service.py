@@ -6,7 +6,7 @@ from pathlib import Path
 from agents.hase.src.service import score_payload
 
 ROOT = Path(__file__).resolve().parents[3]
-STATES_PATH = ROOT / "data" / "pia" / "synthetic_driver_states.csv"
+STATES_PATH = ROOT / "data" / "processed" / "pia" / "synthetic_driver_states.csv"
 
 
 def _load_sample() -> dict[str, str]:

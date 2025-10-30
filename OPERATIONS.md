@@ -116,6 +116,19 @@ Asistente RAG con API FastAPI, recuperación híbrida (BM25 + Pinecone) y “mod
 - Wrapper Make: `make ingest` llama al CLI con `--ocr`.
 - Catálogo de partes: `make build-parts` (usa `PARTS_PAGES` para acotar páginas).
 
+## 12. Human-in-the-loop y Auditoría
+
+- **Configuración centralizada:** rutas y parámetros viven en `config/defaults.yaml`; sobreescribe en `config/local.yaml` si necesitas variantes locales. Los scripts consumen este loader y generan `*.metadata.json` junto a cada artefacto.
+- **Notebooks rápidos:**
+  - `notebooks/guardian_overview.ipynb` muestra alertas por tipo/severidad.
+  - `notebooks/pia_decisions.ipynb` resume escenarios PIA y coberturas.
+- **CLI:** `python agents/pia/scripts/pia_plan_summary_monitor.py` lista contratos expirados, con revisión manual o protecciones negativas.
+- **Comandos Make (modo checklist):**
+  - `make ingest-geotab`, `make regen-hase`, `make regen-pia-data`, `make regen-guardian`.
+  - `make smoke-offline` ejecuta `scripts/smoke_test.py` con `OFFLINE_MODE=1` para validar `/health` sin Pinecone/OpenAI.
+- **Modo offline:** exporta `OFFLINE_MODE=1` antes de levantar `uvicorn` para trabajar sin servicios externos; los endpoints retornan respuestas dummy y los smoketests se limitan a `/health`/`/version`.
+- **Registro de hallazgos:** documenta cualquier intervención manual en `reports/` (plan summaries, outbox) o en el canal operativo antes de regenerar datasets.
+
 ## 12. ngrok y Auto‑arranque
 
 - Dominio fijo: en `.env` set `NGROK_DOMAIN=higer-rag.ngrok.app` y `make restart`.
@@ -146,6 +159,8 @@ Asistente RAG con API FastAPI, recuperación híbrida (BM25 + Pinecone) y “mod
 ## 15. Notas recientes
 
 - `/health` ahora reporta: initialized, modelos (LLM/OCR/ASR), embeddings/índice (dim esperada y real), presencia de BM25 y estado del índice de diagramas.
+- Configuración dinámica de PIA: define overrides en `config/pia_config.sample.json`, apunta `PIA_CONFIG_PATH=/ruta/a/override.json` y ejecuta `POST /pia/config/reload` para aplicar sin reiniciar. El endpoint responde con el snapshot actual (`config`).
+- Seguimiento de protecciones: `PIA_SEGUIMIENTO` se dispara cuando pasan 72h sin ejecutar la reestructura; revisa que la plantilla esté aprobada en Meta/Twilio y mapea la acción `offer_protection` cuando `details.protection_followup=true`.
 - Validación de firma de Twilio: se aplica por defecto con `PUBLIC_BASE_URL` + `TWILIO_AUTH_TOKEN`; desactívala solo en pruebas poniendo `TWILIO_VALIDATE=0`.
 - CORS configurable vía `CORS_ORIGINS` (coma-separado) o `*` para permitir todos los orígenes.
 

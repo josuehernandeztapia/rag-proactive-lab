@@ -1,0 +1,15 @@
+{
+  "artifact": "data/processed/hase/pia_outcomes_features.csv",
+  "generated_at": "2025-10-29T17:47:03.070854+00:00",
+  "script": "agents/pia/scripts/pia_generate_dummy_outcomes.py",
+  "commit": "90953f7f0aafdc24c1fd8c48febeb94c67eb6082",
+  "inputs": [
+    "data/processed/pia/pia_outcomes_log.csv"
+  ],
+  "rows": 131,
+  "windows": [
+    30,
+    90,
+    180
+  ]
+}

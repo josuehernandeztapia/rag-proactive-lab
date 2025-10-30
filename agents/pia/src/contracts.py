@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Optional
 
 ROOT_DIR = Path(__file__).resolve().parents[3]
-DEFAULT_CONTRACTS_PATH = ROOT_DIR / "data" / "pia" / "protection_contracts_dummy.csv"
+DEFAULT_CONTRACTS_PATH = ROOT_DIR / "data" / "processed" / "pia" / "protection_contracts_dummy.csv"
 
 
 @dataclass(frozen=True)

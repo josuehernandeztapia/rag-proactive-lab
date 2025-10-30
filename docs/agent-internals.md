@@ -8,7 +8,18 @@ Este documento explica el flujo completo del asistente: prompting, recuperación
 - **`main.py:936` (`system_prompt_hybrid()`)** — Prompt para `/query_hybrid` y webhooks WhatsApp. Añade instrucciones conversacionales: tuteo, agradecimiento por evidencia, confirmaciones (“¿correcto?”), límite de preguntas, manejo de modos (`solo_imagenes`, `solo_audio`).
 - **Límites y resúmenes** — `_effective_limit` ( `main.py:212` ) ajusta longitud según canal y severidad. `_summarize_to_limit` ( `main.py:233` ) puede llamar al LLM para condensar la respuesta manteniendo estructura.
 - **Rewriting** — `rewrite_query` ( `main.py:972` ) refuerza la consulta con “Manual técnico Higer”, OEM y términos relevantes antes de embedir.
-- **PIA templates** — Las plantillas LLM del agente PIA viven en `prompts/pia/` con metadatos en `manifest.json`. El script `scripts/validate_pia_prompts.py` renderiza todos los templates con datos sintéticos para asegurar que los nuevos placeholders estén cubiertos antes de desplegar.
+- **PIA templates** — Las plantillas LLM del agente PIA viven en `prompts/pia/` con metadatos en `manifest.json`. El script `scripts/validate_pia_prompts.py` renderiza todos los templates con datos sintéticos para asegurar que los nuevos placeholders estén cubiertos antes de desplegar. Las plantillas de WhatsApp que dispara PIA quedan alineadas así:
+
+  | Plantilla | Cuándo se envía | Placeholders | Texto sugerido |
+  | --- | --- | --- | --- |
+  | `PIA_RECORDATORIO` | Recordatorios estándar (`payment_reminder`, `provide_balance`, `prepare_advance_payment`) | `nombre`, `referencia`, `fecha` | "Hola {{nombre}}, recuerda que tu pago con referencia {{referencia}} vence el {{fecha}}. ¿Confirmas que vas al corriente?" |
+  | `PIA_OPCIONES` | Ofertas de protección / reestructura | `nombre`, `monto`, `escenario1` | "Hola {{nombre}}, detectamos baja cobertura. Podemos ajustar la mensualidad a ${{monto}} con el plan {{escenario1}}. ¿Quieres que lo gestionemos?" |
+  | `PIA_PROMESA` | Registro de promesas de pago | `nombre`, `monto`, `fecha_promesa` | "Queda registrada tu promesa por ${{monto}} para el {{fecha_promesa}}, {{nombre}}. Avísanos si necesitas apoyo adicional." |
+  | `PIA_DOCUMENTOS` | Envío de documentos solicitados | `nombre`, `documento` | "{{nombre}}, adjuntamos el documento {{documento}} que solicitaste. ¿Algo más que podamos ayudarte?" |
+  | `PIA_CONSUMO` | Investigación por bajo consumo GNV | `nombre`, `placa`, `alerta` | "Hola {{nombre}}, vimos que la vagoneta {{placa}} siguió operando pero casi no registró consumo. {{alerta}}. ¿Puedes validar con el operador y contarnos qué sucedió?" |
+  | `PIA_FALLA` | Escalamiento por fallas críticas | `nombre`, `placa`, `diagnostico` | "{{nombre}}, la telemetría de {{placa}} reporta {{diagnostico}}. Detengan la unidad y avísanos para coordinar revisión." |
+  | `PIA_SEGUIMIENTO` | Seguimiento cuando la protección propuesta no se ha ejecutado en 72h | `nombre`, `motivo`, `paso_siguiente` | "Hola {{nombre}}, seguimos apoyándote con {{motivo}}. Aún no vemos que se haya aplicado la protección. Paso siguiente: {{paso_siguiente}}. ¿Confirmas si ya lo agendaste o prefieres que te acompañemos?" |
+- **Cobranza** — `agents/pia/src/cobranza.py` define `CobranzaCase` y el motor de escalación inteligente. `preparar_cobranza_payload` devuelve el mensaje, canal sugerido y, si aplica, deja una alerta en `reports/pia_cobranza_alerts.jsonl` para que el asesor la vea en el dashboard. Si se restablece la PWA de cobranza, debe volver a consumir ese JSONL (o el endpoint/archivo que lo exponga) y mapear las estrategias (`strategy.canal`) a sus notificaciones. Alternativas rápidas: a) leer el archivo directo y generar las tarjetas de follow-up, b) montar un endpoint que sirva las entradas recientes para la PWA, c) reutilizar el mismo payload `message` para enviar recordatorios vía WhatsApp o correo desde la PWA.
 
 ## 2. Recuperación híbrida
 
@@ -41,7 +52,7 @@ Este documento explica el flujo completo del asistente: prompting, recuperación
 - `extract_signals()` clasifica categoría, severidad, modelo, OEM y problema (fuga, desgaste, etc.). También detecta códigos de falla (`P/B/C/U + ####`), consulta `data/dtc_catalog.json` y ajusta categoría/severidad con esa referencia.
 - `log_event()` soporta múltiples backends: JSONL, Neo4j, Postgres (`STORAGE_BACKEND`).
 - Seguimiento Neon: `db_cases.py` expone `create_case`, `add_attachment`, `upsert_case_meta`. El webhook los usa para mantener casos sincronizados.
-- Equivalencias de refacciones: `data/parts_equivalences.json` (generado con `scripts/build_parts_equivalences.py`) expone OEM → proveedores Toyota/aftermarket; la migración `migrations/*_part_equivalences.sql` permite sincronizarlo con Postgres.
+- Equivalencias de refacciones: `data/parts_equivalences.json` (generado con `agents/postventa/scripts/build_parts_equivalences.py`) expone OEM → proveedores Toyota/aftermarket; la migración `migrations/*_part_equivalences.sql` permite sincronizarlo con Postgres.
 
 ## 5. Garantía
 
@@ -56,7 +67,7 @@ Este documento explica el flujo completo del asistente: prompting, recuperación
 | Manual técnico | `scripts/ingest.py` | CLI unificado (`--ocr`, `--bm25-only`, `--incremental`, `--recreate`, `--pages`), añade build_ts/ingest_version y BM25. |
 | Diagramas | `ingesta_diagramas.py` | Filtra elementos "diagram-like"; usa `source='diagram'`. |
 | Casos históricos | `prep_cases_index.py` | Funde CSV de chat + visión + evidencia aislada. |
-| Catálogo de partes | `build_parts_catalog.py` | `pdfplumber` + heurísticas de tablas; produce JSON para `/parts/search`. |
+| Catálogo de partes | `agents/postventa/scripts/build_parts_catalog.py` | `pdfplumber` + heurísticas de tablas; produce JSON para `/parts/search`. |
 
 `scripts/ingest.py` genera `bm25_index_unstructured.pkl` utilizado por `/query_hybrid` y el webhook. Los scripts `ingesta.py`, `ingesta_mejorada.py` e `ingesta_final.py` se mantienen como compatibilidad y delegan en el script unificado.
 

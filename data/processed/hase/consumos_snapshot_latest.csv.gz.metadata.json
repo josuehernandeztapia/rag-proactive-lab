@@ -1,0 +1,12 @@
+{
+  "artifact": "data/processed/hase/consumos_snapshot_latest.csv.gz",
+  "generated_at": "2025-10-29T17:46:19.614185+00:00",
+  "script": "agents/hase/scripts/build_consumo_features.py",
+  "commit": "90953f7f0aafdc24c1fd8c48febeb94c67eb6082",
+  "inputs": [
+    "data/raw/hase/consumos_unificados.csv",
+    "data/staging/telemetry_summary_from_geotab.csv"
+  ],
+  "rows": 1765,
+  "columns": 122
+}

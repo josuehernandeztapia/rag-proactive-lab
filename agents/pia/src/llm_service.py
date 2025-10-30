@@ -417,12 +417,24 @@ class LLMService:
             lines.append(f"- Recaudado: {_format_currency(details['collected_amount'])}")
         if "gnv_credit_30d" in details:
             lines.append(f"- Consumo GNV 30d: {_format_currency(details['gnv_credit_30d'])}")
+        if "gnv_overprice_per_liter" in details:
+            lines.append(
+                f"- Sobreprecio GNV: {_format_currency(details['gnv_overprice_per_liter'])}/L"
+            )
+        if details.get("gnv_min_floor_breached"):
+            lines.append("- Alerta: sobreprecio GNV por debajo del mínimo ($5/L)")
         if scenario.get("new_payment") is not None:
             lines.append(f"- Pago nuevo: {_format_currency(scenario['new_payment'])}")
         if scenario.get("capitalized_interest") is not None:
             lines.append(f"- Interés capitalizado: {_format_currency(scenario['capitalized_interest'])}")
         if scenario.get("annual_irr") is not None:
             lines.append(f"- TIR proyectada: {_format_percent(scenario['annual_irr'])}")
+        memory_info = details.get("memory_repeat") if isinstance(details.get("memory_repeat"), dict) else None
+        if memory_info:
+            last_ts = memory_info.get("last_timestamp") or "recientemente"
+            lines.append(f"- Nota memoria: acción similar enviada {last_ts}")
+        if details.get("protection_followup"):
+            lines.append("- Seguimiento pendiente: confirmar ejecución de protección propuesta")
         return "\n".join(lines) if lines else "Sin datos financieros relevantes."
 
     def _prepare_alert_context(self, payload: Dict[str, Any]) -> Dict[str, Any]:

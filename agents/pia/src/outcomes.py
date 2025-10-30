@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -16,9 +17,22 @@ from .rules import PIADecision
 from .llm_service import feature_enabled, get_llm_service
 
 ROOT = Path(__file__).resolve().parents[3]
-DEFAULT_LOG_PATH = ROOT / "data" / "pia" / "pia_outcomes_log.csv"
+DEFAULT_LOG_PATH = ROOT / "data" / "processed" / "pia" / "pia_outcomes_log.csv"
+_LOG_ENV_VAR = "PIA_OUTCOMES_LOG_PATH"
 
 LOGGER = logging.getLogger("pia.outcomes")
+
+
+def _resolve_log_path(log_path: Optional[Path] = None) -> Path:
+    if log_path is not None:
+        return Path(log_path)
+    override = os.getenv(_LOG_ENV_VAR)
+    if override:
+        try:
+            return Path(override).expanduser().resolve()
+        except Exception:
+            LOGGER.warning("Invalid PIA_OUTCOMES_LOG_PATH override: %s", override)
+    return DEFAULT_LOG_PATH
 
 
 def _extract_behaviour_tags(meta: dict) -> list[str]:
@@ -97,7 +111,7 @@ def record_outcome(
     plaza: str | None = None,
     notes: str = "",
     metadata: Optional[dict[str, Any]] = None,
-    log_path: Path = DEFAULT_LOG_PATH,
+    log_path: Optional[Path] = None,
 ) -> OutcomeRecord:
     """Persist an outcome for a given decision."""
     record = OutcomeRecord(
@@ -117,7 +131,8 @@ def record_outcome(
         protections_used=metadata.get("protection_plan", {}).get("protections_used") if metadata else None,
         protections_allowed=metadata.get("protection_plan", {}).get("protections_allowed") if metadata else None,
     )
-    _ensure_log_header(log_path)
+    path = _resolve_log_path(log_path)
+    _ensure_log_header(path)
     row = {
         "timestamp": record.timestamp.isoformat(),
         "placa": record.placa,
@@ -139,17 +154,18 @@ def record_outcome(
         "plan_reset_cycle_days": record.metadata.get("protection_plan", {}).get("reset_cycle_days") if record.metadata else "",
         "plan_requires_manual_review": record.metadata.get("protection_plan", {}).get("requires_manual_review") if record.metadata else "",
     }
-    with log_path.open("a", newline="", encoding="utf-8") as handle:
+    with path.open("a", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=row.keys())
         writer.writerow(row)
     _maybe_generate_case_note(record)
     return record
 
 
-def load_outcomes(log_path: Path = DEFAULT_LOG_PATH) -> pd.DataFrame:
-    if not log_path.exists():
-        raise FileNotFoundError(f"Outcome log not found: {log_path}")
-    df = pd.read_csv(log_path)
+def load_outcomes(log_path: Optional[Path] = None) -> pd.DataFrame:
+    path = _resolve_log_path(log_path)
+    if not path.exists():
+        raise FileNotFoundError(f"Outcome log not found: {path}")
+    df = pd.read_csv(path)
     if df.empty:
         return df
     df["timestamp"] = pd.to_datetime(df["timestamp"], errors="coerce", utc=True)
@@ -342,7 +358,50 @@ def aggregate_outcomes(
     return result
 
 
-__all__ = ["OutcomeRecord", "record_outcome", "load_outcomes", "aggregate_outcomes", "DEFAULT_LOG_PATH"]
+def fetch_recent_outcomes(
+    placa: str,
+    *,
+    within_hours: Optional[int] = None,
+    limit: int = 10,
+    actions: Optional[Iterable[str]] = None,
+    outcomes: Optional[Iterable[str]] = None,
+    log_path: Optional[Path] = None,
+) -> list[dict[str, Any]]:
+    try:
+        df = load_outcomes(log_path=log_path)
+    except FileNotFoundError:
+        return []
+    if df.empty:
+        return []
+    target = str(placa or "").upper()
+    if not target:
+        return []
+    subset = df[df["placa"].astype(str).str.upper() == target]
+    if subset.empty:
+        return []
+    if actions:
+        action_set = {str(item).strip() for item in actions}
+        subset = subset[subset["action"].isin(action_set)]
+    if outcomes:
+        outcome_set = {str(item).strip() for item in outcomes}
+        subset = subset[subset["outcome"].isin(outcome_set)]
+    if within_hours is not None:
+        cutoff = datetime.now(timezone.utc) - pd.Timedelta(hours=within_hours)
+        subset = subset[subset["timestamp"] >= cutoff]
+    subset = subset.sort_values("timestamp", ascending=False)
+    if limit:
+        subset = subset.head(limit)
+    return subset.to_dict("records")
+
+
+__all__ = [
+    "OutcomeRecord",
+    "record_outcome",
+    "load_outcomes",
+    "aggregate_outcomes",
+    "fetch_recent_outcomes",
+    "DEFAULT_LOG_PATH",
+]
 
 
 def _maybe_generate_case_note(record: OutcomeRecord) -> None:

@@ -1,0 +1,11 @@
+{
+  "artifact": "data/processed/pia/pia_hotspots.csv",
+  "generated_at": "2025-10-29T06:18:10.578117+00:00",
+  "script": "agents/pia/scripts/build_pia_dashboard_hotspots.py",
+  "commit": "90953f7f0aafdc24c1fd8c48febeb94c67eb6082",
+  "inputs": [
+    "data/processed/pia/pia_features_augmented.csv"
+  ],
+  "rows": 100,
+  "columns": 10
+}

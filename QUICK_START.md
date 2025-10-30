@@ -7,7 +7,7 @@
 make demo-proteccion
 
 # 2. Ver qué generó
-python3 scripts/pia_plan_summary_monitor.py
+python3 agents/pia/scripts/pia_plan_summary_monitor.py
 
 # 3. Dashboard visual
 cd dashboard && npm run dev
@@ -93,11 +93,13 @@ ls -la | grep -E "(avi_lab|agents|dashboard|guardian|scripts)"
 ```
 
 **✅ Deberías ver**:
-- `avi_lab/` - Análisis de voz
-- `agents/` - HASE + PIA
-- `dashboard/` - React UI
-- `guardian/` - Telemetría
-- `scripts/` - Orquestación
+- `agents/postventa/` – Bot postventa (webhooks, catálogos, scripts)
+- `agents/pia/` – Motor TIR + reglas de cobranza y protección
+- `agents/hase/` – Ingesta/feature store de telemetría
+- `agents/guardian/` – Pipelines y reportes de alertas
+- `dashboard/` – React UI
+- `avi_lab/`, `guardian/` – Recursos complementarios
+- `scripts/` – Utilidades generales y demos
 
 ### 4. **Test Básico**
 
@@ -109,6 +111,24 @@ python3 scripts/validate_pia_prompts.py --verbose
 python3 -c "from agents.pia.src.service import PiaAgent; print('✅ PIA OK')"
 python3 -c "from agents.hase.src.service import HaseService; print('✅ HASE OK')"
 ```
+
+### 5. **Levantar Solo el Agente que Necesitas**
+
+```bash
+# Postventa únicamente (webhooks WhatsApp/Make)
+make run-postventa
+
+# PIA (TIR + reglas de riesgo)
+make run-pia
+
+# API completa (endpoints postventa + PIA)
+make run-all
+
+# Detener cualquier modo
+make stop
+```
+
+> También puedes fijar `ACTIVE_AGENTS` manualmente (`ACTIVE_AGENTS=postventa uvicorn main:app --reload`) si necesitas puertos personalizados o supervisores distintos.
 
 ---
 
@@ -122,13 +142,13 @@ make demo-proteccion
 ### Opción B: Paso Manual
 ```bash
 # 1. Generar cartera sintética
-python3 scripts/pia_seed_synthetic_portfolio.py --size 200
+python3 agents/pia/scripts/pia_seed_synthetic_portfolio.py --size 200
 
 # 2. Procesar decisiones
-python3 scripts/pia_generate_dummy_outcomes.py --reset-log
+python3 agents/pia/scripts/pia_generate_dummy_outcomes.py --reset-log
 
 # 3. Ver resultados
-python3 scripts/pia_plan_summary_monitor.py
+python3 agents/pia/scripts/pia_plan_summary_monitor.py
 ```
 
 ### Opción C: Con Alertas LLM

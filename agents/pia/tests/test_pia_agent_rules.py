@@ -1,3 +1,9 @@
+import csv
+import os
+from datetime import datetime, timezone, timedelta
+
+from agents.pia.src import config as pia_config
+from agents.pia.src.outcomes import record_outcome
 from agents.pia.src.rules import PIADecision, categorize_risk, decide_action
 
 
@@ -176,6 +182,21 @@ def test_decide_action_consumption_gap_inferred():
     assert decision.action == "investigate_consumption"
 
 
+def test_decide_action_gnv_min_floor_triggers_gap():
+    payload = _build_payload(
+        hase_telemetry_ok_flag=1,
+        distance_km_30d=800,
+        engine_hours_30d=200,
+        gnv_credit_30d=100,  # Bajo recaudo
+        avg_30d_litros=80,    # 80 litros => sobreprecio $1.25 < $5
+        observed_payment=0,
+    )
+    payload.pop("observed_payment", None)
+    decision = decide_action(payload)
+    assert decision.action == "investigate_consumption"
+    assert decision.details.get("gnv_min_floor_breached")
+
+
 def test_decide_action_fault_alert():
     payload = _build_payload(
         hase_fault_alert_flag=1,
@@ -185,3 +206,60 @@ def test_decide_action_fault_alert():
     decision = decide_action(payload)
     assert decision.action == "escalate_fault_check"
     assert decision.template == "PIA_FALLA"
+
+
+def test_decide_action_memory_suppresses_repeat(tmp_path):
+    payload = _build_payload(risk_score=0.9, arrears_amount=500)
+    first_decision = decide_action(payload)
+    assert first_decision.action == "payment_reminder"
+
+    log_path = tmp_path / "pia_outcomes.csv"
+    record_outcome(first_decision, "payment_reminder_sent", log_path=log_path)
+
+    os.environ["PIA_OUTCOMES_LOG_PATH"] = str(log_path)
+    try:
+        repeat_decision = decide_action(payload)
+    finally:
+        os.environ.pop("PIA_OUTCOMES_LOG_PATH", None)
+
+    assert repeat_decision.action == pia_config.get_config().memory.escalate_action
+    memory_info = repeat_decision.details.get("memory_repeat") or {}
+    assert memory_info.get("suppressed") is True
+
+
+def test_decide_action_protection_followup(tmp_path):
+    base_payload = _build_payload(
+        coverage_ratio_14d=0.4,
+        coverage_ratio_30d=0.5,
+        downtime_hours_30d=190,
+        suggested_scenario="restructure-light",
+        arrears_amount=600,
+    )
+    initial_decision = decide_action(base_payload)
+    assert initial_decision.action == "offer_protection"
+
+    log_path = tmp_path / "pia_followup.csv"
+    record_outcome(initial_decision, "proposed_protection", log_path=log_path)
+
+    follow_cfg = pia_config.get_config().followup
+    past_ts = datetime.now(timezone.utc) - timedelta(hours=follow_cfg.protection_followup_hours + 1)
+    with log_path.open("r", newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        rows = list(reader)
+        fieldnames = reader.fieldnames or list(rows[0].keys())
+    rows[0]["timestamp"] = past_ts.isoformat()
+    with log_path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+    os.environ["PIA_OUTCOMES_LOG_PATH"] = str(log_path)
+    try:
+        followup_decision = decide_action(base_payload)
+    finally:
+        os.environ.pop("PIA_OUTCOMES_LOG_PATH", None)
+
+    assert followup_decision.action == "offer_protection"
+    assert followup_decision.template == "PIA_SEGUIMIENTO"
+    assert followup_decision.details.get("protection_followup") is True
+    assert followup_decision.details.get("force_repeat") is True

@@ -1,10 +1,11 @@
 timezone: America/Mexico_City
 paths:
-  devices: conductores/docs/geotab_api/Device.csv
-  faults: conductores/docs/geotab_api/FaultData.csv
+  devices: data/staging/geotab_devices.csv
+  faults: data/staging/geotab_faults.csv
   telemetry_summary: data/telemetry_summary_from_geotab.csv
-  pia_features: data/pia/pia_features_augmented.csv
-  output: data/guardian/guardian_insights.csv
+  pia_features: data/processed/pia/pia_features_augmented.csv
+  trips_daily: data/staging/geotab_trip_daily.csv
+  output: data/processed/guardian/guardian_insights.csv
   outbox: reports/guardian_outbox.jsonl
 alerts:
   downtime:
@@ -21,6 +22,20 @@ alerts:
     min_activity_drop_pct: 0.45
     lookback_days: 14
     severity: medium
+  safety:
+    seatbelt_rate_threshold: 0.36
+    high_speed_ratio_threshold: 0.38
+    severity: high
+  idle:
+    idle_ratio_threshold: 0.60
+    severity: medium
+  after_hours:
+    ratio_threshold: 0.35
+    min_km_30d: 80
+    severity: medium
+  telemetry:
+    max_health_score: 0.40
+    severity: high
   driving:
     harsh_event_ids:
     - DiagnosticAccidentLevelAccelerationEventId
@@ -41,10 +56,14 @@ alerts:
     fallback_severity: medium
   autohandoff:
     telemetry_health: postventa_soporte
+    telemetry: postventa_soporte
     downtime: postventa_soporte
     off_hours_usage: postventa_soporte
+    after_hours: postventa_soporte
+    idle: postventa_soporte
     geofence: postventa_soporte
     energy: postventa_soporte
+    safety: postventa_tecnico
     dtc: postventa_tecnico
     driving: postventa_tecnico
     consumption: pia

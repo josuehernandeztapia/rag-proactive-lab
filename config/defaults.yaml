@@ -1,0 +1,72 @@
+project:
+  timezone: America/Mexico_City
+
+data:
+  raw:
+    root: data/raw
+    geotab_dir: data/raw/geotab
+    hase_consumos: data/raw/hase/consumos_unificados.csv
+  staging:
+    root: data/staging
+    telemetry_summary: data/staging/telemetry_summary_from_geotab.csv
+    telemetry_summary_normalized: data/staging/telemetry_summary_from_geotab_normalized.csv
+    engine_summary: data/staging/engine_summary.csv
+    geotab_devices: data/staging/geotab_devices.csv
+    geotab_faults: data/staging/geotab_faults.csv
+    geotab_trips_daily: data/staging/geotab_trip_daily.csv
+    geotab_trips_raw: data/staging/geotab_trips_raw.csv
+    geotab_rules: data/staging/geotab_rules.csv
+    geotab_zones: data/staging/geotab_zones.csv
+  processed:
+    root: data/processed
+    guardian:
+      insights: data/processed/guardian/guardian_insights.csv
+      engine_status_summary: data/processed/guardian/engine_status_summary.csv
+    hase:
+      features_daily: data/processed/hase/consumos_features_daily.csv.gz
+      snapshot: data/processed/hase/consumos_snapshot_latest.csv.gz
+      summary_by_plaza: data/processed/hase/consumos_summary_by_plaza.csv
+      dummy_labels: data/processed/hase/dummy_labels.csv
+      training_dataset: data/processed/hase/hase_training_dataset.csv
+      training_dataset_full: data/processed/hase/hase_training_dataset_full.csv.gz
+      outcomes_features: data/processed/hase/pia_outcomes_features.csv
+    pia:
+      features: data/processed/pia/pia_features.csv
+      features_augmented: data/processed/pia/pia_features_augmented.csv
+      synthetic_contracts: data/processed/pia/synthetic_contracts.csv
+      synthetic_states: data/processed/pia/synthetic_driver_states.csv
+      baselines: data/processed/pia/hase_consumption_baselines.csv
+      hotspots: data/processed/pia/pia_hotspots.csv
+    postventa:
+      parts_equivalences: data/processed/postventa/parts_equivalences.csv
+reports:
+  pia_plan_summary: reports/pia_plan_summary.csv
+  pia_scenarios_summary: reports/pia_scenarios_summary.csv
+  guardian_outbox: reports/guardian_outbox.jsonl
+  whatsapp_outbox: reports/whatsapp_outbox.jsonl
+
+pia:
+  target_payment: 18000
+  synthetic_portfolio_size: 200
+  rng_seed: 42
+  safety:
+    seatbelt_threshold: 0.36
+    high_speed_threshold: 0.38
+    idle_ratio_threshold: 0.60
+    after_hours_ratio_threshold: 0.35
+    telemetry_health_threshold: 0.40
+
+hase:
+  observation_window_days: 30
+
+guardian:
+  thresholds:
+    seatbelt_rate: 0.36
+    high_speed_ratio: 0.38
+    idle_ratio: 0.60
+    telemetry_health: 0.40
+    after_hours_ratio: 0.35
+
+metadata:
+  enabled: true
+  include_git_commit: true

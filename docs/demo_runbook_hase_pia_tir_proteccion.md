@@ -39,11 +39,11 @@ Ejemplos:
 
 ### Opción manual (paso a paso)
 ```bash
-python3 scripts/pia_seed_synthetic_portfolio.py --size 200 --seed 2025
-python3 scripts/pia_generate_dummy_outcomes.py --reset-log
-python3 scripts/pia_plan_summary_monitor.py
+python3 agents/pia/scripts/pia_seed_synthetic_portfolio.py --size 200 --seed 2025
+python3 agents/pia/scripts/pia_generate_dummy_outcomes.py --reset-log
+python3 agents/pia/scripts/pia_plan_summary_monitor.py
 # opcional LLM
-PIA_LLM_MODE=template PIA_LLM_ALERTS=1 python3 scripts/pia_llm_notifier.py \
+PIA_LLM_MODE=template PIA_LLM_ALERTS=1 python3 agents/pia/scripts/pia_llm_notifier.py \
   --limit 3 --pia-outbox reports/pia_llm_outbox.jsonl --skip-email
 ```
 

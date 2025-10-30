@@ -2,7 +2,7 @@
 set -euo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(cd "$DIR/.." && pwd)"
+ROOT_DIR="$(cd "$DIR/../.." && pwd)"
 cd "$DIR"
 
 # Ensure workspace root is on PYTHONPATH so `main` and `app` resolve
@@ -35,8 +35,14 @@ start_uvicorn() {
   local noreload_args=(--host "$HOST" --port "$PORT")
   if command -v uvicorn >/dev/null 2>&1; then
     uv_cmd=(uvicorn "$APP" "${noreload_args[@]}")
+  elif [[ -x "$ROOT_DIR/.venv/bin/uvicorn" ]]; then
+    uv_cmd=("$ROOT_DIR/.venv/bin/uvicorn" "$APP" "${noreload_args[@]}")
   else
-    uv_cmd=(python3 -m uvicorn "$APP" "${noreload_args[@]}")
+    if [[ -x "$ROOT_DIR/.venv/bin/python" ]]; then
+      uv_cmd=("$ROOT_DIR/.venv/bin/python" -m uvicorn "$APP" "${noreload_args[@]}")
+    else
+      uv_cmd=(python3 -m uvicorn "$APP" "${noreload_args[@]}")
+    fi
   fi
   echo "[run.sh] Iniciando uvicorn en http://$HOST:$PORT ..."
   nohup "${uv_cmd[@]}" >"$UV_LOG" 2>&1 & echo $! > "$UV_PID_FILE"
@@ -134,7 +140,9 @@ load_env() {
         local val="${line#*=}"
         # quitar comillas simples o dobles al inicio/fin si existen
         [[ "$val" == '"'*'"' || "$val" == "'*'" ]] && val="${val:1:${#val}-2}"
-        export "$key=$val"
+        if [[ -z "${!key+x}" ]]; then
+          export "$key=$val"
+        fi
       fi
     done < "$file"
   }

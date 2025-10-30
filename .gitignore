@@ -61,3 +61,5 @@ rag-pinecone/
 **/* 2.md
 pwa_angular-restored/
 **/* 2.*
+
+config/local.yaml

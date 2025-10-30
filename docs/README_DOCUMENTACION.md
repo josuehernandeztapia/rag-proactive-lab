@@ -35,6 +35,9 @@
 - **Servicio**: `agents/hase/src/service.py`
 - **Tests**: `agents/hase/tests/`
 
+### **🧩 Checklist por Agente / Integraciones**
+- **[docs/pending_checklist.md](pending_checklist.md)** — estado de pendientes, cola WhatsApp unificada y pasos para encender Make/Twilio por agente.
+
 ### **🎯 PIA - Motor de Decisión**
 - **Ubicación**: `agents/pia/`
 - **TIR Engine**: `agents/pia/src/tir_equilibrium_engine.py`
@@ -100,7 +103,7 @@
 make demo-proteccion
 
 # Ver resultados
-python3 scripts/pia_plan_summary_monitor.py
+python3 agents/pia/scripts/pia_plan_summary_monitor.py
 
 # Dashboard
 cd dashboard && npm run dev
@@ -136,7 +139,7 @@ pytest agents/hase/tests/test_hase_service.py
 cd dashboard && npm run sync-data
 
 # Generar datos sintéticos
-python3 scripts/pia_generate_dummy_outcomes.py
+python3 agents/pia/scripts/pia_generate_dummy_outcomes.py
 ```
 
 ## 🎯 Flujo de Lectura Recomendado

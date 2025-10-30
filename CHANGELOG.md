@@ -9,7 +9,7 @@
 - Pipeline de medios optimizado: caché por URL, validación de tipo/tamaño (JPEG/PNG/WEBP, audio comunes), dedupe y timestamps de adjuntos, y masking de VIN/placa antes de loggear o mostrar evidencias.
 - Observabilidad ASR/OCR: eventos `asr_success/asr_timeout/asr_short_transcript` y `ocr_success/ocr_timeout` con métricas de duración/tamaño para detectar regresiones.
 - Latencia/costo: resumen extractivo previo al LLM (`_summarize_to_limit`) y reutilización de embeddings entre `/query_hybrid` y webhooks (cache por hash + MessageSid).
-- Catálogo priorizado: nombres normalizados/deduplicados en `build_parts_catalog.py` y catálogo OEM al frente cuando el usuario proporciona un código explícito.
+- Catálogo priorizado: nombres normalizados/deduplicados en `agents/postventa/scripts/build_parts_catalog.py` y catálogo OEM al frente cuando el usuario proporciona un código explícito.
 - Casos/playbooks: tracking de evidencia requerida/proporcionada con timestamps, dedupe de adjuntos por hash/URL y nuevo endpoint `GET /admin/cases` con estado de cada contacto.
 - Seguridad Twilio: validación activada por defecto, eventos `twilio_signature_failed` y logging de rechazos.
 - Tooling: `make smoke-postdeploy` (verifica `/health`, `/version`, `/metrics`), reporte diario (`make daily-report`) y target `make test` (descubrimiento `tests/`).

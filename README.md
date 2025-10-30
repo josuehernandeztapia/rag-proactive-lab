@@ -20,8 +20,7 @@ Este laboratorio integra **análisis de voz + comportamiento digital + decisión
 services/
   api/                   # FastAPI (webhooks, endpoints, prompts híbridos)
 clients/
-  dashboard/             # React dashboard (real-time analytics)
-  pwa/                   # Angular PWA (full production app)
+  dashboard/             # React dashboard (monitoreo HASE/PIA/Guardian)
 libs/
   shared/                # Shared types, utilities, constants
 agents/
@@ -94,12 +93,11 @@ rag-proactive-lab/
 ├── scripts/            # ⚙️ Orquestadores de demo y herramientas
 ├── data/               # 📈 Datasets sintéticos del demo
 ├── docs/               # 📚 Documentación técnica y runbooks
-└── pwa_angular/        # 📱 Interfaz de usuario Angular
 ```
 
 ## 🎬 El Flujo Completo (Para No Técnicos)
 
-1. **Cliente entra al sistema** → Interfaz Angular PWA
+1. **Cliente entra al sistema** → Bot WhatsApp (Twilio) o dashboard React
 2. **Se inicia entrevista AVI** → 55 preguntas de análisis vocal
 3. **AVI analiza respuestas** → Detecta estrés, confianza, consistencia
 4. **HASE evalúa comportamiento** → Analiza historial y patrones
@@ -112,7 +110,7 @@ rag-proactive-lab/
 
 ```mermaid
 graph TD
-    A[PWA Angular] --> B[AVI Voice Analysis]
+    A[Bot WhatsApp / Dashboard] --> B[AVI Voice Analysis]
     B --> C[Real-time Voice Scoring]
     C --> D[HASE Behavioral Engine]
     D --> E[PIA Decision Engine]
@@ -124,7 +122,7 @@ graph TD
 ## 📂 Alcance del repositorio
 
 **🎯 Componentes Principales:**
-- `avi_lab/` – PWA Angular para análisis de voz inteligente (55 preguntas estructuradas)
+- `avi_lab/` – Scripts y utilidades para análisis de voz inteligente (55 preguntas estructuradas)
 - `agents/hase/` – Motor de scoring con modelos ML entrenados (.joblib)
 - `agents/pia/` – Motor de decisión TIR/Protección + reglas de negocio
 - `app/` – API FastAPI con webhooks y endpoints de protección
@@ -159,6 +157,42 @@ graph TD
 
 Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
 
+## ⚙️ Cómo correr
+
+| Paso | Script | Comando | Artefactos clave |
+| --- | --- | --- | --- |
+| Ingesta | [scripts/ops/ingest_geotab.py](scripts/ops/ingest_geotab.py) | `python scripts/ops/ingest_geotab.py --source data/raw/geotab` | `data/staging/geotab_devices.csv`<br/>`data/staging/geotab_trip_daily.csv`<br/>`data/staging/telemetry_summary_from_geotab.csv` |
+| Regenerar | [agents/hase/scripts/build_consumo_features.py](agents/hase/scripts/build_consumo_features.py) | `python agents/hase/scripts/build_consumo_features.py --inputs data/raw/hase/consumos_unificados.csv` | `data/processed/hase/consumos_features_daily.*`<br/>`data/processed/hase/consumos_snapshot_latest.*`<br/>`data/processed/hase/consumos_summary_by_plaza.csv` |
+| Regenerar | [agents/pia/scripts/build_dataset.py](agents/pia/scripts/build_dataset.py) | `python agents/pia/scripts/build_dataset.py` | `data/processed/pia/pia_features.csv` |
+| Regenerar | [agents/pia/scripts/augment_dataset.py](agents/pia/scripts/augment_dataset.py) | `python agents/pia/scripts/augment_dataset.py` | `data/processed/pia/pia_features_augmented.csv` |
+| Entrenar | [agents/hase/scripts/generate_dummy_labels.py](agents/hase/scripts/generate_dummy_labels.py) | `python agents/hase/scripts/generate_dummy_labels.py` | `data/processed/hase/dummy_labels.csv` |
+| Entrenar | [agents/hase/scripts/build_training_dataset.py](agents/hase/scripts/build_training_dataset.py) | `python agents/hase/scripts/build_training_dataset.py --labels data/processed/hase/dummy_labels.csv` | `data/processed/hase/hase_training_dataset.csv` |
+| Entrenar | [agents/pia/scripts/pia_seed_synthetic_portfolio.py](agents/pia/scripts/pia_seed_synthetic_portfolio.py) | `python agents/pia/scripts/pia_seed_synthetic_portfolio.py --size 200` | `data/processed/pia/synthetic_contracts.csv`<br/>`data/processed/pia/synthetic_driver_states.csv` |
+| Entrenar | [agents/pia/scripts/pia_generate_dummy_outcomes.py](agents/pia/scripts/pia_generate_dummy_outcomes.py) | `python agents/pia/scripts/pia_generate_dummy_outcomes.py --reset-log` | `data/processed/hase/pia_outcomes_features.csv`<br/>`data/processed/pia/pia_outcomes_log.csv`<br/>`reports/pia_plan_summary.csv` |
+| Validar | [agents/guardian/scripts/build_insights.py](agents/guardian/scripts/build_insights.py) | `python agents/guardian/scripts/build_insights.py --config config/guardian.yml` | `data/processed/guardian/guardian_insights.csv`<br/>`reports/guardian_outbox.jsonl` |
+| Validar | [scripts/smoke_test.py](scripts/smoke_test.py) | `python scripts/smoke_test.py --base http://127.0.0.1:8000` | Smoke de API y prompts |
+
+### Levantar la API por agente
+
+```bash
+# Sólo bot postventa (RAG + WhatsApp/Make)
+make run-postventa
+
+# Sólo endpoints PIA (TIR + reglas de riesgo)
+make run-pia
+
+# API completa (postventa + PIA)
+make run-all
+
+# Detener uvicorn/ngrok
+make stop
+
+# Revisar la cola unificada (antes de integrarla con Make/Twilio)
+python scripts/dispatch_whatsapp_outbox.py --limit 10
+```
+
+> También puedes fijar `ACTIVE_AGENTS` manualmente (`ACTIVE_AGENTS=postventa uvicorn main:app --reload`) si necesitas puertos personalizados.
+
 ### Demo Sintético Rápido
 
 1. **Ejecutar demo completo**
@@ -175,7 +209,7 @@ Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
 
 2. **Inspeccionar resultados**
    ```bash
-   python3 scripts/pia_plan_summary_monitor.py
+   python3 agents/pia/scripts/pia_plan_summary_monitor.py
    ```
 
    **✅ Deberías ver:**
@@ -205,6 +239,8 @@ Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
 | `make: command not found` | `python3 scripts/demo_proteccion.py` |
 | Dashboard vacío | `cd dashboard && npm run sync-data` |
 
+> **Modo offline:** exporta `OFFLINE_MODE=1` antes de levantar la API si quieres correr `scripts/smoke_test.py` sin Pinecone/OpenAI. El API devolverá respuestas dummy en `/query_hybrid`; quita la variable para regresar al modo completo.
+
 ### Build y pruebas (sin Nx)
 - `npm run build-custom` — Construye dashboard, valida FastAPI y ejecuta pytest con `.venv/bin/python`.
 - `npm run build-safe` — Solo build del dashboard desde `clients/dashboard/`.
@@ -214,6 +250,7 @@ Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
 ### Utilidades rápidas
 - `scripts/ops/cleanup_repo.py` elimina artefactos temporales (`.ngrok*`, `.pid`, logs vacíos) entre corridas.
 - `scripts/validate_pia_prompts.py --verbose` valida que los prompts del agente PIA tengan placeholders consistentes antes de desplegar.
+- Las alertas de cobranza se registran en `reports/pia_cobranza_alerts.jsonl`; consúmelas en tu dashboard o CLI para coordinar al asesor humano.
 
 ### Documentación relacionada
 - [Runbook HASE/PIA/TIR/Protección](docs/demo_runbook_hase_pia_tir_proteccion.md)
@@ -243,14 +280,14 @@ Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
    export PIA_LLM_SUMMARIES=1
    export PIA_LLM_BEHAVIOUR=1
 
-   python3 scripts/pia_generate_dummy_outcomes.py --reset-log
-   python3 scripts/pia_smoke_dummy_requests.py --fail-on-error
-   python3 scripts/pia_llm_notifier.py --limit 3 --email-to laboratorio@rag.mx --pia-outbox reports/pia_llm_outbox.jsonl
+   python3 agents/pia/scripts/pia_generate_dummy_outcomes.py --reset-log
+   python3 agents/pia/scripts/pia_smoke_dummy_requests.py --fail-on-error
+   python3 agents/pia/scripts/pia_llm_notifier.py --limit 3 --email-to laboratorio@rag.mx --pia-outbox reports/pia_llm_outbox.jsonl
    ```
 
 2. **Watcher / cron**
    ```bash
-   python3 scripts/pia_llm_worker.py \
+   python3 agents/pia/scripts/pia_llm_worker.py \
      --features data/hase/pia_outcomes_features.csv \
      --interval 60 \
      --notifier-args "--limit 3 --email-to laboratorio@rag.mx --pia-outbox reports/pia_llm_outbox.jsonl"
@@ -269,10 +306,10 @@ Sin credenciales → Demo básico funciona, pero sin LLM ni vectores.
 
 ## Canales de entrega
 
-- `scripts/pia_llm_notifier.py` envía alertas vía:
+- `agents/pia/scripts/pia_llm_notifier.py` envía alertas vía:
   - `--email-to`: correo (SMTP; fallback en `reports/pia_llm_email_fallback.log`).
   - `--pia-outbox`: JSONL (`reports/pia_llm_outbox.jsonl`) listo para que PIA/CRM entregue el mensaje.
-- `scripts/pia_llm_worker.py` monitorea el CSV y dispara el notifier en loop.
+- `agents/pia/scripts/pia_llm_worker.py` monitorea el CSV y dispara el notifier en loop.
 
 ## Componentes clave
 

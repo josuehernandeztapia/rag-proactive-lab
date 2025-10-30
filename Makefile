@@ -1,4 +1,4 @@
-.PHONY: help start stop status restart build-parts build-equivalences ingest query health version search parts-search smoke smoke-postdeploy media-worker install-agent uninstall-agent logs-tail logs-init logs-test-db export-csv export-xlsx test daily-report pia-report pia-augment pia-baselines hase-ingest hase-synth hase-build hase-train hase-train-baseline demo-proteccion
+.PHONY: help start stop status restart run-all run-postventa run-pia run-guardian run-hase run-agents build-parts build-equivalences ingest query health version search parts-search smoke smoke-postdeploy media-worker install-agent uninstall-agent logs-tail logs-init logs-test-db export-csv export-xlsx test daily-report pia-report pia-augment pia-baselines hase-ingest hase-synth hase-build hase-train hase-train-baseline demo-proteccion ingest-geotab regen-hase regen-pia-data regen-guardian smoke-offline
 
 ORIG_PYTHONPATH := $(value PYTHONPATH)
 export PYTHONPATH := $(CURDIR)/agents:$(CURDIR)/app$(if $(strip $(ORIG_PYTHONPATH)),:$(strip $(ORIG_PYTHONPATH)))
@@ -9,8 +9,15 @@ help:
 	@echo "  stop          - Detiene uvicorn + ngrok"
 	@echo "  status        - Muestra estado de procesos"
 	@echo "  restart       - Reinicia servicios"
+	@echo "  run-all       - Arranca la API con todos los agentes"
+	@echo "  run-postventa - Arranca sólo los endpoints del bot de postventa"
+	@echo "  run-pia       - Arranca sólo los endpoints del agente PIA"
+	@echo "  run-guardian  - Arranca sólo los endpoints Guardian/HIL"
+	@echo "  run-hase      - Arranca sólo los endpoints HASE"
+	@echo "  run-agents AGENTS=pia,postventa - Arranca la API con una lista personalizada"
 	@echo "  build-parts   - Genera parts_index.json (usa PARTS_PAGES)"
 	@echo "  ingest        - Reingesta a Pinecone (usa .env)"
+	@echo "  ingest-geotab - Normaliza los CSV de data/raw/geotab/ → data/staging/"
 	@echo "  build-equivalences - Regenera data/parts_equivalences.* y migración SQL"
 	@echo "  query Q=...   - Ejecuta consulta local (CLI híbrido)"
 	@echo "  health        - GET /health"
@@ -30,6 +37,10 @@ help:
 	@echo "  daily-report [OUT=...] - Genera reporte diario de casos"
 	@echo "  pia-baselines [ARGS=...]     - Regenera baselines de consumo GNV"
 	@echo "  pia-augment [ARGS=...]       - Genera dataset PIA sintético/enriquecido"
+	@echo "  regen-hase    - Recalcula features HASE + labels dummy + dataset"
+	@echo "  regen-pia-data- Recalcula dataset PIA, portfolio sintético y outcomes"
+	@echo "  regen-guardian - Regenera alertas Guardian"
+	@echo "  smoke-offline - Smoke test offline (OFFLINE_MODE=1, sin Pinecone)"
 	@echo "  pia-report [ARGS=...]        - Emite resumen por escenario y plaza"
 	@echo "  pia-equilibrium [ARGS=...]   - Evalúa escenarios de protección contra la TIR mínima"
 	@echo "  pia-aggregate               - Agrega outcomes PIA y emite resumen por plan"
@@ -66,11 +77,30 @@ status:
 restart:
 	bash ./run.sh restart
 
+run-all:
+	ACTIVE_AGENTS=all bash ./run.sh start
+
+run-postventa:
+	ACTIVE_AGENTS=postventa bash ./run.sh start
+
+run-pia:
+	ACTIVE_AGENTS=pia bash ./run.sh start
+
+run-guardian:
+	ACTIVE_AGENTS=guardian bash ./run.sh start
+
+run-hase:
+	ACTIVE_AGENTS=hase bash ./run.sh start
+
+run-agents:
+	@[ -n "$(AGENTS)" ] || (echo "Uso: make run-agents AGENTS=pia,postventa" && exit 1)
+	ACTIVE_AGENTS=$(AGENTS) bash ./run.sh start
+
 build-parts:
-	python3 build_parts_catalog.py
+	python3 agents/postventa/scripts/build_parts_catalog.py
 
 build-equivalences:
-	python3 scripts/build_parts_equivalences.py
+	python3 agents/postventa/scripts/build_parts_equivalences.py
 
 ingest:
 	python3 scripts/ingest.py
@@ -118,6 +148,27 @@ forms-import:
 
 analysis-bundle:
 	python3 export_analysis_bundle.py
+
+ingest-geotab:
+	. .venv/bin/activate && python scripts/ops/ingest_geotab.py --source data/raw/geotab
+
+regen-hase:
+	. .venv/bin/activate && python agents/hase/scripts/build_consumo_features.py --inputs data/raw/hase/consumos_unificados.csv
+	. .venv/bin/activate && python agents/hase/scripts/generate_dummy_labels.py
+	. .venv/bin/activate && python agents/hase/scripts/build_training_dataset.py
+
+regen-pia-data:
+	. .venv/bin/activate && python agents/pia/scripts/build_dataset.py
+	. .venv/bin/activate && python agents/pia/scripts/augment_dataset.py
+	. .venv/bin/activate && python agents/pia/scripts/pia_seed_synthetic_portfolio.py --size 200
+	. .venv/bin/activate && python agents/pia/scripts/pia_generate_dummy_outcomes.py --reset-log
+	. .venv/bin/activate && python agents/pia/scripts/report_scenarios.py
+
+regen-guardian:
+	. .venv/bin/activate && python agents/guardian/scripts/build_insights.py --config config/guardian.yml
+
+smoke-offline:
+	OFFLINE_MODE=1 . .venv/bin/activate && python scripts/smoke_test.py --skip-query --skip-metrics
 
 SMOKE_BASE ?= http://127.0.0.1:8000
 
@@ -186,7 +237,7 @@ pia-equilibrium:
 	python3 agents/pia/scripts/evaluate_protection_scenarios.py $(ARGS)
 
 pia-aggregate:
-	python3 agents/hase/scripts/aggregate_pia_outcomes.py --log $${LOG:-data/pia/pia_outcomes_log.csv} --output $${OUT:-data/hase/pia_outcomes_features.csv} --summary-out $${SUMMARY:-reports/pia_plan_summary.csv}
+	python3 agents/hase/scripts/aggregate_pia_outcomes.py --log $${LOG:-data/processed/pia/pia_outcomes_log.csv} --output $${OUT:-data/processed/hase/pia_outcomes_features.csv} --summary-out $${SUMMARY:-reports/pia_plan_summary.csv}
 
 # ==== HASE utilities ====
 hase-ingest:

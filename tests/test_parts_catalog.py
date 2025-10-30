@@ -1,6 +1,6 @@
 import unittest
 
-import build_parts_catalog as catalog
+from agents.postventa.scripts import build_parts_catalog as catalog
 
 
 class CleanNameTests(unittest.TestCase):

@@ -1,0 +1,27 @@
+{
+  "gnv": {
+    "min_overprice_per_liter": 5.0,
+    "liters_fallback_days": 30,
+    "epsilon_liters": 1e-6
+  },
+  "memory": {
+    "enabled": true,
+    "repeat_cooldown_hours": 24,
+    "suppress_actions": [
+      "offer_protection",
+      "payment_reminder",
+      "investigate_consumption"
+    ],
+    "annotate_actions": [
+      "provide_balance",
+      "provide_documents",
+      "record_payment_promise"
+    ],
+    "escalate_action": "check_in",
+    "escalate_template": "PIA_RECORDATORIO",
+    "escalate_reason": "Seguimiento manual: respuesta reciente similar"
+  },
+  "followup": {
+    "protection_followup_hours": 72
+  }
+}

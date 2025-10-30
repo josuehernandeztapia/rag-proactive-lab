@@ -17,15 +17,17 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, Optional
 
+from config.loader import get_config, get_path
+
 ROOT_DIR = Path(__file__).resolve().parents[3]
 
 _AGGREGATE_CANDIDATES = (
-    ROOT_DIR / "data" / "hase" / "pia_outcomes_features.csv",
-    Path("data/hase/pia_outcomes_features.csv"),
+    get_path('data', 'processed', 'hase', 'outcomes_features'),
+    Path('conductores/data/processed/hase/pia_outcomes_features.csv'),
 )
 _PORTFOLIO_CANDIDATES = (
-    ROOT_DIR / "data" / "pia" / "synthetic_driver_states.csv",
-    Path("data/pia/synthetic_driver_states.csv"),
+    get_path('data', 'processed', 'pia', 'synthetic_states'),
+    Path('conductores/data/processed/pia/synthetic_driver_states.csv'),
 )
 
 
@@ -126,6 +128,15 @@ def _collect_features(payload: Dict[str, Any], snapshot: Optional[Dict[str, Any]
     expected_payment = _coerce_float(payload.get("expected_payment"), 11_000.0)
     bank_transfer = _coerce_float(payload.get("bank_transfer"), 0.0)
     gnv_credit = _coerce_float(payload.get("gnv_credit_30d"), 0.0)
+    activity_drop = _coerce_float(payload.get("activity_drop_pct"), 0.0)
+    high_speed_ratio = _coerce_float(payload.get("high_speed_ratio_30d"), 0.0)
+    seatbelt_rate = _coerce_float(payload.get("seatbelt_off_rate_30d"), 0.0)
+    idle_ratio = _coerce_float(payload.get("idle_hours_ratio_30d"), 0.0)
+    distance_km = _coerce_float(payload.get("distance_km_30d"), 0.0)
+    after_hours_distance = _coerce_float(payload.get("after_hours_distance_km_30d"), 0.0)
+    engine_hours = _coerce_float(payload.get("engine_hours_30d"), 0.0)
+    driving_hours = _coerce_float(payload.get("driving_hours_30d"), 0.0)
+    idling_hours = _coerce_float(payload.get("idling_hours_30d"), 0.0)
 
     features: Dict[str, float] = {
         "coverage_ratio_30d": coverage_30,
@@ -135,6 +146,15 @@ def _collect_features(payload: Dict[str, Any], snapshot: Optional[Dict[str, Any]
         "expected_payment": expected_payment,
         "bank_transfer": bank_transfer,
         "gnv_credit_30d": gnv_credit,
+        "activity_drop_pct": activity_drop,
+        "high_speed_ratio_30d": high_speed_ratio,
+        "seatbelt_off_rate_30d": seatbelt_rate,
+        "idle_hours_ratio_30d": idle_ratio,
+        "distance_km_30d": distance_km,
+        "after_hours_distance_km_30d": after_hours_distance,
+        "engine_hours_30d": engine_hours,
+        "driving_hours_30d": driving_hours,
+        "idling_hours_30d": idling_hours,
     }
 
     if snapshot:
@@ -148,15 +168,44 @@ def _collect_features(payload: Dict[str, Any], snapshot: Optional[Dict[str, Any]
             "observed_payment",
             "gnv_credit_14d",
             "gnv_credit_7d",
+            "distance_km_30d",
+            "engine_hours_30d",
+            "driving_hours_30d",
+            "after_hours_distance_km_30d",
+            "idle_hours_ratio_30d",
+            "seatbelt_off_rate_30d",
+            "high_speed_ratio_30d",
+            "activity_drop_pct",
         }
         for key in numeric_keys:
             value = snapshot.get(key)
             if value is None:
                 continue
             try:
-                features[key] = float(value)
+                numeric_val = float(value)
             except (TypeError, ValueError):
                 continue
+            features.setdefault(key, numeric_val)
+    if features.get("distance_km_30d", 0.0) <= 0 and snapshot:
+        try:
+            features["distance_km_30d"] = float(snapshot.get("distance_km", 0.0))
+        except (TypeError, ValueError):
+            pass
+    if features.get("engine_hours_30d", 0.0) <= 0 and snapshot:
+        try:
+            features["engine_hours_30d"] = float(snapshot.get("engine_hours", 0.0))
+        except (TypeError, ValueError):
+            pass
+    if features.get("driving_hours_30d", 0.0) <= 0 and snapshot:
+        try:
+            features["driving_hours_30d"] = float(snapshot.get("driving_hours", 0.0))
+        except (TypeError, ValueError):
+            pass
+    if features.get("idling_hours_30d", 0.0) <= 0 and snapshot:
+        try:
+            features["idling_hours_30d"] = float(snapshot.get("idling_hours", 0.0))
+        except (TypeError, ValueError):
+            pass
     return features
 
 
@@ -172,14 +221,43 @@ def _score_from_features(features: Dict[str, float]) -> float:
 
     arrears_ratio = arrears / expected_payment
     payment_gap_ratio = payment_gap / expected_payment
-    downtime_norm = min(features.get("downtime_hours_30d", 0.0) / 120.0, 1.0)
+    downtime_norm = min(max(features.get("downtime_hours_30d", 0.0), 0.0) / 120.0, 1.0)
+    activity_norm = min(max(features.get("activity_drop_pct", 0.0), 0.0), 1.0)
+    high_speed_pressure = min(
+        max(features.get("high_speed_ratio_30d", 0.0), 0.0) / max(SAFETY_SPEED_THRESHOLD, 1e-6),
+        1.0,
+    )
+    seatbelt_pressure = min(
+        max(features.get("seatbelt_off_rate_30d", 0.0), 0.0) / max(SAFETY_SEATBELT_THRESHOLD, 1e-6),
+        1.0,
+    )
+    idle_pressure = min(
+        max(features.get("idle_hours_ratio_30d", 0.0), 0.0) / max(IDLE_RATIO_THRESHOLD, 1e-6),
+        1.0,
+    )
+    distance = max(features.get("distance_km_30d", 0.0), 0.0)
+    after_hours_ratio = 0.0
+    if distance > 0:
+        after_hours_ratio = min(
+            max(features.get("after_hours_distance_km_30d", 0.0), 0.0) / max(distance, 1e-6),
+            1.0,
+        )
+    after_hours_pressure = min(
+        after_hours_ratio / max(AFTER_HOURS_RATIO_THRESHOLD, 1e-6),
+        1.0,
+    )
 
     score = (
-        0.45 * coverage_gap
-        + 0.25 * payment_gap_ratio
-        + 0.20 * downtime_norm
-        + 0.10 * min(arrears_ratio, 1.0)
+        0.30 * coverage_gap
+        + 0.20 * payment_gap_ratio
+        + 0.15 * downtime_norm
+        + 0.10 * activity_norm
+        + 0.08 * high_speed_pressure
+        + 0.07 * seatbelt_pressure
+        + 0.05 * idle_pressure
+        + 0.05 * after_hours_pressure
     )
+    score += 0.05 * min(arrears_ratio, 1.0)
     return min(max(score, 0.0), 1.0)
 
 
@@ -223,3 +301,8 @@ def score_driver(placa: str, *, payload: Optional[Dict[str, Any]] = None) -> Has
 
 
 __all__ = ["HaseScore", "score_payload", "score_driver"]
+SAFETY_CONFIG = get_config('pia', 'safety', default={}) or {}
+SAFETY_SEATBELT_THRESHOLD = float(SAFETY_CONFIG.get('seatbelt_threshold', 0.30))
+SAFETY_SPEED_THRESHOLD = float(SAFETY_CONFIG.get('high_speed_threshold', 0.34))
+IDLE_RATIO_THRESHOLD = float(SAFETY_CONFIG.get('idle_ratio_threshold', 0.60))
+AFTER_HOURS_RATIO_THRESHOLD = float(SAFETY_CONFIG.get('after_hours_ratio_threshold', 0.35))

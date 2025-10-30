@@ -1,0 +1,9 @@
+# Opcional: copia este archivo a config/local.yaml y sobreescribe las rutas o parámetros
+# específicos de tu entorno. Las claves siguen la misma estructura que defaults.yaml.
+# Ejemplo:
+# pia:
+#   target_payment: 19500
+# data:
+#   processed:
+#     pia:
+#       features: data/processed/pia/pia_features_local.csv

@@ -11,7 +11,7 @@ Convertir la telemetría de Geotab en alertas proactivas (WhatsApp, dashboard) q
   - `data/hase/consumos_unificados.csv`: consumo GNV por placa.
   - `data/pia/pia_features_augmented.csv`: cobertura, protecciones, fault flags.
 
-- **ETL / feature engineer** (`scripts/guardian/build_insights.py`)
+- **ETL / feature engineer** (`agents/guardian/scripts/build_insights.py`)
   - Convierte los CSV en `data/guardian_insights.csv` con columnas: `placa`, `alert_type`, `severity`, `details`, `triggered_at`.
   - Llama a `guardian/dtc_catalog.json` para mapear `diagnostic.id → P-code → descripción`.
 
@@ -19,7 +19,7 @@ Convertir la telemetría de Geotab en alertas proactivas (WhatsApp, dashboard) q
   - Umbrales configurables `config/guardian.yml` (ej. `downtime_hours_threshold`, `%_consumption_drop`, `driving_events_limit`).
   - Produce objetos `GuardianAlert` listos para enviar.
 
-- **Notifier** (`scripts/guardian/notifier.py`)
+- **Notifier** (`agents/guardian/scripts/notifier.py`)
   - Genera plantillas empatícas (Markdown/JSON) y:
     - Guarda en `reports/guardian_outbox.jsonl`.
     - Invoca webhook Make/Twilio → WhatsApp (misma infraestructura que PIA/Postventa).
@@ -34,8 +34,8 @@ Convertir la telemetría de Geotab en alertas proactivas (WhatsApp, dashboard) q
    - `guardian_insights_demo.csv`
    - `guardian_outbox_demo.jsonl`
    Copia esos archivos a `data/guardian/guardian_insights.csv` y `reports/guardian_outbox.jsonl` o apunta el dashboard a la ruta demo.
-2. Refresca señales reales con `python3 scripts/guardian/build_insights.py` (usa rutas/umbrales definidos en `config/guardian.yml`).
-3. Genera mensajes y outbox rápido con `python3 scripts/guardian/notifier.py --limit 5` (añade `--dry-run` para solo vista previa).
+2. Refresca señales reales con `python3 agents/guardian/scripts/build_insights.py` (usa rutas/umbrales definidos en `config/guardian.yml`).
+3. Genera mensajes y outbox rápido con `python3 agents/guardian/scripts/notifier.py --limit 5` (añade `--dry-run` para solo vista previa).
    - El notifier respeta `--alert-type`, `--min-severity`, mapeo de contactos y escribe en `reports/guardian_outbox.jsonl`.
    - Usa el mismo tone empatíco del style guide y deja listo el payload para Make/Twilio.
 
@@ -47,7 +47,7 @@ Convertir la telemetría de Geotab en alertas proactivas (WhatsApp, dashboard) q
 3. Respuestas del cliente (`reply`) llegan al agente de Postventa; Guardian sólo escucha.
 
 ### Circuito de notificación (cliente vs. equipo interno)
-- **Cliente / operador:** recibe el mensaje WhatsApp generado por `scripts/guardian/notifier.py` (payload proveniente de `reports/guardian_outbox.jsonl`).
+- **Cliente / operador:** recibe el mensaje WhatsApp generado por `agents/guardian/scripts/notifier.py` (payload proveniente de `reports/guardian_outbox.jsonl`).
 - **Equipo interno:** Make guarda cada alerta en la bitácora (`reports/guardian_outbox.jsonl` + tablero) y puede disparar avisos secundarios (Slack/Email) usando el mismo payload para seguimiento.
 - **Auditoría:** tanto cliente como equipo usan la misma narrativa; los campos `source`, `recommendation`, `insight` permiten rastrear cuándo, por qué y qué acción se sugirió.
 

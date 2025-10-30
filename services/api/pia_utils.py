@@ -10,16 +10,29 @@ from typing import Iterable
 import numpy as np
 import pandas as pd
 
+from config.loader import PROJECT_ROOT, get_config, get_path
 
-DEFAULT_TARGET_PAYMENT = 11_000.0
+DEFAULT_TARGET_PAYMENT = float(get_config('pia', 'target_payment', default=11000))
+SAFETY_CONFIG = get_config('pia', 'safety', default={}) or {}
+SAFETY_SEATBELT_THRESHOLD = float(SAFETY_CONFIG.get('seatbelt_threshold', 0.30))
+SAFETY_SPEED_THRESHOLD = float(SAFETY_CONFIG.get('high_speed_threshold', 0.34))
+IDLE_RATIO_THRESHOLD = float(SAFETY_CONFIG.get('idle_ratio_threshold', 0.60))
+AFTER_HOURS_RATIO_THRESHOLD = float(SAFETY_CONFIG.get('after_hours_ratio_threshold', 0.35))
+TELEMETRY_HEALTH_THRESHOLD = float(SAFETY_CONFIG.get('telemetry_health_threshold', 0.40))
+
+
+def _rel(path: Path) -> str:
+    try:
+        return str(path.relative_to(PROJECT_ROOT))
+    except ValueError:
+        return str(path)
 
 
 def _candidate_snapshot_paths() -> list[Path]:
     cwd = Path.cwd()
     candidates = [
-        Path("data/hase/consumos_snapshot_latest.csv.gz"),
-        cwd / "data" / "hase" / "consumos_snapshot_latest.csv.gz",
-        Path("conductores/data/hase/consumos_snapshot_latest.csv.gz"),
+        get_path('data', 'processed', 'hase', 'snapshot'),
+        Path('conductores/data/processed/hase/consumos_snapshot_latest.csv.gz'),
     ]
     seen: set[Path] = set()
     ordered: list[Path] = []
@@ -34,9 +47,8 @@ def _candidate_snapshot_paths() -> list[Path]:
 def _candidate_pia_dataset_paths() -> list[Path]:
     cwd = Path.cwd()
     candidates = [
-        Path("data/pia/pia_features.csv"),
-        cwd / "data" / "pia" / "pia_features.csv",
-        Path("conductores/data/pia/pia_features.csv"),
+        get_path('data', 'processed', 'pia', 'features'),
+        Path('conductores/data/processed/pia/pia_features.csv'),
     ]
     seen: set[Path] = set()
     ordered: list[Path] = []
@@ -57,7 +69,8 @@ def load_snapshot_dataframe(path: Path | None = None) -> pd.DataFrame:
             return pd.read_csv(candidate)
         except Exception:
             continue
-    raise FileNotFoundError("No se encontró el snapshot de consumos para PIA")
+    attempts = ", ".join(_rel(p) for p in _candidate_snapshot_paths())
+    raise FileNotFoundError(f"No se encontró el snapshot de consumos para PIA; intenté: {attempts}")
 
 
 def _ensure_columns(df: pd.DataFrame, columns: Iterable[str]) -> pd.DataFrame:
@@ -86,6 +99,14 @@ def build_pia_dataset(
             "coverage_ratio_14d",
             "coverage_ratio_30d",
             "credito_30d",
+            "downtime_hours_30d",
+            "activity_drop_pct",
+            "average_speed_kph_30d",
+            "trip_count_30d",
+            "distance_km_30d",
+            "seatbelt_off_rate_30d",
+            "high_speed_ratio_30d",
+            "idle_hours_ratio_30d",
         ],
     )
 
@@ -102,6 +123,34 @@ def build_pia_dataset(
     snapshot_df["activity_drop_pct"] = (
         snapshot_df.get("activity_drop_pct", 0).fillna(0).clip(0, 1)
     )
+
+    snapshot_df["engine_hours_30d"] = snapshot_df.get(
+        "engine_hours_30d", snapshot_df.get("engine_hours", 0)
+    ).fillna(0)
+    snapshot_df["driving_hours_30d"] = snapshot_df.get(
+        "driving_hours_30d", snapshot_df.get("driving_hours", 0)
+    ).fillna(0)
+    snapshot_df["idling_hours_30d"] = snapshot_df.get(
+        "idling_hours_30d", snapshot_df.get("idling_hours", 0)
+    ).fillna(0)
+    snapshot_df["after_hours_distance_km_30d"] = snapshot_df.get(
+        "after_hours_distance_km_30d", snapshot_df.get("after_hours_distance_km", 0)
+    ).fillna(0)
+    snapshot_df["after_hours_driving_hours_30d"] = snapshot_df.get(
+        "after_hours_driving_hours_30d", snapshot_df.get("after_hours_driving_hours", 0)
+    ).fillna(0)
+    snapshot_df["after_hours_stop_hours_30d"] = snapshot_df.get(
+        "after_hours_stop_hours_30d", snapshot_df.get("after_hours_stop_hours", 0)
+    ).fillna(0)
+    snapshot_df["work_distance_km_30d"] = snapshot_df.get(
+        "work_distance_km_30d", snapshot_df.get("work_distance_km", 0)
+    ).fillna(0)
+    snapshot_df["work_driving_hours_30d"] = snapshot_df.get(
+        "work_driving_hours_30d", snapshot_df.get("work_driving_hours", 0)
+    ).fillna(0)
+    snapshot_df["work_stop_hours_30d"] = snapshot_df.get(
+        "work_stop_hours_30d", snapshot_df.get("work_stop_hours", 0)
+    ).fillna(0)
 
     snapshot_df["coverage_ratio_30d"] = snapshot_df["coverage_ratio_30d"].fillna(0)
     snapshot_df["coverage_ratio_14d"] = snapshot_df["coverage_ratio_14d"].fillna(
@@ -125,37 +174,108 @@ def build_pia_dataset(
     coverage_gap = (1 - snapshot_df["coverage_ratio_30d"].clip(0, 1)).clip(lower=0)
     downtime_norm = (snapshot_df["downtime_hours_30d"] / 72).clip(0, 1)
     activity_norm = snapshot_df["activity_drop_pct"].clip(0, 1)
+    arrears_ratio = np.where(
+        snapshot_df["expected_payment"] > 0,
+        snapshot_df["arrears_amount"] / snapshot_df["expected_payment"],
+        0,
+    )
+    arrears_ratio = np.clip(arrears_ratio, 0, 1)
+
+    distance = snapshot_df["distance_km_30d"].replace(0, np.nan)
+    after_hours_ratio = np.clip(
+        snapshot_df["after_hours_distance_km_30d"] / distance,
+        0,
+        1,
+    ).fillna(0)
+    after_hours_pressure = np.clip(after_hours_ratio / max(AFTER_HOURS_RATIO_THRESHOLD, 1e-6), 0, 1)
+
+    seatbelt_pressure = np.clip(
+        snapshot_df["seatbelt_off_rate_30d"] / max(SAFETY_SEATBELT_THRESHOLD, 1e-6),
+        0,
+        1,
+    )
+    speed_pressure = np.clip(
+        snapshot_df["high_speed_ratio_30d"] / max(SAFETY_SPEED_THRESHOLD, 1e-6),
+        0,
+        1,
+    )
+    snapshot_df["safety_score"] = (0.6 * seatbelt_pressure + 0.4 * speed_pressure).clip(0, 1).round(3)
+    snapshot_df["safety_alert"] = (
+        (seatbelt_pressure >= 1.0)
+        | (speed_pressure >= 1.0)
+    ).astype(int)
+
+    idle_norm = np.clip(snapshot_df["idle_hours_ratio_30d"] / max(IDLE_RATIO_THRESHOLD, 1e-6), 0, 1)
+    downtime_pressure = np.clip(snapshot_df["downtime_hours_30d"] / 120, 0, 1)
+    snapshot_df["telemetry_health_score"] = (
+        1
+        - (
+            0.35 * downtime_pressure
+            + 0.25 * idle_norm
+            + 0.20 * snapshot_df["activity_drop_pct"].clip(0, 1)
+            + 0.20 * snapshot_df["safety_score"].clip(0, 1)
+        )
+    ).clip(0, 1)
+    snapshot_df["telemetry_alert"] = (
+        snapshot_df["telemetry_health_score"] <= TELEMETRY_HEALTH_THRESHOLD
+    ).astype(int)
 
     snapshot_df["risk_score"] = (
-        0.5 * coverage_gap + 0.3 * downtime_norm + 0.2 * activity_norm
-    ).round(3)
+        0.30 * coverage_gap
+        + 0.20 * downtime_norm
+        + 0.12 * activity_norm
+        + 0.10 * idle_norm
+        + 0.08 * speed_pressure
+        + 0.07 * seatbelt_pressure
+        + 0.05 * after_hours_pressure
+        + 0.08 * arrears_ratio
+    ).clip(0, 1).round(3)
 
     snapshot_df["needs_protection"] = (
         (snapshot_df["risk_score"] > 0.45)
         | (snapshot_df["coverage_ratio_14d"] < 0.65)
         | (snapshot_df["exposure_after_transfer"] > 2500)
+        | (snapshot_df["safety_alert"] == 1)
+        | (idle_norm >= 1)
     ).astype(int)
 
+    restructure_full = (snapshot_df["downtime_hours_30d"] > 72) & (
+        snapshot_df["coverage_ratio_30d"] < 0.5
+    )
+    restructure_light = snapshot_df["coverage_ratio_30d"] < 0.6
+    idle_review = idle_norm >= 1
+    monitor_ready = (snapshot_df["needs_protection"] == 0) & (
+        snapshot_df["safety_alert"] == 0
+    )
+
     conditions = [
-        (snapshot_df["needs_protection"] == 0),
-        (snapshot_df["downtime_hours_30d"] > 72)
-        & (snapshot_df["coverage_ratio_30d"] < 0.5),
-        (snapshot_df["coverage_ratio_30d"] < 0.6),
+        snapshot_df["safety_alert"] == 1,
+        restructure_full,
+        restructure_light,
+        idle_review,
+        monitor_ready,
     ]
     scenarios = [
-        "monitor",
+        "safety-coaching",
         "restructure-full",
         "restructure-light",
+        "idle-rebalance",
+        "monitor",
     ]
     snapshot_df["suggested_scenario"] = np.select(
         conditions, scenarios, default="advisor-review"
     )
 
-    snapshot_df["whatsapp_segment"] = np.where(
-        snapshot_df["needs_protection"] == 1,
-        "PIA_OPCIONES",
-        "FOLLOW_UP",
+    snapshot_df["whatsapp_segment"] = np.select(
+        [snapshot_df["safety_alert"] == 1, snapshot_df["needs_protection"] == 1],
+        ["PIA_SEGUIMIENTO", "PIA_OPCIONES"],
+        default="FOLLOW_UP",
     )
+
+    snapshot_df["after_hours_ratio_30d"] = after_hours_ratio.round(3)
+    snapshot_df["idle_pressure_30d"] = idle_norm.round(3)
+    snapshot_df["high_speed_pressure_30d"] = speed_pressure.round(3)
+    snapshot_df["seatbelt_pressure_30d"] = seatbelt_pressure.round(3)
 
     useful_cols = [
         "plaza_limpia",
@@ -165,6 +285,22 @@ def build_pia_dataset(
         "coverage_ratio_30d",
         "downtime_hours_30d",
         "activity_drop_pct",
+        "average_speed_kph_30d",
+        "trip_count_30d",
+        "distance_km_30d",
+        "engine_hours_30d",
+        "driving_hours_30d",
+        "idling_hours_30d",
+        "after_hours_distance_km_30d",
+        "work_distance_km_30d",
+        "after_hours_ratio_30d",
+        "idle_pressure_30d",
+        "high_speed_pressure_30d",
+        "seatbelt_pressure_30d",
+        "telemetry_health_score",
+        "telemetry_alert",
+        "safety_score",
+        "safety_alert",
         "protections_applied_last_12m",
         "last_protection_at",
         "expected_payment",
@@ -190,7 +326,7 @@ def load_pia_dataset(path: Path | None = None) -> pd.DataFrame:
             return pd.read_csv(candidate)
         except Exception:
             continue
-    raise FileNotFoundError("No se encontró el dataset PIA (data/pia/pia_features.csv)")
+    raise FileNotFoundError("No se encontró el dataset PIA (data/processed/pia/pia_features.csv)")
 
 
 def get_driver_record(placa: str) -> dict | None:
@@ -221,27 +357,68 @@ def simulate_from_payload(payload: dict, target_payment: float | None = None) ->
     activity = float(payload.get("activity_drop_pct", 0))
     arrears = float(payload.get("arrears_amount", 0))
     exposure = float(payload.get("exposure_after_transfer", arrears))
+    seatbelt = float(payload.get("seatbelt_off_rate_30d", 0))
+    high_speed = float(payload.get("high_speed_ratio_30d", 0))
+    idle_ratio = float(payload.get("idle_hours_ratio_30d", 0))
+    distance = float(payload.get("distance_km_30d", 0))
+    after_hours_distance = float(payload.get("after_hours_distance_km_30d", 0))
 
     coverage_gap = max(0.0, 1 - max(0.0, min(1.0, coverage_30)))
     downtime_norm = max(0.0, min(1.0, downtime / 72))
     activity_norm = max(0.0, min(1.0, activity))
+    idle_norm = max(0.0, min(1.0, idle_ratio / max(IDLE_RATIO_THRESHOLD, 1e-6)))
+    speed_norm = max(0.0, min(1.0, high_speed / max(SAFETY_SPEED_THRESHOLD, 1e-6)))
+    seatbelt_norm = max(0.0, min(1.0, seatbelt / max(SAFETY_SEATBELT_THRESHOLD, 1e-6)))
+    after_hours_ratio = 0.0
+    if distance > 0:
+        after_hours_ratio = max(0.0, min(1.0, after_hours_distance / distance))
+    after_hours_norm = max(
+        0.0,
+        min(1.0, after_hours_ratio / max(AFTER_HOURS_RATIO_THRESHOLD, 1e-6)),
+    )
+    exposure_ratio = 0.0
+    if tp > 0:
+        exposure_ratio = max(0.0, min(1.0, arrears / tp))
 
-    risk = round(0.5 * coverage_gap + 0.3 * downtime_norm + 0.2 * activity_norm, 3)
+    risk = round(
+        0.30 * coverage_gap
+        + 0.20 * downtime_norm
+        + 0.12 * activity_norm
+        + 0.10 * idle_norm
+        + 0.08 * speed_norm
+        + 0.07 * seatbelt_norm
+        + 0.05 * after_hours_norm
+        + 0.08 * exposure_ratio,
+        3,
+    )
+
+    safety_flag = (seatbelt_norm >= 1) or (speed_norm >= 1)
     needs_protection = int(
         (risk > 0.45)
         or (coverage_14 < 0.65)
         or (exposure > 2500)
+        or safety_flag
+        or (idle_norm >= 1)
     )
-    if needs_protection == 0:
-        scenario = "monitor"
+
+    if safety_flag:
+        scenario = "safety-coaching"
     elif downtime > 72 and coverage_30 < 0.5:
         scenario = "restructure-full"
     elif coverage_30 < 0.6:
         scenario = "restructure-light"
+    elif idle_norm >= 1:
+        scenario = "idle-rebalance"
+    elif needs_protection == 0:
+        scenario = "monitor"
     else:
         scenario = "advisor-review"
 
-    whatsapp_segment = "PIA_OPCIONES" if needs_protection else "FOLLOW_UP"
+    whatsapp_segment = np.select(
+        [safety_flag, needs_protection == 1],
+        ["PIA_SEGUIMIENTO", "PIA_OPCIONES"],
+        default="FOLLOW_UP",
+    )
 
     return SimulationResult(
         placa=str(payload.get("placa", "UNKNOWN")),
@@ -250,4 +427,3 @@ def simulate_from_payload(payload: dict, target_payment: float | None = None) ->
         suggested_scenario=scenario,
         whatsapp_segment=whatsapp_segment,
     )
-
