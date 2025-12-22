@@ -1,0 +1,163 @@
+timezone: America/Mexico_City
+
+paths:
+  devices: data/staging/geotab_devices.csv
+  trips_daily: data/staging/geotab_trip_daily.csv
+  events_daily: data/staging/geotab_events_daily_2025-12-21-refined.csv
+  events_percentiles: data/staging/geotab_events_market_percentiles_2025-12-21-refined.csv
+  telemetry_summary: data/staging/telemetry_summary_from_geotab.csv
+
+  # Salidas enriquecidas
+  health_features: data/processed/hase/health_features_enhanced.csv
+  efficiency_features: data/processed/hase/efficiency_features_enhanced.csv
+  predictive_model: models/hase/predictive_maintenance_enhanced.pkl
+  output: data/processed/hase/hase_insights_enhanced.csv
+
+# HASE Enhanced Default Prediction Configuration
+default_prediction:
+  # Threshold for default flag (0-1)
+  default_threshold: 0.6
+
+  # Weights for hybrid scoring
+  weights:
+    core_risk: 0.7      # Original GNV logic proxy
+    behavioral_risk: 0.3 # Telemetry enhancement
+
+# Features enriquecidos basados en telemetría sin GNV
+enhanced_features:
+
+  # Salud del vehículo (electrical/mechanical health)
+  electrical_health:
+    - device_voltage_stability    # Estabilidad del voltaje del dispositivo
+    - ignition_pattern_regularity # Regularidad en patrones de ignición
+    - connection_reliability      # Frecuencia de desconexiones
+
+  mechanical_health:
+    - engine_efficiency_score     # RPM vs velocidad ratio
+    - idle_pattern_analysis       # Análisis de patrones de ralentí
+    - harsh_driving_impact        # Impacto de conducción brusca en desgaste
+
+  # Eficiencia operacional (proxy para consumo)
+  operational_efficiency:
+    - distance_per_engine_hour    # km por hora de motor (eficiencia)
+    - idle_time_ratio            # Tiempo ralentí vs tiempo total
+    - speed_efficiency           # Tiempo en velocidad óptima
+    - after_hours_efficiency     # Eficiencia fuera de horario
+
+  # Patrones de comportamiento
+  driver_behavior:
+    - harsh_events_frequency     # Frecuencia de eventos bruscos
+    - speed_compliance_score     # Cumplimiento de límites
+    - maneuver_smoothness        # Suavidad de maniobras
+    - after_hours_discipline     # Disciplina fuera de horario
+
+# Umbrales para detección de anomalías
+health_thresholds:
+  electrical:
+    voltage_low: 11.5           # Voltaje bajo crítico
+    voltage_unstable: 0.5       # Variación máxima aceptable
+    disconnection_rate: 0.02    # % días con desconexiones
+
+  mechanical:
+    rpm_efficiency_min: 15      # km/h por 1000 RPM mínimo
+    idle_ratio_max: 0.25        # Máximo 25% tiempo en ralentí
+    harsh_events_max: 10        # Máximo eventos bruscos por día
+
+  operational:
+    efficiency_drop_threshold: 0.20  # 20% caída en eficiencia
+    after_hours_threshold: 0.15      # 15% uso fuera de horario
+
+# Predicción de mantenimiento sin GNV
+predictive_maintenance:
+  features:
+    # Basado en telemetría
+    - engine_hours_total
+    - distance_total
+    - harsh_driving_score
+    - idle_hours_ratio
+    - voltage_degradation_trend
+    - speed_pattern_irregularity
+
+  # Modelos de predicción
+  models:
+    electrical_failure:
+      target: "device_voltage_failure"
+      features: ["voltage_trend", "disconnection_frequency", "ignition_irregularity"]
+      lookback_days: 30
+
+    engine_maintenance:
+      target: "engine_efficiency_drop"
+      features: ["rpm_efficiency", "idle_ratio", "harsh_events", "engine_hours"]
+      lookback_days: 14
+
+    operational_degradation:
+      target: "efficiency_drop"
+      features: ["distance_efficiency", "speed_patterns", "after_hours_usage"]
+      lookback_days: 7
+
+# Reglas de alertas basadas en telemetría
+alerts:
+  electrical_health:
+    voltage_degradation:
+      threshold: 0.15  # 15% degradación
+      severity: high
+      description: "Degradación del sistema eléctrico detectada"
+
+    frequent_disconnections:
+      threshold: 3     # 3+ desconexiones por semana
+      severity: medium
+      description: "Desconexiones frecuentes del dispositivo"
+
+  mechanical_health:
+    engine_inefficiency:
+      threshold: 0.20  # 20% caída en eficiencia
+      severity: high
+      description: "Eficiencia del motor degradada"
+
+    excessive_idle:
+      threshold: 0.30  # 30% tiempo en ralentí
+      severity: medium
+      description: "Tiempo excesivo en ralentí"
+
+  operational_efficiency:
+    efficiency_drop:
+      threshold: 0.25
+      severity: high
+      description: "Caída significativa en eficiencia operacional"
+
+    harsh_driving:
+      threshold: 15    # 15+ eventos por día
+      severity: medium
+      description: "Conducción agresiva persistente"
+
+# Síntesis de datos sin GNV - usar telemetría como proxy
+synthetic_data:
+  # Correlaciones realistas telemetría -> eficiencia
+  correlations:
+    idle_efficiency: -0.75      # Más ralentí = menos eficiencia
+    harsh_driving_wear: 0.65    # Más eventos bruscos = más desgaste
+    speed_patterns: 0.70        # Mejores patrones = mejor eficiencia
+    voltage_health: 0.60        # Mejor voltaje = mejor rendimiento
+
+  # Generar proxies de consumo basados en telemetría
+  consumption_proxies:
+    base_efficiency: 12.5       # km base por unidad de referencia
+    idle_penalty: 0.85          # Factor de penalización por ralentí
+    harsh_penalty: 0.92         # Factor por conducción brusca
+    speed_bonus: 1.08           # Bonus por velocidad eficiente
+
+# Configuración de entrenamiento
+training:
+  target_features:
+    # Usar métricas de eficiencia como targets
+    - "distance_per_engine_hour"
+    - "operational_efficiency_score"
+    - "health_degradation_rate"
+
+  validation_split: 0.2
+  test_split: 0.1
+  random_state: 42
+
+  # Feature selection automático
+  feature_importance_threshold: 0.01
+  correlation_threshold: 0.95

@@ -435,6 +435,143 @@ def build_pia_alerts(pia_path: Path, config: dict[str, Any]) -> pd.DataFrame:
     return pd.DataFrame(alerts)
 
 
+def load_events_data(events_daily_path: Path, events_percentiles_path: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
+    events_daily = pd.DataFrame()
+    events_percentiles = pd.DataFrame()
+
+    if events_daily_path and events_daily_path.exists():
+        try:
+            events_daily = pd.read_csv(events_daily_path)
+        except FileNotFoundError:
+            pass
+
+    if events_percentiles_path and events_percentiles_path.exists():
+        try:
+            events_percentiles = pd.read_csv(events_percentiles_path)
+        except FileNotFoundError:
+            pass
+
+    return events_daily, events_percentiles
+
+
+def build_enhanced_safety_alerts(events_daily: pd.DataFrame, events_percentiles: pd.DataFrame, config: dict[str, Any], device_map: dict[str, str]) -> pd.DataFrame:
+    if events_daily.empty:
+        return pd.DataFrame(columns=["placa", "alert_type", "severity", "details", "triggered_at"])
+
+    alerts = []
+    safety_cfg = config.get("alerts", {}).get("enhanced_safety", {})
+
+    if not isinstance(safety_cfg, dict):
+        return pd.DataFrame(columns=["placa", "alert_type", "severity", "details", "triggered_at"])
+
+    # Agregar placa si no existe
+    if "placa" not in events_daily.columns and "device" in events_daily.columns:
+        events_daily["placa"] = events_daily["device"].map(device_map)
+
+    # Frenado brusco frecuente
+    harsh_braking_threshold = safety_cfg.get("harsh_braking_rate_threshold", 5)  # Ajustado a eventos absolutos
+    harsh_braking_events = events_daily[events_daily.get("harsh_brake", 0) > harsh_braking_threshold]
+
+    for _, row in harsh_braking_events.iterrows():
+        harsh_brake_count = row.get("harsh_brake", 0)
+        alerts.append({
+            "placa": row.get("placa"),
+            "alert_type": "enhanced_safety",
+            "severity": safety_cfg.get("severity", "high"),
+            "details": f"Frenado brusco frecuente: {harsh_brake_count} eventos (>{harsh_braking_threshold})",
+            "triggered_at": row.get("fecha", datetime.now().strftime("%Y-%m-%d"))
+        })
+
+    # Violaciones de cinturón
+    seatbelt_threshold = safety_cfg.get("seatbelt_violations_per_hour", 3)
+    seatbelt_violations = events_daily[events_daily.get("seatbelt_off", 0) > seatbelt_threshold]
+
+    for _, row in seatbelt_violations.iterrows():
+        seatbelt_events = row.get("seatbelt_off", 0)
+        alerts.append({
+            "placa": row.get("placa"),
+            "alert_type": "enhanced_safety",
+            "severity": safety_cfg.get("severity", "high"),
+            "details": f"Violaciones cinturón: {seatbelt_events} eventos (>{seatbelt_threshold})",
+            "triggered_at": row.get("fecha", datetime.now().strftime("%Y-%m-%d"))
+        })
+
+    # Maniobras bruscas
+    maneuver_threshold = safety_cfg.get("harsh_maneuver_threshold", 50)
+    harsh_maneuvers = events_daily[events_daily.get("harsh_maneuver", 0) > maneuver_threshold]
+
+    for _, row in harsh_maneuvers.iterrows():
+        maneuver_events = row.get("harsh_maneuver", 0)
+        alerts.append({
+            "placa": row.get("placa"),
+            "alert_type": "enhanced_safety",
+            "severity": safety_cfg.get("severity", "high"),
+            "details": f"Maniobras bruscas: {maneuver_events} eventos (>{maneuver_threshold})",
+            "triggered_at": row.get("fecha", datetime.now().strftime("%Y-%m-%d"))
+        })
+
+    # Exceso de velocidad
+    overspeed_threshold = safety_cfg.get("overspeed_threshold", 20)
+    overspeed_events = events_daily[events_daily.get("overspeed", 0) > overspeed_threshold]
+
+    for _, row in overspeed_events.iterrows():
+        speed_events = row.get("overspeed", 0)
+        alerts.append({
+            "placa": row.get("placa"),
+            "alert_type": "enhanced_safety",
+            "severity": safety_cfg.get("severity", "high"),
+            "details": f"Exceso de velocidad: {speed_events} eventos (>{overspeed_threshold})",
+            "triggered_at": row.get("fecha", datetime.now().strftime("%Y-%m-%d"))
+        })
+
+    return pd.DataFrame(alerts)
+
+
+def build_enhanced_operations_alerts(events_daily: pd.DataFrame, config: dict[str, Any], device_map: dict[str, str]) -> pd.DataFrame:
+    if events_daily.empty:
+        return pd.DataFrame(columns=["placa", "alert_type", "severity", "details", "triggered_at"])
+
+    alerts = []
+    ops_cfg = config.get("alerts", {}).get("enhanced_operations", {})
+
+    if not isinstance(ops_cfg, dict):
+        return pd.DataFrame(columns=["placa", "alert_type", "severity", "details", "triggered_at"])
+
+    # Agregar placa si no existe
+    if "placa" not in events_daily.columns and "device" in events_daily.columns:
+        events_daily["placa"] = events_daily["device"].map(device_map)
+
+    # Ralentí excesivo
+    idle_threshold = ops_cfg.get("idle_engine_threshold_minutes", 30)  # Ajustado a eventos
+    idle_violations = events_daily[events_daily.get("idling", 0) > idle_threshold]
+
+    for _, row in idle_violations.iterrows():
+        idle_events = row.get("idling", 0)
+        alerts.append({
+            "placa": row.get("placa"),
+            "alert_type": "enhanced_operations",
+            "severity": ops_cfg.get("severity", "medium"),
+            "details": f"Ralentí excesivo: {idle_events} eventos (>{idle_threshold})",
+            "triggered_at": row.get("fecha", datetime.now().strftime("%Y-%m-%d"))
+        })
+
+    # PTO no autorizado
+    pto_threshold = ops_cfg.get("pto_unauthorized_threshold_minutes", 5)
+    pto_violations = events_daily[events_daily.get("pto", 0) > pto_threshold]
+
+    for _, row in pto_violations.iterrows():
+        pto_events = row.get("pto", 0)
+        alerts.append({
+            "placa": row.get("placa"),
+            "alert_type": "enhanced_operations",
+            "severity": ops_cfg.get("severity", "medium"),
+            "details": f"PTO activo: {pto_events} eventos (>{pto_threshold})",
+            "triggered_at": row.get("fecha", datetime.now().strftime("%Y-%m-%d"))
+        })
+
+    return pd.DataFrame(alerts)
+
+
 def combine_alerts(frames: list[pd.DataFrame]) -> pd.DataFrame:
     frames = [df for df in frames if not df.empty]
     if not frames:
@@ -457,21 +594,27 @@ def main(argv: Iterable[str] | None = None) -> int:
     devices_path = (ROOT / paths["devices"]) if paths.get("devices") else None
     faults_path = (ROOT / paths["faults"]) if paths.get("faults") else None
     pia_features_path = (ROOT / paths["pia_features"]) if paths.get("pia_features") else None
+    events_daily_path = (ROOT / paths["events_daily"]) if paths.get("events_daily") else None
+    events_percentiles_path = (ROOT / paths["events_percentiles"]) if paths.get("events_percentiles") else None
     output_path = ROOT / paths.get("output", "data/guardian/guardian_insights.csv")
 
     device_map = load_device_map(devices_path) if devices_path else {}
     dtc_catalog = load_dtc_catalog()
     faults_df = load_faults(faults_path, device_map) if faults_path else pd.DataFrame()
+    events_daily, events_percentiles = load_events_data(events_daily_path, events_percentiles_path)
+
     dtc_alerts = build_dtc_alerts(faults_df, config, dtc_catalog)
     driving_alerts = build_driving_alerts(faults_df, config)
     pia_alerts = build_pia_alerts(pia_features_path, config) if pia_features_path else pd.DataFrame()
+    enhanced_safety_alerts = build_enhanced_safety_alerts(events_daily, events_percentiles, config, device_map)
+    enhanced_operations_alerts = build_enhanced_operations_alerts(events_daily, config, device_map)
 
-    combined = combine_alerts([dtc_alerts, driving_alerts, pia_alerts])
+    combined = combine_alerts([dtc_alerts, driving_alerts, pia_alerts, enhanced_safety_alerts, enhanced_operations_alerts])
     output_path.parent.mkdir(parents=True, exist_ok=True)
     combined.to_csv(output_path, index=False)
 
     inputs = [Path(args.config)]
-    for candidate in (devices_path, faults_path, pia_features_path):
+    for candidate in (devices_path, faults_path, pia_features_path, events_daily_path, events_percentiles_path):
         if candidate:
             inputs.append(candidate)
     for catalog in (DTC_CATALOG_PATH, GLOBAL_DTC_PATH):

@@ -1,0 +1,16 @@
+{
+  "test_date": "2025-12-21T21:55:42.827761",
+  "sample_sizes": {
+    "control": 1335,
+    "treatment": 1322
+  },
+  "results_summary": {},
+  "statistical_significance": {},
+  "recommendation": {
+    "action": "IMPLEMENTAR TREATMENT (80/20)",
+    "confidence": "ALTO",
+    "reason": "Mejora significativa en discriminaci\u00f3n (+25.7%)",
+    "discrimination_improvement": 25.72848338918559,
+    "cost_impact": -0.8371438407131065
+  }
+}

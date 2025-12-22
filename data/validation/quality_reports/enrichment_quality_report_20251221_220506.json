@@ -1,0 +1,45 @@
+{
+  "data_quality": {
+    "success": true,
+    "file_checks": {
+      "enhanced_default_predictions.csv": {
+        "exists": true,
+        "size_mb": 0.00174713134765625
+      },
+      "pia_features_enhanced.csv": {
+        "exists": true,
+        "size_mb": 0.637822151184082
+      },
+      "guardian_insights.csv": {
+        "exists": true,
+        "size_mb": 0.14165115356445312
+      },
+      "pia_hotspots.csv": {
+        "exists": true,
+        "size_mb": 0.012286186218261719
+      }
+    },
+    "total_files": 4,
+    "valid_files": 4
+  },
+  "hybrid_weights": {
+    "success": false,
+    "returncode": 2,
+    "stdout": "",
+    "stderr": "usage: validate_hybrid_weights_simple.py [-h] [--agent {hase,pia}]\n                                         [--optimize-weights]\n                                         [--synthetic-validation]\nvalidate_hybrid_weights_simple.py: error: unrecognized arguments: --agents hase,pia,guardian\n",
+    "duration": 0.3432309627532959
+  },
+  "temporal_stability": {
+    "success": false,
+    "returncode": 1,
+    "stdout": "⏰ VALIDACIÓN TEMPORAL DE ESTABILIDAD DE PESOS\n=======================================================\n🎯 Analizando: PIA\n\n📊 CARGANDO DATOS TEMPORALES...\n⚠️  No se encontraron datos con timestamps\n🧪 Generando datos sintéticos con distribución temporal...\n   Datos cargados: 637 registros\n   Rango temporal: 2025-09-22 → 2025-12-21\n\n📅 SPLIT TEMPORAL...\n📊 Split temporal:\n   Historical: 441 registros (antes 2025-11-24)\n   Recent: 196 registros (desde 2025-11-24)\n\n🔍 ANÁLISIS TEMPORAL...\n\n🔍 ANÁLISIS DE ESTABILIDAD TEMPORAL\n\n🚨 DETECCIÓN DE DRIFT\n\n✅ VALIDACIÓN DE ESTABILIDAD DE PESOS\n   📊 correlation_drift: CRITICAL\n   📊 core_distribution_drift: STABLE\n   📊 telemetry_distribution_drift: STABLE\n   📊 optimization_effectiveness: STABLE\n\n=======================================================\n📋 REPORTE DE VALIDACIÓN TEMPORAL\n=======================================================\n\n🎯 AGENTE: PIA\n⏰ ESTABILIDAD GENERAL: UNSTABLE\n🎯 NIVEL DE CONFIANZA: LOW\n\n📊 ANÁLISIS DETALLADO:\n\n   Histórico:\n     Registros: 441\n     Correlación core-telemetry: -0.055\n     Mejora 80/20 vs 60/40: 35.2%\n\n   Reciente:\n     Registros: 196\n     Correlación core-telemetry: -0.358\n     Mejora 80/20 vs 60/40: 31.6%\n\n🚨 DETECCIÓN DE DRIFT:\n   correlation_drift: CRITICAL\n   core_distribution_drift: STABLE\n   telemetry_distribution_drift: STABLE\n   optimization_effectiveness: STABLE\n\n💡 RECOMENDACIONES:\n   1. ❌ PESOS 80/20 SON INESTABLES - REQUIERE INVESTIGACIÓN ANTES DE PRODUCCIÓN\n   2. CRÍTICO: correlation_drift muestra drift significativo\n   3. ✅ Optimización 80/20 es consistentemente efectiva\n\n❌ VALIDACIÓN TEMPORAL FALLÓ - NO PROCEDER A PRODUCCIÓN\n",
+    "stderr": "",
+    "duration": 0.33002591133117676
+  },
+  "metadata": {
+    "report_date": "2025-12-21T22:05:06.010320",
+    "total_tests": 3,
+    "passed_tests": 1,
+    "success_rate": 0.3333333333333333
+  }
+}

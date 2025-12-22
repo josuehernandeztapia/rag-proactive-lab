@@ -30,12 +30,24 @@ try:
 except Exception:
     _storage = None
 
+# Smart Consolidation import
+try:
+    from agents.shared.smart_consolidation import (
+        should_pia_send_alert,
+        mark_pia_alert_sent,
+        get_consolidation_context,
+        generate_consolidated_message
+    )
+    SMART_CONSOLIDATION_ENABLED = True
+except ImportError:
+    SMART_CONSOLIDATION_ENABLED = False
+
 from agents.pia.src.llm_service import feature_enabled, get_llm_service  # noqa: E402
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Genera alertas narrativas usando el servicio LLM")
-    parser.add_argument("--features", type=Path, default=ROOT / "data" / "hase" / "pia_outcomes_features.csv", help="Ruta al CSV de features agregados")
+    parser.add_argument("--features", type=Path, default=ROOT / "data" / "processed" / "pia" / "pia_features_enhanced.csv", help="Ruta al CSV de features agregados")
     parser.add_argument("--limit", type=int, default=5, help="Número máximo de alertas a generar")
     parser.add_argument("--min-protections", type=float, default=None, help="Filtra casos con protecciones restantes por debajo de este valor")
     parser.add_argument("--reference-ts", default=datetime.now(timezone.utc).isoformat(), help="Timestamp de referencia para las alertas")
@@ -188,6 +200,34 @@ def build_payload(row: pd.Series, reference_ts: str, contact_column: Optional[st
     last_notes = str(row.get("last_behaviour_notes") or "").strip()
     if last_notes:
         metric_snapshot.append(f"notas={last_notes}")
+
+    # ENHANCEMENT: Añadir features híbridos si están disponibles
+    if "overall_portfolio_risk" in row and not pd.isna(row.get("overall_portfolio_risk")):
+        metric_snapshot.append(f"riesgo_cartera_híbrido={_safe_number(row.get('overall_portfolio_risk'))}")
+    if "safety_risk_component" in row and not pd.isna(row.get("safety_risk_component")):
+        metric_snapshot.append(f"riesgo_seguridad={_safe_number(row.get('safety_risk_component'))}")
+    if "operational_risk_component" in row and not pd.isna(row.get("operational_risk_component")):
+        metric_snapshot.append(f"riesgo_operacional={_safe_number(row.get('operational_risk_component'))}")
+    if "telemetry_enhancement_score" in row and not pd.isna(row.get("telemetry_enhancement_score")):
+        metric_snapshot.append(f"score_telemetría={_safe_number(row.get('telemetry_enhancement_score'))}")
+
+    # ENHANCEMENT: Eventos específicos de telemetría
+    safety_events = []
+    if "harsh_brake_events" in row and not pd.isna(row.get("harsh_brake_events")) and row.get("harsh_brake_events") > 0:
+        safety_events.append(f"{_safe_number(row.get('harsh_brake_events'))} frenadas_bruscas")
+    if "overspeed_events" in row and not pd.isna(row.get("overspeed_events")) and row.get("overspeed_events") > 0:
+        safety_events.append(f"{_safe_number(row.get('overspeed_events'))} excesos_velocidad")
+    if safety_events:
+        metric_snapshot.append(f"eventos_seguridad={', '.join(safety_events)}")
+
+    operational_events = []
+    if "idling_events" in row and not pd.isna(row.get("idling_events")) and row.get("idling_events") > 0:
+        operational_events.append(f"{_safe_number(row.get('idling_events'))} ralentí")
+    if "after_hours_events" in row and not pd.isna(row.get("after_hours_events")) and row.get("after_hours_events") > 0:
+        operational_events.append(f"{_safe_number(row.get('after_hours_events'))} fuera_horario")
+    if operational_events:
+        metric_snapshot.append(f"eventos_operacionales={', '.join(operational_events)}")
+
     contact_value = None
     if contact_column and contact_column in row:
         contact_value = row.get(contact_column)
@@ -208,9 +248,49 @@ def build_payload(row: pd.Series, reference_ts: str, contact_column: Optional[st
         "flags": flags,
         "last_outcome_desc": last_outcome_desc,
         "metric_snapshot": "; ".join(metric_snapshot) if metric_snapshot else "Sin métricas adicionales",
-        "impact_projection": "Sin acción la TIR podría deteriorarse por falta de protecciones activas.",
-        "recommended_action": "Contactar al operador, validar evidencias y activar la protección viable.",
+        "impact_projection": _build_impact_projection(row, protections_remaining),
+        "recommended_action": _build_recommended_action(row),
     }
+
+
+def _build_impact_projection(row: pd.Series, protections_remaining: Any) -> str:
+    """Construye projection de impacto con context híbrido."""
+    base_projection = "Sin acción la TIR podría deteriorarse por falta de protecciones activas."
+
+    # Añadir context de riesgo híbrido si está disponible
+    risk_factors = []
+    if "safety_risk_component" in row and not pd.isna(row.get("safety_risk_component")) and row.get("safety_risk_component") > 0.5:
+        risk_factors.append("patrones de manejo riesgosos")
+    if "operational_risk_component" in row and not pd.isna(row.get("operational_risk_component")) and row.get("operational_risk_component") > 0.5:
+        risk_factors.append("stress operacional elevado")
+    if "overall_portfolio_risk" in row and not pd.isna(row.get("overall_portfolio_risk")) and row.get("overall_portfolio_risk") > 0.7:
+        risk_factors.append("riesgo de cartera híbrido alto")
+
+    if risk_factors:
+        base_projection += f" Factores adicionales detectados: {', '.join(risk_factors)}."
+
+    return base_projection
+
+
+def _build_recommended_action(row: pd.Series) -> str:
+    """Construye recomendación con context específico."""
+    base_action = "Contactar al operador, validar evidencias y activar la protección viable."
+
+    # Añadir recomendaciones específicas basadas en telemetría
+    specific_actions = []
+    if "harsh_brake_events" in row and not pd.isna(row.get("harsh_brake_events")) and row.get("harsh_brake_events") > 10:
+        specific_actions.append("revisar hábitos de frenado")
+    if "overspeed_events" in row and not pd.isna(row.get("overspeed_events")) and row.get("overspeed_events") > 5:
+        specific_actions.append("monitorear velocidad")
+    if "idling_events" in row and not pd.isna(row.get("idling_events")) and row.get("idling_events") > 20:
+        specific_actions.append("optimizar tiempos de ralentí")
+    if "after_hours_events" in row and not pd.isna(row.get("after_hours_events")) and row.get("after_hours_events") > 5:
+        specific_actions.append("verificar uso fuera de horario")
+
+    if specific_actions:
+        base_action += f" Considerar también: {', '.join(specific_actions)}."
+
+    return base_action
 
 
 def main() -> int:
@@ -243,13 +323,84 @@ def main() -> int:
         return 0
     limit_df = filtered.head(args.limit if args.limit > 0 else len(filtered))
     for _, row in limit_df.iterrows():
-        payload = build_payload(row, args.reference_ts, args.contact_column)
-        result = service.render_alert(payload)
+        placa = str(row.get("placa", "SIN_PLACA"))
+        portfolio_risk = _safe_number(row.get("overall_portfolio_risk", 0))
+
+        # Convertir a float para Smart Consolidation
+        try:
+            portfolio_risk_float = float(portfolio_risk.replace(",", ".")) if isinstance(portfolio_risk, str) else float(portfolio_risk)
+        except (ValueError, TypeError):
+            portfolio_risk_float = 0.0
+
+        # Smart Consolidation check
+        should_send = True
+        consolidation_reason = "smart_consolidation_disabled"
+        is_consolidated = False
+
+        if SMART_CONSOLIDATION_ENABLED:
+            # Preparar risk data para context sharing
+            risk_data = {
+                'overall_portfolio_risk': portfolio_risk_float,
+                'core_financial_risk': _safe_number(row.get("core_financial_risk", 0)),
+                'telemetry_enhancement_score': _safe_number(row.get("telemetry_enhancement_score", 0)),
+                'safety_risk_component': _safe_number(row.get("safety_risk_component", 0)),
+                'operational_risk_component': _safe_number(row.get("operational_risk_component", 0)),
+                'risk_category': row.get("risk_category", "unknown")
+            }
+
+            should_send, consolidation_reason = should_pia_send_alert(placa, portfolio_risk_float, risk_data)
+
+            if not should_send:
+                print(f"--- PIA alerta para {placa} diferida: {consolidation_reason} ---")
+                continue
+
+            # Check si debe consolidar con otros agentes
+            if "consolidating" in consolidation_reason:
+                consolidation_context = get_consolidation_context(placa)
+                if consolidation_context:
+                    # Generar alerta consolidada
+                    consolidated_message = generate_consolidated_message(consolidation_context)
+                    result = {
+                        "content": consolidated_message,
+                        "context": {
+                            "alert_type": "consolidated_risk",
+                            "consolidation_context": consolidation_context,
+                            "primary_agent": "pia"
+                        }
+                    }
+                    is_consolidated = True
+                    print(f"--- ALERTA CONSOLIDADA para {placa} (owner: PIA) ---")
+                else:
+                    # Fallback a alerta normal de PIA
+                    payload = build_payload(row, args.reference_ts, args.contact_column)
+                    result = service.render_alert(payload)
+                    if result:
+                        service.persist_alert(payload, result)
+            else:
+                # Alerta normal de PIA
+                payload = build_payload(row, args.reference_ts, args.contact_column)
+                result = service.render_alert(payload)
+                if result:
+                    service.persist_alert(payload, result)
+        else:
+            # Sin Smart Consolidation, comportamiento original
+            payload = build_payload(row, args.reference_ts, args.contact_column)
+            result = service.render_alert(payload)
+            if result:
+                service.persist_alert(payload, result)
+
         if not result:
             continue
-        service.persist_alert(payload, result)
-        _deliver_alert(args, payload, result, recipients)
-        print(f"--- Alerta para {payload['placa']} ---")
+
+        # Marcar alerta como enviada en Smart Consolidation
+        if SMART_CONSOLIDATION_ENABLED:
+            mark_pia_alert_sent(placa, portfolio_risk_float, is_consolidated)
+
+        if not is_consolidated:
+            payload = build_payload(row, args.reference_ts, args.contact_column)
+
+        _deliver_alert(args, payload if not is_consolidated else {}, result, recipients)
+        print(f"--- Alerta para {placa} ---")
         print(result["content"])
         print()
     return 0

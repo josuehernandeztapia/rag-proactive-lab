@@ -1,0 +1,31 @@
+{
+  "data_quality": {
+    "success": true,
+    "file_checks": {
+      "enhanced_default_predictions.csv": {
+        "exists": true,
+        "size_mb": 0.00174713134765625
+      },
+      "pia_features_enhanced.csv": {
+        "exists": true,
+        "size_mb": 0.637822151184082
+      },
+      "guardian_insights.csv": {
+        "exists": true,
+        "size_mb": 0.14165115356445312
+      },
+      "pia_hotspots.csv": {
+        "exists": true,
+        "size_mb": 0.012286186218261719
+      }
+    },
+    "total_files": 4,
+    "valid_files": 4
+  },
+  "metadata": {
+    "report_date": "2025-12-21T22:04:59.236443",
+    "total_tests": 1,
+    "passed_tests": 1,
+    "success_rate": 1.0
+  }
+}

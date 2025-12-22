@@ -12,6 +12,7 @@ from .tir_equilibrium_engine import (
     evaluate_protection_scenarios,
     get_default_policy,
     select_viable_scenarios,
+    create_enhanced_protection_context,
 )
 
 
@@ -68,4 +69,43 @@ def evaluate_scenarios(
     }
 
 
-__all__ = ["evaluate_scenarios"]
+def evaluate_scenarios_enhanced(
+    market: str,
+    balance: float,
+    payment: float,
+    term_months: int,
+    enhanced_features: Optional[Dict[str, Any]] = None,
+    policy: Optional[ProtectionPolicy] = None,
+    *,
+    decision: Optional[PIADecision] = None,
+    log_outcome: bool = False,
+    outcome_label: str = "enhanced_protection",
+    notes: str = "",
+    metadata: Optional[Dict[str, Any]] = None,
+    **context_kwargs
+) -> Dict[str, Any]:
+    """Evaluate protection scenarios using enhanced telemetry context.
+
+    Convenience wrapper that creates an enhanced ProtectionContext and evaluates scenarios.
+    """
+    context = create_enhanced_protection_context(
+        market=market,
+        balance=balance,
+        payment=payment,
+        term_months=term_months,
+        enhanced_features=enhanced_features,
+        **context_kwargs
+    )
+
+    return evaluate_scenarios(
+        context=context,
+        policy=policy,
+        decision=decision,
+        log_outcome=log_outcome,
+        outcome_label=outcome_label,
+        notes=notes,
+        metadata=metadata,
+    )
+
+
+__all__ = ["evaluate_scenarios", "evaluate_scenarios_enhanced"]

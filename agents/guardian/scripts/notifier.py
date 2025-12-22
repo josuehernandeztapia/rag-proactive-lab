@@ -23,6 +23,18 @@ try:
     from agents.whatsapp_outbox import append_message as enqueue_whatsapp_message
 except Exception:  # pragma: no cover - optional dependency
     enqueue_whatsapp_message = None
+
+# Smart Consolidation import
+try:
+    from agents.shared.smart_consolidation import (
+        should_guardian_send_alert,
+        mark_guardian_alert_sent,
+        get_consolidation_context,
+        generate_consolidated_message
+    )
+    SMART_CONSOLIDATION_ENABLED = True
+except ImportError:
+    SMART_CONSOLIDATION_ENABLED = False
 DEFAULT_CONFIG = ROOT / "config" / "guardian.yml"
 DEFAULT_OUTBOX = ROOT / "reports" / "guardian_outbox.jsonl"
 
@@ -44,6 +56,9 @@ ALERT_SUMMARY = {
     "geofence": "está fuera de la zona autorizada",
     "off_hours_usage": "operó fuera del horario establecido",
     "energy": "presenta caída en estado de carga",
+    # Enhanced alerts con context telemetría
+    "enhanced_safety": "presenta eventos de seguridad con patrones de riesgo",
+    "enhanced_operations": "muestra stress operacional con impacto en eficiencia",
 }
 BASE_RECOMMENDATIONS = {
     "downtime": "Contacta al operador o a logística para confirmar la ruta y liberar la unidad.",
@@ -55,6 +70,9 @@ BASE_RECOMMENDATIONS = {
     "geofence": "Confirma con logística si la salida estuvo autorizada y coordina regreso si aplica.",
     "off_hours_usage": "Valida con operaciones si la ruta fuera de horario fue autorizada y analiza bloquear el uso.",
     "energy": "Agenda recarga y revisa posibles incidencias con el cargador o ciclos incompletos.",
+    # Enhanced recommendations
+    "enhanced_safety": "Revisa patrones de frenado/velocidad y programa coaching de manejo defensivo con el operador.",
+    "enhanced_operations": "Analiza tiempos de ralentí y uso fuera de horario; optimiza rutas y programa capacitación operacional.",
 }
 DTC_RECOMMENDATIONS = {
     "DEVICE-UNPLUGGED": "Pide al operador reconectar el dispositivo GO para recuperar telemetría en vivo.",
@@ -282,6 +300,47 @@ def clean_value(value: Any) -> Any:
     return str(value)
 
 
+def _enrich_detail_with_telemetry(base_detail: str, row: Dict[str, Any], alert_type: str) -> str:
+    """Enriquece el detalle de alerta con context telemetría si está disponible."""
+    enhanced_details = []
+
+    # Para enhanced_safety alerts, añadir eventos específicos
+    if alert_type == "enhanced_safety":
+        safety_events = []
+        if "event_count" in row and row.get("event_count", 0) > 0:
+            safety_events.append(f"{int(row['event_count'])} eventos de seguridad")
+        if "harsh_brake_ratio" in row and row.get("harsh_brake_ratio", 0) > 0:
+            safety_events.append(f"ratio frenadas: {row['harsh_brake_ratio']:.2f}")
+        if "overspeed_ratio" in row and row.get("overspeed_ratio", 0) > 0:
+            safety_events.append(f"ratio velocidad: {row['overspeed_ratio']:.2f}")
+        if safety_events:
+            enhanced_details.append(f"Detalles: {', '.join(safety_events)}")
+
+    # Para enhanced_operations alerts, añadir métricas operacionales
+    elif alert_type == "enhanced_operations":
+        operational_details = []
+        if "idling_ratio" in row and row.get("idling_ratio", 0) > 0:
+            operational_details.append(f"ralentí excesivo: {row['idling_ratio']:.2f}")
+        if "after_hours_ratio" in row and row.get("after_hours_ratio", 0) > 0:
+            operational_details.append(f"uso fuera horario: {row['after_hours_ratio']:.2f}")
+        if "efficiency_score" in row and row.get("efficiency_score", 0) > 0:
+            operational_details.append(f"score eficiencia: {row['efficiency_score']:.2f}")
+        if operational_details:
+            enhanced_details.append(f"Métricas: {', '.join(operational_details)}")
+
+    # Para alertas tradicionales, añadir context si está disponible
+    elif alert_type in ["consumption", "driving", "downtime"]:
+        if "risk_score" in row and row.get("risk_score", 0) > 0.5:
+            enhanced_details.append(f"Score de riesgo: {row['risk_score']:.2f}")
+        if "behavioral_pattern" in row and row.get("behavioral_pattern"):
+            enhanced_details.append(f"Patrón: {row['behavioral_pattern']}")
+
+    # Combinar detail original con enhancements
+    if enhanced_details:
+        return f"{base_detail}. {' | '.join(enhanced_details)}"
+    return base_detail
+
+
 def make_message(row: Dict[str, Any], now: datetime, tz: ZoneInfo, contact: str) -> Dict[str, Any]:
     alert_type = row.get("alert_type", "unknown")
     placa = row.get("placa", "-")
@@ -289,7 +348,11 @@ def make_message(row: Dict[str, Any], now: datetime, tz: ZoneInfo, contact: str)
     summary = f"la placa {placa} {summary_base}"
     event_dt = parse_timestamp(row.get("triggered_at"), tz)
     timestamp_label = humanize_timestamp(event_dt, now)
+
+    # ENHANCEMENT: Enriquecer detail_line con context telemetría si está disponible
     detail_line = row.get("details") or "Sin detalle"
+    detail_line = _enrich_detail_with_telemetry(detail_line, row, alert_type)
+
     severity = row.get("severity", "info")
     code = row.get("code") or None
     recommendation = pick_recommendation(alert_type, code)
@@ -378,6 +441,39 @@ def main(argv: Iterable[str] | None = None) -> int:
     for _, row in selected.iterrows():
         raw = row.to_dict()
         placa = str(raw.get("placa") or "").strip()
+        alert_type = raw.get("alert_type", "unknown")
+        severity = raw.get("severity", "info")
+
+        # Calcular operational risk score para Smart Consolidation
+        operational_risk = 0.5  # Default moderate
+        if severity == "high":
+            operational_risk = 0.8
+        elif severity == "medium":
+            operational_risk = 0.6
+        elif alert_type in ["enhanced_safety", "enhanced_operations"]:
+            operational_risk = 0.7
+
+        # Smart Consolidation check
+        should_send = True
+        consolidation_reason = "smart_consolidation_disabled"
+        is_consolidated = False
+
+        if SMART_CONSOLIDATION_ENABLED:
+            # Preparar risk data para context sharing
+            risk_data = {
+                'alert_type': alert_type,
+                'severity': severity,
+                'operational_stress': operational_risk,
+                'event_count': raw.get("event_count", 0),
+                'risk_score': raw.get("risk_score", operational_risk)
+            }
+
+            should_send, consolidation_reason = should_guardian_send_alert(placa, operational_risk, risk_data)
+
+            if not should_send:
+                print(f"--- Guardian alerta para {placa} diferida: {consolidation_reason} ---")
+                continue
+
         contact_details = contacts_map.get(placa, {})
         contact_name = contact_details.get("name") or args.contact_default
         contact_phone = contact_details.get("contact") or args.contact_default_phone
@@ -385,13 +481,40 @@ def main(argv: Iterable[str] | None = None) -> int:
             contact_phone = contact_phone.strip()
         if contact_phone == "":
             contact_phone = None
-        msg_bundle = make_message(raw, now, tz, contact_name)
+
+        # Check si debe consolidar con otros agentes
+        if SMART_CONSOLIDATION_ENABLED and "consolidating" in consolidation_reason:
+            consolidation_context = get_consolidation_context(placa)
+            if consolidation_context:
+                # Generar alerta consolidada
+                consolidated_message = generate_consolidated_message(consolidation_context)
+                msg_bundle = {
+                    "message": consolidated_message,
+                    "summary": f"Alerta consolidada para {placa}",
+                    "recommendation": "Contacto prioritario - múltiples factores de riesgo",
+                    "event_ts": datetime.now(timezone.utc).isoformat(),
+                    "handoff_hint": "coordinator",
+                    "handoff_keyword": "SOPORTE"
+                }
+                is_consolidated = True
+                print(f"--- ALERTA CONSOLIDADA para {placa} (participante: Guardian) ---")
+            else:
+                # Fallback a alerta normal de Guardian
+                msg_bundle = make_message(raw, now, tz, contact_name)
+        else:
+            # Alerta normal de Guardian
+            msg_bundle = make_message(raw, now, tz, contact_name)
+
+        # Marcar alerta como enviada en Smart Consolidation
+        if SMART_CONSOLIDATION_ENABLED:
+            mark_guardian_alert_sent(placa, operational_risk, is_consolidated)
+
         insight_payload = {key: clean_value(value) for key, value in raw.items() if not key.startswith("_")}
         entry = {
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "placa": placa,
-            "alert_type": raw.get("alert_type"),
-            "severity": raw.get("severity"),
+            "alert_type": "consolidated" if is_consolidated else raw.get("alert_type"),
+            "severity": severity,
             "message": msg_bundle["message"],
             "summary": msg_bundle["summary"],
             "recommendation": msg_bundle["recommendation"],
@@ -401,6 +524,7 @@ def main(argv: Iterable[str] | None = None) -> int:
             "source": "guardian-notifier",
             "handoff_hint": msg_bundle.get("handoff_hint"),
             "handoff_keyword": msg_bundle.get("handoff_keyword"),
+            "is_consolidated": is_consolidated,
         }
         if enqueue_whatsapp_message and not args.dry_run:
             try:
@@ -415,10 +539,11 @@ def main(argv: Iterable[str] | None = None) -> int:
                     placa=placa,
                     quick_replies=quick_replies,
                     metadata={
-                        "alert_type": raw.get("alert_type"),
+                        "alert_type": entry["alert_type"],
                         "severity": raw.get("severity"),
                         "handoff_hint": msg_bundle.get("handoff_hint"),
                         "source": "guardian_notifier",
+                        "is_consolidated": is_consolidated,
                     },
                 )
             except Exception:

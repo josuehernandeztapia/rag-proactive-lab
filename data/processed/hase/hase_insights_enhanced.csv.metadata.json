@@ -1,0 +1,19 @@
+{
+  "artifact": "data/processed/hase/hase_insights_enhanced.csv",
+  "generated_at": "2025-12-22T04:04:47.652970+00:00",
+  "script": "agents/hase/scripts/build_enhanced_features.py",
+  "commit": "046f5789d0453c3009912d3f0f0c6a07080bb4f0",
+  "inputs": [
+    "config/hase.yml"
+  ],
+  "plates_analyzed": 7,
+  "default_alerts_generated": 7,
+  "default_predictions": 6,
+  "average_default_risk": 0.6184350128433466,
+  "risk_distribution": {
+    "medium_risk": 6,
+    "moderate_risk": 1
+  },
+  "core_weight": 0.7,
+  "behavioral_weight": 0.3
+}

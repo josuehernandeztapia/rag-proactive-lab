@@ -1,0 +1,65 @@
+{
+  "data_quality": {
+    "success": true,
+    "file_checks": {
+      "enhanced_default_predictions.csv": {
+        "exists": true,
+        "size_mb": 0.00174713134765625
+      },
+      "pia_features_enhanced.csv": {
+        "exists": true,
+        "size_mb": 0.637822151184082
+      },
+      "guardian_insights.csv": {
+        "exists": true,
+        "size_mb": 0.14165115356445312
+      },
+      "pia_hotspots.csv": {
+        "exists": true,
+        "size_mb": 0.012286186218261719
+      }
+    },
+    "total_files": 4,
+    "valid_files": 4
+  },
+  "hybrid_weights": {
+    "success": true,
+    "agent_results": [
+      {
+        "agent": "hase",
+        "result": {
+          "success": true,
+          "returncode": 0,
+          "stdout": "🧮 VALIDACIÓN MATEMÁTICA DE PESOS HÍBRIDOS\n==================================================\n\n=============== ANALIZANDO HASE ===============\n📊 Datos cargados: 7 registros\n\n🔍 ANÁLISIS DE CORRELACIONES - HASE\n📊 Dataset shape: (7, 16)\n📋 Columnas disponibles: ['placa', 'default_flag', 'enhanced_default_risk', 'core_default_risk', 'behavioral_default_risk', 'risk_category', 'label_reason', 'risk_factors', 'confidence', 'consumption_consistency', 'coverage_stability', 'activity_coverage', 'unauthorized_usage_risk', 'fraud_risk', 'operational_stress_risk', 'risk_rank']\n\n🔍 FEATURES REQUERIDOS: ['core_default_risk', 'behavioral_default_risk', 'enhanced_default_risk']\n✅ FEATURES DISPONIBLES: ['core_default_risk', 'behavioral_default_risk', 'enhanced_default_risk']\n📊 Registros válidos para análisis: 7\n\n📊 MATRIZ DE CORRELACIONES:\n                         core_default_risk  ...  enhanced_default_risk\ncore_default_risk                   1.0000  ...                 0.3764\nbehavioral_default_risk             0.3184  ...                 0.9981\nenhanced_default_risk               0.3764  ...                 1.0000\n\n[3 rows x 3 columns]\n\n🎯 ANÁLISIS DE INDEPENDENCIA:\n   📊 core_default_risk ↔ behavioral_default_risk: 0.3184\n   🏆 Status: ⚠️ MODERADAMENTE CORRELACIONADOS - Aún útil\n\n🎯 CONTRIBUCIÓN AL TARGET:\n   📈 core_default_risk → enhanced_default_risk: 0.3764\n   📈 behavioral_default_risk → enhanced_default_risk: 0.9981\n\n📊 ESTADÍSTICAS DESCRIPTIVAS:\n   core_default_risk:\n      Mean: 0.6569, Std: 0.0016\n      Min: 0.6555, Max: 0.6598\n   behavioral_default_risk:\n      Mean: 0.5286, Std: 0.0567\n      Min: 0.4000, Max: 0.5500\n   enhanced_default_risk:\n      Mean: 0.6184, Std: 0.0174\n      Min: 0.5790, Max: 0.6268\n\n✅ VALIDACIÓN DE PESOS ACTUALES - HASE\n   Pesos implementados: 0.7/0.3 (core/telemetría)\n   Correlación híbrido ↔ target: 1.0000\n   Score Mean: 0.6184\n   Score Std: 0.0174\n   Score Range: 0.0478\n   🏆 Evaluación: ✅ EXCELENTE - Pesos perfectamente calibrados\n\n==================================================\n📋 RESUMEN DE VALIDACIÓN MATEMÁTICA\n==================================================\n\n✅ HASE:\n   📊 Independencia features: BUENO (r=0.318)\n   ⚖️  Pesos actuales: 0.7/0.3 (corr_target=1.000)\n\n🎉 Análisis completado para 1 agentes\n",
+          "stderr": "",
+          "duration": 0.31825900077819824
+        }
+      },
+      {
+        "agent": "pia",
+        "result": {
+          "success": true,
+          "returncode": 0,
+          "stdout": "🧮 VALIDACIÓN MATEMÁTICA DE PESOS HÍBRIDOS\n==================================================\n\n=============== ANALIZANDO PIA ===============\n📊 Datos cargados: 2657 registros\n\n🔍 ANÁLISIS DE CORRELACIONES - PIA\n📊 Dataset shape: (2657, 28)\n📋 Columnas disponibles: ['placa', 'overall_portfolio_risk', 'core_financial_risk', 'telemetry_enhancement_score', 'overall_risk_score', 'risk_category', 'projected_insurance_cost', 'coverage_ratio_30d', 'gnv_credit_30d', 'arrears_amount', 'expected_payment', 'coverage_risk', 'credit_utilization', 'arrears_risk', 'safety_risk_component', 'operational_risk_component', 'accident_risk_score', 'fuel_efficiency_proxy', 'unauthorized_use_risk', 'tampering_risk', 'total_safety_events', 'harsh_brake_events', 'overspeed_events', 'idling_events', 'after_hours_events', 'disconnect_events', 'hase_default_risk', 'scenario_type']\n\n🔍 FEATURES REQUERIDOS: ['core_financial_risk', 'telemetry_enhancement_score', 'overall_portfolio_risk']\n✅ FEATURES DISPONIBLES: ['core_financial_risk', 'telemetry_enhancement_score', 'overall_portfolio_risk']\n📊 Registros válidos para análisis: 2657\n\n📊 MATRIZ DE CORRELACIONES:\n                             core_financial_risk  ...  overall_portfolio_risk\ncore_financial_risk                       1.0000  ...                  0.8879\ntelemetry_enhancement_score              -0.0714  ...                 -0.0062\noverall_portfolio_risk                    0.8879  ...                  1.0000\n\n[3 rows x 3 columns]\n\n🎯 ANÁLISIS DE INDEPENDENCIA:\n   📊 core_financial_risk ↔ telemetry_enhancement_score: -0.0714\n   🏆 Status: ✅ ALTAMENTE INDEPENDIENTES - Excelente complementariedad\n\n🎯 CONTRIBUCIÓN AL TARGET:\n   📈 core_financial_risk → overall_portfolio_risk: 0.8879\n   📈 telemetry_enhancement_score → overall_portfolio_risk: -0.0062\n\n📊 ESTADÍSTICAS DESCRIPTIVAS:\n   core_financial_risk:\n      Mean: 0.1682, Std: 0.1449\n      Min: -1.1938, Max: 0.2333\n   telemetry_enhancement_score:\n      Mean: 0.0024, Std: 0.0383\n      Min: 0.0000, Max: 0.6250\n   overall_portfolio_risk:\n      Mean: 0.1386, Std: 0.1347\n      Min: -1.7190, Max: 0.3360\n\n✅ VALIDACIÓN DE PESOS ACTUALES - PIA\n   Pesos implementados: 0.8/0.2 (core/telemetría)\n   Correlación híbrido ↔ target: 0.8898\n   Score Mean: 0.1351\n   Score Std: 0.1156\n   Score Range: 1.1417\n   🏆 Evaluación: ✅ BUENO - Pesos adecuados\n\n==================================================\n📋 RESUMEN DE VALIDACIÓN MATEMÁTICA\n==================================================\n\n✅ PIA:\n   📊 Independencia features: EXCELENTE (r=-0.071)\n   ⚖️  Pesos actuales: 0.8/0.2 (corr_target=0.890)\n\n🎉 Análisis completado para 1 agentes\n",
+          "stderr": "",
+          "duration": 0.3258192539215088
+        }
+      }
+    ],
+    "total_agents": 2,
+    "passed_agents": 2
+  },
+  "temporal_stability": {
+    "success": false,
+    "returncode": 1,
+    "stdout": "⏰ VALIDACIÓN TEMPORAL DE ESTABILIDAD DE PESOS\n=======================================================\n🎯 Analizando: PIA\n\n📊 CARGANDO DATOS TEMPORALES...\n⚠️  No se encontraron datos con timestamps\n🧪 Generando datos sintéticos con distribución temporal...\n   Datos cargados: 637 registros\n   Rango temporal: 2025-09-22 → 2025-12-21\n\n📅 SPLIT TEMPORAL...\n📊 Split temporal:\n   Historical: 441 registros (antes 2025-11-24)\n   Recent: 196 registros (desde 2025-11-24)\n\n🔍 ANÁLISIS TEMPORAL...\n\n🔍 ANÁLISIS DE ESTABILIDAD TEMPORAL\n\n🚨 DETECCIÓN DE DRIFT\n\n✅ VALIDACIÓN DE ESTABILIDAD DE PESOS\n   📊 correlation_drift: CRITICAL\n   📊 core_distribution_drift: STABLE\n   📊 telemetry_distribution_drift: STABLE\n   📊 optimization_effectiveness: WARNING\n\n=======================================================\n📋 REPORTE DE VALIDACIÓN TEMPORAL\n=======================================================\n\n🎯 AGENTE: PIA\n⏰ ESTABILIDAD GENERAL: UNSTABLE\n🎯 NIVEL DE CONFIANZA: LOW\n\n📊 ANÁLISIS DETALLADO:\n\n   Histórico:\n     Registros: 441\n     Correlación core-telemetry: 0.271\n     Mejora 80/20 vs 60/40: 32.7%\n\n   Reciente:\n     Registros: 196\n     Correlación core-telemetry: -0.855\n     Mejora 80/20 vs 60/40: 42.4%\n\n🚨 DETECCIÓN DE DRIFT:\n   correlation_drift: CRITICAL\n   core_distribution_drift: STABLE\n   telemetry_distribution_drift: STABLE\n   optimization_effectiveness: WARNING\n\n💡 RECOMENDACIONES:\n   1. ❌ PESOS 80/20 SON INESTABLES - REQUIERE INVESTIGACIÓN ANTES DE PRODUCCIÓN\n   2. CRÍTICO: correlation_drift muestra drift significativo\n   3. MONITOREO: optimization_effectiveness requiere observación\n   4. ✅ Optimización 80/20 es consistentemente efectiva\n\n❌ VALIDACIÓN TEMPORAL FALLÓ - NO PROCEDER A PRODUCCIÓN\n",
+    "stderr": "",
+    "duration": 0.3322019577026367
+  },
+  "metadata": {
+    "report_date": "2025-12-21T22:06:09.794326",
+    "total_tests": 3,
+    "passed_tests": 2,
+    "success_rate": 0.6666666666666666
+  }
+}

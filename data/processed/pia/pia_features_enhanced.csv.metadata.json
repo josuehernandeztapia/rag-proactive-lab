@@ -1,0 +1,16 @@
+{
+  "artifact": "data/processed/pia/pia_features_enhanced.csv",
+  "generated_at": "2025-12-22T04:04:48.216913+00:00",
+  "script": "agents/pia/scripts/build_enhanced_dataset.py",
+  "commit": "046f5789d0453c3009912d3f0f0c6a07080bb4f0",
+  "inputs": [
+    "config/pia.yml"
+  ],
+  "placas_processed": 1772,
+  "synthetic_scenarios": 885,
+  "risk_distribution": {
+    "low": 2303,
+    "high": 354
+  },
+  "average_projected_cost": 14620.390694164817
+}

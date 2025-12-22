@@ -1,0 +1,8 @@
+placa,hase_score,efficiency_rank,driver_category,fuel_efficiency_proxy,consumption_proxy,strengths,improvement_areas,behavioral_score,consumption_score
+ A-05501-A,25.0601422430037,4.0,average,287.21495878514065,166.27248171280573,,"speed_violations,excessive_idle,harsh_driving",50.0,0.12028448600740207
+A-05355-A,25.146837457395907,2.0,average,195.2092116900146,68.10251401342155,,"speed_violations,excessive_idle,harsh_driving",50.0,0.29367491479181557
+A-05502-A,25.031990087994433,6.0,average,313.424812235785,312.5968269215021,,"speed_violations,excessive_idle,harsh_driving",50.0,0.06398017598886988
+A-05503-A,35.0665197133032,1.0,average,302.54041080794093,150.33137551900353,speed_compliant,"excessive_idle,harsh_driving",70.0,0.13303942660640247
+A-05504-A,25.0677392181295,3.0,average,309.576705773754,147.62496934763573,,"speed_violations,excessive_idle,harsh_driving",50.0,0.13547843625899664
+A-05507-A,25.021220917447412,7.0,average,122.53970924625638,471.23316061998315,,"speed_violations,excessive_idle,harsh_driving",50.0,0.04244183489482527
+A-05508-A,25.040419623737222,5.0,average,218.38126909803398,247.40457914730567,,"speed_violations,excessive_idle,harsh_driving",50.0,0.08083924747444517

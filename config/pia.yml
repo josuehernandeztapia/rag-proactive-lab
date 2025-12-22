@@ -1,0 +1,63 @@
+timezone: America/Mexico_City
+
+paths:
+  devices: data/staging/geotab_devices.csv
+  trips_daily: data/staging/geotab_trip_daily.csv
+  events_daily: data/staging/geotab_events_daily_2025-12-21-refined.csv
+  events_percentiles: data/staging/geotab_events_market_percentiles_2025-12-21-refined.csv
+  hase_snapshot: data/processed/hase/consumos_snapshot_latest.csv.gz
+  output: data/processed/pia/pia_features_enhanced.csv
+  risk_model: models/pia/risk_scoring_enhanced.pkl
+
+enhanced_features:
+  safety_events:
+    - harsh_brake
+    - harsh_maneuver
+    - overspeed
+    - seatbelt_off
+  operational_events:
+    - idling
+    - pto
+    - device_disconnect
+  behavioral_events:
+    - ignition_on
+    - ignition_off
+    - after_hours
+
+risk_scoring:
+  weights:
+    harsh_brake_frequency: 0.25
+    harsh_maneuver_intensity: 0.20
+    overspeed_compliance: 0.20
+    idle_efficiency: 0.15
+    after_hours_usage: 0.10
+    device_reliability: 0.10
+
+  thresholds:
+    high_risk: 0.75
+    medium_risk: 0.50
+    low_risk: 0.25
+
+  market_adjustments:
+    enabled: true
+    use_percentiles: [p95, p99]
+
+synthetic_data:
+  target_payment: 18000
+  scenarios:
+    conservative_driver: 0.3
+    aggressive_driver: 0.2
+    mixed_behavior: 0.5
+
+  correlations:
+    harsh_events_weather: 0.65
+    idle_traffic: 0.75
+    after_hours_risk: 0.80
+
+training:
+  validation_split: 0.2
+  test_split: 0.1
+  random_state: 42
+
+  features_importance_threshold: 0.01
+  feature_selection: auto

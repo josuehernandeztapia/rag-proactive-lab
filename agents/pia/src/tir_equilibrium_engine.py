@@ -44,7 +44,10 @@ class ProtectionPolicy:
 
 @dataclass(frozen=True)
 class ProtectionContext:
-    """Current contract state, coverage metadata and behavioural signals."""
+    """Current contract state, coverage metadata and behavioural signals.
+
+    Enhanced with telemetry risk scores for more granular protection decisions.
+    """
 
     market: str
     balance: float
@@ -59,11 +62,25 @@ class ProtectionContext:
     contract_valid_until: Optional[str] = None
     contract_reset_cycle_days: Optional[int] = None
     requires_manual_review: bool = False
+
+    # Legacy boolean flags (mantener compatibilidad)
     has_consumption_gap: bool = False
     has_fault_alert: bool = False
     has_delinquency_flag: bool = False
     has_recent_promise_break: bool = False
     telematics_ok: bool = True
+
+    # ENHANCED: Telemetry risk scores (0.0-1.0)
+    safety_risk_score: float = 0.0
+    operational_risk_score: float = 0.0
+    behavioral_enhancement_score: float = 0.0
+    overall_telemetry_risk: float = 0.0
+
+    # ENHANCED: Behavioral metrics for protection assessment
+    harsh_brake_events_30d: int = 0
+    harsh_accel_events_30d: int = 0
+    speeding_violations_30d: int = 0
+    driving_pattern_consistency: float = 1.0  # 1.0 = consistent, 0.0 = erratic
 
 
 @dataclass(frozen=True)
@@ -252,12 +269,33 @@ def apply_policy_overrides(context: ProtectionContext, policy: ProtectionPolicy)
     max_deferral = policy.max_deferral_months
     max_reduction = policy.max_stepdown_reduction
 
+    # Legacy boolean logic (mantener compatibilidad)
     if context.has_consumption_gap or context.has_fault_alert:
         max_deferral = min(max_deferral, policy.soft_deferral_cap_with_gap)
         max_reduction = min(max_reduction, policy.soft_stepdown_cap_with_gap)
 
     if context.has_delinquency_flag or context.has_recent_promise_break:
         max_deferral = min(max_deferral, policy.soft_deferral_cap_with_gap)
+
+    # ENHANCED: Granular telemetry-based adjustments
+    high_behavioral_risk = context.overall_telemetry_risk > 0.7
+    moderate_behavioral_risk = context.overall_telemetry_risk > 0.5
+
+    # Safety concerns reduce protection options
+    if context.safety_risk_score > 0.8:
+        max_deferral = min(max_deferral, 2)  # Max 2 months for high safety risk
+        max_reduction = min(max_reduction, 0.3)  # More aggressive reduction needed
+    elif context.safety_risk_score > 0.6:
+        max_deferral = min(max_deferral, 4)  # Max 4 months for moderate safety risk
+        max_reduction = min(max_reduction, 0.4)
+
+    # Operational stress patterns affect deferral capacity
+    if context.operational_risk_score > 0.75:
+        max_deferral = min(max_deferral, 3)  # Operational stress limits deferral options
+
+    # Erratic driving patterns require manual review for deep protections
+    if context.driving_pattern_consistency < 0.3:
+        max_reduction = min(max_reduction, 0.5)  # Limit reduction for erratic drivers
 
     return max_deferral, max_reduction
 
@@ -269,6 +307,10 @@ def scenario_iterator(policy: ProtectionPolicy, context: ProtectionContext) -> I
     stepdown_options = [m for m in (6,) if m <= policy.max_stepdown_months]
     stepdown_factor = max_reduction
     manual_plan = bool(context.requires_manual_review or (context.contract_status and context.contract_status.lower() != "active"))
+
+    # ENHANCED: Force manual review for high-risk behavioral patterns
+    if context.overall_telemetry_risk > 0.8 or context.safety_risk_score > 0.75:
+        manual_plan = True
 
     for months in deferral_options:
         yield ScenarioParams("DEFER", months=months)
@@ -565,6 +607,75 @@ def get_default_policy(*, reload: bool = False) -> ProtectionPolicy:
         DEFAULT_POLICY = load_policy_from_config()
     return DEFAULT_POLICY
 
+def create_enhanced_protection_context(
+    market: str,
+    balance: float,
+    payment: float,
+    term_months: int,
+    enhanced_features: Optional[Dict[str, Any]] = None,
+    **kwargs
+) -> ProtectionContext:
+    """Create ProtectionContext enriched with telemetry features.
+
+    Args:
+        enhanced_features: Dict containing enriched telemetry features from agents
+            Expected keys:
+            - safety_risk_component: float (0.0-1.0)
+            - operational_risk_component: float (0.0-1.0)
+            - behavioral_enhancement_score: float (0.0-1.0)
+            - harsh_brake_events_30d: int
+            - harsh_accel_events_30d: int
+            - speeding_violations_30d: int
+            - driving_pattern_consistency: float (0.0-1.0)
+    """
+
+    # Extract telemetry features
+    features = enhanced_features or {}
+
+    safety_risk = features.get('safety_risk_component', 0.0)
+    operational_risk = features.get('operational_risk_component', 0.0)
+    behavioral_enhancement = features.get('behavioral_enhancement_score', 0.0)
+
+    # Calculate overall telemetry risk (weighted combination)
+    overall_telemetry_risk = (
+        safety_risk * 0.4 +           # Safety has highest weight
+        operational_risk * 0.35 +     # Operational stress important
+        behavioral_enhancement * 0.25  # Enhancement/deterioration signal
+    )
+
+    # Map behavioral events
+    harsh_brakes = features.get('harsh_brake_events_30d', 0)
+    harsh_accels = features.get('harsh_accel_events_30d', 0)
+    speeding = features.get('speeding_violations_30d', 0)
+    consistency = features.get('driving_pattern_consistency', 1.0)
+
+    # Derive legacy boolean flags from telemetry scores for backward compatibility
+    has_consumption_gap = kwargs.get('has_consumption_gap', False) or operational_risk > 0.6
+    has_fault_alert = kwargs.get('has_fault_alert', False) or safety_risk > 0.7
+    telematics_ok = safety_risk < 0.3 and operational_risk < 0.3
+
+    return ProtectionContext(
+        market=market,
+        balance=balance,
+        payment=payment,
+        term_months=term_months,
+        # Legacy fields for compatibility
+        has_consumption_gap=has_consumption_gap,
+        has_fault_alert=has_fault_alert,
+        telematics_ok=telematics_ok,
+        # Enhanced telemetry fields
+        safety_risk_score=safety_risk,
+        operational_risk_score=operational_risk,
+        behavioral_enhancement_score=behavioral_enhancement,
+        overall_telemetry_risk=overall_telemetry_risk,
+        harsh_brake_events_30d=harsh_brakes,
+        harsh_accel_events_30d=harsh_accels,
+        speeding_violations_30d=speeding,
+        driving_pattern_consistency=consistency,
+        **{k: v for k, v in kwargs.items() if k not in ['has_consumption_gap', 'has_fault_alert', 'telematics_ok']}
+    )
+
+
 __all__ = [
     "ProtectionPolicy",
     "ProtectionContext",
@@ -575,4 +686,5 @@ __all__ = [
     "load_policy_from_config",
     "evaluate_protection_scenarios",
     "select_viable_scenarios",
+    "create_enhanced_protection_context",
 ]

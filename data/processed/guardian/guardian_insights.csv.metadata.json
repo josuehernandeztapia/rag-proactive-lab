@@ -1,20 +1,24 @@
 {
   "artifact": "data/processed/guardian/guardian_insights.csv",
-  "generated_at": "2025-10-29T17:47:12.278413+00:00",
+  "generated_at": "2025-12-22T04:04:48.674792+00:00",
   "script": "agents/guardian/scripts/build_insights.py",
-  "commit": "90953f7f0aafdc24c1fd8c48febeb94c67eb6082",
+  "commit": "046f5789d0453c3009912d3f0f0c6a07080bb4f0",
   "inputs": [
     "config/guardian.yml",
     "data/processed/pia/pia_features_augmented.csv",
     "data/staging/geotab_devices.csv",
+    "data/staging/geotab_events_daily_2025-12-21-refined.csv",
+    "data/staging/geotab_events_market_percentiles_2025-12-21-refined.csv",
     "data/staging/geotab_faults.csv",
     "guardian/dtc_catalog.json"
   ],
-  "rows": 764,
+  "rows": 1745,
   "by_type": {
     "consumption": 111,
     "downtime": 282,
-    "dtc": 8,
+    "dtc": 5,
+    "enhanced_operations": 301,
+    "enhanced_safety": 683,
     "idle": 36,
     "safety": 174,
     "telemetry": 153

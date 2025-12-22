@@ -1,0 +1,8 @@
+placa,harsh_brake_events,harsh_maneuver_events,overspeed_events,seatbelt_events,total_safety_events,harsh_brake_frequency,harsh_maneuver_frequency,overspeed_frequency,seatbelt_frequency,accident_risk_score,final_safety_risk
+ A-05501-A,557,22977,10692,0,34226,1.0,1.0,1.0,0.0,1.0,1.0
+A-05355-A,687,13210,3431,0,17328,1.0,1.0,1.0,0.0,1.0,1.0
+A-05502-A,1774,51804,16744,0,70322,1.0,1.0,1.0,0.0,1.0,1.0
+A-05503-A,703,25889,0,0,26592,1.0,1.0,0.0,0.0,1.0,1.0
+A-05504-A,316,16469,10575,0,27360,1.0,1.0,1.0,0.0,1.0,1.0
+A-05507-A,770,27385,8135,0,36290,1.0,1.0,1.0,0.0,1.0,1.0
+A-05508-A,295,23201,4506,0,28002,1.0,1.0,1.0,0.0,1.0,1.0

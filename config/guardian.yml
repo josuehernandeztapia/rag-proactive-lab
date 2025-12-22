@@ -5,6 +5,8 @@ paths:
   telemetry_summary: data/telemetry_summary_from_geotab.csv
   pia_features: data/processed/pia/pia_features_augmented.csv
   trips_daily: data/staging/geotab_trip_daily.csv
+  events_daily: data/staging/geotab_events_daily_2025-12-21-refined.csv
+  events_percentiles: data/staging/geotab_events_market_percentiles_2025-12-21-refined.csv
   output: data/processed/guardian/guardian_insights.csv
   outbox: reports/guardian_outbox.jsonl
 alerts:
@@ -36,6 +38,17 @@ alerts:
   telemetry:
     max_health_score: 0.40
     severity: high
+  enhanced_safety:
+    harsh_braking_rate_threshold: 5
+    harsh_maneuver_threshold: 50
+    seatbelt_violations_per_hour: 3
+    overspeed_threshold: 20
+    severity: high
+  enhanced_operations:
+    idle_engine_threshold_minutes: 30
+    pto_unauthorized_threshold_minutes: 5
+    connection_gap_threshold_minutes: 120
+    severity: medium
   driving:
     harsh_event_ids:
     - DiagnosticAccidentLevelAccelerationEventId
