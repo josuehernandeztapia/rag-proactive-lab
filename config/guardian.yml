@@ -67,4 +67,23 @@ geofence:
   safe_zones:
   - id: patio_principal
     geotab_zone_id: b201
-  - id
+  - id: taller
+    geotab_zone_id: b3f2
+  max_minutes_outside: 45
+  notify_if_outside_working_hours: true
+telemetry_health:
+  max_minutes_without_data: 90
+  min_signal_strength: 2
+  alert_severity: high
+off_hours_usage:
+  working_window:
+    start: 06:00
+    end: '22:00'
+    timezone: America/Mexico_City
+  max_trips_off_hours: 2
+  max_km_off_hours: 50
+energy_monitoring:
+  enabled: false
+  min_state_of_charge: 0.25
+  consumption_drop_pct: 0.3
+  lookback_days: 14

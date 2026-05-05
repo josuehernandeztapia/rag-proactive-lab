@@ -304,4 +304,103 @@ def make_message(row: Dict[str, Any], now: datetime, tz: ZoneInfo, contact: str)
 
 
 def filter_by_severity(df: pd.DataFrame, min_severity: str) -> pd.DataFrame:
-    rank = 
+    rank = SEVERITY_ORDER.get(min_severity, 3)
+    df = df.copy()
+    df["_severity_order"] = df["severity"].map(lambda s: SEVERITY_ORDER.get(str(s), 4))
+    return df[df["_severity_order"] <= rank]
+
+
+def load_insights(path: Path) -> pd.DataFrame:
+    if not path.exists():
+        raise FileNotFoundError(f"No se encontró el archivo de insights: {path}")
+    return pd.read_csv(path)
+
+
+def main(argv: Iterable[str] | None = None) -> int:
+    args = parse_args(argv)
+    config = load_config(args.config)
+    merge_handoff_config(config)
+    timezone_name = config.get("timezone", "UTC")
+    try:
+        tz = ZoneInfo(timezone_name)
+    except Exception:
+        tz = ZoneInfo("UTC")
+    paths_cfg = config.get("paths", {})
+    insights_path = args.insights or paths_cfg.get("output")
+    outbox_path = args.outbox or paths_cfg.get("outbox") or DEFAULT_OUTBOX
+    insights_path = resolve_path(ROOT, insights_path)
+    outbox_path = resolve_path(ROOT, outbox_path)
+    if insights_path is None:
+        print("[guardian:notifier] No se pudo resolver la ruta de insights", file=sys.stderr)
+        return 1
+    df = load_insights(insights_path)
+    if df.empty:
+        print(f"[guardian:notifier] Sin registros en {insights_path}")
+        return 0
+
+    if args.alert_types:
+        df = df[df["alert_type"].isin(args.alert_types)]
+    df = filter_by_severity(df, args.min_severity)
+    if df.empty:
+        print("[guardian:notifier] No hay alertas que cumplan los filtros actuales")
+        return 0
+
+    df["_severity_order"] = df["severity"].map(lambda s: SEVERITY_ORDER.get(str(s), 4))
+    df = df.sort_values(["_severity_order", "triggered_at"], ascending=[True, False])
+
+    contacts_map = load_contacts(resolve_path(ROOT, args.contacts_csv) if args.contacts_csv else None, args.contact_column)
+    now = parse_timestamp(args.reference_ts, tz) if args.reference_ts else datetime.now(tz)
+    if now is None:
+        now = datetime.now(tz)
+
+    limit = max(args.limit, 1)
+    selected = df.head(limit)
+
+    entries = []
+    for _, row in selected.iterrows():
+        raw = row.to_dict()
+        placa = str(raw.get("placa") or "").strip()
+        contact = contacts_map.get(placa, args.contact_default)
+        msg_bundle = make_message(raw, now, tz, contact)
+        insight_payload = {key: clean_value(value) for key, value in raw.items() if not key.startswith("_")}
+        entry = {
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "placa": placa,
+            "alert_type": raw.get("alert_type"),
+            "severity": raw.get("severity"),
+            "message": msg_bundle["message"],
+            "summary": msg_bundle["summary"],
+            "recommendation": msg_bundle["recommendation"],
+            "event_ts": msg_bundle["event_ts"],
+            "insight": insight_payload,
+            "contact": contact,
+            "source": "guardian-notifier",
+            "handoff_hint": msg_bundle.get("handoff_hint"),
+            "handoff_keyword": msg_bundle.get("handoff_keyword"),
+        }
+        entries.append(entry)
+
+    for entry in entries:
+        print("=" * 80)
+        print(entry["message"])
+        if args.json:
+            print("-" * 80)
+            print(json.dumps(entry, ensure_ascii=False, indent=2))
+
+    if args.dry_run:
+        return 0
+
+    if outbox_path is None:
+        print("[guardian:notifier] No se configuró ruta de outbox", file=sys.stderr)
+        return 1
+    outbox_path.parent.mkdir(parents=True, exist_ok=True)
+    with outbox_path.open("a", encoding="utf-8") as handle:
+        for entry in entries:
+            handle.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+    print(f"[guardian:notifier] Se agregaron {len(entries)} alertas a {outbox_path}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

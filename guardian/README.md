@@ -46,4 +46,39 @@ Convertir la telemetría de Geotab en alertas proactivas (WhatsApp, dashboard) q
    - Notion/CRM (log). 
 3. Respuestas del cliente (`reply`) llegan al agente de Postventa; Guardian sólo escucha.
 
-### Circuito
+### Circuito de notificación (cliente vs. equipo interno)
+- **Cliente / operador:** recibe el mensaje WhatsApp generado por `scripts/guardian/notifier.py` (payload proveniente de `reports/guardian_outbox.jsonl`).
+- **Equipo interno:** Make guarda cada alerta en la bitácora (`reports/guardian_outbox.jsonl` + tablero) y puede disparar avisos secundarios (Slack/Email) usando el mismo payload para seguimiento.
+- **Auditoría:** tanto cliente como equipo usan la misma narrativa; los campos `source`, `recommendation`, `insight` permiten rastrear cuándo, por qué y qué acción se sugirió.
+
+### Sugerencias de configuración (config/guardian.yml)
+- **driving.harsh_event_ids:** añade los IDs de Geotab para frenado y giros bruscos según tu flota; `min_events` controla el umbral de coaching.
+- **geofence:** define `safe_zones` (IDs de Geotab) y el tiempo máximo fuera; útil para alertas de desvío/resguardo.
+- **telemetry_health:** `max_minutes_without_data` dispara una alerta interna cuando el GO deja de reportar; ajusta `min_signal_strength` para zonas con mala cobertura.
+- **off_hours_usage:** marca ventanas laborales y límites de viajes/km fuera de horario para detectar uso indebido.
+- **energy_monitoring:** activa seguimiento de `state_of_charge` y caídas de consumo para flotas EV (puede mantenerse en `enabled: false` si no aplica).
+
+### Documentos complementarios
+- `guardian/demo/guardian_insights_demo.csv` y `guardian/demo/guardian_outbox_demo.jsonl` → dataset corto para demos.
+- `guardian/streaming_playbook.md` → flujo detallado Geotab → Make → Neon → WhatsApp.
+- `guardian/hu_variable_mapping.md` → tabla HU ↔ variables Geotab ↔ alertas Guardian.
+- `guardian/connection_checklist.md` → lista de pasos para encender streaming en producción.
+
+## TO-BE (streaming / NEON / API Geotab)
+- Reemplazar lectura CSV → consultas en NEON o `Get` Geotab con Webhooks.
+- Actualizar diccionario DTC diariamente vía `Get(Diagnostic)`.
+- Ejecutar `build_insights` en worker continuo (Celery/Temporal) con baja latencia.
+- Publicar eventos `GuardianAlert` en topic (Kafka/PubSub) para fan-out (WhatsApp, dashboard, bot postventa).
+
+## Relación con otros agentes
+| Agente | Rol | Cuándo entra |
+|--------|-----|--------------|
+| **Guardian de Flota** | Proactivo. Vigila telemetría, avisa simple y rápido. | Antes de queja del cliente. |
+| **PIA (postventa)**   | Reactivo. Ejecuta procedimientos, gestiona órdenes/tickets. | Cuando el cliente responde a la alerta o requiere soporte detallado. |
+
+## Roadmap
+- [x] Construir `dtc_catalog` (mapping diagnóstico → P-code → descripción).
+- [x] Implementar `build_insights.py` (downtime, consumo, driving events, DTC).
+- [x] Implementar `notifier.py` con plantillas + webhook a Make.
+- [ ] Añadir sección en dashboard y documentación en SSOT (`docs/fichas/guardian.md`).
+- [ ] Migrar orígenes a NEON/API (TO-BE) y añadir alertas geocercas.
